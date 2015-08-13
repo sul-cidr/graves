@@ -1,0 +1,17 @@
+
+language: ruby
+
+rvm:
+  - 2.2.2
+
+notifications:
+  email: false
+
+before_script:
+
+  # Enable PostGIS.
+  - psql -U postgres -c "CREATE EXTENSION POSTGIS"
+
+  # Create database, apply Travis config.
+  - psql -c "CREATE DATABASE travis_ci_test;" -U postgres
+  - cp config/database.yml.travis config/database.yml
