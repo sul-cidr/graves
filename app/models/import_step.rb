@@ -15,8 +15,8 @@ class ImportStep < ActiveRecord::Base
   #
   # @param step [String]
   #
-  def self.satisfied?(step)
-    # TODO
+  def self.satisfied?(s)
+    where { step == s }.exists?
   end
 
 end
