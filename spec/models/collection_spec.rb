@@ -8,15 +8,15 @@
 #  destination :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  province_e  :string
+#  province_p  :string
 #  province_c  :string
-#  prefect_e   :string
+#  prefect_p   :string
 #  prefect_c   :string
-#  county_e    :string
+#  county_p    :string
 #  county_c    :string
-#  town_e      :string
+#  town_p      :string
 #  town_c      :string
-#  village_e   :string
+#  village_p   :string
 #  village_c   :string
 #
 
