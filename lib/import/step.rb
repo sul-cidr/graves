@@ -48,4 +48,12 @@ class Import::Step
     raise NotImplementedError
   end
 
+  #
+  # Has the step been run?
+  #
+  def satistied?
+    return false
+    # TODO
+  end
+
 end
