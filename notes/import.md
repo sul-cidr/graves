@@ -2,6 +2,8 @@
 
 - **`master_20150601`**
 
+  (Collections)
+
 	- `num_graves`
 	- `province_e`
 	- `province_c`
@@ -14,7 +16,9 @@
 	- `village_e`
 	- `village_c`
 	- `location_c`
-	- `destination`
+  - `destination`
+
+  (Notices)
 
 	- `pub_date`
 	- `deadline`
@@ -33,3 +37,4 @@
 	- `keyword`
 	- `database`
 	- `notes`
+
