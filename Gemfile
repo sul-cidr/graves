@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'activerecord-postgis-adapter'
+gem 'progress_bar'
 
 group :development, :test do
 
