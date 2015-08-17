@@ -50,6 +50,7 @@ group :development, :test do
   gem 'annotate'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'factory_girl_rails'
 
 end
 

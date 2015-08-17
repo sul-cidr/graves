@@ -12,6 +12,8 @@ class Import::Step
   #
   def initialize
 
+    # TODO: Connect to legacy database.
+
     if count
       @bar = ProgressBar.new(count)
     end
