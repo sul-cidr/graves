@@ -1,6 +1,6 @@
 # Data Migration
 
-- **`master_20150601`** (collection columns)
+- **`master_20150601`** (collections)
 
 	- `num_graves`
 	- `province_e`
@@ -16,7 +16,7 @@
 	- `location_c`
   - `destination`
 
-- **`master_20150601`** (notice columns)
+- **`master_20150601`** (notices)
 
 	- `pub_date`
 	- `deadline`
