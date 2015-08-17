@@ -53,7 +53,7 @@ class Import::Step
   #
   def satistied?
     return false
-    # TODO
+    # TODO: Query import_steps.
   end
 
 end
