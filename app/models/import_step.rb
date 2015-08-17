@@ -7,4 +7,5 @@
 #
 
 class ImportStep < ActiveRecord::Base
+  validates :step, uniqueness: true
 end

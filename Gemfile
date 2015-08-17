@@ -32,6 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'squeel'
 gem 'activerecord-postgis-adapter'
 gem 'progress_bar'
 
@@ -50,4 +51,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop'
 
+end
+
+group :test do
+  gem 'shoulda-matchers', require: false
 end

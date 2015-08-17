@@ -8,6 +8,14 @@
 
 require 'rails_helper'
 
-RSpec.describe ImportStep, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe ImportStep, type: :model do
+
+  describe 'indexes' do
+    it { should have_db_index(:step).unique(true) }
+  end
+
+  describe 'validations' do
+    it { should validate_uniqueness_of(:step) }
+  end
+
 end
