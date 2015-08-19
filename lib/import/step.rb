@@ -54,8 +54,7 @@ class Import::Step
   # Has the step been run?
   #
   def satistied?
-    return false
-    # TODO: Query import_steps.
+    ImportStep.satisfied?(name.demodulize)
   end
 
 end
