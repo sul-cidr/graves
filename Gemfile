@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'squeel'
 gem 'activerecord-postgis-adapter'
 gem 'progress_bar'
+gem 'method_hooks'
 
 group :development, :test do
 

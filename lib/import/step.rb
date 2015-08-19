@@ -1,6 +1,8 @@
 
 class Import::Step
 
+  extend MethodHooks
+
   class << self
     attr_accessor :depends
   end
@@ -76,6 +78,24 @@ class Import::Step
   #
   def puts_reverting
     puts "REVERTING: #{name}".colorize(:green)
+  end
+
+  around :up do |method|
+    if satisfied?
+      puts_satisfied
+    else
+      puts_importing
+      method.call
+    end
+  end
+
+  around :down do |method|
+    if satisfied?
+      puts_reverting
+      method.call
+    else
+      puts_satisfied
+    end
   end
 
 end

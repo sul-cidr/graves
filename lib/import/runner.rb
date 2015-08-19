@@ -61,7 +61,7 @@ class Import::Runner
   #
   def up
     @udeps.tsort_each do |dep|
-      ustep(dep.new)
+      dep.new.up
     end
   end
 
@@ -73,36 +73,8 @@ class Import::Runner
   def down(name)
     @ddeps.each_strongly_connected_component_from(@steps[name]) do |cmp|
       cmp.each do |dep|
-        dstep(dep.new)
+        dep.new.down
       end
-    end
-  end
-
-  #
-  # Run a step.
-  #
-  # @param step [Import::Step]
-  #
-  def ustep(step)
-    if step.satisfied?
-      step.puts_satisfied
-    else
-      step.puts_importing
-      step.up
-    end
-  end
-
-  #
-  # Revert a step.
-  #
-  # @param step [Import::Step]
-  #
-  def dstep(step)
-    if step.satisfied?
-      step.puts_reverting
-      step.down
-    else
-      step.puts_satisfied
     end
   end
 
