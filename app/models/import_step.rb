@@ -13,16 +13,25 @@ class ImportStep < ActiveRecord::Base
   #
   # Register a step.
   #
-  # @param step [String]
+  # @param s [String]
   #
   def self.up(s)
     create(step: s)
   end
 
   #
+  # Remove a step.
+  #
+  # @param s [String]
+  #
+  def self.down(s)
+    where { step == s }.first.destroy
+  end
+
+  #
   # Has a step been run?
   #
-  # @param step [String]
+  # @param s [String]
   #
   def self.satisfied?(s)
     where { step == s }.exists?
