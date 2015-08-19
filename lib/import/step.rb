@@ -23,6 +23,15 @@ class Import::Step
   end
 
   #
+  # Generate a slug for the step.
+  #
+  # @return [String]
+  #
+  def slug
+    name.demodulize
+  end
+
+  #
   # How many items will the step process?
   #
   # @return [Integer]
@@ -42,7 +51,7 @@ class Import::Step
   # Has the step been run?
   #
   def satistied?
-    ImportStep.satisfied?(name.demodulize)
+    ImportStep.satisfied?(slug)
   end
 
   #
