@@ -214,6 +214,7 @@ DEPENDENCIES
   pg
   progress_bar
   rails (= 4.2.3)
+  rspec-mocks
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
