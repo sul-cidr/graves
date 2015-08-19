@@ -22,6 +22,6 @@
 
 require 'rails_helper'
 
-RSpec.describe Collection, type: :model do
+describe Collection, type: :model do
   # TODO
 end

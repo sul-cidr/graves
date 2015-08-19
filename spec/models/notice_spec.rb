@@ -22,6 +22,6 @@
 
 require 'rails_helper'
 
-RSpec.describe Notice, type: :model do
+describe Notice, type: :model do
   # TODO
 end

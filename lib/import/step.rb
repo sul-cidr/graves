@@ -48,13 +48,6 @@ class Import::Step
   end
 
   #
-  # Has the step been run?
-  #
-  def satistied?
-    ImportStep.satisfied?(slug)
-  end
-
-  #
   # Run the step.
   #
   def up
@@ -90,18 +83,20 @@ class Import::Step
   end
 
   around :up do |method|
-    if satisfied?
+    if ImportStep.satisfied?(slug)
       puts_satisfied
     else
       puts_importing
       method.call
+      ImportStep.up(slug)
     end
   end
 
   around :down do |method|
-    if satisfied?
+    if ImportStep.satisfied?(slug)
       puts_reverting
       method.call
+      ImportStep.down(slug)
     else
       puts_satisfied
     end
