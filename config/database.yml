@@ -83,3 +83,8 @@ production:
   database: graves_production
   username: graves
   password: <%= ENV['GRAVES_DATABASE_PASSWORD'] %>
+
+legacy:
+  <<: *default
+  adapter: postgresql
+  database: graves_legacy
