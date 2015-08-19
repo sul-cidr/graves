@@ -85,9 +85,9 @@ class Import::Runner
   #
   def ustep(step)
     if step.satisfied?
-      puts "SATISFIED: #{step.class.name}".colorize(:light_white)
+      step.puts_satisfied
     else
-      puts "IMPORTING: #{step.class.name}".colorize(:green)
+      step.puts_importing
       step.up
     end
   end
@@ -99,10 +99,10 @@ class Import::Runner
   #
   def dstep(step)
     if step.satisfied?
-      puts "REVERTING: #{step.class.name}".colorize(:green)
+      step.puts_reverting
       step.down
     else
-      puts "SATISFIED: #{step.class.name}".colorize(:light_white)
+      step.puts_satisfied
     end
   end
 

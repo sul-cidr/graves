@@ -37,6 +37,13 @@ class Import::Step
   end
 
   #
+  # Has the step been run?
+  #
+  def satistied?
+    ImportStep.satisfied?(name.demodulize)
+  end
+
+  #
   # Run the step.
   #
   def up
@@ -51,10 +58,24 @@ class Import::Step
   end
 
   #
-  # Has the step been run?
+  # Print satisfied.
   #
-  def satistied?
-    ImportStep.satisfied?(name.demodulize)
+  def puts_satisfied
+    puts "SATISFIED: #{name}".colorize(:light_white)
+  end
+
+  #
+  # Print importing.
+  #
+  def puts_importing
+    puts "IMPORTING: #{name}".colorize(:green)
+  end
+
+  #
+  # Print reverting.
+  #
+  def puts_reverting
+    puts "REVERTING: #{name}".colorize(:green)
   end
 
 end
