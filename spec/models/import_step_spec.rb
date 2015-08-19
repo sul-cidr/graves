@@ -36,4 +36,17 @@ describe ImportStep, type: :model do
 
   end
 
+  describe '.up()' do
+
+    it 'registers a row for a step' do
+      ImportStep.up('Step')
+      expect(ImportStep.satisfied?('Step')).to be true
+    end
+
+  end
+
+  describe '.down()' do
+    it 'removes the row for a step'
+  end
+
 end

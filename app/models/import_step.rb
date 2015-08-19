@@ -11,6 +11,15 @@ class ImportStep < ActiveRecord::Base
   validates :step, uniqueness: true
 
   #
+  # Register a step.
+  #
+  # @param step [String]
+  #
+  def self.up(s)
+    create(step: s)
+  end
+
+  #
   # Has a step been run?
   #
   # @param step [String]
