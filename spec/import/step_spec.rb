@@ -32,6 +32,15 @@ describe Import::Step do
 
     end
 
+    context 'not satisfied' do
+
+      it 'runs the step' do
+        expect(step.new.up).to be true
+        expect(ImportStep.satisfied?('TestStep')).to be true
+      end
+
+    end
+
   end
 
 end
