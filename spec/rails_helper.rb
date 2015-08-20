@@ -54,6 +54,16 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
+  # Patch in custom matchers.
   config.include FactoryGirl::Syntax::Methods
+
+  # Swallow STDOUT and STDERR.
+  config.around(:each, :quiet) do |test|
+    silence_stream(STDERR) do
+      silence_stream(STDOUT) do
+        test.run
+      end
+    end
+  end
 
 end

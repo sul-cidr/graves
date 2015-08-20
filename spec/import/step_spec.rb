@@ -1,7 +1,7 @@
 
 require 'rails_helper'
 
-describe Import::Step do
+describe Import::Step, :quiet do
 
   let(:step) {
     Class.new(Import::Step) do
