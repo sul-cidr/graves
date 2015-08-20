@@ -28,7 +28,7 @@ class Import::Step
   # @return [String]
   #
   def slug
-    name.demodulize
+    self.class.name.demodulize
   end
 
   #
@@ -65,21 +65,21 @@ class Import::Step
   # Print satisfied.
   #
   def puts_satisfied
-    puts "SATISFIED: #{name}".colorize(:light_white)
+    puts "SATISFIED: #{slug}".colorize(:light_white)
   end
 
   #
   # Print importing.
   #
   def puts_importing
-    puts "IMPORTING: #{name}".colorize(:green)
+    puts "IMPORTING: #{slug}".colorize(:green)
   end
 
   #
   # Print reverting.
   #
   def puts_reverting
-    puts "REVERTING: #{name}".colorize(:green)
+    puts "REVERTING: #{slug}".colorize(:green)
   end
 
   around :up do |method|
