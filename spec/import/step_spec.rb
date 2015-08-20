@@ -43,4 +43,17 @@ describe Import::Step, :quiet do
 
   end
 
+  describe '#down()' do
+
+    context 'satisfied' do
+
+      it 'reverts the step' do
+        create(:import_step, step: 'TestStep')
+        expect(step.new.down).to be true
+      end
+
+    end
+
+  end
+
 end
