@@ -1,10 +1,15 @@
 
 default: &default
+  username: postgres
   adapter: postgis
   encoding: unicode
   pool: 5
 
 test:
   <<: *default
-  database: travis_ci_test
-  username: postgres
+  database: graves_test
+
+legacy:
+  <<: *default
+  database: graves_legacy
+  adapter: postgresql
