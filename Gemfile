@@ -53,6 +53,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'factory_girl_rails'
   gem 'sequel'
+  gem 'colorize'
 
 end
 

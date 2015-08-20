@@ -4,13 +4,17 @@ require 'rails_helper'
 describe Import::Step do
 
   let(:step) {
-    Import::Step.new
+    Class.new(Import::Step) do
+      def self.name
+        'TestStep'
+      end
+    end
   }
 
   describe '#up()' do
 
     it 'does not run the step' do
-      step.up
+      step.new.up
     end
 
   end
