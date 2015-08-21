@@ -40,7 +40,7 @@ module Import
       @udeps[step] = []
       @ddeps[step] = []
 
-      # Register up/down dependencies.
+      # Register dependencies.
       step.depends.each do |dep|
         @udeps[step] += [dep]
         @ddeps[dep] += [step]

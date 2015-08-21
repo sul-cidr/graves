@@ -24,8 +24,6 @@ describe Import::Runner, :quiet do
 
       step1 = Class.new(step) do
 
-        @depends = []
-
         def self.name
           'Step1'
         end
@@ -34,7 +32,7 @@ describe Import::Runner, :quiet do
 
       step2 = Class.new(step) do
 
-        @depends = [step1]
+        self.depends = [step1]
 
         def self.name
           'Step2'
@@ -44,7 +42,7 @@ describe Import::Runner, :quiet do
 
       step3 = Class.new(step) do
 
-        @depends = [step2]
+        self.depends = [step2]
 
         def self.name
           'Step3'
@@ -53,7 +51,7 @@ describe Import::Runner, :quiet do
       end
 
       runner = Import::Runner.from_steps([
-        step3, step2, step1
+        step3, step1, step2
       ])
 
       runner.up

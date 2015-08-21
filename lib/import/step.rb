@@ -4,9 +4,8 @@ module Import
 
     extend MethodHooks
 
-    class << self
-      attr_accessor :depends
-    end
+    class_attribute :depends
+    self.depends = []
 
     #
     # Initialize the progress bar.
