@@ -3,32 +3,23 @@ require 'rails_helper'
 
 describe Import::Runner, :quiet do
 
+  attr_accessor :up, :down
+
   before(:each) do
-    $up = []
-    $down = []
+    @up   = []
+    @down = []
   end
 
   after(:each) do
-    $up = nil
-    $down = nil
-  end
-
-  let(:base_step) do
-    Class.new(Import::Step) do
-
-      def up
-        $up.append(self.class.name)
-      end
-
-      def down
-        $down.append(self.class.name)
-      end
-
-    end
+    @up   = nil
+    @down = nil
   end
 
   def make_step(name, depends=[])
-    Class.new(base_step) do
+
+    suite = self
+
+    Class.new(Import::Step) do
 
       @depends = depends
 
@@ -36,7 +27,16 @@ describe Import::Runner, :quiet do
         name
       end
 
+      define_method :up do
+        suite.up.append(self.class.name)
+      end
+
+      define_method :down do
+        suite.down.append(self.class.name)
+      end
+
     end
+
   end
 
   describe '#up()' do
@@ -57,7 +57,7 @@ describe Import::Runner, :quiet do
 
       runner.up
 
-      expect($up).to eq [
+      expect(@up).to eq [
         'Step1',
         'Step2',
         'Step3',
@@ -89,7 +89,7 @@ describe Import::Runner, :quiet do
       runner.up
       runner.down('Step3')
 
-      expect($down).to eq [
+      expect(@down).to eq [
         'Step4',
         'Step3',
       ]
