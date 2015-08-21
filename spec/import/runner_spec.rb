@@ -3,18 +3,31 @@ require 'rails_helper'
 
 describe Import::Runner, :quiet do
 
+  before(:each) do
+    $order = []
+  end
+
+  after(:each) do
+    $order = nil
+  end
+
+  let(:step) do
+    Class.new(Import::Step) do
+
+      def up
+        $order.append(self.class.name)
+      end
+
+      def down
+        $order.append(self.class.name)
+      end
+
+    end
+  end
+
   describe '#up()' do
 
     it 'runs all steps in order' do
-
-      # Stub in up/down methods.
-      step = Class.new(Import::Step) do
-
-        def up
-          # TODO
-        end
-
-      end
 
       # step1 -> step2 -> step3
 
@@ -54,7 +67,11 @@ describe Import::Runner, :quiet do
 
       runner.up
 
-      # TODO: Test #up() order.
+      expect($order).to eq [
+        'Step1',
+        'Step2',
+        'Step3',
+      ]
 
     end
 
