@@ -11,11 +11,7 @@ describe Import::Runner, :quiet do
       step = Class.new(Import::Step) do
 
         def up
-          true
-        end
-
-        def down
-          true
+          # TODO
         end
 
       end
@@ -51,14 +47,14 @@ describe Import::Runner, :quiet do
       end
 
       runner = Import::Runner.from_steps([
-        step3, step1, step2
+        step3,
+        step2,
+        step1,
       ])
 
       runner.up
 
-      pp step1.depends
-      pp step2.depends
-      pp step3.depends
+      # TODO: Test #up() order.
 
     end
 
