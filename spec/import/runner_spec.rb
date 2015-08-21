@@ -13,7 +13,7 @@ describe Import::Runner, :quiet do
     $down = nil
   end
 
-  let(:step) do
+  let(:base_step) do
     Class.new(Import::Step) do
 
       def up
@@ -27,31 +27,27 @@ describe Import::Runner, :quiet do
     end
   end
 
+  def make_step(name, depends=[])
+    Class.new(base_step) do
+
+      @depends = depends
+
+      define_singleton_method :name do
+        name
+      end
+
+    end
+  end
+
   describe '#up()' do
 
     it 'runs all steps in order' do
 
       # step1 -> step2 -> step3
 
-      step1 = Class.new(step) do
-        def self.name
-          'Step1'
-        end
-      end
-
-      step2 = Class.new(step) do
-        @depends = [step1]
-        def self.name
-          'Step2'
-        end
-      end
-
-      step3 = Class.new(step) do
-        @depends = [step2]
-        def self.name
-          'Step3'
-        end
-      end
+      step1 = make_step('Step1')
+      step2 = make_step('Step2', [step1])
+      step3 = make_step('Step3', [step2])
 
       runner = Import::Runner.from_steps([
         step3,
@@ -78,32 +74,10 @@ describe Import::Runner, :quiet do
       # step1 -> step2
       #       -> step3 -> step4
 
-      step1 = Class.new(step) do
-        def self.name
-          'Step1'
-        end
-      end
-
-      step2 = Class.new(step) do
-        @depends = [step1]
-        def self.name
-          'Step2'
-        end
-      end
-
-      step3 = Class.new(step) do
-        @depends = [step1]
-        def self.name
-          'Step3'
-        end
-      end
-
-      step4 = Class.new(step) do
-        @depends = [step3]
-        def self.name
-          'Step4'
-        end
-      end
+      step1 = make_step('Step1')
+      step2 = make_step('Step2', depends=[step1])
+      step3 = make_step('Step3', depends=[step1])
+      step4 = make_step('Step4', depends=[step3])
 
       runner = Import::Runner.from_steps([
         step1,
