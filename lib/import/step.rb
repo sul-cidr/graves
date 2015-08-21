@@ -4,8 +4,12 @@ module Import
 
     extend MethodHooks
 
-    class_attribute :depends
-    self.depends = []
+    #
+    # By default, no dependencies.
+    #
+    def self.depends
+      @depends || []
+    end
 
     #
     # Initialize the progress bar.
