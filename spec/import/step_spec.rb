@@ -23,7 +23,7 @@ describe Import::Step, :quiet do
 
   describe '#up()' do
 
-    context 'safisfied' do
+    context 'when the step is safisfied' do
 
       before(:each) do
         create(:import_step, step: 'TestStep')
@@ -35,7 +35,7 @@ describe Import::Step, :quiet do
 
     end
 
-    context 'not satisfied' do
+    context 'when the step is not satisfied' do
 
       it 'runs the step' do
         expect(step.new.up).to be true
@@ -48,7 +48,7 @@ describe Import::Step, :quiet do
 
   describe '#down()' do
 
-    context 'satisfied' do
+    context 'when the step is satisfied' do
 
       before(:each) do
         create(:import_step, step: 'TestStep')
@@ -61,7 +61,7 @@ describe Import::Step, :quiet do
 
     end
 
-    context 'not satisfied' do
+    context 'when the step is not satisfied' do
 
       it 'does not revert the step' do
         expect(step.new.down).to be nil
