@@ -25,7 +25,7 @@ class ImportStep < ActiveRecord::Base
   # @param s [String]
   #
   def self.down(s)
-    delete_all { step == s }
+    where { step == s }.first.destroy
   end
 
   #

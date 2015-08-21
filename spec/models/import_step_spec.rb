@@ -47,10 +47,15 @@ describe ImportStep, type: :model do
 
   describe '.down()' do
 
+    before(:each) do
+      create(:import_step, step: 'Step1')
+      create(:import_step, step: 'Step2')
+    end
+
     it 'removes the row for a step' do
-      create(:import_step, step: 'Step')
-      ImportStep.down('Step')
-      expect(ImportStep.satisfied?('Step')).to be false
+      ImportStep.down('Step2')
+      expect(ImportStep.satisfied?('Step1')).to be true
+      expect(ImportStep.satisfied?('Step2')).to be false
     end
 
   end
