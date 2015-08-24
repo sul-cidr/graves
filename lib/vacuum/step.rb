@@ -1,11 +1,8 @@
 
-require './lib/helpers/import'
-
-module Import
+module Vacuum
   class Step
 
     extend MethodHooks
-    include Helpers::Import
 
     #
     # By default, no dependencies.
@@ -18,13 +15,9 @@ module Import
     # Initialize the progress bar.
     #
     def initialize
-
-      @DB = legacy_db
-
       if count
         @bar = ProgressBar.new(count)
       end
-
     end
 
     #

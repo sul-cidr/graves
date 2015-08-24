@@ -1,5 +1,5 @@
 
-module Import
+module Vacuum
   class CreateNotices < Step
 
     def up

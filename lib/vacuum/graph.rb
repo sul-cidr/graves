@@ -1,7 +1,7 @@
 
 require "tsort"
 
-module Import
+module Vacuum
   class Graph < Hash
 
     include TSort

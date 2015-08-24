@@ -1,7 +1,7 @@
 
 require 'rails_helper'
 
-describe Import::Runner, :quiet do
+describe Vacuum::Runner, :quiet do
 
   attr_accessor :up, :down
 
@@ -19,7 +19,7 @@ describe Import::Runner, :quiet do
 
     suite = self
 
-    Class.new(Import::Step) do
+    Class.new(Vacuum::Step) do
 
       @depends = depends
 
@@ -49,7 +49,7 @@ describe Import::Runner, :quiet do
       step2 = make_step('Step2', [step1])
       step3 = make_step('Step3', [step2])
 
-      runner = Import::Runner.from_steps([
+      runner = Vacuum::Runner.from_steps([
         step3,
         step2,
         step1,
@@ -81,7 +81,7 @@ describe Import::Runner, :quiet do
         step3 = make_step('Step3', depends=[step1])
         step4 = make_step('Step4', depends=[step3])
 
-        runner = Import::Runner.from_steps([
+        runner = Vacuum::Runner.from_steps([
           step1,
           step2,
           step3,
@@ -110,7 +110,7 @@ describe Import::Runner, :quiet do
         step2 = make_step('Step2', [step1])
         step3 = make_step('Step3', [step2])
 
-        runner = Import::Runner.from_steps([
+        runner = Vacuum::Runner.from_steps([
           step3,
           step2,
           step1,

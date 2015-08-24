@@ -1,10 +1,10 @@
 
 require 'rails_helper'
 
-describe Import::Step, :quiet do
+describe Vacuum::Step, :quiet do
 
   let(:step) {
-    Class.new(Import::Step) do
+    Class.new(Vacuum::Step) do
 
       def self.name
         'TestStep'

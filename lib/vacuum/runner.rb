@@ -1,7 +1,7 @@
 
 require_rel './graph'
 
-module Import
+module Vacuum
   class Runner
 
     attr_accessor :steps
