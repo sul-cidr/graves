@@ -69,30 +69,62 @@ describe Import::Runner, :quiet do
 
   describe '#down()' do
 
-    it 'reverts a step, and all steps that depend on it' do
+    context 'when a step is passed' do
 
-      # step1 -> step2
-      #       -> step3 -> step4
+      it 'reverts the step, and all steps that depend on it' do
 
-      step1 = make_step('Step1')
-      step2 = make_step('Step2', depends=[step1])
-      step3 = make_step('Step3', depends=[step1])
-      step4 = make_step('Step4', depends=[step3])
+        # step1 -> step2
+        #       -> step3 -> step4
 
-      runner = Import::Runner.from_steps([
-        step1,
-        step2,
-        step3,
-        step4,
-      ])
+        step1 = make_step('Step1')
+        step2 = make_step('Step2', depends=[step1])
+        step3 = make_step('Step3', depends=[step1])
+        step4 = make_step('Step4', depends=[step3])
 
-      runner.up
-      runner.down('Step3')
+        runner = Import::Runner.from_steps([
+          step1,
+          step2,
+          step3,
+          step4,
+        ])
 
-      expect(@down).to eq [
-        'Step4',
-        'Step3',
-      ]
+        runner.up
+        runner.down('Step3')
+
+        expect(@down).to eq [
+          'Step4',
+          'Step3',
+        ]
+
+      end
+
+    end
+
+    context 'when a step is not passed' do
+
+      it 'reverts all steps' do
+
+        # step1 -> step2 -> step3
+
+        step1 = make_step('Step1')
+        step2 = make_step('Step2', [step1])
+        step3 = make_step('Step3', [step2])
+
+        runner = Import::Runner.from_steps([
+          step3,
+          step2,
+          step1,
+        ])
+
+        runner.down
+
+        expect(@down).to eq [
+          'Step3',
+          'Step2',
+          'Step1',
+        ]
+
+      end
 
     end
 
