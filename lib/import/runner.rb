@@ -73,12 +73,23 @@ module Import
     #
     # @param name [String]
     #
-    def down(name)
-      @ddeps.each_strongly_connected_component_from(@steps[name]) do |cmp|
-        cmp.each do |dep|
+    def down(name=nil)
+
+      # Revert to a specific step, if one is passed.
+      if name
+        @ddeps.each_strongly_connected_component_from(@steps[name]) do |cmp|
+          cmp.each do |dep|
+            dep.new.down
+          end
+        end
+
+      # Otherwise, revert all steps.
+      else
+        @ddeps.tsort_each do |dep|
           dep.new.down
         end
       end
+
     end
 
   end

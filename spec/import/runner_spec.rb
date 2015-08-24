@@ -116,6 +116,7 @@ describe Import::Runner, :quiet do
           step1,
         ])
 
+        runner.up
         runner.down
 
         expect(@down).to eq [
