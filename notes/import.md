@@ -19,7 +19,7 @@
 - **`master_20150601`** (notices)
 
 	- `pub_date` - Notice / pub_date
-	- `deadline`
+	- `deadline` - Notice / deadline
 	- `site_c`
 	- `site_p`
 	- `url`
@@ -28,7 +28,7 @@
 	- `title_p`
 	- `org_c`
 	- `org_p`
-	- `notification_date`
+	- `notification_date` - Notice / notice_date
 	- `contact_c`
 	- `contact_p`
 	- `contact_phone`
