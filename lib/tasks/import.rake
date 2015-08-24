@@ -14,7 +14,7 @@ namespace :db do
       runner.up
     end
 
-    desc "Roll back an import step"
+    desc "Roll back import"
     task :down, [:step] => :environment do |t, args|
       runner.down(args.step)
     end
