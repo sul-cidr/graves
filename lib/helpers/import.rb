@@ -1,5 +1,5 @@
 
-module Helpers::Legacy
+module Helpers::Import
 
   #
   # Connect to the legacy database.

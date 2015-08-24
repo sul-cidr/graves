@@ -16,7 +16,7 @@ module Import
     #
     def initialize
 
-      @DB = Helpers::Legacy.DB
+      @DB = Helpers::Import.DB
 
       if count
         @bar = ProgressBar.new(count)

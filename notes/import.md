@@ -18,7 +18,7 @@
 
 - **`master_20150601`** (notices)
 
-	- `pub_date`
+	- `pub_date` - Notice / pub_date
 	- `deadline`
 	- `site_c`
 	- `site_p`
