@@ -5,7 +5,7 @@ module Helpers
     #
     # Connect to the legacy database.
     #
-    # returns [Sequel::Database]
+    # @return [Sequel::Database]
     #
     def legacy_db
 
@@ -17,6 +17,16 @@ module Helpers
         **params.symbolize_keys
       )
 
+    end
+
+    #
+    # Parse a date string.
+    #
+    # @param string [String]
+    # @return [Date]
+    #
+    def parse_date(string)
+      Date.strptime(string.to_s, '%m/%d/%Y') rescue nil
     end
 
   end
