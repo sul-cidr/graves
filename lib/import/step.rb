@@ -1,8 +1,11 @@
 
+require './lib/helpers/import'
+
 module Import
   class Step
 
     extend MethodHooks
+    include Helpers::Import
 
     #
     # By default, no dependencies.
@@ -16,7 +19,7 @@ module Import
     #
     def initialize
 
-      @DB = Helpers::Import.DB
+      @DB = legacy_db
 
       if count
         @bar = ProgressBar.new(count)
