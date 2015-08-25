@@ -5,13 +5,11 @@ module Import
   class CreateTowns < Step
 
     def up
-
-      path = "#{Rails.root}/data/2010TownshipCensus.shp"
-
-      RGeo::Shapefile::Reader.open(path) do |file|
-        puts file.num_records
+      shapefile do |file|
+        file.each do
+          increment
+        end
       end
-
     end
 
     def down
@@ -19,7 +17,21 @@ module Import
     end
 
     def count
-      1
+      shapefile do |file|
+        return file.num_records
+      end
+    end
+
+    def shapefile
+
+      # Build shapefile path.
+      path = "#{Rails.root}/data/2010TownshipCensus.shp"
+
+      # Yield the RGeo instance.
+      RGeo::Shapefile::Reader.open(path) do |file|
+        yield file
+      end
+
     end
 
   end
