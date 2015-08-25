@@ -39,7 +39,7 @@ describe Vacuum::Runner, :quiet do
 
   end
 
-  describe '#add_step()' do
+  describe '.from_steps()' do
 
     it 'registers up / down dependencies' do
 
@@ -79,6 +79,25 @@ describe Vacuum::Runner, :quiet do
         ]
 
       end
+
+    end
+
+    it 'registers steps with no dependencies' do
+
+      step1 = make_step('Step1')
+      step2 = make_step('Step2')
+      step3 = make_step('Step3')
+
+      steps = [
+        step1,
+        step2,
+        step3,
+      ]
+
+      runner = Vacuum::Runner.from_steps(steps)
+
+      expect(runner.udeps.tsort).to include(*steps)
+      expect(runner.ddeps.tsort).to include(*steps)
 
     end
 
