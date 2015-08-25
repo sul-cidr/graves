@@ -38,6 +38,7 @@ gem 'activerecord-postgis-adapter'
 gem 'progress_bar'
 gem 'method_hooks'
 gem 'unicode'
+gem 'rgeo-shapefile'
 
 group :development, :test do
 
