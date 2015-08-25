@@ -41,27 +41,49 @@ describe Vacuum::Runner, :quiet do
 
   describe '#up()' do
 
-    it 'runs all steps in order' do
+    let(:runner) {
 
       # step1 -> step2 -> step3
-
       step1 = make_step('Step1')
       step2 = make_step('Step2', [step1])
       step3 = make_step('Step3', [step2])
 
-      runner = Vacuum::Runner.from_steps([
-        step3,
-        step2,
+      Vacuum::Runner.from_steps([
         step1,
+        step2,
+        step3,
       ])
 
-      runner.up
+    }
 
-      expect(@up).to eq [
-        'Step1',
-        'Step2',
-        'Step3',
-      ]
+    context 'when a step is passed' do
+
+      it 'runs the step, and all steps that it depends on' do
+
+        runner.up('Step2')
+
+        expect(@up).to eq [
+          'Step1',
+          'Step2',
+        ]
+
+      end
+
+    end
+
+    context 'when a step is not passed' do
+
+      it 'runs all steps in order' do
+
+        runner.up
+
+        expect(@up).to eq [
+          'Step1',
+          'Step2',
+          'Step3',
+        ]
+
+      end
 
     end
 
@@ -69,31 +91,34 @@ describe Vacuum::Runner, :quiet do
 
   describe '#down()' do
 
+    let(:runner) {
+
+      # step1 -> step2 -> step3
+      step1 = make_step('Step1')
+      step2 = make_step('Step2', [step1])
+      step3 = make_step('Step3', [step2])
+
+      Vacuum::Runner.from_steps([
+        step1,
+        step2,
+        step3,
+      ])
+
+    }
+
+    before(:each) do
+      runner.up
+    end
+
     context 'when a step is passed' do
 
       it 'reverts the step, and all steps that depend on it' do
 
-        # step1 -> step2
-        #       -> step3 -> step4
-
-        step1 = make_step('Step1')
-        step2 = make_step('Step2', depends=[step1])
-        step3 = make_step('Step3', depends=[step1])
-        step4 = make_step('Step4', depends=[step3])
-
-        runner = Vacuum::Runner.from_steps([
-          step1,
-          step2,
-          step3,
-          step4,
-        ])
-
-        runner.up
-        runner.down('Step3')
+        runner.down('Step2')
 
         expect(@down).to eq [
-          'Step4',
           'Step3',
+          'Step2',
         ]
 
       end
@@ -104,19 +129,6 @@ describe Vacuum::Runner, :quiet do
 
       it 'reverts all steps' do
 
-        # step1 -> step2 -> step3
-
-        step1 = make_step('Step1')
-        step2 = make_step('Step2', [step1])
-        step3 = make_step('Step3', [step2])
-
-        runner = Vacuum::Runner.from_steps([
-          step3,
-          step2,
-          step1,
-        ])
-
-        runner.up
         runner.down
 
         expect(@down).to eq [
