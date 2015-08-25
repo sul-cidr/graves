@@ -20,5 +20,11 @@ namespace :db do
       runner.down
     end
 
+    desc "Run an individual step"
+    task :run, [:step] => :environment do |t, args|
+      runner.down(args.step)
+      runner.up(args.step)
+    end
+
   end
 end
