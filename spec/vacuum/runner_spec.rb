@@ -59,14 +59,11 @@ describe Vacuum::Runner, :quiet do
     context 'when a step is passed' do
 
       it 'runs the step, and all steps that it depends on' do
-
         runner.up('Step2')
-
         expect(@up).to eq [
           'Step1',
           'Step2',
         ]
-
       end
 
     end
@@ -74,15 +71,12 @@ describe Vacuum::Runner, :quiet do
     context 'when a step is not passed' do
 
       it 'runs all steps in order' do
-
         runner.up
-
         expect(@up).to eq [
           'Step1',
           'Step2',
           'Step3',
         ]
-
       end
 
     end
@@ -113,14 +107,11 @@ describe Vacuum::Runner, :quiet do
     context 'when a step is passed' do
 
       it 'reverts the step, and all steps that depend on it' do
-
         runner.down('Step2')
-
         expect(@down).to eq [
           'Step3',
           'Step2',
         ]
-
       end
 
     end
@@ -128,15 +119,12 @@ describe Vacuum::Runner, :quiet do
     context 'when a step is not passed' do
 
       it 'reverts all steps' do
-
         runner.down
-
         expect(@down).to eq [
           'Step3',
           'Step2',
           'Step1',
         ]
-
       end
 
     end
