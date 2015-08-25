@@ -1,5 +1,5 @@
 
-module Vacuum
+module Import
   class CreateNotices < Step
 
     def up
@@ -16,6 +16,10 @@ module Vacuum
 
     def down
       Notice.delete_all
+    end
+
+    def parse_date(string)
+      Date.strptime(string.to_s, '%m/%d/%Y') rescue nil
     end
 
   end

@@ -1,9 +1,9 @@
 
-require_all "./lib/vacuum"
+require_all './lib/vacuum', './lib/import'
 
 runner = Vacuum::Runner.from_steps([
-  Vacuum::CreateNotices,
-  Vacuum::CreateCollections,
+  Import::CreateNotices,
+  Import::CreateCollections,
 ])
 
 namespace :db do

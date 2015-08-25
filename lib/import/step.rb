@@ -1,13 +1,13 @@
 
-module Helpers
-  module Import
+module Import
+  class Step < Vacuum::Step
 
     #
     # Connect to the legacy database.
     #
     # @return [Sequel::Database]
     #
-    def legacy_db
+    def self.DB
 
       # Read legacy params from Rails config.
       params = Rails.configuration.database_configuration["legacy"]
@@ -20,13 +20,11 @@ module Helpers
     end
 
     #
-    # Parse a date string.
+    # Cache a database connection.
     #
-    # @param string [String]
-    # @return [Date]
-    #
-    def parse_date(string)
-      Date.strptime(string.to_s, '%m/%d/%Y') rescue nil
+    def initialize
+      super
+      @DB = self.class.DB
     end
 
   end

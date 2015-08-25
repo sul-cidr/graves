@@ -1,5 +1,5 @@
 
-module Vacuum
+module Import
   class CreateCollections < Step
 
     def up
