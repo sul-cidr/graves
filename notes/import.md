@@ -22,7 +22,7 @@
 	- `deadline` - Notice / deadline
 	- `site_c`
 	- `site_p`
-	- `url`
+	- `url` - Notice / url
 	- `local`
 	- `title_c`
 	- `title_p`

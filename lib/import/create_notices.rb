@@ -9,6 +9,7 @@ module Import
           pub_date: parse_date(n[:pub_date]),
           notice_date: parse_date(n[:notification_date]),
           deadline: parse_date(n[:deadline]),
+          url: n[:url],
         )
 
       end
