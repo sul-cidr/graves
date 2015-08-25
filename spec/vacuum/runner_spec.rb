@@ -39,6 +39,51 @@ describe Vacuum::Runner, :quiet do
 
   end
 
+  describe '#add_step()' do
+
+    it 'registers up / down dependencies' do
+
+      step1 = make_step('Step1')
+      step2 = make_step('Step2', [step1])
+      step3 = make_step('Step3', [step2])
+      step4 = make_step('Step4', [step3])
+      step5 = make_step('Step5', [step4])
+
+      steps = [
+        step1,
+        step2,
+        step3,
+        step4,
+        step5,
+      ]
+
+      # Add steps in all orders.
+      steps.permutation(5).each do |order|
+
+        runner = Vacuum::Runner.from_steps(order)
+
+        expect(runner.udeps.tsort).to eq [
+          step1,
+          step2,
+          step3,
+          step4,
+          step5,
+        ]
+
+        expect(runner.ddeps.tsort).to eq [
+          step5,
+          step4,
+          step3,
+          step2,
+          step1,
+        ]
+
+      end
+
+    end
+
+  end
+
   describe '#up()' do
 
     let(:runner) {

@@ -4,7 +4,7 @@ require_rel './graph'
 module Vacuum
   class Runner
 
-    attr_accessor :steps
+    attr_accessor :steps, :udeps, :ddeps
 
     #
     # Make an instance from a set of steps.
@@ -36,9 +36,9 @@ module Vacuum
       # Map name -> class.
       @steps[step.name.demodulize] = step
 
-      # Add step to up/down adjacency lists.
-      @udeps[step] = []
-      @ddeps[step] = []
+      # Initialize up/down adjacency lists.
+      @udeps[step] = [] unless @udeps.has_key?(step)
+      @ddeps[step] = [] unless @ddeps.has_key?(step)
 
       # Register dependencies.
       step.depends.each do |dep|
