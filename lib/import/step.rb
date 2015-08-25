@@ -1,4 +1,6 @@
 
+require 'unicode'
+
 module Import
   class Step < Vacuum::Step
 
@@ -38,13 +40,24 @@ module Import
     end
 
     #
-    # Convert empty strings and "N/A" to nil.
+    # "Empty" strings to nil, flatten Chinese digits.
     #
     # @param string [String]
     # @return [String|nil]
     #
     def clean(value)
-      ['', 'N/A'].include?(value) ? nil : value;
+
+      # Empty strings to nil.
+      if ['', 'N/A'].include?(value)
+        value = nil
+
+      # Normalize Chinese digits.
+      elsif value.is_a?(String)
+        value = Unicode.normalize_KC(value)
+      end
+
+      value
+
     end
 
   end

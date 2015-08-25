@@ -37,6 +37,7 @@ gem 'squeel'
 gem 'activerecord-postgis-adapter'
 gem 'progress_bar'
 gem 'method_hooks'
+gem 'unicode'
 
 group :development, :test do
 
