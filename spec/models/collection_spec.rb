@@ -18,10 +18,19 @@
 #  town_c      :string
 #  village_p   :string
 #  village_c   :string
+#  notice_id   :integer
 #
 
 require 'rails_helper'
 
 describe Collection, type: :model do
-  # TODO
+
+  describe 'indexes' do
+    it { should have_db_index(:notice_id) }
+  end
+
+  describe 'associations' do
+    it { should belong_to(:notice) }
+  end
+
 end

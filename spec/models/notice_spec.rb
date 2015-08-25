@@ -23,5 +23,9 @@
 require 'rails_helper'
 
 describe Notice, type: :model do
-  # TODO
+
+  describe 'associations' do
+    it { should have_many(:collections) }
+  end
+
 end

@@ -18,7 +18,9 @@
 #  town_c      :string
 #  village_p   :string
 #  village_c   :string
+#  notice_id   :integer
 #
 
 class Collection < ActiveRecord::Base
+  belongs_to :notice
 end
