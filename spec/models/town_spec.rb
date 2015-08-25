@@ -11,5 +11,9 @@
 require 'rails_helper'
 
 describe Town, type: :model do
-  # TODO
+
+  describe 'indexes' do
+    it { should have_db_index(:lonlat) }
+  end
+
 end

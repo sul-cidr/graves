@@ -11,7 +11,7 @@ require 'rails_helper'
 describe ImportStep, type: :model do
 
   describe 'indexes' do
-    it { should have_db_index(:step).unique(true) }
+    it { should have_db_index(:step).unique }
   end
 
   describe 'validations' do

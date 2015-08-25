@@ -26,7 +26,7 @@ require 'rails_helper'
 describe Notice, type: :model do
 
   describe 'indexes' do
-    it { should have_db_index(:legacy_id).unique(true) }
+    it { should have_db_index(:legacy_id).unique }
   end
 
   describe 'associations' do
