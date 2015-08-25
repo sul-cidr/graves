@@ -1,9 +1,17 @@
 
+require 'rgeo/shapefile'
+
 module Import
   class CreateTowns < Step
 
     def up
-      # TODO
+
+      path = "#{Rails.root}/data/2010TownshipCensus.shp"
+
+      RGeo::Shapefile::Reader.open(path) do |file|
+        puts file.num_records
+      end
+
     end
 
     def down
