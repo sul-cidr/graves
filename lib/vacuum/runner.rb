@@ -62,10 +62,25 @@ module Vacuum
     #
     # Run all steps.
     #
-    def up
-      @udeps.tsort_each do |dep|
-        dep.new.up
+    # @param name [String]
+    #
+    def up(name=nil)
+
+      # Import to a specific step, if one is passed.
+      if name
+        @udeps.each_strongly_connected_component_from(@steps[name]) do |cmp|
+          cmp.each do |dep|
+            dep.new.up
+          end
+        end
+
+      # Otherwise, run all steps.
+      else
+        @udeps.tsort_each do |dep|
+          dep.new.up
+        end
       end
+
     end
 
     #
