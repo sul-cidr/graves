@@ -42,7 +42,7 @@ module Vacuum
     # Increment the progress bar.
     #
     def increment
-      @bar.increment
+      @bar.increment!
     end
 
     #

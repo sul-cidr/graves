@@ -23,8 +23,8 @@ module Import
     # Cache a database connection.
     #
     def initialize
-      super
       @DB = self.class.DB
+      super
     end
 
   end

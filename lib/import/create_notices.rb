@@ -22,11 +22,17 @@ module Import
           contact_c:      clean(n[:contact_c]),
         )
 
+        increment
+
       end
     end
 
     def down
       Notice.delete_all
+    end
+
+    def count
+      @DB[:master_20150601].distinct(:nid).count()
     end
 
     #
