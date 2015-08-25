@@ -4,6 +4,7 @@ require_all './lib/vacuum', './lib/import'
 runner = Vacuum::Runner.from_steps([
   Import::CreateNotices,
   Import::CreateCollections,
+  Import::CreateTowns,
 ])
 
 namespace :db do
