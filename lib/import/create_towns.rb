@@ -6,8 +6,16 @@ module Import
 
     def up
       shapefile do |file|
-        file.each do
+        file.each do |record|
+
+          Town.create(
+            cdc_id: record['GBTownship'],
+            name_p: record['TownshipEN'],
+            name_c: record['TownshipCH'],
+          )
+
           increment
+
         end
       end
     end
