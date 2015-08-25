@@ -2,19 +2,19 @@
 
 - **`master_20150601`** (collections)
 
-	- `num_graves`
-	- `province_e`
-	- `province_c`
-	- `prefect_e`
-	- `prefect_c`
-	- `county_e`
-	- `county_c`
-	- `town_e`
-	- `town_c`
-	- `village_e`
-	- `village_c`
-	- `location_c`
-  - `destination`
+	- `num_graves` - Collection / num_graves
+	- `province_e` - Collection / province_p
+	- `province_c` - Collection / province_c
+	- `prefect_e` - Collection / prefect_p
+	- `prefect_c` - Collection / prefect_c
+	- `county_e` - Collection / country_p
+	- `county_c` - Collection / country_c
+	- `town_e` - Collection / town_p
+	- `town_c` - Collection / town_c
+	- `village_e` - Collection / village_p
+	- `village_c` - Collection / village_c
+	- `location_c` - Collection / location
+  - `destination` - Collection / destination
 
 - **`master_20150601`** (notices)
 
