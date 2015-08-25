@@ -12,6 +12,7 @@ module Import
             cdc_id: record['GBTownship'],
             name_p: record['TownshipEN'],
             name_c: record['TownshipCH'],
+            lonlat: record.geometry,
           )
 
           increment
