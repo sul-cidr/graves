@@ -18,6 +18,7 @@
 #  contact_p     :string
 #  contact_c     :string
 #  contact_phone :string
+#  legacy_id     :integer
 #
 
 class Notice < ActiveRecord::Base

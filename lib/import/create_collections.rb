@@ -3,7 +3,9 @@ module Import
   class CreateCollections < Step
 
     def up
-      # TODO
+      @DB[:master_20150601].distinct(:rid).each do |r|
+        # TODO
+      end
     end
 
     def down

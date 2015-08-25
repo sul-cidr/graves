@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825165554) do
+ActiveRecord::Schema.define(version: 20150825170131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
 
   create_table "collections", force: :cascade do |t|
-    t.integer  "grave_count"
+    t.integer  "num_graves"
     t.string   "location"
     t.string   "destination"
     t.datetime "created_at",  null: false
