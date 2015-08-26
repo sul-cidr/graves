@@ -4,8 +4,12 @@ require 'rgeo/shapefile'
 module Import
   class CreateTowns < Step
 
+    def shapefile
+      super('2010TownshipCensus.shp')
+    end
+
     def up
-      shapefile('2010TownshipCensus.shp') do |file|
+      shapefile do |file|
         file.each do |record|
 
           Town.create(
@@ -26,7 +30,7 @@ module Import
     end
 
     def count
-      shapefile('2010TownshipCensus.shp') do |file|
+      shapefile do |file|
         return file.num_records
       end
     end

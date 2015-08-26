@@ -4,8 +4,12 @@ require 'rgeo/shapefile'
 module Import
   class CreateProvinces < Step
 
+    def shapefile
+      super('2010ProvL.shp')
+    end
+
     def up
-      shapefile('2010ProvL.shp') do |file|
+      shapefile do |file|
         file.each do |record|
           increment
         end
@@ -17,7 +21,7 @@ module Import
     end
 
     def count
-      shapefile('2010ProvL.shp') do |file|
+      shapefile do |file|
         return file.num_records
       end
     end
