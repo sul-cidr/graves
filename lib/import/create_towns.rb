@@ -4,6 +4,8 @@ require 'rgeo/shapefile'
 module Import
   class CreateTowns < Step
 
+    @depends = [CreateCounties]
+
     def shapefile
       super('2010TownshipCensus.shp')
     end
