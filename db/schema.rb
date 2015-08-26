@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826201914) do
+ActiveRecord::Schema.define(version: 20150826203447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20150826201914) do
   end
 
   add_index "collections", ["notice_id"], name: "index_collections_on_notice_id", using: :btree
+
+  create_table "counties", force: :cascade do |t|
+    t.string   "cdc_id"
+    t.string   "name_p"
+    t.string   "name_c"
+    t.geometry "geometry", limit: {:srid=>0, :type=>"multi_polygon"}
+  end
+
+  add_index "counties", ["geometry"], name: "index_counties_on_geometry", using: :gist
 
   create_table "import_steps", force: :cascade do |t|
     t.string "step", null: false
