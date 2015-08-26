@@ -5,6 +5,7 @@ runner = Vacuum::Runner.from_steps([
   Import::CreateNotices,
   Import::CreateCollections,
   Import::CreateTowns,
+  Import::CreateProvinces,
 ])
 
 namespace :db do

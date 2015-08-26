@@ -42,8 +42,8 @@ module Import
     #
     # "Empty" strings to nil, flatten Chinese digits.
     #
-    # @param string [String]
-    # @return [String|nil]
+    # @param value [String]
+    # @return [Mixed]
     #
     def clean(value)
 
@@ -57,6 +57,23 @@ module Import
       end
 
       value
+
+    end
+
+    #
+    # Open a shapefile in the /data directory.
+    #
+    # @param file [String]
+    #
+    def shapefile(file)
+
+      # Build shapefile path.
+      path = "#{Rails.root}/data/#{file}"
+
+      # Yield the RGeo instance.
+      RGeo::Shapefile::Reader.open(path) do |shp|
+        yield shp
+      end
 
     end
 
