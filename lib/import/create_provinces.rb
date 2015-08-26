@@ -11,7 +11,16 @@ module Import
     def up
       shapefile do |file|
         file.each do |record|
+
+          Province.create(
+            cdc_id: record['GbProv'],
+            name_p: record['ProvEN'],
+            name_c: record['ProvCH'],
+            geometry: record.geometry,
+          )
+
           increment
+
         end
       end
     end

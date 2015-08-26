@@ -6,7 +6,7 @@
 #  cdc_id   :string
 #  name_p   :string
 #  name_c   :string
-#  geometry :geometry({:srid= polygon, 0
+#  geometry :geometry({:srid= multipolygon, 0
 #
 
 require 'rails_helper'

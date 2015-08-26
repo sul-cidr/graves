@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826183200) do
+ActiveRecord::Schema.define(version: 20150826201914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20150826183200) do
     t.string   "cdc_id"
     t.string   "name_p"
     t.string   "name_c"
-    t.geometry "geometry", limit: {:srid=>0, :type=>"polygon"}
+    t.geometry "geometry", limit: {:srid=>0, :type=>"multi_polygon"}
   end
 
   add_index "provinces", ["geometry"], name: "index_provinces_on_geometry", using: :gist
