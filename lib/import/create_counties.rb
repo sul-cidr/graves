@@ -4,8 +4,25 @@ require 'rgeo/shapefile'
 module Import
   class CreateCounties < Step
 
+    def shapefile
+      super('counties_cdc_3857.shp')
+    end
+
     def up
-      # TODO
+      shapefile do |file|
+        file.each do |record|
+
+          County.create(
+            cdc_id: record[:gbcode],
+            name_p: record[:ename],
+            name_c: record[:chname],
+            geometry: record.geometry,
+          )
+
+          increment
+
+        end
+      end
     end
 
     def down
@@ -13,7 +30,9 @@ module Import
     end
 
     def count
-      1
+      shapefile do |file|
+        return file.num_records
+      end
     end
 
   end

@@ -1,2 +1,3 @@
-2010TownshipCensus.shp
-2010ProvL.shp
+2010TownshipCensus.*
+2010ProvL.*
+counties_cdc_3857.*
