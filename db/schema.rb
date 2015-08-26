@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826203447) do
+ActiveRecord::Schema.define(version: 20150826222304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,12 @@ ActiveRecord::Schema.define(version: 20150826203447) do
     t.string   "cdc_id"
     t.string   "name_p"
     t.string   "name_c"
-    t.geometry "geometry", limit: {:srid=>0, :type=>"multi_polygon"}
+    t.geometry "geometry",    limit: {:srid=>0, :type=>"multi_polygon"}
+    t.integer  "province_id"
   end
 
   add_index "counties", ["geometry"], name: "index_counties_on_geometry", using: :gist
+  add_index "counties", ["province_id"], name: "index_counties_on_province_id", using: :btree
 
   create_table "import_steps", force: :cascade do |t|
     t.string "step", null: false
@@ -87,9 +89,11 @@ ActiveRecord::Schema.define(version: 20150826203447) do
     t.string   "cdc_id"
     t.string   "name_p"
     t.string   "name_c"
-    t.geometry "geometry", limit: {:srid=>0, :type=>"point"}
+    t.geometry "geometry",  limit: {:srid=>0, :type=>"point"}
+    t.integer  "county_id"
   end
 
+  add_index "towns", ["county_id"], name: "index_towns_on_county_id", using: :btree
   add_index "towns", ["geometry"], name: "index_towns_on_geometry", using: :gist
 
   add_foreign_key "collections", "notices"
