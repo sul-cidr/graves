@@ -12,5 +12,9 @@
 require 'rails_helper'
 
 describe Province, type: :model do
-  # TODO
+
+  describe 'indexes' do
+    it { should have_db_index(:geometry) }
+  end
+
 end

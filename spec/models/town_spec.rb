@@ -2,11 +2,11 @@
 #
 # Table name: towns
 #
-#  id     :integer          not null, primary key
-#  cdc_id :string
-#  name_p :string
-#  name_c :string
-#  lonlat :geometry({:srid= point, 0
+#  id       :integer          not null, primary key
+#  cdc_id   :string
+#  name_p   :string
+#  name_c   :string
+#  geometry :geometry({:srid= point, 0
 #
 
 require 'rails_helper'
@@ -14,7 +14,7 @@ require 'rails_helper'
 describe Town, type: :model do
 
   describe 'indexes' do
-    it { should have_db_index(:lonlat) }
+    it { should have_db_index(:geometry) }
   end
 
 end

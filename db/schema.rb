@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826182100) do
+ActiveRecord::Schema.define(version: 20150826183200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(version: 20150826182100) do
     t.string   "cdc_id"
     t.string   "name_p"
     t.string   "name_c"
-    t.geometry "lonlat", limit: {:srid=>0, :type=>"point"}
+    t.geometry "geometry", limit: {:srid=>0, :type=>"point"}
   end
 
-  add_index "towns", ["lonlat"], name: "index_towns_on_lonlat", using: :gist
+  add_index "towns", ["geometry"], name: "index_towns_on_geometry", using: :gist
 
   add_foreign_key "collections", "notices"
 end
