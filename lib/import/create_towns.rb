@@ -4,17 +4,19 @@ require 'rgeo/shapefile'
 module Import
   class CreateTowns < Step
 
-    @depends = [CreateCounties]
-
     def shapefile
       super('2010TownshipCensus.shp')
     end
 
     def up
+
+      type = PlaceType.find_by(name: 'TOWN')
+
       shapefile do |file|
         file.each do |record|
 
-          Town.create(
+          Place.create(
+            place_type: type,
             cdc_id: record['GBTownship'],
             name_p: record['TownshipEN'],
             name_c: record['TownshipCH'],
@@ -25,10 +27,11 @@ module Import
 
         end
       end
+
     end
 
     def down
-      Town.delete_all
+      Place.delete_all
     end
 
     def count
