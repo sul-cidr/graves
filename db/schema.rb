@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827200107) do
+ActiveRecord::Schema.define(version: 20150827201906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,17 @@ ActiveRecord::Schema.define(version: 20150827200107) do
 
   add_index "place_types", ["name"], name: "index_place_types_on_name", unique: true, using: :btree
 
+  create_table "places", force: :cascade do |t|
+    t.integer  "place_type_id"
+    t.string   "cdc_id"
+    t.string   "name_p"
+    t.string   "name_c"
+    t.geometry "geometry",      limit: {:srid=>0, :type=>"geometry"}
+  end
+
+  add_index "places", ["cdc_id"], name: "index_places_on_cdc_id", unique: true, using: :btree
+  add_index "places", ["geometry"], name: "index_places_on_geometry", using: :gist
+
   create_table "provinces", force: :cascade do |t|
     t.string   "cdc_id"
     t.string   "name_p"
@@ -103,4 +114,5 @@ ActiveRecord::Schema.define(version: 20150827200107) do
   add_index "towns", ["geometry"], name: "index_towns_on_geometry", using: :gist
 
   add_foreign_key "collections", "notices"
+  add_foreign_key "places", "place_types"
 end
