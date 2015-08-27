@@ -29,7 +29,7 @@ describe Notice, type: :model do
     it { should have_db_index(:legacy_id).unique }
   end
 
-  describe 'associations' do
+  describe 'relationships' do
     it { should have_many(:collections) }
   end
 

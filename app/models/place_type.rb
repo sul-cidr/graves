@@ -8,6 +8,8 @@
 
 class PlaceType < ActiveRecord::Base
 
+  has_many :places
+
   #
   # Insert default types.
   #

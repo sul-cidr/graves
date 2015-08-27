@@ -14,4 +14,8 @@ describe PlaceType, type: :model do
     it { should have_db_index(:name).unique }
   end
 
+  describe 'relationships' do
+    it { should have_many(:places) }
+  end
+
 end

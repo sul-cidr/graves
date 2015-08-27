@@ -29,7 +29,7 @@ describe Collection, type: :model do
     it { should have_db_index(:notice_id) }
   end
 
-  describe 'associations' do
+  describe 'relationships' do
     it { should belong_to(:notice) }
   end
 

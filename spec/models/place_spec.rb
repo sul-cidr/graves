@@ -19,4 +19,8 @@ describe Place, type: :model do
     it { should have_db_index(:geometry) }
   end
 
+  describe 'relationships' do
+    it { should belong_to(:place_type) }
+  end
+
 end
