@@ -31,6 +31,7 @@ module Import
     end
 
     def down
+      # TODO: Just delete towns.
       Place.delete_all
     end
 

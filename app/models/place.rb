@@ -3,7 +3,7 @@
 # Table name: places
 #
 #  id            :integer          not null, primary key
-#  place_type_id :integer
+#  place_type_id :integer          not null
 #  cdc_id        :string
 #  name_p        :string
 #  name_c        :string
@@ -12,4 +12,5 @@
 
 class Place < ActiveRecord::Base
   belongs_to :place_type
+  validates :place_type, presence: true
 end
