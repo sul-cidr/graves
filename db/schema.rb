@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827210751) do
+ActiveRecord::Schema.define(version: 20150827231822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20150827210751) do
     t.integer  "num_graves"
     t.string   "location"
     t.string   "destination"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "province_p"
     t.string   "province_c"
     t.string   "prefect_p"
@@ -33,9 +33,11 @@ ActiveRecord::Schema.define(version: 20150827210751) do
     t.string   "town_c"
     t.string   "village_p"
     t.string   "village_c"
-    t.integer  "notice_id",   null: false
+    t.integer  "notice_id",                                      null: false
+    t.geometry "lonlat",      limit: {:srid=>0, :type=>"point"}
   end
 
+  add_index "collections", ["lonlat"], name: "index_collections_on_lonlat", using: :gist
   add_index "collections", ["notice_id"], name: "index_collections_on_notice_id", using: :btree
 
   create_table "counties", force: :cascade do |t|

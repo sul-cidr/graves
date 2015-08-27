@@ -21,7 +21,7 @@ class Place < ActiveRecord::Base
   # @param type [String]
   #
   def self.by_type(type)
-    joins { place_type }.where{
+    joins { place_type }.where {
       place_type.name == type
     }
   end

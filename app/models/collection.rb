@@ -19,6 +19,7 @@
 #  village_p   :string
 #  village_c   :string
 #  notice_id   :integer          not null
+#  lonlat      :geometry({:srid= point, 0
 #
 
 class Collection < ActiveRecord::Base

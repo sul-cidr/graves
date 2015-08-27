@@ -19,6 +19,7 @@
 #  village_p   :string
 #  village_c   :string
 #  notice_id   :integer          not null
+#  lonlat      :geometry({:srid= point, 0
 #
 
 require 'rails_helper'
@@ -31,6 +32,7 @@ describe Collection, type: :model do
 
   describe 'indexes' do
     it { should have_db_index(:notice_id) }
+    it { should have_db_index(:lonlat) }
   end
 
   describe "validations" do
