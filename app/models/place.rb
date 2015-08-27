@@ -11,6 +11,19 @@
 #
 
 class Place < ActiveRecord::Base
+
   belongs_to :place_type
   validates :place_type, presence: true
+
+  #
+  # Match places of a given type.
+  #
+  # @param type [String]
+  #
+  def self.by_type(type)
+    joins { place_type }.where{
+      place_type.name == type
+    }
+  end
+
 end
