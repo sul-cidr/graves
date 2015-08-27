@@ -18,9 +18,10 @@
 #  town_c      :string
 #  village_p   :string
 #  village_c   :string
-#  notice_id   :integer
+#  notice_id   :integer          not null
 #
 
 class Collection < ActiveRecord::Base
   belongs_to :notice
+  validates :notice, presence: true
 end

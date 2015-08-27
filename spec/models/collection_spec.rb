@@ -18,15 +18,23 @@
 #  town_c      :string
 #  village_p   :string
 #  village_c   :string
-#  notice_id   :integer
+#  notice_id   :integer          not null
 #
 
 require 'rails_helper'
 
 describe Collection, type: :model do
 
+  describe "columns" do
+    it { should have_db_column(:notice_id).with_options(null: false) }
+  end
+
   describe 'indexes' do
     it { should have_db_index(:notice_id) }
+  end
+
+  describe "validations" do
+    it { should validate_presence_of(:notice) }
   end
 
   describe 'relationships' do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827203953) do
+ActiveRecord::Schema.define(version: 20150827204620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150827203953) do
     t.string   "town_c"
     t.string   "village_p"
     t.string   "village_c"
-    t.integer  "notice_id"
+    t.integer  "notice_id",   null: false
   end
 
   add_index "collections", ["notice_id"], name: "index_collections_on_notice_id", using: :btree
