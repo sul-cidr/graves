@@ -31,8 +31,7 @@ module Import
     end
 
     def down
-      # TODO: Just delete towns.
-      Place.delete_all
+      Place.by_type('TOWN').destroy_all
     end
 
     def count
