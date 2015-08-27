@@ -77,10 +77,10 @@ ActiveRecord::Schema.define(version: 20150827200107) do
   add_index "notices", ["legacy_id"], name: "index_notices_on_legacy_id", unique: true, using: :btree
 
   create_table "place_types", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
   end
 
-  add_index "place_types", ["type"], name: "index_place_types_on_type", using: :btree
+  add_index "place_types", ["name"], name: "index_place_types_on_name", unique: true, using: :btree
 
   create_table "provinces", force: :cascade do |t|
     t.string   "cdc_id"
