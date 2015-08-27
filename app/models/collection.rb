@@ -23,6 +23,24 @@
 #
 
 class Collection < ActiveRecord::Base
+
   belongs_to :notice
   validates :notice, presence: true
+
+  #
+  # Map geocoding results into the PostGIS point column.
+  #
+  geocoded_by :address do |event, results|
+    if geo = results.first
+      event.lonlat = Helpers::Geo.point(geo.longitude, geo.latitude)
+    end
+  end
+
+  #
+  # Form a query for the Baidu geocoder.
+  #
+  def address
+    [province_c, prefect_c, county_c, town_c, village_c].join(' ')
+  end
+
 end

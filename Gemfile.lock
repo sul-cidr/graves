@@ -72,6 +72,7 @@ GEM
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
     fastercsv (1.5.5)
+    geocoder (1.2.9)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     highline (1.6.21)
@@ -219,6 +220,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   colorize
   factory_girl_rails
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   method_hooks

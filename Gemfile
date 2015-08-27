@@ -57,6 +57,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'sequel'
   gem 'colorize'
+  gem 'geocoder'
 
 end
 
