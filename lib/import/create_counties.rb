@@ -9,10 +9,14 @@ module Import
     end
 
     def up
+
+      type = PlaceType.find_by(name: 'COUNTY')
+
       shapefile do |file|
         file.each do |record|
 
-          County.create(
+          Place.create(
+            place_type: type,
             cdc_id: record[:gbcode],
             name_p: record[:ename],
             name_c: record[:chname],
@@ -26,7 +30,7 @@ module Import
     end
 
     def down
-      County.delete_all
+      Place.by_type('COUNTY').delete_all
     end
 
     def count

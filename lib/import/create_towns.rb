@@ -31,7 +31,7 @@ module Import
     end
 
     def down
-      Place.by_type('TOWN').destroy_all
+      Place.by_type('TOWN').delete_all
     end
 
     def count
