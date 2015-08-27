@@ -3,7 +3,7 @@
 # Table name: place_types
 #
 #  id   :integer          not null, primary key
-#  name :string
+#  name :string           not null
 #
 
 class PlaceType < ActiveRecord::Base
