@@ -63,6 +63,17 @@ class Collection < ActiveRecord::Base
   end
 
   #
+  # TODO|dev
+  # Link all collections with CDC records.
+  #
+  def self.link_cdc
+    all.each do |c|
+      c.link_with_place
+      c.save
+    end
+  end
+
+  #
   # Form a Chinese geocoding query.
   #
   def address_c
@@ -81,9 +92,12 @@ class Collection < ActiveRecord::Base
   #
   def link_with_place
 
-    # TODO|dev
+    # TODO
+    # - make this a class method on Place
+    # - add Place.provinces / counties / towns scopes
+    # - add has_province / county / town helpers
 
-    if province_p and county_p and town_p
+    if province_c and county_c and town_c
 
       self.place = Place
         .by_type('TOWN')
@@ -92,14 +106,14 @@ class Collection < ActiveRecord::Base
         .limit(1)
         .first
 
-    elsif province_p and county_p
+    elsif province_c and county_c
 
       self.place = Place
         .by_type('COUNTY')
         .where { ST_Contains(geometry, my{lonlat}) }
         .first
 
-    elsif province_p
+    elsif province_c
 
       self.place = Place
         .by_type('PROVINCE')
