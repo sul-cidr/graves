@@ -1,7 +1,7 @@
 
 namespace :geocode do
 
-  desc "Geocode collections"
+  desc 'Geocode collections'
   task :collections => :environment do
     Collection.geocode
   end
