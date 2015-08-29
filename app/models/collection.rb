@@ -30,10 +30,25 @@ class Collection < ActiveRecord::Base
   #
   # Map geocoding results into the PostGIS point column.
   #
-  geocoded_by :address do |event, results|
+  geocoded_by :address_p do |event, results|
     if geo = results.first
       event.lonlat = Helpers::Geo.point(geo.longitude, geo.latitude)
     end
+  end
+
+  #
+  # Geocode all collections.
+  #
+  def self.geocode
+
+    bar = ProgressBar.new(all.count)
+
+    all.each do |c|
+      c.geocode
+      c.save
+      bar.increment!
+    end
+
   end
 
   #

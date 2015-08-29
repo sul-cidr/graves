@@ -20,7 +20,7 @@ Geocoder.configure(
   # :units     => :mi,       # :km for kilometers or :mi for miles
   # :distances => :linear    # :spherical or :linear
 
-  :lookup => :baidu,
-  :api_key => ENV['BAIDU_KEY']
+  :lookup => :dstk,
+  :host => ENV['DSTK_HOST'],
 
 )
