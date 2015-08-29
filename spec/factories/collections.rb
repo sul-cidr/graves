@@ -25,6 +25,38 @@
 
 FactoryGirl.define do
   factory :collection do
+
     notice
+
+    trait :has_province do
+      province_p 'province'
+      province_c 'province'
+    end
+
+    trait :has_county do
+      county_p 'county'
+      county_c 'county'
+    end
+
+    trait :has_town do
+      town_p 'town'
+      town_c 'town'
+    end
+
+    factory :collection_with_province, traits: [
+      :has_province,
+    ]
+
+    factory :collection_with_county, traits: [
+      :has_province,
+      :has_county,
+    ]
+
+    factory :collection_with_town, traits: [
+      :has_province,
+      :has_county,
+      :has_town,
+    ]
+
   end
 end

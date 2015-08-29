@@ -100,18 +100,10 @@ describe Collection, type: :model do
 
     it 'links to the closest town, when one is defined' do
 
+      # Closest to town 1.
       c = create(
-
-        :collection,
-
-        # Town defined.
-        province_c: 'province',
-        county_c: 'county',
-        town_c: 'town',
-
-        # Closest to town 1.
+        :collection_with_town,
         lonlat: Helpers::Geo.point(3, 2),
-
       )
 
       c.link_with_place
