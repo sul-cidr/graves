@@ -82,11 +82,23 @@ class Collection < ActiveRecord::Base
   def link_with_place
 
     if province_p and county_p and town_p
+
       # TODO
+
     elsif province_p and county_p
-      # TODO
+
+      self.place = Place
+        .by_type('COUNTY')
+        .where { ST_Contains(geometry, my{lonlat}) }
+        .first
+
     elsif province_p
-      # TODO
+
+      self.place = Place
+        .by_type('PROVINCE')
+        .where { ST_Contains(geometry, my{lonlat}) }
+        .first
+
     end
 
   end
