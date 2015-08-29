@@ -37,10 +37,17 @@ class Collection < ActiveRecord::Base
   end
 
   #
-  # Form a query for the Baidu geocoder.
+  # Form a Chinese geocoding query.
   #
-  def address
+  def address_c
     [province_c, prefect_c, county_c, town_c, village_c].join(' ')
+  end
+
+  #
+  # Form a Pinyin geocoding query.
+  #
+  def address_p
+    [province_p, prefect_p, county_p, town_p, village_p].join(' ')
   end
 
 end
