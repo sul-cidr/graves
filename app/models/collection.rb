@@ -63,7 +63,7 @@ class Collection < ActiveRecord::Base
   # Form a Chinese geocoding query.
   #
   def address_c
-    [province_c, county_c, town_c].join(' ')
+    [province_c, county_c, town_c].join(',')
   end
 
   #
