@@ -39,7 +39,7 @@ gem 'progress_bar'
 gem 'method_hooks'
 gem 'unicode'
 gem 'rgeo-shapefile'
-gem 'dotenv'
+gem 'dotenv-rails'
 
 group :development, :test do
 

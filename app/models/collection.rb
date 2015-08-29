@@ -30,7 +30,7 @@ class Collection < ActiveRecord::Base
   #
   # Map geocoding results into the PostGIS point column.
   #
-  geocoded_by :address_p do |event, results|
+  geocoded_by :address_c do |event, results|
     if geo = results.first
       event.lonlat = Helpers::Geo.point(geo.longitude, geo.latitude)
     end
@@ -63,7 +63,7 @@ class Collection < ActiveRecord::Base
   # Form a Chinese geocoding query.
   #
   def address_c
-    [province_c, prefect_c, county_c, town_c, village_c].join(' ')
+    [province_c, county_c, town_c].join(' ')
   end
 
   #
