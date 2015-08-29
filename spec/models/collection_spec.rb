@@ -20,6 +20,7 @@
 #  village_c   :string
 #  notice_id   :integer          not null
 #  lonlat      :geometry({:srid= point, 0
+#  place_id    :integer
 #
 
 require 'rails_helper'
@@ -32,6 +33,7 @@ describe Collection, type: :model do
 
   describe 'indexes' do
     it { should have_db_index(:notice_id) }
+    it { should have_db_index(:place_id) }
     it { should have_db_index(:lonlat) }
   end
 
@@ -41,6 +43,7 @@ describe Collection, type: :model do
 
   describe 'relationships' do
     it { should belong_to(:notice) }
+    it { should belong_to(:place) }
   end
 
 end

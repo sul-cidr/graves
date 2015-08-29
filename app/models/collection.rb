@@ -20,11 +20,14 @@
 #  village_c   :string
 #  notice_id   :integer          not null
 #  lonlat      :geometry({:srid= point, 0
+#  place_id    :integer
 #
 
 class Collection < ActiveRecord::Base
 
   belongs_to :notice
+  belongs_to :place
+
   validates :notice, presence: true
 
   #
@@ -71,6 +74,13 @@ class Collection < ActiveRecord::Base
   #
   def address_p
     [province_p, county_p, town_p, 'China'].join(',')
+  end
+
+  #
+  # Try to link the collection with a CDC division.
+  #
+  def link_with_place
+    # TODO
   end
 
 end
