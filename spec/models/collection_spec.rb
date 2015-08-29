@@ -107,6 +107,33 @@ describe Collection, type: :model do
       )
 
       c.link_with_place
+      expect(c.place_id).to eq(t1.id)
+
+    end
+
+    it 'links to the enclosing county, when one is defined' do
+
+      # Inside county 1.
+      c = create(
+        :collection_with_county,
+        lonlat: Helpers::Geo.point(2, 2),
+      )
+
+      c.link_with_place
+      expect(c.place_id).to eq(c1.id)
+
+    end
+
+    it 'links to the enclosing province, when one is defined' do
+
+      # Inside province 1.
+      c = create(
+        :collection_with_province,
+        lonlat: Helpers::Geo.point(2, 2),
+      )
+
+      c.link_with_place
+      expect(c.place_id).to eq(p1.id)
 
     end
 
