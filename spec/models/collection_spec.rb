@@ -46,4 +46,78 @@ describe Collection, type: :model do
     it { should belong_to(:place) }
   end
 
+  describe '#link_with_place()' do
+
+    # 2 4x4 provinces:
+
+    let!(:p1) {
+      create(:province, geometry: Helpers::Geo.polygon(
+        [0, 0],
+        [0, 4],
+        [4, 4],
+        [4, 0],
+      ))
+    }
+
+    let!(:p2) {
+      create(:province, geometry: Helpers::Geo.polygon(
+        [4, 0],
+        [4, 4],
+        [8, 4],
+        [8, 0],
+      ))
+    }
+
+    # 2 2x2 counties, each inside a province:
+
+    let!(:c1) {
+      create(:county, geometry: Helpers::Geo.polygon(
+        [1, 1],
+        [1, 3],
+        [3, 3],
+        [3, 1],
+      ))
+    }
+
+    let!(:c2) {
+      create(:county, geometry: Helpers::Geo.polygon(
+        [5, 1],
+        [5, 3],
+        [7, 3],
+        [7, 1],
+      ))
+    }
+
+    # 2 towns, each inside a county:
+
+    let!(:t1) {
+      create(:town, geometry: Helpers::Geo.point(2, 2));
+    }
+
+    let!(:t2) {
+      create(:town, geometry: Helpers::Geo.point(6, 2));
+    }
+
+    it 'links to the closest town, when one is defined' do
+
+      c = create(
+
+        :collection,
+
+        # Town defined.
+        province_c: 'province',
+        county_c: 'county',
+        town_c: 'town',
+
+        # Closest to town 1.
+        lonlat: Helpers::Geo.point(3, 2),
+
+      )
+
+      c.link_with_place
+
+    end
+
+  end
+
 end

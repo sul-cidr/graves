@@ -11,6 +11,27 @@
 #
 
 FactoryGirl.define do
-  factory :place do
+
+  sequence :place_cdc_id do |n|
+    n
   end
+
+  factory :place do
+
+    cdc_id { generate(:place_cdc_id) }
+
+    factory :province do
+      place_type PlaceType.find_by(name: 'PROVINCE')
+    end
+
+    factory :county do
+      place_type PlaceType.find_by(name: 'COUNTY')
+    end
+
+    factory :town do
+      place_type PlaceType.find_by(name: 'TOWN')
+    end
+
+  end
+
 end

@@ -80,7 +80,15 @@ class Collection < ActiveRecord::Base
   # Try to link the collection with a CDC division.
   #
   def link_with_place
-    # TODO
+
+    if province_p and county_p and town_p
+      # TODO
+    elsif province_p and county_p
+      # TODO
+    elsif province_p
+      # TODO
+    end
+
   end
 
 end

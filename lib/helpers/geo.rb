@@ -21,4 +21,22 @@ module Helpers::Geo
     factory.point(x, y)
   end
 
+  #
+  # Create a polygon from an (unclosed) set of points.
+  #
+  def self.polygon(*coords)
+
+    # Close the point set.
+    coords << coords[0]
+
+    # Because of a bug in RGeo, we have to pass a LINESTRING to the polygon
+    # factory, instead of just an array of points.
+    factory.polygon(factory.line_string(
+      coords.map do |c|
+        point(*c)
+      end
+    ))
+
+  end
+
 end
