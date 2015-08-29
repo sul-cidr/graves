@@ -81,9 +81,16 @@ class Collection < ActiveRecord::Base
   #
   def link_with_place
 
+    # TODO|dev
+
     if province_p and county_p and town_p
 
-      # TODO
+      self.place = Place
+        .by_type('TOWN')
+        .select { ['places.*', ST_Distance(geometry, my{lonlat}).as(dist)] }
+        .order('dist')
+        .limit(1)
+        .first
 
     elsif province_p and county_p
 
