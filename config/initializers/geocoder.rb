@@ -20,7 +20,8 @@ Geocoder.configure(
   # :units     => :mi,       # :km for kilometers or :mi for miles
   # :distances => :linear    # :spherical or :linear
 
-  :lookup => :dstk,
-  :host => ENV['DSTK_HOST'],
+  :lookup => :google,
+  :use_https => true,
+  :api_key => ENV['GOOGLE_KEY'],
 
 )

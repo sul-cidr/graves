@@ -39,14 +39,22 @@ class Collection < ActiveRecord::Base
   #
   # Geocode all collections.
   #
-  def self.geocode
+  # @param delay [Float]
+  #
+  def self.geocode(delay=0.25)
 
     bar = ProgressBar.new(all.count)
 
     all.each do |c|
+
+      # Geocode.
       c.geocode
       c.save
       bar.increment!
+
+      # Throttle.
+      sleep(delay)
+
     end
 
   end
@@ -62,7 +70,7 @@ class Collection < ActiveRecord::Base
   # Form a Pinyin geocoding query.
   #
   def address_p
-    [province_p, prefect_p, county_p, town_p, village_p].join(' ')
+    [province_p, county_p, town_p, 'China'].join(',')
   end
 
 end
