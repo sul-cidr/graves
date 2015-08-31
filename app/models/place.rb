@@ -16,14 +16,35 @@ class Place < ActiveRecord::Base
   validates :place_type, presence: true
 
   #
-  # Match places of a given type.
+  # Select places of a given type.
   #
   # @param type [String]
   #
-  def self.by_type(type)
+  scope :by_type, -> (type) {
     joins { place_type }.where {
       place_type.name == type
     }
-  end
+  }
+
+  #
+  # Select provinces.
+  #
+  scope :provinces, -> {
+    # TODO
+  }
+
+  #
+  # Select counties.
+  #
+  scope :counties, -> {
+    # TODO
+  }
+
+  #
+  # Select towns.
+  #
+  scope :towns, -> {
+    # TODO
+  }
 
 end

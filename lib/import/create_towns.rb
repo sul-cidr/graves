@@ -10,12 +10,12 @@ module Import
 
     def up
 
-      type = PlaceType.find_by(name: 'TOWN')
+      type = PlaceType.town
 
       shapefile do |file|
         file.each do |record|
 
-          Place.create(
+          Place.create!(
             place_type: type,
             cdc_id: record['GBTownship'],
             name_p: record['TownshipEN'],
@@ -31,7 +31,7 @@ module Import
     end
 
     def down
-      Place.by_type('TOWN').delete_all
+      Place.by_type('town').delete_all
     end
 
     def count
