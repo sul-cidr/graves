@@ -46,7 +46,7 @@ describe Collection, type: :model do
     it { should belong_to(:place) }
   end
 
-  xdescribe '#link_with_place()' do
+  describe '#link_with_place()' do
 
     # 2 4x4 provinces:
 
