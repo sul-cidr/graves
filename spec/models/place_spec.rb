@@ -31,9 +31,9 @@ describe Place, type: :model do
     it { should belong_to(:place_type) }
   end
 
-  describe '.by_type()' do
+  describe ':by_type' do
 
-    it 'returns places of a given type' do
+    it 'matches by a given type' do
 
       t1 = create(:place_type, name: 'TYPE1')
       t2 = create(:place_type, name: 'TYPE2')
@@ -44,6 +44,54 @@ describe Place, type: :model do
 
       places = Place.by_type('TYPE1')
       expect(places).to be_records(p1, p2)
+
+    end
+
+  end
+
+  describe ':provinces' do
+
+    it 'matches provinces' do
+
+      p1 = create(:province)
+      p2 = create(:province)
+
+      create(:county)
+      create(:town)
+
+      expect(Place.provinces).to be_records(p1, p2)
+
+    end
+
+  end
+
+  describe ':counties' do
+
+    it 'matches counties' do
+
+      c1 = create(:county)
+      c2 = create(:county)
+
+      create(:province)
+      create(:town)
+
+      expect(Place.counties).to be_records(c1, c2)
+
+    end
+
+  end
+
+  describe ':towns' do
+
+    it 'matches towns' do
+
+      t1 = create(:town)
+      t2 = create(:town)
+
+      create(:province)
+      create(:county)
+
+      expect(Place.towns).to be_records(t1, t2)
 
     end
 
