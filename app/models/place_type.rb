@@ -21,4 +21,31 @@ class PlaceType < ActiveRecord::Base
     ])
   end
 
+  #
+  # Provide the province type.
+  #
+  # @return [PlaceType]
+  #
+  def self.province
+    find_by(name: 'PROVINCE')
+  end
+
+  #
+  # Provide the county type.
+  #
+  # @return [PlaceType]
+  #
+  def self.county
+    find_by(name: 'COUNTY')
+  end
+
+  #
+  # Provide the town type.
+  #
+  # @return [PlaceType]
+  #
+  def self.town
+    find_by(name: 'TOWN')
+  end
+
 end

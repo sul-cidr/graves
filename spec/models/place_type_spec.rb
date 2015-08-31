@@ -22,4 +22,28 @@ describe PlaceType, type: :model do
     it { should have_many(:places) }
   end
 
+  describe '.province()' do
+
+    it 'returns the province type' do
+      expect(PlaceType.province.name).to eq('PROVINCE')
+    end
+
+  end
+
+  describe '.county()' do
+
+    it 'returns the county type' do
+      expect(PlaceType.county.name).to eq('COUNTY')
+    end
+
+  end
+
+  describe '.town()' do
+
+    it 'returns the town type' do
+      expect(PlaceType.town.name).to eq('TOWN')
+    end
+
+  end
+
 end
