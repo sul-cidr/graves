@@ -42,17 +42,6 @@ ActiveRecord::Schema.define(version: 20150829211922) do
   add_index "collections", ["notice_id"], name: "index_collections_on_notice_id", using: :btree
   add_index "collections", ["place_id"], name: "index_collections_on_place_id", using: :btree
 
-  create_table "counties", force: :cascade do |t|
-    t.string   "cdc_id"
-    t.string   "name_p"
-    t.string   "name_c"
-    t.geometry "geometry",    limit: {:srid=>0, :type=>"multi_polygon"}
-    t.integer  "province_id"
-  end
-
-  add_index "counties", ["geometry"], name: "index_counties_on_geometry", using: :gist
-  add_index "counties", ["province_id"], name: "index_counties_on_province_id", using: :btree
-
   create_table "import_steps", force: :cascade do |t|
     t.string "step", null: false
   end
@@ -96,26 +85,6 @@ ActiveRecord::Schema.define(version: 20150829211922) do
 
   add_index "places", ["cdc_id"], name: "index_places_on_cdc_id", unique: true, using: :btree
   add_index "places", ["geometry"], name: "index_places_on_geometry", using: :gist
-
-  create_table "provinces", force: :cascade do |t|
-    t.string   "cdc_id"
-    t.string   "name_p"
-    t.string   "name_c"
-    t.geometry "geometry", limit: {:srid=>0, :type=>"multi_polygon"}
-  end
-
-  add_index "provinces", ["geometry"], name: "index_provinces_on_geometry", using: :gist
-
-  create_table "towns", force: :cascade do |t|
-    t.string   "cdc_id"
-    t.string   "name_p"
-    t.string   "name_c"
-    t.geometry "geometry",  limit: {:srid=>0, :type=>"point"}
-    t.integer  "county_id"
-  end
-
-  add_index "towns", ["county_id"], name: "index_towns_on_county_id", using: :btree
-  add_index "towns", ["geometry"], name: "index_towns_on_geometry", using: :gist
 
   add_foreign_key "collections", "notices"
   add_foreign_key "collections", "places"
