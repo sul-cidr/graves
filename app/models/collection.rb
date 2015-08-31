@@ -100,7 +100,7 @@ class Collection < ActiveRecord::Base
     if province_c and county_c and town_c
 
       self.place = Place
-        .by_type('TOWN')
+        .by_type('town')
         .select { ['places.*', ST_Distance(geometry, my{lonlat}).as(dist)] }
         .order('dist')
         .limit(1)
@@ -109,14 +109,14 @@ class Collection < ActiveRecord::Base
     elsif province_c and county_c
 
       self.place = Place
-        .by_type('COUNTY')
+        .by_type('county')
         .where { ST_Contains(geometry, my{lonlat}) }
         .first
 
     elsif province_c
 
       self.place = Place
-        .by_type('PROVINCE')
+        .by_type('province')
         .where { ST_Contains(geometry, my{lonlat}) }
         .first
 

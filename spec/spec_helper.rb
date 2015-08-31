@@ -95,6 +95,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 
+  # Apply the database seeds.
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)

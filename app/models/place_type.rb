@@ -15,9 +15,9 @@ class PlaceType < ActiveRecord::Base
   #
   def self.seed
     create([
-      { name: 'PROVINCE' },
-      { name: 'COUNTY' },
-      { name: 'TOWN' },
+      { name: 'province' },
+      { name: 'county' },
+      { name: 'town' },
     ])
   end
 
@@ -27,7 +27,7 @@ class PlaceType < ActiveRecord::Base
   # @return [PlaceType]
   #
   def self.province
-    find_by(name: 'PROVINCE')
+    find_by(name: 'province')
   end
 
   #
@@ -36,7 +36,7 @@ class PlaceType < ActiveRecord::Base
   # @return [PlaceType]
   #
   def self.county
-    find_by(name: 'COUNTY')
+    find_by(name: 'county')
   end
 
   #
@@ -45,7 +45,7 @@ class PlaceType < ActiveRecord::Base
   # @return [PlaceType]
   #
   def self.town
-    find_by(name: 'TOWN')
+    find_by(name: 'town')
   end
 
 end

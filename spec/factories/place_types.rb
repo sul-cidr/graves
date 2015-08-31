@@ -9,7 +9,7 @@
 FactoryGirl.define do
 
   sequence :place_type_name do |n|
-    "TYPE#{n}"
+    "type#{n}"
   end
 
   factory :place_type do

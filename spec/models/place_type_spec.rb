@@ -25,7 +25,7 @@ describe PlaceType, type: :model do
   describe '.province()' do
 
     it 'returns the province type' do
-      expect(PlaceType.province.name).to eq('PROVINCE')
+      expect(PlaceType.province.name).to eq('province')
     end
 
   end
@@ -33,7 +33,7 @@ describe PlaceType, type: :model do
   describe '.county()' do
 
     it 'returns the county type' do
-      expect(PlaceType.county.name).to eq('COUNTY')
+      expect(PlaceType.county.name).to eq('county')
     end
 
   end
@@ -41,7 +41,7 @@ describe PlaceType, type: :model do
   describe '.town()' do
 
     it 'returns the town type' do
-      expect(PlaceType.town.name).to eq('TOWN')
+      expect(PlaceType.town.name).to eq('town')
     end
 
   end
