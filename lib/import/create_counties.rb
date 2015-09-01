@@ -30,7 +30,7 @@ module Import
     end
 
     def down
-      Place.by_type('county').delete_all
+      Place.counties.delete_all
     end
 
     def count
