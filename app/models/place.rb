@@ -30,27 +30,21 @@ class Place < ActiveRecord::Base
   # Select provinces.
   #
   scope :provinces, -> {
-    where {
-      place_type == PlaceType.province
-    }
+    by_type('province')
   }
 
   #
   # Select counties.
   #
   scope :counties, -> {
-    where {
-      place_type == PlaceType.county
-    }
+    by_type('county')
   }
 
   #
   # Select towns.
   #
   scope :towns, -> {
-    where {
-      place_type == PlaceType.town
-    }
+    by_type('town')
   }
 
 end

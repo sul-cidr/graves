@@ -35,14 +35,14 @@ describe Place, type: :model do
 
     it 'matches by a given type' do
 
-      t1 = create(:place_type, name: 'TYPE1')
-      t2 = create(:place_type, name: 'TYPE2')
+      t1 = create(:place_type, name: 'type1')
+      t2 = create(:place_type, name: 'type2')
 
       p1 = create(:place, place_type: t1)
       p2 = create(:place, place_type: t1)
       create(:place, place_type: t2)
 
-      places = Place.by_type('TYPE1')
+      places = Place.by_type('type1')
       expect(places).to be_records(p1, p2)
 
     end
