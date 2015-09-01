@@ -17,13 +17,13 @@ namespace :csv do
       ]
     ) do |fh|
 
-      Collection.where { lonlat != nil }.each do |e|
+      Collection.where { lonlat != nil }.each do |c|
         fh << [
-          e.province_p,
-          e.county_p,
-          e.town_p,
-          e.lonlat.x,
-          e.lonlat.y
+          c.province_p,
+          c.county_p,
+          c.town_p,
+          c.lonlat.x,
+          c.lonlat.y,
         ]
       end
 
