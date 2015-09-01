@@ -4,56 +4,50 @@ require 'rgeo/shapefile'
 module Import
   class CreateCounties < Step
 
+    def paths
+      Dir.glob("#{Rails.root}/data/counties/shpExport*/export.shp")
+    end
+
     def up
 
       type = PlaceType.county
 
       paths.each do |p|
         RGeo::Shapefile::Reader.open(p) do |file|
-          file.each do |record|
 
+          file.each do |record|
             Place.create!(
               place_type: type,
               cdc_id: record[:gbcode],
-              name_p: record[:ename],
-              name_c: record[:chname],
+              name_p: decode(record[:ename]),
+              name_c: decode(record[:chname]),
               geometry: record.geometry,
             )
-
-            increment
-
           end
+
+          increment
+
         end
       end
-
-      #shapefile do |file|
-        #file.each do |record|
-
-          #Place.create!(
-            #place_type: type,
-            #cdc_id: record[:gbcode],
-            #name_p: record[:ename],
-            #name_c: record[:chname],
-            #geometry: record.geometry,
-          #)
-
-          #increment
-
-        #end
-      #end
 
     end
 
     def down
-      #Place.counties.delete_all
+      Place.counties.delete_all
     end
 
     def count
       paths.size
     end
 
-    def paths
-      Dir.glob("#{Rails.root}/data/counties/shpExport*/export.shp")
+    #
+    # Convert GB18030 -> UTF8.
+    #
+    # @param value [String]
+    # @return [String]
+    #
+    def decode(value)
+      value.force_encoding('GB18030').encode('utf-8')
     end
 
   end
