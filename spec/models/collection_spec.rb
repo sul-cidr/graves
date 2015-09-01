@@ -139,4 +139,18 @@ describe Collection, type: :model do
 
   end
 
+  describe '#has_province?()' do
+
+    it 'returns true when a Chinese province is defined' do
+      c = create(:collection, province_c: 'province')
+      expect(c.has_province?).to be true
+    end
+
+    it 'returns false when a Chinese province is not defined' do
+      c = create(:collection, province_c: nil)
+      expect(c.has_province?).to be false
+    end
+
+  end
+
 end

@@ -81,6 +81,13 @@ class Collection < ActiveRecord::Base
   end
 
   #
+  # Is a Chinese province defined?
+  #
+  def has_province?
+    !!province_c
+  end
+
+  #
   # Try to link the collection with a CDC division.
   #
   def link_with_place
