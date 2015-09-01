@@ -63,6 +63,21 @@ class Collection < ActiveRecord::Base
   end
 
   #
+  # Link collections with CDC records.
+  #
+  def self.link_cdc
+
+    bar = ProgressBar.new(all.count)
+
+    all.each do |c|
+      c.place = Place.find_by_collection(c)
+      c.save
+      bar.increment!
+    end
+
+  end
+
+  #
   # Form a geocoding query for Baidu.
   #
   def address
