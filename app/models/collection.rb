@@ -90,41 +90,4 @@ class Collection < ActiveRecord::Base
     !!province_c and !!county_c and !!town_c
   end
 
-  #
-  # Try to link the collection with a CDC division.
-  #
-  def link_with_place
-
-    # TODO
-    # - make this a class method on Place
-    # - add Place.provinces / counties / towns scopes
-    # - add has_province / county / town helpers
-
-    if has_town?
-
-      self.place = Place
-        .by_type('town')
-        .select { ['places.*', ST_Distance(geometry, my{lonlat}).as(dist)] }
-        .order('dist')
-        .limit(1)
-        .first
-
-    elsif has_county?
-
-      self.place = Place
-        .by_type('county')
-        .where { ST_Contains(geometry, my{lonlat}) }
-        .first
-
-    elsif has_province?
-
-      self.place = Place
-        .by_type('province')
-        .where { ST_Contains(geometry, my{lonlat}) }
-        .first
-
-    end
-
-  end
-
 end

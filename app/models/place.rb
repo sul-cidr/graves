@@ -47,4 +47,42 @@ class Place < ActiveRecord::Base
     by_type('town')
   }
 
+  #
+  # Match a grave collection with a CDC place.
+  #
+  # @param c [Collection]
+  # @return [Place]
+  #
+  def self.find_by_collection(c)
+
+    if c.has_town?
+
+      # "Snap" the Baidu point onto the closest CDC town.
+      Place
+        .towns
+        .select { ['places.*', ST_Distance(geometry, c.lonlat).as(d)] }
+        .order('d')
+        .limit(1)
+        .first
+
+    elsif c.has_county?
+
+      # Find the enclosing CDC county.
+      Place
+        .counties
+        .where { ST_Contains(geometry, c.lonlat) }
+        .first
+
+    elsif c.has_province?
+
+      # Find the enclosing CDC province.
+      Place
+        .provinces
+        .where { ST_Contains(geometry, c.lonlat) }
+        .first
+
+    end
+
+  end
+
 end
