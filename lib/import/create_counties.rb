@@ -5,7 +5,7 @@ module Import
   class CreateCounties < Step
 
     def shapefile
-      super('counties_cdc_3857.shp')
+      super('counties.shp')
     end
 
     def up
