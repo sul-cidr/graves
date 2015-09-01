@@ -1,6 +1,4 @@
 
-require 'rgeo/shapefile'
-
 module Import
   class CreateTowns < Step
 
