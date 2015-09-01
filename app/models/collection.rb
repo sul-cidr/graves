@@ -88,6 +88,20 @@ class Collection < ActiveRecord::Base
   end
 
   #
+  # Is a Chinese county defined?
+  #
+  def has_county?
+    !!province_c and !!county_c
+  end
+
+  #
+  # Is a Chinese town defined?
+  #
+  def has_town?
+    !!province_c and !!county_c and !!town_c
+  end
+
+  #
   # Try to link the collection with a CDC division.
   #
   def link_with_place
