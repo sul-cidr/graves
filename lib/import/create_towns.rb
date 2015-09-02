@@ -3,7 +3,7 @@ module Import
   class CreateTowns < Step
 
     def shapefile
-      super('2010TownshipCensus.shp')
+      super('cdc/towns/2010TownshipCensus.shp')
     end
 
     def up

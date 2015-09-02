@@ -3,7 +3,7 @@ module Import
   class CreateProvinces < Step
 
     def shapefile
-      super('2010ProvL.shp')
+      super('cdc/provinces/2010ProvA.shp')
     end
 
     def up

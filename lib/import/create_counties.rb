@@ -52,7 +52,7 @@ module Import
     # @return [Array]
     #
     def paths
-      Dir.glob("#{Rails.root}/data/counties/shpExport*/export.shp")
+      Dir.glob("#{Rails.root}/data/cdc/counties/*/export.shp")
     end
 
     #
