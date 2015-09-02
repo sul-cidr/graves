@@ -5,6 +5,14 @@ module Import
   class Step < Vacuum::Step
 
     #
+    # Cache a database connection.
+    #
+    def initialize
+      @DB = self.class.DB
+      super
+    end
+
+    #
     # Connect to the legacy database.
     #
     # @return [Sequel::Database]
@@ -22,28 +30,13 @@ module Import
     end
 
     #
-    # Cache a database connection.
-    #
-    def initialize
-      @DB = self.class.DB
-      super
-    end
-
-    #
     # Open a shapefile in the /data directory.
     #
     # @param file [String]
     #
     def shapefile(file)
-
-      # Build shapefile path.
       path = "#{Rails.root}/data/#{file}"
-
-      # Yield the RGeo instance.
-      RGeo::Shapefile::Reader.open(path) do |shp|
-        yield shp
-      end
-
+      RGeo::Shapefile::Reader.open(path)
     end
 
   end
