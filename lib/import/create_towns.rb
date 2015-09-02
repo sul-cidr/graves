@@ -2,22 +2,18 @@
 module Import
   class CreateTowns < Step
 
-    def shapefile
-      super('2010TownshipCensus.shp')
-    end
-
     def up
 
       type = PlaceType.town
 
-      shapefile.each do |record|
+      @DB[:towns_2000].each do |t|
 
         Place.create!(
           place_type: type,
-          cdc_id: record['GBTownship'],
-          name_p: record['TownshipEN'],
-          name_c: record['TownshipCH'],
-          geometry: record.geometry,
+          cdc_id: t[:gbtown],
+          name_p: t[:ename],
+          name_c: t[:cname],
+          geometry: t[:geom],
         )
 
         increment
@@ -31,7 +27,7 @@ module Import
     end
 
     def count
-      shapefile.num_records
+      @DB[:towns_2000].count
     end
 
   end
