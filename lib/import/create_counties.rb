@@ -8,23 +8,25 @@ module Import
 
       type = PlaceType.county
 
-      factory = RGeo::Geographic.projected_factory(
-        :projection_proj4 => '+proj=merc +lon_0=0 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs'
-      )
-
-      proj = factory.projection_factory
+      factory = RGeo::Geographic.simple_mercator_factory()
 
       paths.each do |path|
-        RGeo::Shapefile::Reader.open(path, :factory => proj) do |file|
+        RGeo::Shapefile::Reader.open(
+          path,
+          :factory => factory.projection_factory
+        ) do |file|
 
           file.each do |record|
+
+            # Convert meters -> degrees.
+            geometry = factory.unproject(record.geometry)
 
             Place.create!(
               place_type: type,
               cdc_id: record[:gbcode],
               name_p: decode(record[:ename]),
               name_c: decode(record[:chname]),
-              geometry: factory.unproject(record.geometry),
+              geometry: geometry,
             )
 
           end
