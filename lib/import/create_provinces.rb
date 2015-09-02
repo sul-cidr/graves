@@ -10,21 +10,20 @@ module Import
 
       type = PlaceType.province
 
-      shapefile do |file|
-        file.each do |record|
+      shapefile.each do |record|
 
-          Place.create!(
-            place_type: type,
-            cdc_id: record['GbProv'],
-            name_p: record['ProvEN'],
-            name_c: record['ProvCH'],
-            geometry: record.geometry,
-          )
+        Place.create!(
+          place_type: type,
+          cdc_id: record['GbProv'],
+          name_p: record['ProvEN'],
+          name_c: record['ProvCH'],
+          geometry: record.geometry,
+        )
 
-          increment
+        increment
 
-        end
       end
+
     end
 
     def down
@@ -32,9 +31,7 @@ module Import
     end
 
     def count
-      shapefile do |file|
-        return file.num_records
-      end
+      shapefile.num_records
     end
 
   end

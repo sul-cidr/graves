@@ -12,15 +12,6 @@ module Vacuum
     end
 
     #
-    # Initialize the progress bar.
-    #
-    def initialize
-      if count
-        @bar = ProgressBar.new(count)
-      end
-    end
-
-    #
     # Generate a slug for the step.
     #
     # @return [String]
@@ -81,6 +72,11 @@ module Vacuum
     end
 
     around :up do |method|
+
+      if count
+        @bar = ProgressBar.new(count)
+      end
+
       if ImportStep.satisfied?(slug)
         puts_satisfied
       else
@@ -88,6 +84,7 @@ module Vacuum
         method.call
         ImportStep.up(slug)
       end
+
     end
 
     around :down do |method|

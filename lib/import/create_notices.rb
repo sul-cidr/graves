@@ -7,19 +7,19 @@ module Import
 
         Notice.create(
           legacy_id:      n[:nid],
-          pub_date:       self.parse_date(n[:pub_date]),
-          notice_date:    self.parse_date(n[:notification_date]),
-          deadline:       self.parse_date(n[:deadline]),
-          url:            self.clean(n[:url]),
-          site_p:         self.clean(n[:site_p]),
-          site_c:         self.clean(n[:site_c]),
-          title_p:        self.clean(n[:title_p]),
-          title_c:        self.clean(n[:title_c]),
-          org_p:          self.clean(n[:org_p]),
-          org_c:          self.clean(n[:org_c]),
-          contact_phone:  self.clean(n[:contact_phone]),
-          contact_p:      self.clean(n[:contact_p]),
-          contact_c:      self.clean(n[:contact_c]),
+          pub_date:       parse_date(n[:pub_date]),
+          notice_date:    parse_date(n[:notification_date]),
+          deadline:       parse_date(n[:deadline]),
+          url:            clean(n[:url]),
+          site_p:         clean(n[:site_p]),
+          site_c:         clean(n[:site_c]),
+          title_p:        clean(n[:title_p]),
+          title_c:        clean(n[:title_c]),
+          org_p:          clean(n[:org_p]),
+          org_c:          clean(n[:org_c]),
+          contact_phone:  clean(n[:contact_phone]),
+          contact_p:      clean(n[:contact_p]),
+          contact_c:      clean(n[:contact_c]),
         )
 
         increment
@@ -41,7 +41,7 @@ module Import
     # @param string [String]
     # @return [Date]
     #
-    def self.parse_date(string)
+    def parse_date(string)
       Date.strptime(string.to_s, '%m/%d/%Y') rescue nil
     end
 
@@ -51,7 +51,7 @@ module Import
     # @param value [String]
     # @return [Mixed]
     #
-    def self.clean(value)
+    def clean(value)
 
       # Empty strings to nil.
       if ['', 'N/A'].include?(value)

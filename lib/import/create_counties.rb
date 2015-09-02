@@ -31,8 +31,8 @@ module Import
             Place.create!(
               place_type: type,
               cdc_id: record[:gbcode],
-              name_p: self.decode(record[:ename]),
-              name_c: self.decode(record[:chname]),
+              name_p: decode(record[:ename]),
+              name_c: decode(record[:chname]),
               geometry: factory.unproject(record.geometry),
             )
 
@@ -53,6 +53,11 @@ module Import
       paths.size
     end
 
+    #
+    # Glob the county shapefile paths.
+    #
+    # @return [Array]
+    #
     def paths
       Dir.glob("#{Rails.root}/data/counties/shpExport*/export.shp")
     end
@@ -63,7 +68,7 @@ module Import
     # @param value [String]
     # @return [String]
     #
-    def self.decode(value)
+    def decode(value)
       value.force_encoding('GB18030').encode('utf-8')
     end
 
