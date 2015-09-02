@@ -2,22 +2,18 @@
 module Import
   class CreateProvinces < Step
 
-    def shapefile
-      super('2010ProvL.shp')
-    end
-
     def up
 
       type = PlaceType.province
 
-      shapefile.each do |record|
+      @DB[:province_cdc_4326].each do |p|
 
         Place.create!(
           place_type: type,
-          cdc_id: record['GbProv'],
-          name_p: record['ProvEN'],
-          name_c: record['ProvCH'],
-          geometry: record.geometry,
+          cdc_id: p[:gbprov],
+          name_p: p[:proven],
+          name_c: p[:provch],
+          geometry: p[:geometry],
         )
 
         increment
@@ -31,7 +27,7 @@ module Import
     end
 
     def count
-      shapefile.num_records
+      @DB[:province_cdc_4326].count
     end
 
   end
