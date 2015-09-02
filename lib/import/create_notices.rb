@@ -3,7 +3,12 @@ module Import
   class CreateNotices < Step
 
     def up
-      @DB[:master_20150601].distinct(:nid).each do |n|
+      csv('google.csv').each do |n|
+
+        # Ignore duplicate rows.
+        if Notice.exists?(legacy_id: n[:nid])
+          next
+        end
 
         Notice.create(
           legacy_id:      n[:nid],
@@ -22,17 +27,11 @@ module Import
           contact_c:      clean(n[:contact_c]),
         )
 
-        increment
-
       end
     end
 
     def down
       Notice.delete_all
-    end
-
-    def count
-      @DB[:master_20150601].distinct(:nid).count()
     end
 
     #

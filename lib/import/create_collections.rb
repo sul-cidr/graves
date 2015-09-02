@@ -5,7 +5,7 @@ module Import
     @depends = [CreateNotices]
 
     def up
-      @DB[:master_20150601].distinct(:rid).each do |r|
+      csv('google.csv').each do |r|
 
         # Find parent notice.
         notice = Notice.find_by(legacy_id: r[:nid])
@@ -27,17 +27,11 @@ module Import
           location:     r[:location],
         )
 
-        increment
-
       end
     end
 
     def down
       Collection.delete_all
-    end
-
-    def count
-      @DB[:master_20150601].distinct(:rid).count()
     end
 
   end
