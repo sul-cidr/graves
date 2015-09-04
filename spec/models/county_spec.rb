@@ -23,4 +23,41 @@ describe County, type: :model do
     it { should belong_to(:province) }
   end
 
+  describe '.find_by_collection()' do
+
+    # 2 4x4 counties:
+
+    let!(:c1) {
+      create(:county, geometry: Helpers::Geo.polygon(
+        [0, 0],
+        [0, 4],
+        [4, 4],
+        [4, 0],
+      ))
+    }
+
+    let!(:c2) {
+      create(:county, geometry: Helpers::Geo.polygon(
+        [4, 0],
+        [4, 4],
+        [8, 4],
+        [8, 0],
+      ))
+    }
+
+    it 'links to the enclosing county' do
+
+      # Inside county 1.
+      c = create(
+        :collection_with_county,
+        lonlat: Helpers::Geo.point(2, 2),
+      )
+
+      p = County.find_by_collection(c)
+      expect(p.id).to eq(c1.id)
+
+    end
+
+  end
+
 end
