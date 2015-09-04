@@ -23,4 +23,31 @@ describe Town, type: :model do
     it { should belong_to(:county) }
   end
 
+  describe '.find_by_collection()' do
+
+    # 2 towns:
+
+    let!(:t1) {
+      create(:town, geometry: Helpers::Geo.point(2, 2));
+    }
+
+    let!(:t2) {
+      create(:town, geometry: Helpers::Geo.point(6, 2));
+    }
+
+    it 'links to the closest town' do
+
+      # Closest to town 1.
+      c = create(
+        :collection_with_town,
+        lonlat: Helpers::Geo.point(3, 2),
+      )
+
+      t = Town.find_by_collection(c)
+      expect(t.id).to eq(t1.id)
+
+    end
+
+  end
+
 end
