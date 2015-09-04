@@ -6,7 +6,7 @@
 #  cdc_id   :string
 #  name_p   :string
 #  name_c   :string
-#  geometry :geometry({:srid= multipolygon, 0
+#  geometry :geometry({:srid= geometry, 0
 #
 
 class Province < ActiveRecord::Base
