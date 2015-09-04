@@ -2,18 +2,17 @@
 module Import
   class CreateTowns < Step
 
+    @depends = [CreateCounties]
+
     def shapefile
       super('cdc/towns/2010TownshipCensus.shp')
     end
 
     def up
 
-      type = PlaceType.town
-
       shapefile.each do |record|
 
-        Place.create!(
-          place_type: type,
+        Town.create!(
           cdc_id: record['GBTownship'],
           name_p: record['TownshipEN'],
           name_c: record['TownshipCH'],
@@ -27,7 +26,7 @@ module Import
     end
 
     def down
-      Place.towns.delete_all
+      Town.delete_all
     end
 
     def count

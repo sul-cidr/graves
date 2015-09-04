@@ -4,9 +4,9 @@ require 'rgeo/shapefile'
 module Import
   class CreateCounties < Step
 
-    def up
+    @depends = [CreateProvinces]
 
-      type = PlaceType.county
+    def up
 
       factory = RGeo::Geographic.simple_mercator_factory()
 
@@ -21,8 +21,7 @@ module Import
             # Convert meters -> degrees.
             geometry = factory.unproject(record.geometry)
 
-            Place.create!(
-              place_type: type,
+            County.create!(
               cdc_id: record[:gbcode],
               name_p: decode(record[:ename]),
               name_c: decode(record[:chname]),
@@ -39,7 +38,7 @@ module Import
     end
 
     def down
-      Place.counties.delete_all
+      County.delete_all
     end
 
     def count
