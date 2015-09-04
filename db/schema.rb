@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20150904165409) do
     t.integer  "num_graves"
     t.string   "location"
     t.string   "destination"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.string   "province_p"
     t.string   "province_c"
     t.string   "prefect_p"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20150904165409) do
     t.string   "town_c"
     t.string   "village_p"
     t.string   "village_c"
-    t.integer  "notice_id",                                      null: false
-    t.geometry "lonlat",      limit: {:srid=>0, :type=>"point"}
+    t.integer  "notice_id",                                         null: false
+    t.geometry "lonlat",      limit: {:srid=>4326, :type=>"point"}
     t.integer  "place_id"
     t.integer  "province_id"
     t.integer  "county_id"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150904165409) do
     t.string   "cdc_id"
     t.string   "name_p"
     t.string   "name_c"
-    t.geometry "geometry",    limit: {:srid=>0, :type=>"geometry"}
+    t.geometry "geometry",    limit: {:srid=>4326, :type=>"geometry"}
   end
 
   add_index "counties", ["cdc_id"], name: "index_counties_on_cdc_id", unique: true, using: :btree
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20150904165409) do
     t.string   "cdc_id"
     t.string   "name_p"
     t.string   "name_c"
-    t.geometry "geometry", limit: {:srid=>0, :type=>"geometry"}
+    t.geometry "geometry", limit: {:srid=>4326, :type=>"geometry"}
   end
 
   add_index "provinces", ["cdc_id"], name: "index_provinces_on_cdc_id", unique: true, using: :btree
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20150904165409) do
     t.string   "cdc_id"
     t.string   "name_p"
     t.string   "name_c"
-    t.geometry "geometry",  limit: {:srid=>0, :type=>"geometry"}
+    t.geometry "geometry",  limit: {:srid=>4326, :type=>"geometry"}
   end
 
   add_index "towns", ["cdc_id"], name: "index_towns_on_cdc_id", unique: true, using: :btree

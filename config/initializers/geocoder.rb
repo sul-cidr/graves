@@ -26,5 +26,6 @@ Geocoder.configure(
 
   :lookup => :baidu,
   :api_key => ENV['BAIDU_KEY'],
+  :timeout => 30
 
 )

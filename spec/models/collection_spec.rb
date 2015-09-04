@@ -21,6 +21,9 @@
 #  notice_id   :integer          not null
 #  lonlat      :geometry({:srid= point, 0
 #  place_id    :integer
+#  province_id :integer
+#  county_id   :integer
+#  town_id     :integer
 #
 
 require 'rails_helper'

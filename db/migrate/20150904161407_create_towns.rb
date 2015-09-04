@@ -6,7 +6,7 @@ class CreateTowns < ActiveRecord::Migration
       t.string :cdc_id
       t.string :name_p
       t.string :name_c
-      t.geometry :geometry
+      t.geometry :geometry, srid: 4326
     end
 
     add_foreign_key :towns, :counties
