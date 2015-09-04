@@ -12,7 +12,7 @@
 
 require 'rails_helper'
 
-describe Place, type: :model do
+xdescribe Place, type: :model do
 
   describe "columns" do
     it { should have_db_column(:place_type_id).with_options(null: false) }

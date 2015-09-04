@@ -20,17 +20,17 @@ FactoryGirl.define do
 
     cdc_id { generate(:place_cdc_id) }
 
-    factory :province do
-      place_type { PlaceType.province }
-    end
+    #factory :province do
+      #place_type { PlaceType.province }
+    #end
 
-    factory :county do
-      place_type { PlaceType.county }
-    end
+    #factory :county do
+      #place_type { PlaceType.county }
+    #end
 
-    factory :town do
-      place_type { PlaceType.town }
-    end
+    #factory :town do
+      #place_type { PlaceType.town }
+    #end
 
   end
 

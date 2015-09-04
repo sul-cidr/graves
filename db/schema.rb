@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829211922) do
+ActiveRecord::Schema.define(version: 20150904154758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(version: 20150829211922) do
 
   add_index "places", ["cdc_id"], name: "index_places_on_cdc_id", unique: true, using: :btree
   add_index "places", ["geometry"], name: "index_places_on_geometry", using: :gist
+
+  create_table "provinces", force: :cascade do |t|
+    t.string   "cdc_id"
+    t.string   "name_p"
+    t.string   "name_c"
+    t.geometry "geometry", limit: {:srid=>0, :type=>"geometry"}
+  end
+
+  add_index "provinces", ["cdc_id"], name: "index_provinces_on_cdc_id", unique: true, using: :btree
+  add_index "provinces", ["geometry"], name: "index_provinces_on_geometry", using: :gist
 
   add_foreign_key "collections", "notices"
   add_foreign_key "collections", "places"
