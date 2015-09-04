@@ -41,6 +41,7 @@ gem 'unicode'
 gem 'rgeo-shapefile'
 gem 'dotenv-rails'
 gem 'devise'
+gem 'slim-rails'
 
 group :development, :test do
 
