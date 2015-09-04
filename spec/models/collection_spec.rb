@@ -43,7 +43,9 @@ describe Collection, type: :model do
 
   describe 'relationships' do
     it { should belong_to(:notice) }
-    it { should belong_to(:place) }
+    it { should belong_to(:province) }
+    it { should belong_to(:county) }
+    it { should belong_to(:town) }
   end
 
   describe '#has_province?()' do

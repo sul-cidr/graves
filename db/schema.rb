@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904161407) do
+ActiveRecord::Schema.define(version: 20150904165409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,11 +36,17 @@ ActiveRecord::Schema.define(version: 20150904161407) do
     t.integer  "notice_id",                                      null: false
     t.geometry "lonlat",      limit: {:srid=>0, :type=>"point"}
     t.integer  "place_id"
+    t.integer  "province_id"
+    t.integer  "county_id"
+    t.integer  "town_id"
   end
 
+  add_index "collections", ["county_id"], name: "index_collections_on_county_id", using: :btree
   add_index "collections", ["lonlat"], name: "index_collections_on_lonlat", using: :gist
   add_index "collections", ["notice_id"], name: "index_collections_on_notice_id", using: :btree
   add_index "collections", ["place_id"], name: "index_collections_on_place_id", using: :btree
+  add_index "collections", ["province_id"], name: "index_collections_on_province_id", using: :btree
+  add_index "collections", ["town_id"], name: "index_collections_on_town_id", using: :btree
 
   create_table "counties", force: :cascade do |t|
     t.integer  "province_id"
@@ -118,8 +124,11 @@ ActiveRecord::Schema.define(version: 20150904161407) do
   add_index "towns", ["cdc_id"], name: "index_towns_on_cdc_id", unique: true, using: :btree
   add_index "towns", ["geometry"], name: "index_towns_on_geometry", using: :gist
 
+  add_foreign_key "collections", "counties"
   add_foreign_key "collections", "notices"
   add_foreign_key "collections", "places"
+  add_foreign_key "collections", "provinces"
+  add_foreign_key "collections", "towns"
   add_foreign_key "counties", "provinces"
   add_foreign_key "places", "place_types"
   add_foreign_key "towns", "counties"

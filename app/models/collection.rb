@@ -26,7 +26,9 @@
 class Collection < ActiveRecord::Base
 
   belongs_to :notice
-  belongs_to :place
+  belongs_to :province
+  belongs_to :county
+  belongs_to :town
 
   validates :notice, presence: true
 
@@ -70,9 +72,18 @@ class Collection < ActiveRecord::Base
     bar = ProgressBar.new(all.count)
 
     all.each do |c|
-      c.place = Place.find_by_collection(c)
+
+      if c.has_town?
+        c.town = Town.find_by_collection(c)
+      elsif c.has_county?
+        c.county = County.find_by_collection(c)
+      elsif c.has_province?
+        c.county = Province.find_by_collection(c)
+      end
+
       c.save
       bar.increment!
+
     end
 
   end
