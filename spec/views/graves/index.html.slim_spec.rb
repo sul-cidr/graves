@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe "graves/index.html.slim", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe "graves/index.html.slim", type: :view do
+  # TODO
 end

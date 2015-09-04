@@ -7,7 +7,7 @@
 #  cdc_id      :string
 #  name_p      :string
 #  name_c      :string
-#  geometry    :geometry({:srid= geometry, 0
+#  geometry    :geometry({:srid= geometry, 4326
 #
 
 require 'rails_helper'
