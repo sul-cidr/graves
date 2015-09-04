@@ -17,8 +17,8 @@ export default {
   },
 
   graves: {
-    src: '<%= js %>/index.js',
-    dest: '<%= dist %>/script.js'
+    src: 'app/assets/javascripts/index.js',
+    dest: 'app/assets/dist/script.js'
   }
 
 };
