@@ -8,7 +8,7 @@ module Import
 
     def up
 
-      factory = RGeo::Geographic.simple_mercator_factory()
+      factory = Helpers::Geo.factory
 
       paths.each do |path|
         RGeo::Shapefile::Reader.open(
