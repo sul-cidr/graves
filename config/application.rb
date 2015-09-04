@@ -24,7 +24,11 @@ module Graves
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    # Autoload modules from /lib.
     config.autoload_paths << Rails.root.join("lib")
+
+    # Flip off the asset pipeline.
+    config.assets.enabled = false
 
   end
 end
