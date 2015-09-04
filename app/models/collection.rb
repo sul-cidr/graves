@@ -81,7 +81,7 @@ class Collection < ActiveRecord::Base
       elsif c.has_county?
         c.county = County.find_by_collection(c)
       elsif c.has_province?
-        c.county = Province.find_by_collection(c)
+        c.province = Province.find_by_collection(c)
       end
 
       c.save
