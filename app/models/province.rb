@@ -10,4 +10,15 @@
 #
 
 class Province < ActiveRecord::Base
+
+  #
+  # Match a grave collection with a province.
+  #
+  # @param c [Collection]
+  # @return [Province]
+  #
+  def self.find_by_collection(c)
+    where { ST_Contains(geometry, c.lonlat) }.first
+  end
+
 end

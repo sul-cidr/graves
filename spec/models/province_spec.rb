@@ -18,4 +18,41 @@ describe Province, type: :model do
     it { should have_db_index(:geometry) }
   end
 
+  describe '.find_by_collection()' do
+
+    # 2 4x4 provinces:
+
+    let!(:p1) {
+      create(:province, geometry: Helpers::Geo.polygon(
+        [0, 0],
+        [0, 4],
+        [4, 4],
+        [4, 0],
+      ))
+    }
+
+    let!(:p2) {
+      create(:province, geometry: Helpers::Geo.polygon(
+        [4, 0],
+        [4, 4],
+        [8, 4],
+        [8, 0],
+      ))
+    }
+
+    it 'links to the enclosing province' do
+
+      # Inside province 1.
+      c = create(
+        :collection_with_province,
+        lonlat: Helpers::Geo.point(2, 2),
+      )
+
+      p = Province.find_by_collection(c)
+      expect(p.id).to eq(p1.id)
+
+    end
+
+  end
+
 end
