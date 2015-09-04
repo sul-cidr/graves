@@ -20,7 +20,7 @@ module Import
           cdc_id: record['GBTownship'],
           name_p: record['TownshipEN'],
           name_c: record['TownshipCH'],
-          geometry: record.geometry,
+          geometry: to_4326(record.geometry),
         )
 
         increment

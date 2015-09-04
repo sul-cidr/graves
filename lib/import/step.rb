@@ -52,5 +52,18 @@ module Import
       RGeo::Shapefile::Reader.open(path)
     end
 
+    #
+    # Cast a geometry to EPSG:4326.
+    #
+    # @param geometry [RGeo::Geos]
+    #
+    def to_4326(geometry)
+      RGeo::Feature.cast(
+        geometry,
+        factory: Helpers::Geo.factory,
+        project: true,
+      )
+    end
+
   end
 end

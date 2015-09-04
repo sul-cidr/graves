@@ -7,7 +7,7 @@ module Helpers::Geo
   # returns [RGeo::Geos::CAPIFactory]
   #
   def self.factory
-    RGeo::Cartesian.preferred_factory(srid: 4326)
+    RGeo::Geographic.simple_mercator_factory()
   end
 
   #

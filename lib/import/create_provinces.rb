@@ -8,21 +8,13 @@ module Import
 
     def up
 
-      factory = RGeo::Geographic.spherical_factory(srid: 4326)
-
       shapefile.each do |record|
-
-        geometry =  RGeo::Feature.cast(
-          record.geometry,
-          factory: factory,
-          project: true
-        )
 
         Province.create!(
           cdc_id: record['GbProv'],
           name_p: record['ProvEN'],
           name_c: record['ProvCH'],
-          geometry: geometry,
+          geometry: to_4326(record.geometry),
         )
 
         increment
