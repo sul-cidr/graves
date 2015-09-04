@@ -15,3 +15,6 @@
 /.env
 /*.csv
 /*.sql
+
+/app/assets/dist
+/node_modules
