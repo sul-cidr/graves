@@ -12,7 +12,11 @@ module Import
 
       shapefile.each do |record|
 
+        # Find the parent county.
+        county = County.find_by(cdc_id: record[:GBTownship][0..5])
+
         Town.create!(
+          county: county,
           cdc_id: record['GBTownship'],
           name_p: record['TownshipEN'],
           name_c: record['TownshipCH'],

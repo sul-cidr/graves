@@ -21,7 +21,11 @@ module Import
             # Convert meters -> degrees.
             geometry = factory.unproject(record.geometry)
 
+            # Find the parent province.
+            province = Province.find_by(cdc_id: record[:gbcode][0..1])
+
             County.create!(
+              province: province,
               cdc_id: record[:gbcode],
               name_p: decode(record[:ename]),
               name_c: decode(record[:chname]),
