@@ -40,6 +40,7 @@ gem 'method_hooks'
 gem 'unicode'
 gem 'rgeo-shapefile'
 gem 'dotenv-rails'
+gem 'devise'
 
 group :development, :test do
 
