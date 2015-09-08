@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20150904165409) do
     t.string   "village_c"
     t.integer  "notice_id",                                         null: false
     t.geometry "lonlat",      limit: {:srid=>4326, :type=>"point"}
-    t.integer  "place_id"
     t.integer  "province_id"
     t.integer  "county_id"
     t.integer  "town_id"
@@ -44,7 +43,6 @@ ActiveRecord::Schema.define(version: 20150904165409) do
   add_index "collections", ["county_id"], name: "index_collections_on_county_id", using: :btree
   add_index "collections", ["lonlat"], name: "index_collections_on_lonlat", using: :gist
   add_index "collections", ["notice_id"], name: "index_collections_on_notice_id", using: :btree
-  add_index "collections", ["place_id"], name: "index_collections_on_place_id", using: :btree
   add_index "collections", ["province_id"], name: "index_collections_on_province_id", using: :btree
   add_index "collections", ["town_id"], name: "index_collections_on_town_id", using: :btree
 
@@ -86,23 +84,6 @@ ActiveRecord::Schema.define(version: 20150904165409) do
 
   add_index "notices", ["legacy_id"], name: "index_notices_on_legacy_id", unique: true, using: :btree
 
-  create_table "place_types", force: :cascade do |t|
-    t.string "name", null: false
-  end
-
-  add_index "place_types", ["name"], name: "index_place_types_on_name", unique: true, using: :btree
-
-  create_table "places", force: :cascade do |t|
-    t.integer  "place_type_id",                                       null: false
-    t.string   "cdc_id"
-    t.string   "name_p"
-    t.string   "name_c"
-    t.geometry "geometry",      limit: {:srid=>0, :type=>"geometry"}
-  end
-
-  add_index "places", ["cdc_id"], name: "index_places_on_cdc_id", unique: true, using: :btree
-  add_index "places", ["geometry"], name: "index_places_on_geometry", using: :gist
-
   create_table "provinces", force: :cascade do |t|
     t.string   "cdc_id"
     t.string   "name_p"
@@ -126,10 +107,8 @@ ActiveRecord::Schema.define(version: 20150904165409) do
 
   add_foreign_key "collections", "counties"
   add_foreign_key "collections", "notices"
-  add_foreign_key "collections", "places"
   add_foreign_key "collections", "provinces"
   add_foreign_key "collections", "towns"
   add_foreign_key "counties", "provinces"
-  add_foreign_key "places", "place_types"
   add_foreign_key "towns", "counties"
 end
