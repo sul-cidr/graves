@@ -11,3 +11,4 @@ compile:min:
 default:
   - clean
   - compile
+  - watch
