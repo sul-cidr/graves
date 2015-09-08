@@ -1,5 +1,6 @@
 
 
-import _ from 'lodash';
+import React from 'react';
+import {Provider} from 'react-redux';
 
-// TODO
+import App from './containers/app';
