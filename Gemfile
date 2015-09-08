@@ -60,6 +60,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'sequel'
   gem 'colorize'
+  gem 'rack-livereload'
   gem 'geocoder'
 
 end

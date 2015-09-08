@@ -122,6 +122,8 @@ GEM
       highline (~> 1.6.1)
       options (~> 2.3.0)
     rack (1.6.4)
+    rack-livereload (0.3.16)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.3)
@@ -257,6 +259,7 @@ DEPENDENCIES
   method_hooks
   pg
   progress_bar
+  rack-livereload
   rails (= 4.2.3)
   require_all
   rgeo-shapefile
@@ -276,4 +279,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
