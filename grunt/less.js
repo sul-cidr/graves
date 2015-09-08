@@ -3,8 +3,8 @@
 export default {
 
   graves: {
-    src: '<%= css %>/src/index.less',
-    dest: '<%= css %>/dist/style.css'
+    src: '<%= css %>/src/graves/index.less',
+    dest: '<%= css %>/dist/graves.css'
   }
 
 };
