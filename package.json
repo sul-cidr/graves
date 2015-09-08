@@ -7,7 +7,7 @@
     "url": "https://github.com/sul-cidr/graves.git"
   },
   "author": "David McClure <dclure@stanford.edu>",
-  "license": "Apache",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/sul-cidr/graves/issues"
   },
@@ -26,6 +26,8 @@
   },
   "dependencies": {
     "babel": "^5.8.23",
-    "lodash": "^3.10.1"
+    "leaflet": "^0.7.5",
+    "lodash": "^3.10.1",
+    "react": "^0.13.3"
   }
 }
