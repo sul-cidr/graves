@@ -16,5 +16,5 @@
 /*.csv
 /*.sql
 
-/app/assets/dist
+/app/assets/**/dist
 /node_modules
