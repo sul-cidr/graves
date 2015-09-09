@@ -2,9 +2,10 @@
 
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import Map from './map';
 
 
-class App extends Component {
+export default class App extends Component {
 
 
   /**
@@ -12,28 +13,9 @@ class App extends Component {
    */
   render() {
     return (
-      <h1>Chinese Graves</h1>
+      <Map />
     );
   }
 
 
 }
-
-
-App.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
-
-
-/**
- * Map state into app props.
- *
- * @param {Object} state
- * @return {Object}
- */
-function mapStateToProps(state) {
-  return state;
-}
-
-
-export default connect(mapStateToProps)(App);
