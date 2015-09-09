@@ -1,10 +1,10 @@
 
 
 import React from 'react';
-import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import App from './containers/app';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import reducers from './reducers';
+import App from './containers/app';
 
 
 let store = createStore(reducers);

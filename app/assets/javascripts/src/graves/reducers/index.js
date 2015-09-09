@@ -2,7 +2,15 @@
 
 import { combineReducers } from 'redux';
 
+import {
+  REQUEST_PROVINCES,
+  RECEIVE_PROVINCES
+} from '../actions';
 
+
+/**
+ * CDC provinces.
+ */
 function provinces(state = {
   items: [],
   loading: false,
@@ -27,3 +35,6 @@ function provinces(state = {
   }
 
 }
+
+
+export default provinces;
