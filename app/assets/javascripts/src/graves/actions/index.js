@@ -1,5 +1,8 @@
 
 
+import fetch from 'isomorphic-fetch';
+
+
 export const REQUEST_PROVINCES = 'REQUEST_PROVINCES';
 export const RECEIVE_PROVINCES = 'RECEIVE_PROVINCES';
 
