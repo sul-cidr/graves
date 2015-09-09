@@ -39,9 +39,10 @@ export function fetchProvinces() {
     // Notify start.
     dispatch(requestProvinces());
 
-    // Request provinces.
     return fetch('/api/provinces')
       .then(response => response.json())
+
+      // Notify complete.
       .then(json => dispatch(receiveProvinces(json)));
 
   };
