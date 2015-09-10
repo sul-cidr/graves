@@ -5,7 +5,7 @@ import L from 'leaflet';
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import wellknown from 'wellknown';
-import { loadProvinces } from '../actions';
+import { loadProvinces } from '../actions/provinces';
 import styles from './provinces.yml';
 
 
