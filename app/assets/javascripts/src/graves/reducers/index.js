@@ -38,4 +38,6 @@ function provinces(state = {
 }
 
 
-export default provinces;
+export default combineReducers({
+  provinces
+});

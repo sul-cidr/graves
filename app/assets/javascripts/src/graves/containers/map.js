@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import { loadProvinces } from '../actions';
@@ -32,6 +33,7 @@ class Map extends Component {
 
 Map.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  provinces: PropTypes.object.isRequired,
 };
 
 
@@ -42,13 +44,7 @@ Map.propTypes = {
  * @return {Object}
  */
 function select(state) {
-
-  const { provinces } = state;
-
-  return {
-    provinces
-  };
-
+  return _.pick(state, 'provinces');
 }
 
 
