@@ -1,7 +1,7 @@
 
 
 import L from 'leaflet';
-import React, {Component, findDOMNode, PropTypes} from 'react';
+import React, { Component, findDOMNode, PropTypes } from 'react';
 import styles from './map.yml';
 import Provinces from './provinces';
 

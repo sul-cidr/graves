@@ -3,7 +3,7 @@
 import _ from 'lodash';
 import L from 'leaflet';
 import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import wellknown from 'wellknown';
 import { loadProvinces } from '../actions/provinces';
 import styles from './provinces.yml';
@@ -60,7 +60,7 @@ class Provinces extends Component {
 
 
 /**
- * Pass spatial data into the map.
+ * Map state into props.
  *
  * @param {Object} state
  * @return {Object}
