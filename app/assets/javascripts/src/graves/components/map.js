@@ -20,8 +20,13 @@ class Map extends Component {
    * @param {Object} props
    */
   constructor(props) {
+
     super(props);
-    this.state = { map: null };
+
+    this.state = {
+      map: null
+    };
+
   }
 
 

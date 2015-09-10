@@ -37,10 +37,10 @@ class Provinces extends Component {
 
     let items = this.props.provinces.items;
 
-    // TODO
-    if (items.length) {
+    if (!items.length) {
 
-      let features = items.map(p => {
+      // WKT -> GeoJSON.
+      let features = this.props.provinces.items.map(p => {
         let points = wellknown(p.geometry);
         return new L.GeoJSON(points);
       });
