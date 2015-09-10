@@ -6,6 +6,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import wellknown from 'wellknown';
 import { loadProvinces } from '../actions';
+import styles from './provinces.yml';
 
 
 class Provinces extends Component {
@@ -37,12 +38,12 @@ class Provinces extends Component {
 
     let items = this.props.provinces.items;
 
-    if (!items.length) {
+    if (items.length) {
 
       // WKT -> GeoJSON.
-      let features = this.props.provinces.items.map(p => {
+      let features = items.map(p => {
         let points = wellknown(p.geometry);
-        return new L.GeoJSON(points);
+        return new L.GeoJSON(points, styles.path);
       });
 
       let countries = L.featureGroup(features);
