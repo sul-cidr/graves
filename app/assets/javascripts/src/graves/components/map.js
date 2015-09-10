@@ -38,8 +38,6 @@ class Map extends Component {
    */
   componentDidMount() {
 
-    // TODO|dev
-
     let map = L.map(findDOMNode(this.refs.map), {
       zoomControl: false,
       attributionControl: false,

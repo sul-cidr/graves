@@ -1,8 +1,10 @@
 
 
 import _ from 'lodash';
+import L from 'leaflet';
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import wellknown from 'wellknown';
 import { loadProvinces } from '../actions';
 
 
@@ -23,8 +25,8 @@ class Provinces extends Component {
   /**
    * Load provinces.
    */
-  componentDidMount() {
-    console.log(this.context);
+  componentWillMount() {
+    this.props.dispatch(loadProvinces());
   }
 
 
@@ -32,9 +34,24 @@ class Provinces extends Component {
    * Display provinces.
    */
   render() {
-    return (
-      <h1>Provinces</h1>
-    );
+
+    let items = this.props.provinces.items;
+
+    // TODO
+    if (items.length) {
+
+      let features = items.map(p => {
+        let points = wellknown(p.geometry);
+        return new L.GeoJSON(points);
+      });
+
+      let countries = L.featureGroup(features);
+      countries.addTo(this.context.map);
+
+    }
+
+    return null;
+
   }
 
 
@@ -47,9 +64,9 @@ class Provinces extends Component {
  * @param {Object} state
  * @return {Object}
  */
-function select(state) {
+function selectProps(state) {
   return _.pick(state, 'provinces');
 }
 
 
-export default connect(select)(Provinces);
+export default connect(selectProps)(Provinces);
