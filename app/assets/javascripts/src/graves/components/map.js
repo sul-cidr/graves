@@ -1,12 +1,36 @@
 
 
 import L from 'leaflet';
-import React, {Component, findDOMNode} from 'react';
+import React, {Component, findDOMNode, PropTypes} from 'react';
 import styles from './map.yml';
 import Provinces from './provinces';
 
 
 class Map extends Component {
+
+
+  static childContextTypes = {
+    map: PropTypes.object
+  }
+
+
+  /**
+   * Set initial state.
+   *
+   * @param {Object} props
+   */
+  constructor(props) {
+    super(props);
+    this.state = { map: null };
+  }
+
+
+  /**
+   * Expose the map instance to children.
+   */
+  getChildContext() {
+    return { map: this.state.map };
+  }
 
 
   /**
@@ -43,6 +67,8 @@ class Map extends Component {
       styles.viewport.zoom
     );
 
+    this.setState({ map: map });
+
   }
 
 
@@ -50,11 +76,18 @@ class Map extends Component {
    * Render the map container.
    */
   render() {
+
+    // Wait for Leaflet.
+    let children = this.state.map ? (
+      <Provinces />
+    ) : null;
+
     return (
       <div id="map" ref="map">
-        <Provinces />
+        {children}
       </div>
     );
+
   }
 
 

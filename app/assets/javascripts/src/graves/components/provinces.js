@@ -9,11 +9,22 @@ import { loadProvinces } from '../actions';
 class Provinces extends Component {
 
 
+  static contextTypes = {
+    map: PropTypes.object.isRequired
+  }
+
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    provinces: PropTypes.object.isRequired,
+  }
+
+
   /**
    * Load provinces.
    */
   componentDidMount() {
-    this.props.dispatch(loadProvinces());
+    console.log(this.context);
   }
 
 
@@ -28,12 +39,6 @@ class Provinces extends Component {
 
 
 }
-
-
-Map.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  provinces: PropTypes.object.isRequired,
-};
 
 
 /**
