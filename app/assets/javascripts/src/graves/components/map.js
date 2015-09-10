@@ -1,11 +1,9 @@
 
 
-import _ from 'lodash';
 import L from 'leaflet';
-import React, {Component, PropTypes, findDOMNode} from 'react';
-import {connect} from 'react-redux';
-import { loadProvinces } from '../actions';
+import React, {Component, findDOMNode} from 'react';
 import styles from './map.yml';
+import Provinces from './provinces';
 
 
 class Map extends Component {
@@ -53,7 +51,9 @@ class Map extends Component {
    */
   render() {
     return (
-      <div id="map" ref="map"></div>
+      <div id="map" ref="map">
+        <Provinces />
+      </div>
     );
   }
 
