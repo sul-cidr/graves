@@ -1,11 +1,15 @@
 
 
+import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import L from 'leaflet';
 import wellknown from 'wellknown';
 import styles from './province.yml';
 
 
+@connect(state => ({
+  highlighted: state.provinces.highlighted
+}))
 export default class extends Component {
 
 
@@ -16,6 +20,7 @@ export default class extends Component {
 
   static propTypes = {
     feature: PropTypes.object.isRequired,
+    highlighted: PropTypes.any,
     group: PropTypes.object.isRequired,
   }
 
@@ -52,7 +57,15 @@ export default class extends Component {
    * Render the map container.
    */
   render() {
+
+    if (this.props.highlighted === this.props.feature.id) {
+      this.layer.setStyle({ color: 'red' });
+    } else {
+      this.layer.setStyle(styles.path);
+    }
+
     return null;
+
   }
 
 
