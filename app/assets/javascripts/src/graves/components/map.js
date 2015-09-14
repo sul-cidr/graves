@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import L from 'leaflet';
 import { connect } from 'react-redux';
 import React, { Component, findDOMNode } from 'react';
@@ -43,6 +44,9 @@ class Map extends Component {
     // Default viewport.
     map.setView([30, 115], 5);
 
+    // TODO|dev
+    this.props.dispatch(loadProvinces());
+
   }
 
 
@@ -50,6 +54,7 @@ class Map extends Component {
    * Render the map container.
    */
   render() {
+    console.log(this.props);
     return <div id="map" ref="map">Map</div>;
   }
 
@@ -57,4 +62,9 @@ class Map extends Component {
 }
 
 
-export default connect()(Map);
+function mapState(state) {
+  return _.pick(state, 'provinces');
+}
+
+
+export default connect(mapState)(Map);

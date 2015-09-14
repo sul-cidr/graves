@@ -2,11 +2,7 @@
 
 import _ from 'lodash';
 import { combineReducers } from 'redux';
-
-import {
-  REQUEST_PROVINCES,
-  RECEIVE_PROVINCES
-} from '../actions/provinces';
+import * as constants from '../constants';
 
 
 /**
@@ -19,12 +15,12 @@ function provinces(state = {
 
   switch (action.type) {
 
-  case REQUEST_PROVINCES:
+  case constants.REQUEST_PROVINCES:
     return _.assign({}, state, {
       loading: true,
     });
 
-  case RECEIVE_PROVINCES:
+  case constants.RECEIVE_PROVINCES:
     return _.assign({}, state, {
       items: action.provinces,
       loading: false,

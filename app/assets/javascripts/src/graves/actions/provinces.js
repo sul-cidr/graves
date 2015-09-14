@@ -1,11 +1,7 @@
 
 
 import fetch from 'isomorphic-fetch';
-
-
-export const REQUEST_PROVINCES = 'REQUEST_PROVINCES';
-export const RECEIVE_PROVINCES = 'RECEIVE_PROVINCES';
-export const HIGHLIGHT_PROVINCE = 'HIGHLIGHT_PROVINCE';
+import * as constants from '../constants';
 
 
 /**
@@ -30,7 +26,7 @@ export function loadProvinces() {
  */
 function requestProvinces() {
   return {
-    type: REQUEST_PROVINCES,
+    type: constants.REQUEST_PROVINCES,
   };
 }
 
@@ -42,7 +38,7 @@ function requestProvinces() {
  */
 function receiveProvinces(json) {
   return {
-    type: RECEIVE_PROVINCES,
+    type: constants.RECEIVE_PROVINCES,
     provinces: json,
   };
 }
