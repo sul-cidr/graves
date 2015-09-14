@@ -28,12 +28,16 @@ export default class extends Component {
    */
   componentWillMount() {
 
+    // Load provinces.
+    this.props.dispatch(loadProvinces());
+
     // Create the top-level layer group.
     this.group = L.featureGroup();
     this.group.addTo(this.context.map);
 
-    // Load provinces.
-    this.props.dispatch(loadProvinces());
+    this.group.on('mouseover', e => {
+      console.log(e);
+    });
 
   }
 

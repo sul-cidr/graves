@@ -28,8 +28,13 @@ export default class extends Component {
     // Parse WKT.
     let points = wellknown(this.props.feature.geometry);
 
+    let options = {
+      ...styles.path,
+      id: this.props.feature.id,
+    };
+
     // Add layer.
-    this.layer = new L.GeoJSON(points, styles.path);
+    this.layer = new L.GeoJSON(points, options);
     this.props.group.addLayer(this.layer);
 
   }
