@@ -8,7 +8,8 @@ import store from '../store';
 import { loadProvinces } from '../actions/provinces';
 
 
-class Map extends Component {
+@connect(state => (state.provinces))
+export default class extends Component {
 
 
   /**
@@ -60,11 +61,3 @@ class Map extends Component {
 
 
 }
-
-
-function mapState(state) {
-  return _.pick(state, 'provinces');
-}
-
-
-export default connect(mapState)(Map);
