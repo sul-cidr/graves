@@ -3,6 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import L from 'leaflet';
 import wellknown from 'wellknown';
+import styles from './province.yml';
 
 
 export default class extends Component {
@@ -27,7 +28,10 @@ export default class extends Component {
     let points = wellknown(this.props.feature.geometry);
 
     // Add layer.
-    this.layer = new L.GeoJSON(points);
+    this.layer = new L.GeoJSON(points, {
+      style: () => styles.path
+    });
+
     this.layer.addTo(this.context.map);
 
   }
