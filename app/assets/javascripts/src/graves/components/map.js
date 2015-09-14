@@ -1,17 +1,26 @@
 
 
+import { connect } from 'react-redux';
 import React, { Component, findDOMNode } from 'react';
+import store from '../store';
+import { loadProvinces } from '../actions/provinces';
+import MapAspect from '../aspects/map';
 
 
-export default class extends Component {
+class Map extends Component {
 
 
   /**
    * Spin up the Leaflet instance.
    */
   componentDidMount() {
-    console.log(findDOMNode(this.refs.map));
-    // TODO: Start map.
+
+    let el = findDOMNode(this.refs.map);
+    new MapAspect(el, store);
+
+    // TODO|dev
+    this.props.dispatch(loadProvinces());
+
   }
 
 
@@ -24,3 +33,6 @@ export default class extends Component {
 
 
 }
+
+
+export default connect()(Map);

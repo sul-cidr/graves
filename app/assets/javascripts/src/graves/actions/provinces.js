@@ -5,6 +5,7 @@ import fetch from 'isomorphic-fetch';
 
 export const REQUEST_PROVINCES = 'REQUEST_PROVINCES';
 export const RECEIVE_PROVINCES = 'RECEIVE_PROVINCES';
+export const HIGHLIGHT_PROVINCE = 'HIGHLIGHT_PROVINCE';
 
 
 /**
@@ -29,7 +30,7 @@ export function loadProvinces() {
 /**
  * When CDC provinces are requested.
  */
-export function requestProvinces() {
+function requestProvinces() {
   return {
     type: REQUEST_PROVINCES,
   };
@@ -41,9 +42,22 @@ export function requestProvinces() {
  *
  * @param {Object} json
  */
-export function receiveProvinces(json) {
+function receiveProvinces(json) {
   return {
     type: RECEIVE_PROVINCES,
     provinces: json,
+  };
+}
+
+
+/**
+ * Load CDC provinces.
+ *
+ * @param {Number} id
+ */
+export function highlightProvince(id) {
+  return {
+    type: HIGHLIGHT_PROVINCE,
+    id: id,
   };
 }

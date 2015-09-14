@@ -10,7 +10,7 @@ export default class {
    */
   constructor(store) {
     store.subscribe(() => {
-      console.log(store.getState());
+      this.render(this.mapState(store.getState()));
     });
   }
 
@@ -22,6 +22,16 @@ export default class {
    */
   mapState(state) {
     return state;
+  }
+
+
+  /**
+   * Manifest a new state.
+   *
+   * @param {Object} state - The mapped state.
+   */
+  render(state) {
+    // no-op
   }
 
 
