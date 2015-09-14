@@ -4,6 +4,7 @@ import L from 'leaflet';
 import React, { Component, findDOMNode, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Provinces from './provinces';
+import Collections from './collections';
 
 
 @connect(state => (state.provinces))
@@ -75,13 +76,17 @@ export default class extends Component {
    */
   render() {
 
-    let children = this.state.map ? (
-      <Provinces />
-    ) : null;
+    if (this.state.map) {
+      return (
+        <div id="map" ref="map">
+          <Provinces />
+          <Collections />
+        </div>
+      );
+    }
 
-    return (
+    else return (
       <div id="map" ref="map">
-        {children}
       </div>
     );
 

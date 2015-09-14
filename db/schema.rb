@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904165409) do
+ActiveRecord::Schema.define(version: 20150914235447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,14 +34,14 @@ ActiveRecord::Schema.define(version: 20150904165409) do
     t.string   "village_p"
     t.string   "village_c"
     t.integer  "notice_id",                                         null: false
-    t.geometry "lonlat",      limit: {:srid=>4326, :type=>"point"}
+    t.geometry "geometry",    limit: {:srid=>4326, :type=>"point"}
     t.integer  "province_id"
     t.integer  "county_id"
     t.integer  "town_id"
   end
 
   add_index "collections", ["county_id"], name: "index_collections_on_county_id", using: :btree
-  add_index "collections", ["lonlat"], name: "index_collections_on_lonlat", using: :gist
+  add_index "collections", ["geometry"], name: "index_collections_on_geometry", using: :gist
   add_index "collections", ["notice_id"], name: "index_collections_on_notice_id", using: :btree
   add_index "collections", ["province_id"], name: "index_collections_on_province_id", using: :btree
   add_index "collections", ["town_id"], name: "index_collections_on_town_id", using: :btree

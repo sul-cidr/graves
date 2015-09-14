@@ -21,7 +21,7 @@ class County < ActiveRecord::Base
   # @return [Province]
   #
   def self.find_by_collection(c)
-    where { ST_Contains(geometry, c.lonlat) }.first
+    where { ST_Contains(geometry, c.geometry) }.first
   end
 
 end

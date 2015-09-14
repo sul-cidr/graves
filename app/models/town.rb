@@ -21,7 +21,7 @@ class Town < ActiveRecord::Base
   # @return [Province]
   #
   def self.find_by_collection(c)
-    select { ['towns.*', ST_Distance(geometry, c.lonlat).as(d)] }
+    select { ['towns.*', ST_Distance(geometry, c.geometry).as(d)] }
       .order('d').limit(1).first
   end
 

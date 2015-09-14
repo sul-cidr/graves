@@ -45,7 +45,7 @@ describe Province, type: :model do
       # Inside province 1.
       c = create(
         :collection_with_province,
-        lonlat: Helpers::Geo.point(2, 2),
+        geometry: Helpers::Geo.point(2, 2),
       )
 
       p = Province.find_by_collection(c)

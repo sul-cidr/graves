@@ -40,7 +40,7 @@ describe Town, type: :model do
       # Closest to town 1.
       c = create(
         :collection_with_town,
-        lonlat: Helpers::Geo.point(3, 2),
+        geometry: Helpers::Geo.point(3, 2),
       )
 
       t = Town.find_by_collection(c)

@@ -28,6 +28,8 @@
 
 class Collection < ActiveRecord::Base
 
+  include GeoJSON
+
   belongs_to :notice
   belongs_to :province
   belongs_to :county

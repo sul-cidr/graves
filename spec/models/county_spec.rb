@@ -50,7 +50,7 @@ describe County, type: :model do
       # Inside county 1.
       c = create(
         :collection_with_county,
-        lonlat: Helpers::Geo.point(2, 2),
+        geometry: Helpers::Geo.point(2, 2),
       )
 
       p = County.find_by_collection(c)

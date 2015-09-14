@@ -36,7 +36,7 @@ describe Collection, type: :model do
 
   describe 'indexes' do
     it { should have_db_index(:notice_id) }
-    it { should have_db_index(:lonlat) }
+    it { should have_db_index(:geometry) }
     it { should have_db_index(:province_id) }
     it { should have_db_index(:county_id) }
     it { should have_db_index(:town_id) }
