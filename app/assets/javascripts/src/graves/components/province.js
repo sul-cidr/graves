@@ -34,6 +34,14 @@ export default class extends Component {
 
 
   /**
+   * Remove the province.
+   */
+  componentWillUnmount() {
+    this.context.map.remove(this.layer);
+  }
+
+
+  /**
    * Render the map container.
    */
   render() {

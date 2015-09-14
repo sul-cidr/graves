@@ -34,7 +34,11 @@ export default class extends Component {
       return <Province key={f.id} feature={f} />;
     });
 
-    return <span>{features}</span>;
+    return (
+      <noscript className="provinces">
+        {features}
+      </noscript>
+    );
 
   }
 
