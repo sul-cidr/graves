@@ -27,6 +27,10 @@ const handlers = {
     highlighted: action.id,
   }),
 
+  [constants.UNHIGHLIGHT_PROVINCE]: (state, action) => ({
+    highlighted: null,
+  }),
+
 };
 
 

@@ -34,8 +34,14 @@ export default class extends Component {
 
     // HIGHLIGHT
     this.group.on('mouseover', e => {
-      let id = e.layer.options.id;
-      this.props.dispatch(actions.highlightProvince(id));
+      this.props.dispatch(actions.highlightProvince(
+        e.layer.options.id
+      ));
+    });
+
+    // UNHIGHLIGHT
+    this.group.on('mouseout', e => {
+      this.props.dispatch(actions.unhighlightProvince());
     });
 
     // Request provinces.

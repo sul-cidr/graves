@@ -55,3 +55,13 @@ export function highlightProvince(id) {
     id: id,
   };
 }
+
+
+/**
+ * Unhighlight provinces.
+ */
+export function unhighlightProvince() {
+  return {
+    type: constants.UNHIGHLIGHT_PROVINCE
+  };
+}
