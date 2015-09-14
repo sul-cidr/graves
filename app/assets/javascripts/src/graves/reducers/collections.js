@@ -13,21 +13,13 @@ const initialState = {
 
 const handlers = {
 
-  [constants.REQUEST_PROVINCES]: (state, action) => ({
+  [constants.REQUEST_COLLECTIONS]: (state, action) => ({
     loading: true,
   }),
 
-  [constants.RECEIVE_PROVINCES]: (state, action) => ({
+  [constants.RECEIVE_COLLECTIONS]: (state, action) => ({
     features: action.features,
     loading: false,
-  }),
-
-  [constants.HIGHLIGHT_PROVINCE]: (state, action) => ({
-    highlighted: action.id,
-  }),
-
-  [constants.UNHIGHLIGHT_PROVINCE]: (state, action) => ({
-    highlighted: null,
   }),
 
 };
