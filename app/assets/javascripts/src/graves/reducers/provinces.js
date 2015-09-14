@@ -7,6 +7,7 @@ import createReducer from '../utils/create-reducer';
 
 const initialState = {
   features: [],
+  highlighted: null,
   loading: false,
 };
 
@@ -18,8 +19,12 @@ const handlers = {
   }),
 
   [constants.RECEIVE_PROVINCES]: (state, action) => ({
-    features: action.provinces,
+    features: action.features,
     loading: false,
+  }),
+
+  [constants.HIGHLIGHT_PROVINCE]: (state, action) => ({
+    highlighted: action.id,
   }),
 
 };

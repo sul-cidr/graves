@@ -3,11 +3,13 @@
 import L from 'leaflet';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
-import { loadProvinces } from '../actions/provinces';
+import * as actions from '../actions/provinces';
 import Province from './province';
 
 
-@connect(state => (state.provinces))
+@connect(state => ({
+  features: state.provinces.features
+}))
 export default class extends Component {
 
 
@@ -18,7 +20,6 @@ export default class extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
     features: PropTypes.array.isRequired,
   }
 
@@ -28,15 +29,15 @@ export default class extends Component {
    */
   componentWillMount() {
 
-    // Load provinces.
-    this.props.dispatch(loadProvinces());
-
-    // Create the top-level layer group.
+    // Load provinces, create group.
+    this.props.dispatch(actions.loadProvinces());
     this.group = L.featureGroup();
     this.group.addTo(this.context.map);
 
+    // HIGHLIGHT
     this.group.on('mouseover', e => {
-      console.log(e);
+      let id = e.layer.options.id;
+      this.props.dispatch(actions.highlightProvince(id));
     });
 
   }

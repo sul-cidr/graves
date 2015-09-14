@@ -39,6 +39,19 @@ function requestProvinces() {
 function receiveProvinces(json) {
   return {
     type: constants.RECEIVE_PROVINCES,
-    provinces: json,
+    features: json,
+  };
+}
+
+
+/**
+ * Highlight an individual province.
+ *
+ * @param {Number} id
+ */
+export function highlightProvince(id) {
+  return {
+    type: constants.HIGHLIGHT_PROVINCE,
+    id: id,
   };
 }
