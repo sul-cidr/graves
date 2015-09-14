@@ -16,23 +16,21 @@ export default class extends Component {
 
   static propTypes = {
     feature: PropTypes.object.isRequired,
+    group: PropTypes.object.isRequired,
   }
 
 
   /**
    * Add the province.
    */
-  componentDidMount() {
+  componentWillMount() {
 
     // Parse WKT.
     let points = wellknown(this.props.feature.geometry);
 
     // Add layer.
-    this.layer = new L.GeoJSON(points, {
-      style: () => styles.path
-    });
-
-    this.layer.addTo(this.context.map);
+    this.layer = new L.GeoJSON(points, styles.path);
+    this.props.group.addLayer(this.layer);
 
   }
 

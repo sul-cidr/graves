@@ -1,5 +1,6 @@
 
 
+import L from 'leaflet';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import { loadProvinces } from '../actions/provinces';
@@ -10,6 +11,11 @@ import Province from './province';
 export default class extends Component {
 
 
+  static contextTypes = {
+    map: PropTypes.object.isRequired
+  }
+
+
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
@@ -18,10 +24,17 @@ export default class extends Component {
 
 
   /**
-   * Load provinces.
+   * Create the feature group, request provinces.
    */
-  componentDidMount() {
+  componentWillMount() {
+
+    // Create the top-level layer group.
+    this.group = L.featureGroup();
+    this.group.addTo(this.context.map);
+
+    // Load provinces.
     this.props.dispatch(loadProvinces());
+
   }
 
 
@@ -31,7 +44,13 @@ export default class extends Component {
   render() {
 
     let features = this.props.features.map(f => {
-      return <Province key={f.id} feature={f} />;
+      return (
+        <Province
+          key={f.id}
+          group={this.group}
+          feature={f}
+        />
+      );
     });
 
     return (
