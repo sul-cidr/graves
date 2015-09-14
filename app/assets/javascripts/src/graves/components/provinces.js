@@ -7,9 +7,7 @@ import * as actions from '../actions/provinces';
 import Province from './province';
 
 
-@connect(state => ({
-  features: state.provinces.features
-}))
+@connect(state => (state.provinces))
 export default class extends Component {
 
 
@@ -21,6 +19,7 @@ export default class extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     features: PropTypes.array.isRequired,
+    highlighted: PropTypes.any,
   }
 
 
@@ -49,13 +48,19 @@ export default class extends Component {
   render() {
 
     let features = this.props.features.map(f => {
+
+      // Is the province highlighted?
+      let highlighted = (f.id == this.props.highlighted);
+
       return (
         <Province
           key={f.id}
           group={this.group}
           feature={f}
+          highlighted={highlighted}
         />
       );
+
     });
 
     return (

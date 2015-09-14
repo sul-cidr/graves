@@ -7,9 +7,6 @@ import wellknown from 'wellknown';
 import styles from './province.yml';
 
 
-@connect(state => ({
-  highlighted: state.provinces.highlighted
-}))
 export default class extends Component {
 
 
@@ -54,11 +51,21 @@ export default class extends Component {
 
 
   /**
+   * Only update when the highlight changes.
+   *
+   * @param {Object} nextProps
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.highlighted != nextProps.highlighted;
+  }
+
+
+  /**
    * Render the map container.
    */
   render() {
 
-    if (this.props.highlighted === this.props.feature.id) {
+    if (this.props.highlighted) {
       this.layer.setStyle({ color: 'red' });
     } else {
       this.layer.setStyle(styles.path);
