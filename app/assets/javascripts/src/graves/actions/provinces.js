@@ -17,11 +17,9 @@ export function loadProvinces() {
     // Notify start.
     dispatch(requestProvinces());
 
-    return fetch('/api/provinces')
-      .then(response => response.json())
-
-      // Notify complete.
-      .then(json => dispatch(receiveProvinces(json)));
+    fetch('/api/provinces')
+    .then(res => res.json())
+    .then(json => dispatch(receiveProvinces(json)));
 
   };
 }
@@ -46,18 +44,5 @@ function receiveProvinces(json) {
   return {
     type: RECEIVE_PROVINCES,
     provinces: json,
-  };
-}
-
-
-/**
- * Load CDC provinces.
- *
- * @param {Number} id
- */
-export function highlightProvince(id) {
-  return {
-    type: HIGHLIGHT_PROVINCE,
-    id: id,
   };
 }
