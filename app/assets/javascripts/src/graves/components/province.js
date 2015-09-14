@@ -27,8 +27,8 @@ export default class extends Component {
    */
   componentWillMount() {
 
-    // Parse WKT.
-    let points = wellknown(this.props.feature.geometry);
+    // Parse GeoJSON.
+    let feature = JSON.parse(this.props.feature.geojson);
 
     let options = {
       ...styles.path,
@@ -36,7 +36,7 @@ export default class extends Component {
     };
 
     // Add layer.
-    this.layer = new L.GeoJSON(points, options);
+    this.layer = L.multiPolygon(feature.coordinates, options);
     this.props.group.addLayer(this.layer);
 
   }

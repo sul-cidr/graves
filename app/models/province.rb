@@ -12,6 +12,17 @@
 class Province < ActiveRecord::Base
 
   #
+  # Select geometry as GeoJSON.
+  #
+  scope :snap, -> {
+    select {
+      my{column_names} -
+      ['geometry'] +
+      [ST_AsGeoJSON(ST_FlipCoordinates(geometry), 2).as(geojson)]
+    }
+  }
+
+  #
   # Match a grave collection with a province.
   #
   # @param c [Collection]

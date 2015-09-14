@@ -3,7 +3,7 @@ module API
   class ProvincesController < ApplicationController
 
     def index
-      @provinces = Province.all
+      @provinces = Province.snap
     end
 
   end

@@ -28,8 +28,7 @@ export default class extends Component {
    */
   componentWillMount() {
 
-    // Load provinces, create group.
-    this.props.dispatch(actions.loadProvinces());
+    // Create group.
     this.group = L.featureGroup();
     this.group.addTo(this.context.map);
 
@@ -38,6 +37,9 @@ export default class extends Component {
       let id = e.layer.options.id;
       this.props.dispatch(actions.highlightProvince(id));
     });
+
+    // Request provinces.
+    this.props.dispatch(actions.loadProvinces());
 
   }
 
