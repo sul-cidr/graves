@@ -1,15 +1,37 @@
 
 
-import _ from 'lodash';
 import L from 'leaflet';
+import React, { Component, findDOMNode, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import React, { Component, findDOMNode } from 'react';
-import store from '../store';
-import { loadProvinces } from '../actions/provinces';
+import Provinces from './provinces';
 
 
 @connect(state => (state.provinces))
 export default class extends Component {
+
+
+  static childContextTypes = {
+    map: PropTypes.object
+  }
+
+
+  /**
+   * Set initial state.
+   *
+   * @param {Object} props
+   */
+  constructor(props) {
+    super(props);
+    this.state = { map: null };
+  }
+
+
+  /**
+   * Expose the map instance to children.
+   */
+  getChildContext() {
+    return { map: this.state.map };
+  }
 
 
   /**
@@ -18,8 +40,6 @@ export default class extends Component {
   componentDidMount() {
 
     let el = findDOMNode(this.refs.map);
-
-    // TODO: Break out.
 
     let map = L.map(el, {
       zoomControl: false,
@@ -45,8 +65,7 @@ export default class extends Component {
     // Default viewport.
     map.setView([30, 115], 5);
 
-    // TODO|dev
-    this.props.dispatch(loadProvinces());
+    this.setState({ map: map });
 
   }
 
@@ -55,8 +74,17 @@ export default class extends Component {
    * Render the map container.
    */
   render() {
-    console.log(this.props);
-    return <div id="map" ref="map">Map</div>;
+
+    let children = this.state.map ? (
+      <Provinces />
+    ) : null;
+
+    return (
+      <div id="map" ref="map">
+        {children}
+      </div>
+    );
+
   }
 
 
