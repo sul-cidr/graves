@@ -6,7 +6,7 @@ import { combineReducers } from 'redux';
 import {
   REQUEST_PROVINCES,
   RECEIVE_PROVINCES
-} from '../actions';
+} from '../actions/provinces';
 
 
 /**
