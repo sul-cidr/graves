@@ -2,32 +2,27 @@
 
 import _ from 'lodash';
 import * as constants from '../constants';
+import createReducer from '../utils/create-reducer';
 
 
-/**
- * CDC provinces.
- */
-export default function provinces(state = {
-  items: [],
+const initialState = {
+  features: [],
   loading: false,
-}, action) {
+};
 
-  switch (action.type) {
 
-  case constants.REQUEST_PROVINCES:
-    return _.assign({}, state, {
-      loading: true,
-    });
+const handlers = {
 
-  case constants.RECEIVE_PROVINCES:
-    return _.assign({}, state, {
-      items: action.provinces,
-      loading: false,
-    });
+  [constants.REQUEST_PROVINCES]: (state, action) => ({
+    loading: true,
+  }),
 
-  default:
-    return state;
+  [constants.RECEIVE_PROVINCES]: (state, action) => ({
+    features: action.provinces,
+    loading: false,
+  }),
 
-  }
+};
 
-}
+
+export default createReducer(initialState, handlers);
