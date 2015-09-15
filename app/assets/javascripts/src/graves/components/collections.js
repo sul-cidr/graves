@@ -26,7 +26,7 @@ export default class extends Component {
 
 
   /**
-   * Create the feature group, request collections.
+   * Initialize the feature group and id map.
    */
   componentWillMount() {
 
@@ -48,9 +48,14 @@ export default class extends Component {
       this.props.dispatch(actions.unhighlightCollection());
     });
 
-    // Request provinces.
-    this.props.dispatch(actions.loadCollections());
+  }
 
+
+  /**
+   * Request collections.
+   */
+  componentDidMount() {
+    this.props.dispatch(actions.loadCollections());
   }
 
 

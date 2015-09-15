@@ -44,9 +44,14 @@ export default class extends Component {
       this.props.dispatch(actions.unhighlightProvince());
     });
 
-    // Request provinces.
-    this.props.dispatch(actions.loadProvinces());
+  }
 
+
+  /**
+   * Request provinces.
+   */
+  componentDidMount() {
+    this.props.dispatch(actions.loadProvinces());
   }
 
 
