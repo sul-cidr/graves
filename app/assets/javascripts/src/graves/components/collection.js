@@ -22,7 +22,14 @@ export default class extends Component {
    * Add the collection.
    */
   componentWillMount() {
-    console.log(this.props.feature);
+
+    // Parse GeoJSON.
+    let feature = JSON.parse(this.props.feature.geojson);
+
+    // Add layer.
+    this.layer = L.circleMarker(feature.coordinates);
+    this.props.group.addLayer(this.layer);
+
   }
 
 
