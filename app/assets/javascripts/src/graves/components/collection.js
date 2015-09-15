@@ -15,6 +15,7 @@ export default class extends Component {
 
   static propTypes = {
     feature: PropTypes.object.isRequired,
+    highlighted: PropTypes.any,
     group: PropTypes.object.isRequired,
   }
 
@@ -26,7 +27,6 @@ export default class extends Component {
 
     // Parse GeoJSON.
     let feature = JSON.parse(this.props.feature.geojson);
-    if (!feature) return;
 
     let options = {
       ...styles.path.def,

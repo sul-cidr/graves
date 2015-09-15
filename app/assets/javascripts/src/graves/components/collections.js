@@ -56,6 +56,9 @@ export default class extends Component {
 
     let features = this.props.features.map(f => {
 
+      // Filter out un-geocoded collections.
+      if (!f.geojson) return;
+
       // Is the province highlighted?
       let highlighted = (f.id == this.props.highlighted);
 
