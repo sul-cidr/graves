@@ -5,9 +5,12 @@ import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import * as actions from '../actions/collections';
 import Collection from './collection';
+import CollectionHighlighter from './collection-highlighter';
 
 
-@connect(state => (state.collections))
+@connect(state => ({
+  features: state.collections.features
+}))
 export default class extends Component {
 
 
@@ -26,6 +29,8 @@ export default class extends Component {
    * Create the feature group, request collections.
    */
   componentWillMount() {
+
+    this.idMap = {};
 
     // Create group.
     this.group = L.featureGroup();
@@ -66,17 +71,23 @@ export default class extends Component {
         <Collection
           key={f.id}
           group={this.group}
+          idMap={this.idMap}
           feature={f}
-          highlighted={highlighted}
         />
       );
 
     });
 
     return (
-      <noscript className="collections">
-        {features}
-      </noscript>
+      <span className="collections">
+
+        <CollectionHighlighter idMap={this.idMap} />
+
+        <span>
+          {features}
+        </span>
+
+      </span>
     );
 
   }

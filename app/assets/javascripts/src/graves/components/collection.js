@@ -15,8 +15,8 @@ export default class extends Component {
 
   static propTypes = {
     feature: PropTypes.object.isRequired,
-    highlighted: PropTypes.bool.isRequired,
     group: PropTypes.object.isRequired,
+    idMap: PropTypes.object.isRequired,
   }
 
 
@@ -40,6 +40,8 @@ export default class extends Component {
     let r = Math.log(this.props.feature.num_graves || 20) * 3;
     this.layer.setRadius(r);
 
+    // Register the layer.
+    this.props.idMap[this.props.feature.id] = this.layer;
     this.props.group.addLayer(this.layer);
 
   }
