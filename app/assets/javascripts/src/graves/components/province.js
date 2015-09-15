@@ -31,7 +31,7 @@ export default class extends Component {
     let feature = JSON.parse(this.props.feature.geojson);
 
     let options = {
-      ...styles.path,
+      ...styles.path.def,
       id: this.props.feature.id,
     };
 
@@ -66,9 +66,9 @@ export default class extends Component {
   render() {
 
     if (this.props.highlighted) {
-      this.layer.setStyle({ color: 'red' });
+      this.layer.setStyle(styles.path.hl);
     } else {
-      this.layer.setStyle(styles.path);
+      this.layer.setStyle(styles.path.def);
     }
 
     return null;
