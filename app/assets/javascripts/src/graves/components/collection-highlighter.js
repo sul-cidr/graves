@@ -40,14 +40,6 @@ export default class extends Component {
 
 
   /**
-   * Render the map container.
-   */
-  render() {
-    return null;
-  }
-
-
-  /**
    * Highlight a collection.
    */
   highlight(id) {
@@ -60,6 +52,11 @@ export default class extends Component {
    */
   unhighlight(id) {
     this.props.idMap[id].setStyle(styles.path.def);
+  }
+
+
+  render() {
+    return null;
   }
 
 

@@ -47,29 +47,8 @@ export default class extends Component {
   }
 
 
-  /**
-   * Only update when the highlight changes.
-   *
-   * @param {Object} nextProps
-   */
-  shouldComponentUpdate(nextProps) {
-    return this.props.highlighted != nextProps.highlighted;
-  }
-
-
-  /**
-   * Render the map container.
-   */
   render() {
-
-    let path = this.props.highlighted ?
-      styles.path.hl :
-      styles.path.def;
-
-    this.layer.setStyle(path);
-
     return null;
-
   }
 
 
