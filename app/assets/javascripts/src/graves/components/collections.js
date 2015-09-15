@@ -7,7 +7,9 @@ import * as actions from '../actions/collections';
 import Collection from './collection';
 
 
-@connect(state => (state.collections))
+@connect(state => ({
+  features: state.collections.features
+}))
 export default class extends Component {
 
 
@@ -67,7 +69,6 @@ export default class extends Component {
           key={f.id}
           group={this.group}
           feature={f}
-          highlighted={highlighted}
         />
       );
 
