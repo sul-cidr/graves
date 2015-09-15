@@ -22,7 +22,7 @@ export default class extends Component {
    * Add the collection.
    */
   componentWillMount() {
-    // TODO
+    console.log(this.props.feature);
   }
 
 

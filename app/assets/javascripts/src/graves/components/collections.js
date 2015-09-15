@@ -7,7 +7,7 @@ import * as actions from '../actions/collections';
 import Collection from './collection';
 
 
-@connect(state => (state.provinces))
+@connect(state => (state.collections))
 export default class extends Component {
 
 

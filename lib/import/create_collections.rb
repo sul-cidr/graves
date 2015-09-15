@@ -24,7 +24,7 @@ module Import
           village_p:    r[:village_e],
           village_c:    r[:village_c],
           destination:  r[:destination],
-          location:     r[:location],
+          location:     r[:location_c],
         )
 
       end
