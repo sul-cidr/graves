@@ -15,7 +15,7 @@ export default class extends Component {
 
   static propTypes = {
     feature: PropTypes.object.isRequired,
-    highlighted: PropTypes.any,
+    highlighted: PropTypes.bool.isRequired,
     group: PropTypes.object.isRequired,
   }
 
