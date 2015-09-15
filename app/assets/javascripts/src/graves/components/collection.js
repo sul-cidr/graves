@@ -2,6 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import L from 'leaflet';
+import styles from './collection.yml';
 
 
 export default class extends Component {
@@ -26,8 +27,18 @@ export default class extends Component {
     // Parse GeoJSON.
     let feature = JSON.parse(this.props.feature.geojson);
 
-    // Add layer.
-    this.layer = L.circleMarker(feature.coordinates);
+    let options = {
+      ...styles.path.def,
+      id: this.props.feature.id,
+    };
+
+    // Create the marker.
+    this.layer = L.circleMarker(feature.coordinates, options);
+
+    // Size by grave count.
+    let r = Math.log(this.props.feature.num_graves || 20) * 3;
+    this.layer.setRadius(r);
+
     this.props.group.addLayer(this.layer);
 
   }
