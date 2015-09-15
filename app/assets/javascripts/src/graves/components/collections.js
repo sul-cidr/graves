@@ -31,6 +31,18 @@ export default class extends Component {
     this.group = L.featureGroup();
     this.group.addTo(this.context.map);
 
+    // HIGHLIGHT
+    this.group.on('mouseover', e => {
+      this.props.dispatch(actions.highlightCollection(
+        e.layer.options.id
+      ));
+    });
+
+    // UNHIGHLIGHT
+    this.group.on('mouseout', e => {
+      this.props.dispatch(actions.unhighlightCollection());
+    });
+
     // Request provinces.
     this.props.dispatch(actions.loadCollections());
 
@@ -44,11 +56,15 @@ export default class extends Component {
 
     let features = this.props.features.map(f => {
 
+      // Is the province highlighted?
+      let highlighted = (f.id == this.props.highlighted);
+
       return (
         <Collection
           key={f.id}
           group={this.group}
           feature={f}
+          highlighted={highlighted}
         />
       );
 

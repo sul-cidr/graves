@@ -46,10 +46,12 @@ export default class extends Component {
 
 
   /**
-   * Remove the province.
+   * Only update when the highlight changes.
+   *
+   * @param {Object} nextProps
    */
-  componentWillUnmount() {
-    // TODO
+  shouldComponentUpdate(nextProps) {
+    return this.props.highlighted != nextProps.highlighted;
   }
 
 
@@ -57,7 +59,15 @@ export default class extends Component {
    * Render the map container.
    */
   render() {
+
+    let path = this.props.highlighted ?
+      styles.path.hl :
+      styles.path.def;
+
+    this.layer.setStyle(path);
+
     return null;
+
   }
 
 

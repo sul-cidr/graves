@@ -42,3 +42,26 @@ function receiveCollections(json) {
     features: json,
   };
 }
+
+
+/**
+ * Highlight an individual collection.
+ *
+ * @param {Number} id
+ */
+export function highlightCollection(id) {
+  return {
+    type: constants.HIGHLIGHT_COLLECTION,
+    id: id,
+  };
+}
+
+
+/**
+ * Unhighlight collections.
+ */
+export function unhighlightCollection() {
+  return {
+    type: constants.UNHIGHLIGHT_COLLECTION,
+  };
+}

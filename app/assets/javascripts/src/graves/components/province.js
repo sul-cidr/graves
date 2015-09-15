@@ -43,14 +43,6 @@ export default class extends Component {
 
 
   /**
-   * Remove the province.
-   */
-  componentWillUnmount() {
-    this.context.map.remove(this.layer);
-  }
-
-
-  /**
    * Only update when the highlight changes.
    *
    * @param {Object} nextProps
@@ -65,11 +57,11 @@ export default class extends Component {
    */
   render() {
 
-    if (this.props.highlighted) {
-      this.layer.setStyle(styles.path.hl);
-    } else {
-      this.layer.setStyle(styles.path.def);
-    }
+    let path = this.props.highlighted ?
+      styles.path.hl :
+      styles.path.def;
+
+    this.layer.setStyle(path);
 
     return null;
 

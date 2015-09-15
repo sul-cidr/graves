@@ -62,6 +62,6 @@ export function highlightProvince(id) {
  */
 export function unhighlightProvince() {
   return {
-    type: constants.UNHIGHLIGHT_PROVINCE
+    type: constants.UNHIGHLIGHT_PROVINCE,
   };
 }

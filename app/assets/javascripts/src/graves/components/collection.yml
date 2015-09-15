@@ -9,5 +9,5 @@ path:
     weight: 1
 
   hl:
-    fillColo: orange
+    fillColor: orange
     fillOpacity: 0.7

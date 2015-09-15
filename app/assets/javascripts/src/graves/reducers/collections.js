@@ -22,6 +22,14 @@ const handlers = {
     loading: false,
   }),
 
+  [constants.HIGHLIGHT_COLLECTION]: (state, action) => ({
+    highlighted: action.id,
+  }),
+
+  [constants.UNHIGHLIGHT_COLLECTION]: (state, action) => ({
+    highlighted: null,
+  }),
+
 };
 
 
