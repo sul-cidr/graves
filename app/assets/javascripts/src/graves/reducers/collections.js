@@ -5,9 +5,10 @@ import createReducer from '../utils/create-reducer';
 
 
 const initialState = {
+  loading: false,
   features: [],
   highlighted: null,
-  loading: false,
+  layers: {},
 };
 
 
