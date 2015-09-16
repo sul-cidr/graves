@@ -4,7 +4,7 @@ import L from 'leaflet';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import * as actions from '../actions/collections';
-import Collection from './collection';
+import CollectionLayer from './collection-layer';
 import styles from './collection.yml';
 
 
@@ -81,7 +81,7 @@ export default class extends Component {
       if (!f.geojson) return;
 
       return (
-        <Collection
+        <CollectionLayer
           key={f.id}
           group={this.group}
           idMap={this.idMap}

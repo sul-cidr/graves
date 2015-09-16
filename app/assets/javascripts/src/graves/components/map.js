@@ -3,8 +3,8 @@
 import L from 'leaflet';
 import React, { Component, findDOMNode, PropTypes } from 'react';
 import Provinces from './provinces';
-import Collections from './collections';
-import CollectionHighlight from './highlighter';
+import CollectionHighlight from './collection-highlight';
+import CollectionGroup from './collection-group';
 
 
 export default class extends Component {
@@ -79,7 +79,7 @@ export default class extends Component {
       return (
         <div id="map" ref="map">
           <Provinces />
-          <Collections />
+          <CollectionGroup />
           <CollectionHighlight />
         </div>
       );
