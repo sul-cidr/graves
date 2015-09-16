@@ -34,7 +34,6 @@ export default class extends Component {
 
     // Create group.
     this.group = L.featureGroup();
-    this.group.addTo(this.context.map);
 
     // HIGHLIGHT
     this.group.on('mouseover', e => {
@@ -47,6 +46,10 @@ export default class extends Component {
     this.group.on('mouseout', e => {
       this.props.dispatch(actions.unhighlightCollection());
     });
+
+    // Add to the map.
+    this.group.addTo(this.context.map);
+    this.group.bringToFront();
 
   }
 
