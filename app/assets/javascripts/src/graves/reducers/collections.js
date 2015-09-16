@@ -23,6 +23,10 @@ const handlers = {
     loading: false,
   }),
 
+  [constants.RENDER_COLLECTIONS]: (state, action) => ({
+    layers: action.layers,
+  }),
+
   [constants.HIGHLIGHT_COLLECTION]: (state, action) => ({
     highlighted: action.id,
   }),

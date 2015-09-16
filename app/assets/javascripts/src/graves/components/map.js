@@ -4,6 +4,7 @@ import L from 'leaflet';
 import React, { Component, findDOMNode, PropTypes } from 'react';
 import Provinces from './provinces';
 import Collections from './collections';
+import CollectionHighlight from './highlighter';
 
 
 export default class extends Component {
@@ -79,6 +80,7 @@ export default class extends Component {
         <div id="map" ref="map">
           <Provinces />
           <Collections />
+          <CollectionHighlight />
         </div>
       );
     }

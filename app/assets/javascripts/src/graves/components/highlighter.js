@@ -5,12 +5,15 @@ import { connect } from 'react-redux';
 import styles from './collection.yml';
 
 
+@connect(state => ({
+  layers: state.collections.layers,
+  highlighted: state.collections.highlighted,
+}))
 export default class extends Component {
 
 
   static propTypes = {
-    highlight: PropTypes.func.isRequired,
-    unhighlight: PropTypes.func.isRequired,
+    layers: PropTypes.object.isRequired,
     highlighted: PropTypes.any,
   }
 
@@ -18,22 +21,40 @@ export default class extends Component {
   /**
    * Manifest the highlighted collection.
    *
-   * @param {Object} nextProps
+   * @param {Object} prevProps
    */
-  shouldComponentUpdate(nextProps) {
+  componentDidUpdate(prevProps) {
 
     // Highlight.
-    if (!this.props.highlighted && nextProps.highlighted) {
-      this.props.highlight(nextProps.highlighted);
+    if (!prevProps.highlighted && this.props.highlighted) {
+      this.highlight(this.props.highlighted);
     }
 
     // Unhighlight.
-    else if (this.props.highlighted && !nextProps.highlighted) {
-      this.props.unhighlight(this.props.highlighted);
+    else if (prevProps.highlighted && !this.props.highlighted) {
+      this.unhighlight(prevProps.highlighted);
     }
 
-    return false;
+  }
 
+
+  /**
+   * Apply a highlight.
+   *
+   * @param {Number} id
+   */
+  highlight(id) {
+    this.props.layers[id].setStyle(styles.path.hl);
+  }
+
+
+  /**
+   * Remove a highlight.
+   *
+   * @param {Number} id
+   */
+  unhighlight(id) {
+    this.props.layers[id].setStyle(styles.path.def);
   }
 
 

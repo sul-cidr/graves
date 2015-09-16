@@ -65,3 +65,16 @@ export function unhighlightCollection() {
     type: constants.UNHIGHLIGHT_COLLECTION,
   };
 }
+
+
+/**
+ * Map ids to Leaflet layers.
+ *
+ * @param {Object} idMap
+ */
+export function renderCollections(idMap) {
+  return {
+    type: constants.RENDER_COLLECTIONS,
+    layers: idMap,
+  };
+}

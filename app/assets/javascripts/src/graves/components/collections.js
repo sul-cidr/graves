@@ -63,6 +63,14 @@ export default class extends Component {
 
 
   /**
+   * Publish the id -> layer map to the store.
+   */
+  componentDidUpdate() {
+    this.props.dispatch(actions.renderCollections(this.idMap));
+  }
+
+
+  /**
    * Render the map container.
    */
   render() {
