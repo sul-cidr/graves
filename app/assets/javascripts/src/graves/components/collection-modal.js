@@ -22,10 +22,13 @@ export default class extends Component {
    * Display the collection detail modal.
    */
   render() {
+
     return (
       <Modal show={this.props.selected} onHide={this.close.bind(this)}>
 
-        <Modal.Header closeButton>Heading</Modal.Header>
+        <Modal.Header closeButton>
+          <h4>Heading</h4>
+        </Modal.Header>
 
         <Modal.Body>
           <p>Test content.</p>
@@ -33,6 +36,7 @@ export default class extends Component {
 
       </Modal>
     );
+
   }
 
 
