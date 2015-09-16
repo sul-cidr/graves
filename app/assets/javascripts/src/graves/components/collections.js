@@ -5,7 +5,14 @@ import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import * as actions from '../actions/collections';
 import Collection from './collection';
-import CollectionHighlighter from './collection-highlighter';
+import Highlighter from './highlighter';
+import styles from './collection.yml';
+
+
+@connect(state => ({
+  highlighted: state.collections.highlighted
+}))
+class CollectionsHighlighter extends Highlighter {}
 
 
 @connect(state => ({
@@ -86,15 +93,34 @@ export default class extends Component {
     return (
       <span className="collections">
 
-        <CollectionHighlighter idMap={this.idMap} />
-
         <span>
           {features}
         </span>
 
+        <CollectionsHighlighter
+          highlight={this.highlight.bind(this)}
+          unhighlight={this.unhighlight.bind(this)}
+        />
+
       </span>
     );
 
+  }
+
+
+  /**
+   * Highlight a collection.
+   */
+  highlight(id) {
+    this.idMap[id].setStyle(styles.path.hl);
+  }
+
+
+  /**
+   * Unhighlight a collection.
+   */
+  unhighlight(id) {
+    this.idMap[id].setStyle(styles.path.def);
   }
 
 

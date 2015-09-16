@@ -5,14 +5,12 @@ import { connect } from 'react-redux';
 import styles from './collection.yml';
 
 
-@connect(state => ({
-  highlighted: state.collections.highlighted
-}))
 export default class extends Component {
 
 
   static propTypes = {
-    idMap: PropTypes.object.isRequired,
+    highlight: PropTypes.func.isRequired,
+    unhighlight: PropTypes.func.isRequired,
     highlighted: PropTypes.any,
   }
 
@@ -26,32 +24,16 @@ export default class extends Component {
 
     // Highlight.
     if (!this.props.highlighted && nextProps.highlighted) {
-      this.highlight(nextProps.highlighted);
+      this.props.highlight(nextProps.highlighted);
     }
 
     // Unhighlight.
     else if (this.props.highlighted && !nextProps.highlighted) {
-      this.unhighlight(this.props.highlighted);
+      this.props.unhighlight(this.props.highlighted);
     }
 
     return false;
 
-  }
-
-
-  /**
-   * Highlight a collection.
-   */
-  highlight(id) {
-    this.props.idMap[id].setStyle(styles.path.hl);
-  }
-
-
-  /**
-   * Unhighlight a collection.
-   */
-  unhighlight(id) {
-    this.props.idMap[id].setStyle(styles.path.def);
   }
 
 
