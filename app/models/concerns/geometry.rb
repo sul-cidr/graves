@@ -1,5 +1,5 @@
 
-module GeoJSON
+module Geometry
 
   extend ActiveSupport::Concern
 

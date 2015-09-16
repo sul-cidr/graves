@@ -11,7 +11,7 @@
 
 class Province < ActiveRecord::Base
 
-  include GeoJSON
+  include Geometry
 
   #
   # Match a grave collection with a province.

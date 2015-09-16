@@ -12,7 +12,7 @@
 
 class County < ActiveRecord::Base
 
-  include GeoJSON
+  include Geometry
 
   belongs_to :province
 
