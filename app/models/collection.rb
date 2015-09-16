@@ -28,7 +28,7 @@
 
 class Collection < ActiveRecord::Base
 
-  include GeoJSON
+  include Geometry
 
   belongs_to :notice
   belongs_to :province

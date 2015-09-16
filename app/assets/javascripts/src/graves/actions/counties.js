@@ -13,7 +13,7 @@ export function loadCounties() {
     // Notify start.
     dispatch(requestCounties());
 
-    fetch('/api/counties')
+    fetch('/api/provinces')
     .then(res => res.json())
     .then(json => dispatch(receiveCounties(json)));
 
