@@ -48,7 +48,6 @@ export default class extends Component {
 
     // Add to the map.
     this.group.addTo(this.context.map);
-    this.group.bringToBack();
 
   }
 

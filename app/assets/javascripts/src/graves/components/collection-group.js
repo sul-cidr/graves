@@ -56,7 +56,6 @@ export default class extends Component {
 
     // Add to the map.
     this.group.addTo(this.context.map);
-    this.group.bringToFront();
 
   }
 
@@ -74,6 +73,7 @@ export default class extends Component {
    */
   componentDidUpdate() {
     this.props.dispatch(actions.renderCollections(this.idMap));
+    this.group.bringToFront();
   }
 
 
