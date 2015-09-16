@@ -1,8 +1,8 @@
 
 
-import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import styles from './province.yml';
+import React, { Component, PropTypes } from 'react';
+import styles from './county.yml';
 
 
 @connect(state => ({

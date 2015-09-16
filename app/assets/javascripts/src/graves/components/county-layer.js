@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import L from 'leaflet';
 import wellknown from 'wellknown';
-import styles from './province.yml';
+import styles from './county.yml';
 
 
 export default class extends Component {
