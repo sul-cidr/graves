@@ -45,6 +45,7 @@ export default class extends Component {
    */
   highlight(id) {
     this.props.layers[id].setStyle(styles.path.hl);
+    this.props.layers[id].openPopup();
   }
 
 
@@ -55,6 +56,7 @@ export default class extends Component {
    */
   unhighlight(id) {
     this.props.layers[id].setStyle(styles.path.def);
+    this.props.layers[id].closePopup();
   }
 
 

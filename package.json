@@ -29,6 +29,7 @@
     "babel": "^5.8.23",
     "isomorphic-fetch": "^2.1.1",
     "leaflet": "^0.7.5",
+    "lesshat": "^3.0.2",
     "lodash": "^3.10.1",
     "react": "^0.13.3",
     "react-redux": "^2.1.1",
