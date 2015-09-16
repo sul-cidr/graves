@@ -69,9 +69,6 @@ export default class extends Component {
       // Filter out un-geocoded collections.
       if (!f.geojson) return;
 
-      // Is the province highlighted?
-      let highlighted = (f.id == this.props.highlighted);
-
       return (
         <Collection
           key={f.id}
