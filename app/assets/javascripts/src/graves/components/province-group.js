@@ -4,7 +4,7 @@ import L from 'leaflet';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import * as actions from '../actions/provinces';
-import Province from './province';
+import ProvinceLayer from './province-layer';
 
 
 @connect(state => ({
@@ -76,7 +76,7 @@ export default class extends Component {
 
     let features = this.props.features.map(f => {
       return (
-        <Province
+        <ProvinceLayer
           key={f.id}
           group={this.group}
           idMap={this.idMap}
