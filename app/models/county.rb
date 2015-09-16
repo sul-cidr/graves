@@ -12,6 +12,8 @@
 
 class County < ActiveRecord::Base
 
+  include GeoJSON
+
   belongs_to :province
 
   #

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :provinces, only: [:index]
+    resources :counties, only: [:index]
     resources :collections, only: [:index]
   end
 
