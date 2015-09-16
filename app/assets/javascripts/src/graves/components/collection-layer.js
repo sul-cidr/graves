@@ -49,7 +49,8 @@ export default class extends Component {
 
     // Attach the popup.
     this.layer.bindPopup(label, {
-      closeButton: false
+      closeButton: false,
+      minWidth: 10,
     });
 
     // Register the layer.
