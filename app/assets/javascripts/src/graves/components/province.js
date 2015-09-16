@@ -17,8 +17,8 @@ export default class extends Component {
 
   static propTypes = {
     feature: PropTypes.object.isRequired,
-    highlighted: PropTypes.any,
     group: PropTypes.object.isRequired,
+    idMap: PropTypes.object.isRequired,
   }
 
 
@@ -35,20 +35,13 @@ export default class extends Component {
       id: this.props.feature.id,
     };
 
-    // Add layer.
+    // Create the polygon.
     this.layer = L.multiPolygon(feature.coordinates, options);
+
+    // Register the layer.
+    this.props.idMap[this.props.feature.id] = this.layer;
     this.props.group.addLayer(this.layer);
 
-  }
-
-
-  /**
-   * Only update when the highlight changes.
-   *
-   * @param {Object} nextProps
-   */
-  shouldComponentUpdate(nextProps) {
-    return this.props.highlighted != nextProps.highlighted;
   }
 
 
@@ -56,15 +49,7 @@ export default class extends Component {
    * Render the map container.
    */
   render() {
-
-    let path = this.props.highlighted ?
-      styles.path.hl :
-      styles.path.def;
-
-    this.layer.setStyle(path);
-
     return null;
-
   }
 
 

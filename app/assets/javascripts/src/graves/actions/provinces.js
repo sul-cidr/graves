@@ -65,3 +65,16 @@ export function unhighlightProvince() {
     type: constants.UNHIGHLIGHT_PROVINCE,
   };
 }
+
+
+/**
+ * Map ids to Leaflet layers.
+ *
+ * @param {Object} idMap
+ */
+export function renderProvinces(idMap) {
+  return {
+    type: constants.RENDER_PROVINCES,
+    layers: idMap,
+  };
+}

@@ -7,7 +7,9 @@ import * as actions from '../actions/provinces';
 import Province from './province';
 
 
-@connect(state => (state.provinces))
+@connect(state => ({
+  features: state.provinces.features
+}))
 export default class extends Component {
 
 
@@ -19,7 +21,6 @@ export default class extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     features: PropTypes.array.isRequired,
-    highlighted: PropTypes.any,
   }
 
 
@@ -28,9 +29,10 @@ export default class extends Component {
    */
   componentWillMount() {
 
+    this.idMap = {};
+
     // Create group.
     this.group = L.featureGroup();
-    this.group.addTo(this.context.map);
 
     // HIGHLIGHT
     this.group.on('mouseover', e => {
@@ -44,6 +46,10 @@ export default class extends Component {
       this.props.dispatch(actions.unhighlightProvince());
     });
 
+    // Add to the map.
+    this.group.addTo(this.context.map);
+    this.group.bringToBack();
+
   }
 
 
@@ -56,24 +62,27 @@ export default class extends Component {
 
 
   /**
+   * Publish the id -> layer map to the store.
+   */
+  componentDidUpdate() {
+    this.props.dispatch(actions.renderProvinces(this.idMap));
+  }
+
+
+  /**
    * Render the map container.
    */
   render() {
 
     let features = this.props.features.map(f => {
-
-      // Is the province highlighted?
-      let highlighted = (f.id == this.props.highlighted);
-
       return (
         <Province
           key={f.id}
           group={this.group}
+          idMap={this.idMap}
           feature={f}
-          highlighted={highlighted}
         />
       );
-
     });
 
     return (

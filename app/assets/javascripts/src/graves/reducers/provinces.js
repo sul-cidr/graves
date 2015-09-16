@@ -5,9 +5,10 @@ import createReducer from '../utils/create-reducer';
 
 
 const initialState = {
+  loading: false,
   features: [],
   highlighted: null,
-  loading: false,
+  layers: {},
 };
 
 
@@ -20,6 +21,10 @@ const handlers = {
   [constants.RECEIVE_PROVINCES]: (state, action) => ({
     features: action.features,
     loading: false,
+  }),
+
+  [constants.RENDER_PROVINCES]: (state, action) => ({
+    layers: action.layers,
   }),
 
   [constants.HIGHLIGHT_PROVINCE]: (state, action) => ({
