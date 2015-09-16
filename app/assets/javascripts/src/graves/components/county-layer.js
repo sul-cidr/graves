@@ -23,7 +23,7 @@ export default class extends Component {
 
 
   /**
-   * Add the province.
+   * Add the county.
    */
   componentWillMount() {
 

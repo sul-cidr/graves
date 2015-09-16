@@ -1,11 +1,11 @@
 
 
 import { combineReducers } from 'redux';
-import provinces from './provinces';
+import counties from './counties';
 import collections from './collections';
 
 
 export default combineReducers({
-  provinces,
+  counties,
   collections,
 });

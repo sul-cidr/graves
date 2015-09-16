@@ -3,12 +3,12 @@
 import L from 'leaflet';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
-import * as actions from '../actions/provinces';
+import * as actions from '../actions/counties';
 import CountyLayer from './county-layer';
 
 
 @connect(state => ({
-  features: state.provinces.features
+  features: state.counties.features
 }))
 export default class extends Component {
 
@@ -25,7 +25,7 @@ export default class extends Component {
 
 
   /**
-   * Create the feature group, request provinces.
+   * Create the feature group, request counties.
    */
   componentWillMount() {
 
@@ -36,14 +36,14 @@ export default class extends Component {
 
     // HIGHLIGHT
     this.group.on('mouseover', e => {
-      this.props.dispatch(actions.highlightProvince(
+      this.props.dispatch(actions.highlightCounty(
         e.layer.options.id
       ));
     });
 
     // UNHIGHLIGHT
     this.group.on('mouseout', e => {
-      this.props.dispatch(actions.unhighlightProvince());
+      this.props.dispatch(actions.unhighlightCounty());
     });
 
     // Add to the map.
@@ -54,10 +54,10 @@ export default class extends Component {
 
 
   /**
-   * Request provinces.
+   * Request counties.
    */
   componentDidMount() {
-    this.props.dispatch(actions.loadProvinces());
+    this.props.dispatch(actions.loadCounties());
   }
 
 
@@ -65,7 +65,7 @@ export default class extends Component {
    * Publish the id -> layer map to the store.
    */
   componentDidUpdate() {
-    this.props.dispatch(actions.renderProvinces(this.idMap));
+    this.props.dispatch(actions.renderCounties(this.idMap));
   }
 
 
@@ -86,7 +86,7 @@ export default class extends Component {
     });
 
     return (
-      <noscript className="provinces">
+      <noscript className="counties">
         {features}
       </noscript>
     );

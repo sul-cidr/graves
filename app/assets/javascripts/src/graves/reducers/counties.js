@@ -14,24 +14,24 @@ const initialState = {
 
 const handlers = {
 
-  [constants.REQUEST_PROVINCES]: (state, action) => ({
+  [constants.REQUEST_COUNTIES]: (state, action) => ({
     loading: true,
   }),
 
-  [constants.RECEIVE_PROVINCES]: (state, action) => ({
+  [constants.RECEIVE_COUNTIES]: (state, action) => ({
     features: action.features,
     loading: false,
   }),
 
-  [constants.RENDER_PROVINCES]: (state, action) => ({
+  [constants.RENDER_COUNTIES]: (state, action) => ({
     layers: action.layers,
   }),
 
-  [constants.HIGHLIGHT_PROVINCE]: (state, action) => ({
+  [constants.HIGHLIGHT_COUNTY]: (state, action) => ({
     highlighted: action.id,
   }),
 
-  [constants.UNHIGHLIGHT_PROVINCE]: (state, action) => ({
+  [constants.UNHIGHLIGHT_COUNTY]: (state, action) => ({
     highlighted: null,
   }),
 

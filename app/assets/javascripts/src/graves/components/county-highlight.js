@@ -6,8 +6,8 @@ import styles from './county.yml';
 
 
 @connect(state => ({
-  layers: state.provinces.layers,
-  highlighted: state.provinces.highlighted,
+  layers: state.counties.layers,
+  highlighted: state.counties.highlighted,
 }))
 export default class extends Component {
 
