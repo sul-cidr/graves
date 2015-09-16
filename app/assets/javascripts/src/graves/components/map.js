@@ -2,12 +2,10 @@
 
 import L from 'leaflet';
 import React, { Component, findDOMNode, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import Provinces from './provinces';
 import Collections from './collections';
 
 
-@connect(state => (state.provinces))
 export default class extends Component {
 
 
