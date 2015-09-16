@@ -78,3 +78,16 @@ export function renderCollections(idMap) {
     layers: idMap,
   };
 }
+
+
+/**
+ * Select an individual collection.
+ *
+ * @param {Number} id
+ */
+export function selectCollection(id) {
+  return {
+    type: constants.SELECT_COLLECTION,
+    id: id,
+  };
+}

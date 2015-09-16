@@ -7,8 +7,9 @@ import createReducer from '../utils/create-reducer';
 const initialState = {
   loading: false,
   features: [],
-  highlighted: null,
   layers: {},
+  highlighted: null,
+  selected: null,
 };
 
 
@@ -33,6 +34,10 @@ const handlers = {
 
   [constants.UNHIGHLIGHT_COLLECTION]: (state, action) => ({
     highlighted: null,
+  }),
+
+  [constants.SELECT_COLLECTION]: (state, action) => ({
+    selected: action.id,
   }),
 
 };
