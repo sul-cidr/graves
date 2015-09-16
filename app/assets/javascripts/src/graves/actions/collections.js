@@ -45,6 +45,19 @@ function receiveCollections(json) {
 
 
 /**
+ * Map ids to Leaflet layers.
+ *
+ * @param {Object} idMap
+ */
+export function renderCollections(idMap) {
+  return {
+    type: constants.RENDER_COLLECTIONS,
+    layers: idMap,
+  };
+}
+
+
+/**
  * Highlight an individual collection.
  *
  * @param {Number} id
@@ -68,19 +81,6 @@ export function unhighlightCollection() {
 
 
 /**
- * Map ids to Leaflet layers.
- *
- * @param {Object} idMap
- */
-export function renderCollections(idMap) {
-  return {
-    type: constants.RENDER_COLLECTIONS,
-    layers: idMap,
-  };
-}
-
-
-/**
  * Select an individual collection.
  *
  * @param {Number} id
@@ -89,5 +89,15 @@ export function selectCollection(id) {
   return {
     type: constants.SELECT_COLLECTION,
     id: id,
+  };
+}
+
+
+/**
+ * Unselect collections.
+ */
+export function unselectCollection() {
+  return {
+    type: constants.UNSELECT_COLLECTION,
   };
 }

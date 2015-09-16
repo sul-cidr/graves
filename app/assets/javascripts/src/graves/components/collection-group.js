@@ -42,6 +42,13 @@ export default class extends Component {
       ));
     });
 
+    // SELECT
+    this.group.on('click', e => {
+      this.props.dispatch(actions.selectCollection(
+        e.layer.options.id
+      ));
+    });
+
     // UNHIGHLIGHT
     this.group.on('mouseout', e => {
       this.props.dispatch(actions.unhighlightCollection());

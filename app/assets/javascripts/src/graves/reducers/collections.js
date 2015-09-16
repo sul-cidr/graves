@@ -40,6 +40,10 @@ const handlers = {
     selected: action.id,
   }),
 
+  [constants.UNSELECT_COLLECTION]: (state, action) => ({
+    selected: null,
+  }),
+
 };
 
 

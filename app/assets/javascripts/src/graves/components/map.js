@@ -6,6 +6,7 @@ import ProvinceGroup from './province-group';
 import ProvinceHighlight from './province-highlight';
 import CollectionGroup from './collection-group';
 import CollectionHighlight from './collection-highlight';
+import CollectionModal from './collection-modal';
 
 
 export default class extends Component {
@@ -79,10 +80,14 @@ export default class extends Component {
     if (this.state.map) {
       return (
         <div id="map" ref="map">
+
           <ProvinceGroup />
           <ProvinceHighlight />
+
           <CollectionGroup />
           <CollectionHighlight />
+          <CollectionModal />
+
         </div>
       );
     }
