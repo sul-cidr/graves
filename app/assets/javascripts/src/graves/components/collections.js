@@ -9,10 +9,9 @@ import Highlighter from './highlighter';
 import styles from './collection.yml';
 
 
-@connect(state => ({
+const CollectionsHighlighter = connect(state => ({
   highlighted: state.collections.highlighted
-}))
-class CollectionsHighlighter extends Highlighter {}
+}))(Highlighter)
 
 
 @connect(state => ({
