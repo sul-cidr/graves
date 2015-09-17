@@ -6,12 +6,11 @@ module Geometry
   included do
 
     #
-    # Select geometry as GeoJSON.
+    # Select geometry as (simplified) GeoJSON.
     #
     scope :as_geojson, -> (digits=2) {
       select {
-        my{column_names} -
-        ['geometry'] +
+        my{column_names} - ['geometry'] +
         [ST_AsGeoJSON(ST_FlipCoordinates(geometry), digits).as(geojson)]
       }
     }
