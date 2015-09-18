@@ -19,8 +19,7 @@
 #  village_p   :string
 #  village_c   :string
 #  notice_id   :integer          not null
-#  lonlat      :geometry({:srid= point, 4326
-#  place_id    :integer
+#  geometry    :geometry({:srid= point, 4326
 #  province_id :integer
 #  county_id   :integer
 #  town_id     :integer
