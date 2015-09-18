@@ -4,10 +4,10 @@ require 'rgeo/shapefile'
 module Import
   class CreateCounties < Step
 
-    @depends = [CreateProvinces, SimplifyCounties]
+    @depends = [CreateProvinces]
 
     def shapefile
-      super('cdc/counties/counties.shp')
+      super('cdc/counties/test-4326.shp')
     end
 
     def up

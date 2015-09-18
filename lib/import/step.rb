@@ -49,7 +49,7 @@ module Import
     #
     def shapefile(file)
       path = Rails.root.join("data/#{file}").to_s
-      RGeo::Shapefile::Reader.open(path)
+      RGeo::Shapefile::Reader.open(path, srid: 4326)
     end
 
     #
