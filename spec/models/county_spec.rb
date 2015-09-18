@@ -14,6 +14,10 @@ require 'rails_helper'
 
 describe County, type: :model do
 
+  describe "columns" do
+    it { should have_db_column(:metadata).with_options(null: false) }
+  end
+
   describe 'indexes' do
     it { should have_db_index(:cdc_id).unique }
     it { should have_db_index(:geometry) }
