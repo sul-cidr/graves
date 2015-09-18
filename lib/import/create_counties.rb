@@ -28,12 +28,20 @@ module Import
         # Find the parent province.
         province = Province.find_by(cdc_id: record[:gbcode][0..1])
 
+        # Get demographic attributes.
+        metadata = record.attributes.except(
+          'chname',
+          'ename',
+          'gbcode',
+        )
+
         County.create!(
           province: province,
           cdc_id: record[:gbcode],
           name_p: record[:ename],
           name_c: record[:chname],
           geometry: geometry,
+          metadata: metadata,
         )
 
         increment
