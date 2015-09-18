@@ -7,26 +7,38 @@ module Import
     @depends = [CreateProvinces]
 
     def shapefile
-      super('cdc/counties/counties-4326.shp')
+      super('cdc/counties/counties.shp')
     end
 
     def up
 
-      shapefile.each do |record|
+      factory = Helpers::Geo.factory
 
-        # Find the parent province.
-        province = Province.find_by(cdc_id: record[:gbcode][0..1])
+      path = Rails.root.join('data/cdc/counties/counties.shp')
 
-        County.create!(
-          province: province,
-          cdc_id: record[:gbcode],
-          name_p: record[:ename],
-          name_c: record[:chname],
-          geometry: record.geometry,
-        )
+      RGeo::Shapefile::Reader.open(
+        path.to_s, :factory => factory.projection_factory
+      ) do |file|
 
-        increment
+        file.each do |record|
 
+          # Convert meters -> degrees.
+          geometry = factory.unproject(record.geometry)
+
+          # Find the parent province.
+          province = Province.find_by(cdc_id: record[:gbcode][0..1])
+
+          County.create!(
+            province: province,
+            cdc_id: record[:gbcode],
+            name_p: record[:ename],
+            name_c: record[:chname],
+            geometry: geometry,
+          )
+
+          increment
+
+        end
       end
 
     end
