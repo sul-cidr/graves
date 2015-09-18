@@ -74,6 +74,10 @@ export default class extends Component {
   render() {
 
     let features = this.props.features.map(f => {
+
+      // Filter out counties without geometry.
+      if (!f.geojson) return;
+
       return (
         <CountyLayer
           key={f.id}
@@ -82,6 +86,7 @@ export default class extends Component {
           feature={f}
         />
       );
+
     });
 
     return (
