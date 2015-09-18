@@ -7,7 +7,7 @@ module Import
     @depends = [CreateProvinces]
 
     def shapefile
-      super('cdc/counties/test-4326.shp')
+      super('cdc/counties/counties-4326.shp')
     end
 
     def up
