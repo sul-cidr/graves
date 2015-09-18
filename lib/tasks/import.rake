@@ -6,6 +6,7 @@ runner = Vacuum::Runner.from_steps([
   Import::CreateCollections,
   Import::CreateTowns,
   Import::CreateProvinces,
+  Import::SimplifyCounties,
   Import::CreateCounties,
 ])
 
