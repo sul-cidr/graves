@@ -7,7 +7,7 @@ module Import
         merge
         unproject
         simplify
-        finalize
+        reproject
       end
     end
 
@@ -42,7 +42,7 @@ module Import
     end
 
     #
-    # Convert to simplified TopoJSON.
+    # Simplify the polygons via TopoJSON.
     #
     def simplify
       `topojson counties-unprojected.shp -p -s 0.000001 \
@@ -50,11 +50,11 @@ module Import
     end
 
     #
-    # Convert back into a shapefile.
+    # Convert back to shapefile.
     #
-    def finalize
+    def reproject
       `mapshaper counties-simplified.topojson \
-      -o counties.shp`
+      -o counties-simplified.shp`
     end
 
   end

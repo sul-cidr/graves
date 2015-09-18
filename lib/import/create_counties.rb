@@ -4,39 +4,29 @@ require 'rgeo/shapefile'
 module Import
   class CreateCounties < Step
 
-    @depends = [CreateProvinces]
+    @depends = [CreateProvinces, SimplifyCounties]
+
+    def shapefile
+      super('cdc/counties/counties.shp')
+    end
 
     def up
 
-      factory = Helpers::Geo.factory
+      shapefile.each do |record|
 
-      paths.each do |path|
-        RGeo::Shapefile::Reader.open(
-          path,
-          :factory => factory.projection_factory
-        ) do |file|
+        # Find the parent province.
+        province = Province.find_by(cdc_id: record[:gbcode][0..1])
 
-          file.each do |record|
+        County.create!(
+          province: province,
+          cdc_id: record[:gbcode],
+          name_p: record[:ename],
+          name_c: record[:chname],
+          geometry: record.geometry,
+        )
 
-            # Convert meters -> degrees.
-            geometry = factory.unproject(record.geometry)
+        increment
 
-            # Find the parent province.
-            province = Province.find_by(cdc_id: record[:gbcode][0..1])
-
-            County.create!(
-              province: province,
-              cdc_id: record[:gbcode],
-              name_p: decode(record[:ename]),
-              name_c: decode(record[:chname]),
-              geometry: geometry,
-            )
-
-          end
-
-          increment
-
-        end
       end
 
     end
@@ -46,26 +36,7 @@ module Import
     end
 
     def count
-      paths.size
-    end
-
-    #
-    # Glob the county shapefile paths.
-    #
-    # @return [Array]
-    #
-    def paths
-      Dir.glob("#{Rails.root}/data/cdc/counties/*/export.shp")
-    end
-
-    #
-    # Convert GB18030 -> UTF8.
-    #
-    # @param value [String]
-    # @return [String]
-    #
-    def decode(value)
-      value.force_encoding('GB18030').encode('utf-8')
+      shapefile.num_records
     end
 
   end
