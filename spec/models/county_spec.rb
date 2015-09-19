@@ -16,6 +16,7 @@ describe County, type: :model do
 
   describe "columns" do
     it { should have_db_column(:metadata).with_options(null: false) }
+    it { should have_db_column(:choropleths).with_options(null: false) }
   end
 
   describe 'indexes' do

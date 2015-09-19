@@ -26,4 +26,27 @@ class County < ActiveRecord::Base
     where { ST_Contains(geometry, c.geometry) }.first
   end
 
+  #
+  # Get a list of available CDC attribute codes.
+  #
+  def self.metadata_keys
+    first.metadata.keys
+  end
+
+  #
+  # Write 0-1 choropleth values for each CDC attribute.
+  #
+  def self.normalize_choropleths
+    metadata_keys.each do |key|
+
+      max = Math.sqrt(maximum("(metadata->>'#{key}')::float"))
+
+      all.each do |c|
+        c.choropleths[key] = Math.sqrt(c.metadata[key]) / max
+        c.save
+      end
+
+    end
+  end
+
 end
