@@ -10,7 +10,7 @@ module Geometry
     #
     scope :as_geojson, -> (digits=2) {
       select {
-        my{column_names} - ['geometry'] +
+        my{column_names} +
         [ST_AsGeoJSON(ST_FlipCoordinates(geometry), digits).as(geojson)]
       }
     }
