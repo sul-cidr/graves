@@ -81,10 +81,10 @@ export default class extends Component {
       .append('path');
 
     var first = true, inittl, initbr, oldtl, oldbr;
+    let bounds = d3.geo.path().projection(null).bounds(collection);
 
     let reset = () => {
 
-      let bounds = d3.geo.path().projection(null).bounds(collection);
       let tl = map.latLngToLayerPoint([bounds[0][0], bounds[0][1]]);
       let br = map.latLngToLayerPoint([bounds[1][0], bounds[1][1]]);
 
