@@ -69,4 +69,5 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'rspec-mocks'
   gem 'database_cleaner'
+  gem 'with_model'
 end
