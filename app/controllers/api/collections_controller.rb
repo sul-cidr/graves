@@ -3,7 +3,7 @@ module API
   class CollectionsController < ApplicationController
 
     def index
-      @collections = Collection.select_geojson
+      @collections = Collection.with_geojson
     end
 
   end

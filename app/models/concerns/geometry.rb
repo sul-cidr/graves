@@ -8,7 +8,7 @@ module Geometry
     #
     # Select geometry as (simplified) GeoJSON.
     #
-    scope :select_geojson, -> (digits=2) {
+    scope :with_geojson, -> (digits=2) {
       select {
         my{column_names} +
         [ST_AsGeoJSON(ST_FlipCoordinates(geometry), digits).as(geojson)]
@@ -30,7 +30,7 @@ module Geometry
         json.type 'FeatureCollection'
 
         json.features do
-          json.array! select_geojson do |r|
+          json.array! with_geojson do |r|
 
             if not r.geojson
               next
