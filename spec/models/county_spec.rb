@@ -8,6 +8,8 @@
 #  name_p      :string
 #  name_c      :string
 #  geometry    :geometry({:srid= geometry, 4326
+#  metadata    :jsonb            default({}), not null
+#  choropleths :jsonb            default({}), not null
 #
 
 require 'rails_helper'
