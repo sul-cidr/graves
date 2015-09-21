@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918234642) do
+ActiveRecord::Schema.define(version: 20150921161231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 20150918234642) do
     t.string   "cdc_id"
     t.string   "name_p"
     t.string   "name_c"
-    t.geometry "geometry",    limit: {:srid=>4326, :type=>"geometry"}
-    t.jsonb    "metadata",                                             default: {}, null: false
-    t.jsonb    "choropleths",                                          default: {}, null: false
+    t.geometry "geometry",     limit: {:srid=>4326, :type=>"geometry"}
+    t.jsonb    "demographics",                                          default: {}, null: false
+    t.jsonb    "choropleths",                                           default: {}, null: false
   end
 
   add_index "counties", ["cdc_id"], name: "index_counties_on_cdc_id", unique: true, using: :btree

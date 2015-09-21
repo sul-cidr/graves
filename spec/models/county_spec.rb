@@ -2,14 +2,14 @@
 #
 # Table name: counties
 #
-#  id          :integer          not null, primary key
-#  province_id :integer
-#  cdc_id      :string
-#  name_p      :string
-#  name_c      :string
-#  geometry    :geometry({:srid= geometry, 4326
-#  metadata    :jsonb            default({}), not null
-#  choropleths :jsonb            default({}), not null
+#  id           :integer          not null, primary key
+#  province_id  :integer
+#  cdc_id       :string
+#  name_p       :string
+#  name_c       :string
+#  geometry     :geometry({:srid= geometry, 4326
+#  demographics :jsonb            default({}), not null
+#  choropleths  :jsonb            default({}), not null
 #
 
 require 'rails_helper'
@@ -17,7 +17,7 @@ require 'rails_helper'
 describe County, type: :model do
 
   describe "columns" do
-    it { should have_db_column(:metadata).with_options(null: false) }
+    it { should have_db_column(:demographics).with_options(null: false) }
     it { should have_db_column(:choropleths).with_options(null: false) }
   end
 

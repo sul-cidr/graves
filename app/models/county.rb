@@ -2,14 +2,14 @@
 #
 # Table name: counties
 #
-#  id          :integer          not null, primary key
-#  province_id :integer
-#  cdc_id      :string
-#  name_p      :string
-#  name_c      :string
-#  geometry    :geometry({:srid= geometry, 4326
-#  metadata    :jsonb            default({}), not null
-#  choropleths :jsonb            default({}), not null
+#  id           :integer          not null, primary key
+#  province_id  :integer
+#  cdc_id       :string
+#  name_p       :string
+#  name_c       :string
+#  geometry     :geometry({:srid= geometry, 4326
+#  demographics :jsonb            default({}), not null
+#  choropleths  :jsonb            default({}), not null
 #
 
 class County < ActiveRecord::Base
@@ -29,22 +29,24 @@ class County < ActiveRecord::Base
   end
 
   #
-  # Get a list of available CDC attribute codes.
+  # Get a list of available CDC demographic codes.
   #
-  def self.metadata_keys
-    first.metadata.keys
+  # @return [Array<String>]
+  #
+  def self.demographic_codes
+    first.demographics.keys
   end
 
   #
-  # Write 0-1 choropleth values for each CDC attribute.
+  # Write 0-1 choropleth values for each demographic code.
   #
-  def self.normalize_choropleths
-    metadata_keys.each do |key|
+  def self.generate_choropleths
+    demographic_codes.each do |key|
 
-      max = Math.sqrt(maximum("(metadata->>'#{key}')::float"))
+      max = Math.sqrt(maximum("(demographics->>'#{key}')::float"))
 
       all.each do |c|
-        c.choropleths[key] = Math.sqrt(c.metadata[key]) / max
+        c.choropleths[key] = Math.sqrt(c.demographics[key]) / max
         c.save
       end
 

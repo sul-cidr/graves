@@ -29,7 +29,7 @@ module Import
         province = Province.find_by(cdc_id: record[:gbcode][0..1])
 
         # Get demographic attributes.
-        metadata = record.attributes.except(
+        demographics = record.attributes.except(
           'chname',
           'ename',
           'gbcode',
@@ -41,7 +41,7 @@ module Import
           name_p: record[:ename],
           name_c: record[:chname],
           geometry: geometry,
-          metadata: metadata,
+          demographics: demographics,
         )
 
         increment
