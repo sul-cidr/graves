@@ -28,27 +28,7 @@ export default class extends Component {
    * Create the feature group, request counties.
    */
   componentWillMount() {
-
-    this.idMap = {};
-
-    // Create group.
-    this.group = L.featureGroup();
-
-    // HIGHLIGHT
-    this.group.on('mouseover', e => {
-      this.props.dispatch(actions.highlightCounty(
-        e.layer.options.id
-      ));
-    });
-
-    // UNHIGHLIGHT
-    this.group.on('mouseout', e => {
-      this.props.dispatch(actions.unhighlightCounty());
-    });
-
-    // Add to the map.
-    this.group.addTo(this.context.map);
-
+    // TODO
   }
 
 
@@ -60,41 +40,9 @@ export default class extends Component {
   }
 
 
-  /**
-   * Publish the id -> layer map to the store.
-   */
-  componentDidUpdate() {
-    this.props.dispatch(actions.renderCounties(this.idMap));
-  }
-
-
-  /**
-   * Render the map container.
-   */
   render() {
-
-    let features = this.props.features.map(f => {
-
-      // Filter out counties without geometry.
-      if (!f.geojson) return;
-
-      return (
-        <CountyLayer
-          key={f.id}
-          group={this.group}
-          idMap={this.idMap}
-          feature={f}
-        />
-      );
-
-    });
-
-    return (
-      <noscript className="counties">
-        {features}
-      </noscript>
-    );
-
+    console.log(this.props.features);
+    return null;
   }
 
 
