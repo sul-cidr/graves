@@ -3,7 +3,7 @@ module API
   class CountiesController < ApplicationController
 
     def index
-      @counties = County.as_geojson
+      render :json => County.to_geojson.target!
     end
 
   end
