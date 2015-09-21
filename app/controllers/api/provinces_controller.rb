@@ -3,7 +3,7 @@ module API
   class ProvincesController < ApplicationController
 
     def index
-      @provinces = Province.as_geojson
+      @provinces = Province.select_geojson
     end
 
   end
