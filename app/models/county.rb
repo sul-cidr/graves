@@ -29,28 +29,27 @@ class County < ActiveRecord::Base
   end
 
   #
-  # Get a list of available CDC demographic codes.
-  #
-  # @return [Array<String>]
-  #
-  def self.demographic_codes
-    first.demographics.keys
-  end
-
-  #
   # Write 0-1 choropleth values for each demographic code.
   #
   def self.generate_choropleths
-    demographic_codes.each do |key|
 
-      max = Math.sqrt(maximum("(demographics->>'#{key}')::float"))
+    codes = first.demographics.keys
+    bar = ProgressBar.new(codes.count * all.count)
 
+    codes.each do |code|
+
+      # Get a normalized max value.
+      max = Math.sqrt(maximum("(demographics->>'#{code}')::float"))
+
+      # Write a ratio for each row.
       all.each do |c|
-        c.choropleths[key] = Math.sqrt(c.demographics[key]) / max
+        c.choropleths[code] = Math.sqrt(c.demographics[code]) / max
         c.save
+        bar.increment!
       end
 
     end
+
   end
 
 end
