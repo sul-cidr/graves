@@ -68,7 +68,8 @@ export default class extends Component {
       .selectAll('path')
       .data(this.props.geojson.features)
       .enter()
-      .append('path');
+      .append('path')
+      .classed({ county: true });
 
     this.bounds = d3.geo.path()
       .projection(null)
