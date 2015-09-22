@@ -8,10 +8,10 @@ module Geometry
     #
     # Select geometry as (simplified) GeoJSON.
     #
-    scope :with_geojson, -> (digits=2) {
+    scope :snap, -> {
       select {
         my{column_names} +
-        [ST_AsGeoJSON(ST_FlipCoordinates(geometry), digits).as(geojson)]
+        [ST_SnapToGrid(ST_FlipCoordinates(geometry), 0.001).as(geometry)]
       }
     }
 
@@ -25,25 +25,18 @@ module Geometry
     # @return [Hash]
     #
     def to_geojson
-      Jbuilder.new do |json|
 
-        json.type 'FeatureCollection'
+      factory = RGeo::GeoJSON::EntityFactory.instance
 
-        json.features do
-          json.array! with_geojson do |r|
-
-            if not r.geojson
-              next
-            end
-
-            json.type 'Feature'
-            json.id r.id
-            json.geometry MultiJson.load(r.geojson)
-
-          end
+      features = all.map do |r|
+        if r.geometry
+          factory.feature(r.geometry, r.id, {test: 5})
         end
-
       end
+
+      collection = factory.feature_collection(features.compact)
+      RGeo::GeoJSON.encode(collection)
+
     end
 
   end

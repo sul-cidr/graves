@@ -18,12 +18,4 @@ describe Geometry do
 
   end
 
-  describe ':with_geojson' do
-    # TODO
-  end
-
-  describe '.to_geojson()' do
-    # TODO
-  end
-
 end
