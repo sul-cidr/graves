@@ -6,7 +6,7 @@ import createReducer from '../utils/create-reducer';
 
 const initialState = {
   loading: false,
-  features: [],
+  geojson: {},
   highlighted: null,
   layers: {},
 };
@@ -19,7 +19,7 @@ const handlers = {
   }),
 
   [constants.RECEIVE_COUNTIES]: (state, action) => ({
-    features: action.features,
+    geojson: action.geojson,
     loading: false,
   }),
 

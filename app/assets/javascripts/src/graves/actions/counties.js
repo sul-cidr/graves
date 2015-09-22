@@ -39,7 +39,7 @@ function requestCounties() {
 function receiveCounties(json) {
   return {
     type: constants.RECEIVE_COUNTIES,
-    features: json,
+    geojson: json,
   };
 }
 

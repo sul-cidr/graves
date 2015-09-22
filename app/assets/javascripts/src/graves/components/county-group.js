@@ -9,7 +9,7 @@ import CountyLayer from './county-layer';
 
 
 @connect(state => ({
-  features: state.counties.features
+  geojson: state.counties.geojson
 }))
 export default class extends Component {
 
@@ -21,7 +21,125 @@ export default class extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    features: PropTypes.array.isRequired,
+    geojson: PropTypes.object.isRequired,
+  }
+
+
+  /**
+   * Inject the d3 rig.
+   */
+  componentWillMount() {
+
+    // Get Leaflet overlay pane.
+    let pane = this.context.map.getPanes().overlayPane;
+
+    // Top-level SVG.
+    this.svg = d3.select(pane).append('svg');
+
+    // County wrapper.
+    this.g = this.svg.append('g');
+
+  }
+
+
+  /**
+   * Inject the d3 rig.
+   */
+  componentDidUpdate() {
+
+    let map = this.context.map;
+
+    // Map lon/lat -> layer pixels.
+    let transform = d3.geo.transform({
+      point: function(x, y) {
+
+        let latlng = new L.LatLng(x, y);
+        let origin = map.getPixelOrigin();
+
+        let point = map.project(latlng)._subtract(origin);
+        this.stream.point(point.x, point.y);
+
+      }
+    });
+
+    this.paths = d3.geo.path().projection(transform);
+
+    this.counties = this.g
+      .selectAll('path')
+      .data(this.props.geojson.features)
+      .enter()
+      .append('path');
+
+    this.bounds = d3.geo.path()
+      .projection(null)
+      .bounds(this.props.geojson);
+
+    // Sync <paths> with map.
+    map.on('viewreset', this.sync.bind(this, false));
+    this.sync(true);
+
+  }
+
+
+  /**
+   * Sync the counties with the map.
+   *
+   * @param {Boolean} first
+   */
+  sync(first) {
+
+    // Top right.
+    let tl = this.context.map.latLngToLayerPoint([
+      this.bounds[0][0],
+      this.bounds[0][1],
+    ]);
+
+    // Bottom left.
+    let br = this.context.map.latLngToLayerPoint([
+      this.bounds[1][0],
+      this.bounds[1][1],
+    ]);
+
+    // Position the container.
+    this.svg
+      .attr('width', br.x-tl.x)
+      .attr('height', tl.y-br.y)
+      .attr('top', `${br.y}px`)
+      .attr('left', `${tl.x}px`);
+
+    if (first) {
+
+      // Set the initial <g> offset.
+      this.g.attr('transform', `translate(${-tl.x},${-br.y})`);
+      this.counties.attr('d', this.paths);
+
+      // Cache the starting corners.
+      this.tl0 = tl;
+      this.br0 = br;
+
+    }
+
+    else {
+
+      let t = d3.transform(this.g.attr('transform'));
+
+      t.scale = [
+        t.scale[0] * ((br.x - tl.x) / (this.br.x - this.tl.x)),
+        t.scale[1] * ((tl.y - br.y) / (this.tl.y - this.br.y)),
+      ];
+
+      t.translate = [-this.tl0.x, -this.br0.y];
+
+      let scale = `scale(${t.scale.join()})`;
+      let translate = `translate(${t.translate.join()})`;
+      this.g.attr('transform', scale+translate);
+
+    }
+
+    // Cache the current corners.
+    this.tl = tl;
+    this.br = br;
+
   }
 
 
