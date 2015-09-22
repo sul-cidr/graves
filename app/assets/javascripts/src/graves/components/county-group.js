@@ -104,8 +104,8 @@ export default class extends Component {
     this.svg
       .attr('width', br.x-tl.x)
       .attr('height', tl.y-br.y)
-      .attr('top', `${br.y}px`)
-      .attr('left', `${tl.x}px`);
+      .style('top', `${br.y}px`)
+      .style('left', `${tl.x}px`);
 
     if (first) {
 
