@@ -43,6 +43,7 @@ gem 'rgeo-shapefile'
 gem 'slim-rails'
 gem 'dotenv-rails'
 gem 'oj'
+gem 'hashdiff'
 
 group :development, :test do
 
