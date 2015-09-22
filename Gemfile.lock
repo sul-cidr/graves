@@ -150,6 +150,8 @@ GEM
     rgeo-activerecord (4.0.0)
       activerecord (~> 4.2)
       rgeo (~> 0.3)
+    rgeo-geojson (0.3.1)
+      rgeo (~> 0.3)
     rgeo-shapefile (0.2.3)
       dbf (>= 1.7.0)
       rgeo (>= 0.3.3)
@@ -252,6 +254,7 @@ DEPENDENCIES
   rack-livereload
   rails (= 4.2.3)
   require_all
+  rgeo-geojson
   rgeo-shapefile
   rspec-mocks
   rspec-rails

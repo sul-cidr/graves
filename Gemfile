@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'require_all'
 gem 'squeel'
 gem 'activerecord-postgis-adapter'
+gem 'rgeo-geojson'
 gem 'progress_bar'
 gem 'method_hooks'
 gem 'unicode'
