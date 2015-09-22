@@ -59,7 +59,48 @@ describe Geometry do
 
     end
 
-    it 'populates `properties` with passed columns'
+    it 'populates `properties` with passed columns' do
+
+      GeoModel.create!(
+        field1: 'f11',
+        field2: 'f12',
+        field3: 'f13',
+        geometry: Helpers::Geo.point(1, 2)
+      )
+
+      GeoModel.create!(
+        field1: 'f21',
+        field2: 'f22',
+        field3: 'f23',
+        geometry: Helpers::Geo.point(3, 4)
+      )
+
+      GeoModel.create!(
+        field1: 'f31',
+        field2: 'f32',
+        field3: 'f33',
+        geometry: Helpers::Geo.point(5, 6)
+      )
+
+      # Request `field1` and `field2`.
+      json = GeoModel.to_geojson(:field1, :field2).deep_symbolize_keys
+
+      expect(json[:features][0][:properties]).to include(
+        field1: 'f11',
+        field2: 'f12',
+      )
+
+      expect(json[:features][1][:properties]).to include(
+        field1: 'f21',
+        field2: 'f22',
+      )
+
+      expect(json[:features][2][:properties]).to include(
+        field1: 'f31',
+        field2: 'f32',
+      )
+
+    end
 
   end
 
