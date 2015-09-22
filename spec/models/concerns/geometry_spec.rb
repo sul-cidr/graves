@@ -35,7 +35,21 @@ describe Geometry do
 
     end
 
-    it 'rounds coordinate decimals'
+    it 'rounds coordinate decimals' do
+
+      GeoModel.create!(
+        geometry: Helpers::Geo.point(1.12345, 2.12345)
+      )
+
+      geojson = MultiJson.load(GeoModel.with_geojson.first.geojson)
+
+      # Round to 2 by default.
+      expect(geojson).to eq(
+        'type' => 'Point',
+        'coordinates' => [2.12, 1.12],
+      )
+
+    end
 
   end
 
