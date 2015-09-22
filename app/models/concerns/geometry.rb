@@ -22,15 +22,16 @@ module Geometry
     #
     # Render the collection as GeoJSON.
     #
+    # @param keys [Array<Symbol>]
     # @return [Hash]
     #
-    def to_geojson
+    def to_geojson(*keys)
 
       factory = RGeo::GeoJSON::EntityFactory.instance
 
       features = all.map do |r|
         if r.geometry
-          factory.feature(r.geometry, r.id, {test: 5})
+          factory.feature(r.geometry, r.id, r.slice(*keys))
         end
       end
 
