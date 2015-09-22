@@ -39,7 +39,7 @@ function requestCollections() {
 function receiveCollections(json) {
   return {
     type: constants.RECEIVE_COLLECTIONS,
-    features: json,
+    geojson: json,
   };
 }
 

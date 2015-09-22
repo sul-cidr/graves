@@ -25,32 +25,28 @@ export default class extends Component {
    */
   componentWillMount() {
 
-    // Parse GeoJSON.
     let feature = this.props.feature;
-    let geojson = JSON.parse(feature.geojson);
-
-    let options = {
-      ...styles.path.def,
-      id: feature.id,
-    };
 
     // Create the marker.
-    this.layer = L.circleMarker(geojson.coordinates, options);
+    this.layer = L.circleMarker(feature.geometry.coordinates, {
+      id: feature.id,
+      ...styles.path.def,
+    });
 
     // Size by grave count.
-    let r = Math.log(feature.num_graves || 20) * 3;
+    let r = Math.log(feature.properties.num_graves || 20) * 3;
     this.layer.setRadius(r);
 
     let label = (
-      feature.town_p ||
-      feature.county_p ||
-      feature.province_p
+      feature.properties.town_p ||
+      feature.properties.county_p ||
+      feature.properties.province_p
     );
 
     // Attach the popup.
     this.layer.bindPopup(label, {
+      minWidth: 0,
       closeButton: false,
-      minWidth: 10,
     });
 
     // Register the layer.

@@ -3,7 +3,9 @@ module API
   class CountiesController < ApplicationController
 
     def index
-      render json: County.to_geojson.target!
+      render json: County.snap.to_geojson(
+        :name_p,
+      )
     end
 
   end

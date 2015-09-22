@@ -78,12 +78,8 @@ export default class extends Component {
     if (this.state.map) {
       return (
         <div id="map" ref="map">
-
-          <CountyGroup />
-
           <CollectionGroup />
           <CollectionHighlight />
-
         </div>
       );
     }

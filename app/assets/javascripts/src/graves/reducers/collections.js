@@ -20,7 +20,7 @@ const handlers = {
   }),
 
   [constants.RECEIVE_COLLECTIONS]: (state, action) => ({
-    features: action.features,
+    features: action.geojson.features,
     loading: false,
   }),
 

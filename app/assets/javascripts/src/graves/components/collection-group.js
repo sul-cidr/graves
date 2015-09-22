@@ -83,10 +83,6 @@ export default class extends Component {
   render() {
 
     let features = this.props.features.map(f => {
-
-      // Filter out un-geocoded collections.
-      if (!f.geojson) return;
-
       return (
         <CollectionLayer
           key={f.id}
@@ -95,7 +91,6 @@ export default class extends Component {
           feature={f}
         />
       );
-
     });
 
     return (
