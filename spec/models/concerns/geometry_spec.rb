@@ -26,9 +26,7 @@ describe Geometry do
         geometry: Helpers::Geo.point(1, 2)
       )
 
-      geojson = MultiJson.load(GeoModel.with_geojson.first.geojson)
-
-      expect(geojson).to eq(
+      expect(GeoModel.with_geojson.first.geojson).to eq(
         'type' => 'Point',
         'coordinates' => [2, 1],
       )
@@ -41,12 +39,14 @@ describe Geometry do
         geometry: Helpers::Geo.point(1.12345, 2.12345)
       )
 
-      geojson = MultiJson.load(GeoModel.with_geojson.first.geojson)
+      # Round to 4 digits.
+      expect(GeoModel.with_geojson(4).first.geojson).to include(
+        'coordinates' => [2.1235, 1.1235]
+      )
 
       # Round to 2 by default.
-      expect(geojson).to eq(
-        'type' => 'Point',
-        'coordinates' => [2.12, 1.12],
+      expect(GeoModel.with_geojson.first.geojson).to include(
+        'coordinates' => [2.12, 1.12]
       )
 
     end

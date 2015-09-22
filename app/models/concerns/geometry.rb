@@ -38,7 +38,7 @@ module Geometry
 
             json.type 'Feature'
             json.id r.id
-            json.geometry MultiJson.load(r.geojson)
+            json.geometry r.geojson
 
           end
         end
@@ -46,6 +46,15 @@ module Geometry
       end
     end
 
+  end
+
+  #
+  # Parse GeoJSON from Postgres.
+  #
+  # @return [String]
+  #
+  def geojson
+    MultiJson.load(read_attribute(:geojson))
   end
 
 end
