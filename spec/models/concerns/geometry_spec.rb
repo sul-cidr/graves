@@ -20,17 +20,22 @@ describe Geometry do
 
   describe ':with_geojson' do
 
-    it 'selects `geometry` as GeoJSON' do
+    it 'selects `geojson` (with flipped coordinates)' do
 
-      GeoModel.create!(geometry: Helpers::Geo.point(1, 2))
+      GeoModel.create!(
+        geometry: Helpers::Geo.point(1, 2)
+      )
 
-      # Get first record, parse JSON.
       geojson = MultiJson.load(GeoModel.with_geojson.first.geojson)
-      pp geojson
+
+      expect(geojson).to eq(
+        'type' => 'Point',
+        'coordinates' => [2, 1],
+      )
 
     end
 
-    it 'limits coordinate digits'
+    it 'rounds coordinate decimals'
 
   end
 
