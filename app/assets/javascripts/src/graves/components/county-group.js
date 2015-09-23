@@ -7,6 +7,9 @@ import d3 from 'd3-browserify';
 import * as actions from '../actions/counties';
 
 
+// TODO: Break out an abstract <GeometricGroup />?
+
+
 @connect(state => ({
   geojson: state.counties.geojson
 }))
