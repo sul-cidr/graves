@@ -43,6 +43,10 @@ const handlers = {
     highlighted: null,
   }),
 
+  [RENDER_CHOROPLETH]: (state, action) => ({
+    choropleth: action.key,
+  }),
+
 };
 
 
