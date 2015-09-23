@@ -57,6 +57,7 @@ export default class extends Component {
    */
   componentDidUpdate() {
 
+    // Render the counties.
     this.counties = this.g.selectAll('path')
       .data(this.props.geojson.features)
       .enter()
@@ -64,6 +65,7 @@ export default class extends Component {
       .classed({ county: true })
       .attr('d', this.path)
 
+    // Cache the data extent.
     this.bounds = d3.geo.path()
       .projection(null)
       .bounds(this.props.geojson);
@@ -72,7 +74,6 @@ export default class extends Component {
     this.context.map.on('viewreset', this.sync.bind(this, false));
     this.sync(true);
 
-    // Map id -> <path>.
     let idMap = {};
     this.counties.each(function(f) {
       idMap[f.id] = d3.select(this);
