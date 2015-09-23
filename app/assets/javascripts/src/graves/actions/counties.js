@@ -45,6 +45,19 @@ function receiveCounties(json) {
 
 
 /**
+ * Map ids to Leaflet layers.
+ *
+ * @param {Object} idMap
+ */
+export function renderCounties(idMap) {
+  return {
+    type: constants.RENDER_COUNTIES,
+    layers: idMap,
+  };
+}
+
+
+/**
  * Highlight an individual county.
  *
  * @param {Number} id
@@ -63,18 +76,5 @@ export function highlightCounty(id) {
 export function unhighlightCounty() {
   return {
     type: constants.UNHIGHLIGHT_COUNTY,
-  };
-}
-
-
-/**
- * Map ids to Leaflet layers.
- *
- * @param {Object} idMap
- */
-export function renderCounties(idMap) {
-  return {
-    type: constants.RENDER_COUNTIES,
-    layers: idMap,
   };
 }

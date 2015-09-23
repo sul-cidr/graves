@@ -29,24 +29,13 @@ export default class extends Component {
    */
   componentWillMount() {
 
-    // Get Leaflet overlay pane.
+    let map = this.context.map;
+
+    // Inject the SVG containers.
     let pane = this.context.map.getPanes().overlayPane;
-
-    // Top-level SVG.
     this.svg = d3.select(pane).append('svg');
-
-    // County wrapper.
     this.g = this.svg.append('g').classed('leaflet-zoom-hide', true);
 
-  }
-
-
-  /**
-   * Inject the d3 rig.
-   */
-  componentDidUpdate() {
-
-    let map = this.context.map;
     let origin = map.getPixelOrigin();
 
     // Map lon/lat -> layer pixels.
@@ -60,10 +49,17 @@ export default class extends Component {
     // Path generator.
     this.path = d3.geo.path().projection(transform);
 
-    // Inject <path>'s.
+  }
+
+
+  /**
+   * Inject the d3 rig.
+   */
+  componentDidUpdate() {
+
     this.counties = this.g
       .selectAll('path')
-      .data(this.props.geojson.features)
+      .data(this.props.geojson.features, function(d) { return d.id; })
       .enter()
       .append('path')
       .classed({ county: true });
@@ -73,8 +69,17 @@ export default class extends Component {
       .bounds(this.props.geojson);
 
     // Sync <paths> with map.
-    map.on('viewreset', this.sync.bind(this, false));
+    this.context.map.on('viewreset', this.sync.bind(this, false));
     this.sync(true);
+
+    // Map id -> <path>.
+    let idMap = {};
+    this.counties.each(function(f) {
+      idMap[f.id] = this;
+    })
+
+    // Register the id map.
+    this.dispatch(actions.renderCounties(idMap));
 
   }
 
