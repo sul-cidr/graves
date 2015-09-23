@@ -41,7 +41,7 @@ export default class extends Component {
     // Map lon/lat -> layer pixels.
     let transform = d3.geo.transform({
       point: function(x, y) {
-        let point = map.latLngToLayerPoint(new L.LatLng(x, y));
+        let point = map.project(new L.LatLng(x, y))._subtract(origin);
         this.stream.point(point.x, point.y);
       }
     });
@@ -63,7 +63,7 @@ export default class extends Component {
       .enter()
       .append('path')
       .classed({ county: true })
-      .attr('d', this.path);
+      .attr('d', this.path)
 
     // Cache the data extent.
     this.bounds = d3.geo.path()
@@ -121,41 +121,38 @@ export default class extends Component {
       .style('top', `${br.y}px`)
       .style('left', `${tl.x}px`);
 
-    this.g.attr('transform', `translate(${-tl.x},${-br.y})`);
-    this.counties.attr('d', this.path);
+    if (first) {
 
-    //if (first) {
+      // Set the initial <g> offset.
+      this.g.attr('transform', `translate(${-tl.x},${-br.y})`);
 
-      //// Set the initial <g> offset.
-      //this.g.attr('transform', `translate(${-tl.x},${-br.y})`);
+      // Cache the starting corners.
+      this.tl0 = tl;
+      this.br0 = br;
 
-      //// Cache the starting corners.
-      //this.tl0 = tl;
-      //this.br0 = br;
+    }
 
-    //}
+    else {
 
-    //else {
+      let t = d3.transform(this.g.attr('transform'));
 
-      //let t = d3.transform(this.g.attr('transform'));
+      // Scale to match zoom level.
+      t.scale = [
+        t.scale[0] * ((br.x - tl.x) / (this.br.x - this.tl.x)),
+        t.scale[1] * ((tl.y - br.y) / (this.tl.y - this.br.y)),
+      ];
 
-      //// Scale to match zoom level.
-      //t.scale = [
-        //t.scale[0] * ((br.x - tl.x) / (this.br.x - this.tl.x)),
-        //t.scale[1] * ((tl.y - br.y) / (this.tl.y - this.br.y)),
-      //];
+      t.translate = [-this.tl0.x, -this.br0.y];
 
-      //t.translate = [-this.tl0.x, -this.br0.y];
+      let scale = `scale(${t.scale.join()})`;
+      let translate = `translate(${t.translate.join()})`;
+      this.g.attr('transform', scale+translate);
 
-      //let scale = `scale(${t.scale.join()})`;
-      //let translate = `translate(${t.translate.join()})`;
-      //this.g.attr('transform', scale+translate);
+    }
 
-    //}
-
-    //// Cache the current corners.
-    //this.tl = tl;
-    //this.br = br;
+    // Cache the current corners.
+    this.tl = tl;
+    this.br = br;
 
   }
 
