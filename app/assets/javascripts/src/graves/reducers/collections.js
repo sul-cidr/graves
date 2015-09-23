@@ -7,9 +7,8 @@ import createReducer from '../utils/create-reducer';
 const initialState = {
   loading: false,
   features: [],
-  layers: {},
   highlighted: null,
-  selected: null,
+  layers: {},
 };
 
 
