@@ -1,7 +1,15 @@
 
 
-import * as constants from '../constants';
 import createReducer from '../utils/create-reducer';
+
+import {
+  REQUEST_COUNTIES,
+  RECEIVE_COUNTIES,
+  RENDER_COUNTIES,
+  HIGHLIGHT_COUNTY,
+  UNHIGHLIGHT_COUNTY,
+  RENDER_CHOROPLETH,
+} from '../constants';
 
 
 const initialState = {
@@ -14,24 +22,24 @@ const initialState = {
 
 const handlers = {
 
-  [constants.REQUEST_COUNTIES]: (state, action) => ({
+  [REQUEST_COUNTIES]: (state, action) => ({
     loading: true,
   }),
 
-  [constants.RECEIVE_COUNTIES]: (state, action) => ({
+  [RECEIVE_COUNTIES]: (state, action) => ({
     geojson: action.geojson,
     loading: false,
   }),
 
-  [constants.RENDER_COUNTIES]: (state, action) => ({
+  [RENDER_COUNTIES]: (state, action) => ({
     layers: action.layers,
   }),
 
-  [constants.HIGHLIGHT_COUNTY]: (state, action) => ({
+  [HIGHLIGHT_COUNTY]: (state, action) => ({
     highlighted: action.id,
   }),
 
-  [constants.UNHIGHLIGHT_COUNTY]: (state, action) => ({
+  [UNHIGHLIGHT_COUNTY]: (state, action) => ({
     highlighted: null,
   }),
 

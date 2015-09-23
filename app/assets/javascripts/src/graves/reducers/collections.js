@@ -1,7 +1,14 @@
 
 
-import * as constants from '../constants';
 import createReducer from '../utils/create-reducer';
+
+import {
+  REQUEST_COLLECTIONS,
+  RECEIVE_COLLECTIONS,
+  RENDER_COLLECTIONS,
+  HIGHLIGHT_COLLECTION,
+  UNHIGHLIGHT_COLLECTION,
+} from '../constants';
 
 
 const initialState = {
@@ -14,24 +21,24 @@ const initialState = {
 
 const handlers = {
 
-  [constants.REQUEST_COLLECTIONS]: (state, action) => ({
+  [REQUEST_COLLECTIONS]: (state, action) => ({
     loading: true,
   }),
 
-  [constants.RECEIVE_COLLECTIONS]: (state, action) => ({
+  [RECEIVE_COLLECTIONS]: (state, action) => ({
     features: action.geojson.features,
     loading: false,
   }),
 
-  [constants.RENDER_COLLECTIONS]: (state, action) => ({
+  [RENDER_COLLECTIONS]: (state, action) => ({
     layers: action.layers,
   }),
 
-  [constants.HIGHLIGHT_COLLECTION]: (state, action) => ({
+  [HIGHLIGHT_COLLECTION]: (state, action) => ({
     highlighted: action.id,
   }),
 
-  [constants.UNHIGHLIGHT_COLLECTION]: (state, action) => ({
+  [UNHIGHLIGHT_COLLECTION]: (state, action) => ({
     highlighted: null,
   }),
 
