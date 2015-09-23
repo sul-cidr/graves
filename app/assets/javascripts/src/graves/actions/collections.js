@@ -1,7 +1,14 @@
 
 
 import fetch from 'isomorphic-fetch';
-import * as constants from '../constants';
+
+import {
+  REQUEST_COLLECTIONS,
+  RECEIVE_COLLECTIONS,
+  RENDER_COLLECTIONS,
+  HIGHLIGHT_COLLECTIONS,
+  UNHIGHLIGHT_COLLECTIONS,
+} from '../constants';
 
 
 /**
@@ -26,7 +33,7 @@ export function loadCollections() {
  */
 function requestCollections() {
   return {
-    type: constants.REQUEST_COLLECTIONS,
+    type: REQUEST_COLLECTIONS,
   };
 }
 
@@ -38,7 +45,7 @@ function requestCollections() {
  */
 function receiveCollections(json) {
   return {
-    type: constants.RECEIVE_COLLECTIONS,
+    type: RECEIVE_COLLECTIONS,
     geojson: json,
   };
 }
@@ -51,7 +58,7 @@ function receiveCollections(json) {
  */
 export function renderCollections(idMap) {
   return {
-    type: constants.RENDER_COLLECTIONS,
+    type: RENDER_COLLECTIONS,
     layers: idMap,
   };
 }
@@ -64,7 +71,7 @@ export function renderCollections(idMap) {
  */
 export function highlightCollection(id) {
   return {
-    type: constants.HIGHLIGHT_COLLECTION,
+    type: HIGHLIGHT_COLLECTION,
     id: id,
   };
 }
@@ -75,6 +82,6 @@ export function highlightCollection(id) {
  */
 export function unhighlightCollection() {
   return {
-    type: constants.UNHIGHLIGHT_COLLECTION,
+    type: UNHIGHLIGHT_COLLECTION,
   };
 }

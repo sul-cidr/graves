@@ -1,7 +1,15 @@
 
 
 import fetch from 'isomorphic-fetch';
-import * as constants from '../constants';
+
+import {
+  REQUEST_COUNTIES,
+  RECEIVE_COUNTIES,
+  RENDER_COUNTIES,
+  HIGHLIGHT_COUNTIES,
+  UNHIGHLIGHT_COUNTIES,
+  RENDER_CHOROPLETH,
+} from '../constants';
 
 
 /**
@@ -26,7 +34,7 @@ export function loadCounties() {
  */
 function requestCounties() {
   return {
-    type: constants.REQUEST_COUNTIES,
+    type: REQUEST_COUNTIES,
   };
 }
 
@@ -38,7 +46,7 @@ function requestCounties() {
  */
 function receiveCounties(json) {
   return {
-    type: constants.RECEIVE_COUNTIES,
+    type: RECEIVE_COUNTIES,
     geojson: json,
   };
 }
@@ -51,7 +59,7 @@ function receiveCounties(json) {
  */
 export function renderCounties(idMap) {
   return {
-    type: constants.RENDER_COUNTIES,
+    type: RENDER_COUNTIES,
     layers: idMap,
   };
 }
@@ -64,7 +72,7 @@ export function renderCounties(idMap) {
  */
 export function highlightCounty(id) {
   return {
-    type: constants.HIGHLIGHT_COUNTY,
+    type: HIGHLIGHT_COUNTY,
     id: id,
   };
 }
@@ -75,6 +83,6 @@ export function highlightCounty(id) {
  */
 export function unhighlightCounty() {
   return {
-    type: constants.UNHIGHLIGHT_COUNTY,
+    type: UNHIGHLIGHT_COUNTY,
   };
 }
