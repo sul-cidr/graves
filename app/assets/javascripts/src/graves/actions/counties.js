@@ -86,3 +86,16 @@ export function unhighlightCounty() {
     type: UNHIGHLIGHT_COUNTY,
   };
 }
+
+
+/**
+ * Render a demographic choropleth.
+ *
+ * @param {String} key
+ */
+export function renderChoropleth(key) {
+  return {
+    type: RENDER_CHOROPLETH,
+    key: key,
+  };
+}
