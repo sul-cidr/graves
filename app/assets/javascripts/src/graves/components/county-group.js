@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import React, { Component, PropTypes, findDOMNode } from 'react';
 import d3 from 'd3-browserify';
 import * as actions from '../actions/counties';
-import CountyLayer from './county-layer';
 
 
 @connect(state => ({

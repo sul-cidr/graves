@@ -44,7 +44,7 @@ export default class extends Component {
    * @param {Number} id
    */
   highlight(id) {
-    this.props.layers[id].setStyle(styles.path.hl);
+    // TODO
   }
 
 
@@ -54,7 +54,7 @@ export default class extends Component {
    * @param {Number} id
    */
   unhighlight(id) {
-    this.props.layers[id].setStyle(styles.path.def);
+    // TODO
   }
 
 
