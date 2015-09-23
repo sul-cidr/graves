@@ -91,11 +91,11 @@ export function unhighlightCounty() {
 /**
  * Render a demographic choropleth.
  *
- * @param {String} key
+ * @param {String} code
  */
-export function renderChoropleth(key) {
+export function renderChoropleth(code) {
   return {
     type: RENDER_CHOROPLETH,
-    key: key,
+    code: code,
   };
 }

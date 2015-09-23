@@ -44,7 +44,7 @@ const handlers = {
   }),
 
   [RENDER_CHOROPLETH]: (state, action) => ({
-    choropleth: action.key,
+    choropleth: action.code,
   }),
 
 };
