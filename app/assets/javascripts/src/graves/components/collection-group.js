@@ -8,9 +8,12 @@ import CollectionLayer from './collection-layer';
 import styles from './collection.yml';
 
 
-@connect(state => ({
-  features: state.collections.features
-}))
+@connect(
+  state => ({
+    features: state.collections.features
+  }),
+  actions
+)
 export default class extends Component {
 
 
@@ -20,7 +23,6 @@ export default class extends Component {
 
 
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     features: PropTypes.array.isRequired,
   }
 
@@ -37,14 +39,12 @@ export default class extends Component {
 
     // HIGHLIGHT
     this.group.on('mouseover', e => {
-      this.props.dispatch(actions.highlightCollection(
-        e.layer.options.id
-      ));
+      this.props.highlightCollection(e.layer.options.id);
     });
 
     // UNHIGHLIGHT
     this.group.on('mouseout', e => {
-      this.props.dispatch(actions.unhighlightCollection());
+      this.props.unhighlightCollection();
     });
 
     // Add to the map.
@@ -57,7 +57,7 @@ export default class extends Component {
    * Request collections.
    */
   componentDidMount() {
-    this.props.dispatch(actions.loadCollections());
+    this.props.loadCollections();
   }
 
 
@@ -65,7 +65,7 @@ export default class extends Component {
    * Publish the id -> layer map to the store.
    */
   componentDidUpdate() {
-    this.props.dispatch(actions.renderCollections(this.idMap));
+    this.props.renderCollections(this.idMap);
     this.group.bringToFront();
   }
 
