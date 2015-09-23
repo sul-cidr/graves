@@ -61,7 +61,8 @@ export default class extends Component {
       .data(this.props.geojson.features)
       .enter()
       .append('path')
-      .classed({ county: true });
+      .classed({ county: true })
+      .attr('d', this.path)
 
     this.bounds = d3.geo.path()
       .projection(null)
@@ -123,7 +124,6 @@ export default class extends Component {
 
       // Set the initial <g> offset.
       this.g.attr('transform', `translate(${-tl.x},${-br.y})`);
-      this.counties.attr('d', this.path);
 
       // Cache the starting corners.
       this.tl0 = tl;
