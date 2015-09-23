@@ -43,9 +43,13 @@ class County < ActiveRecord::Base
 
       # Write a ratio for each row.
       all.each do |c|
-        c.choropleths[code] = Math.sqrt(c.demographics[code]) / max
+
+        ratio = Math.sqrt(c.demographics[code]) / max
+        c.choropleths[code] = ratio.round(2)
+
         c.save
         bar.increment!
+
       end
 
     end

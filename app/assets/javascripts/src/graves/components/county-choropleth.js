@@ -39,7 +39,7 @@ export default class extends Component {
 
     _.each(this.props.layers, (path, id) => {
       let opacity = path.data()[0].properties.choropleths[key];
-      console.log(opacity);
+      path.attr('fill-opacity', opacity);
     });
 
   }
