@@ -58,7 +58,7 @@ export default class extends Component {
   componentDidUpdate() {
 
     this.counties = this.g.selectAll('path')
-      .data(this.props.geojson.features, function(d) { return d.id; })
+      .data(this.props.geojson.features)
       .enter()
       .append('path')
       .classed({ county: true });
