@@ -40,26 +40,25 @@ export default class extends Component {
       }
     });
 
-    // Path generator.
     this.path = d3.geo.path().projection(transform);
+
+    // Sync geometry when the map zooms.
+    this.context.map.on(
+      'viewreset',
+      this.sync.bind(this, false)
+    );
 
   }
 
 
   /**
-   * Inject the d3 rig.
+   * Cache the GeoJSON bounds, initial sync.
+   *
+   * @param {Object} props
    */
-  componentDidUpdate() {
-
-    // Cache the data extent.
-    this.bounds = d3.geo.path()
-      .projection(null)
-      .bounds(this.props.geojson);
-
-    // Sync <paths> with map.
-    this.context.map.on('viewreset', this.sync.bind(this, false));
+  componentWillUpdate(props) {
+    this.bounds = d3.geo.path().projection(null).bounds(props.geojson);
     this.sync(true);
-
   }
 
 

@@ -27,7 +27,7 @@ export default class extends GeometricGroup {
 
 
   /**
-   * Inject the d3 rig.
+   * Render county paths.
    */
   componentDidUpdate() {
 
@@ -37,15 +37,7 @@ export default class extends GeometricGroup {
       .enter()
       .append('path')
       .classed({ county: true })
-      .attr('d', this.path)
-
-    let idMap = {};
-    this.counties.each(function(f) {
-      idMap[f.id] = d3.select(this);
-    })
-
-    // Register the id map.
-    this.props.dispatch(actions.renderCounties(idMap));
+      .attr('d', this.path);
 
     // HIGHLGHT
     this.counties.on('mouseover', c => {
@@ -57,7 +49,13 @@ export default class extends GeometricGroup {
       this.props.dispatch(actions.unhighlightCounty(c.id));
     });
 
-    super.componentDidUpdate();
+    let idMap = {};
+    this.counties.each(function(f) {
+      idMap[f.id] = d3.select(this);
+    })
+
+    // Register the id map.
+    this.props.dispatch(actions.renderCounties(idMap));
 
   }
 
