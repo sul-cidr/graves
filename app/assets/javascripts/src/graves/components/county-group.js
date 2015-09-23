@@ -10,9 +10,12 @@ import * as actions from '../actions/counties';
 // TODO: Break out an abstract <GeometricGroup />?
 
 
-@connect(state => ({
-  geojson: state.counties.geojson
-}))
+@connect(
+  state => ({
+    geojson: state.counties.geojson
+  }),
+  actions
+)
 export default class extends Component {
 
 
@@ -66,7 +69,7 @@ export default class extends Component {
    * Request counties.
    */
   componentDidMount() {
-    this.props.dispatch(actions.loadCounties());
+    this.props.loadCounties();
   }
 
 
@@ -96,12 +99,12 @@ export default class extends Component {
 
     // HIGHLGHT
     this.counties.on('mouseover', c => {
-      this.props.dispatch(actions.highlightCounty(c.id));
+      this.props.highlightCounty(c.id);
     });
 
     // UNHIGHLIGHT
     this.counties.on('mouseout', c => {
-      this.props.dispatch(actions.unhighlightCounty(c.id));
+      this.props.unhighlightCounty(c.id);
     });
 
     let idMap = {};
@@ -110,7 +113,7 @@ export default class extends Component {
     })
 
     // Register the id map.
-    this.props.dispatch(actions.renderCounties(idMap));
+    this.props.renderCounties(idMap);
 
   }
 

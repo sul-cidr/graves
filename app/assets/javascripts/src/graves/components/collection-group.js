@@ -3,8 +3,8 @@
 import L from 'leaflet';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
-import * as actions from '../actions/collections';
 import CollectionLayer from './collection-layer';
+import * as actions from '../actions/collections';
 import styles from './collection.yml';
 
 
