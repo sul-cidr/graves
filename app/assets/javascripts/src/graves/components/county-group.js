@@ -57,8 +57,7 @@ export default class extends Component {
    */
   componentDidUpdate() {
 
-    this.counties = this.g
-      .selectAll('path')
+    this.counties = this.g.selectAll('path')
       .data(this.props.geojson.features, function(d) { return d.id; })
       .enter()
       .append('path')
@@ -79,7 +78,7 @@ export default class extends Component {
     })
 
     // Register the id map.
-    this.dispatch(actions.renderCounties(idMap));
+    this.props.dispatch(actions.renderCounties(idMap));
 
   }
 

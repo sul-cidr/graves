@@ -5,6 +5,7 @@ import React, { Component, findDOMNode, PropTypes } from 'react';
 import CollectionGroup from './collection-group';
 import CollectionHighlight from './collection-highlight';
 import CountyGroup from './county-group';
+import CountyHighlight from './county-highlight';
 
 
 export default class extends Component {
@@ -83,6 +84,7 @@ export default class extends Component {
           <CollectionHighlight />
 
           <CountyGroup />
+          <CountyHighlight />
 
         </div>
       );

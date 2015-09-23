@@ -44,7 +44,7 @@ export default class extends Component {
    * @param {Number} id
    */
   highlight(id) {
-    // TODO
+    console.log(this.props.layers[id]);
   }
 
 
