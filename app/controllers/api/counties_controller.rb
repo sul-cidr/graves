@@ -5,6 +5,7 @@ module API
     def index
       render json: County.snap.to_geojson(
         :name_p,
+        :choropleths,
       )
     end
 
