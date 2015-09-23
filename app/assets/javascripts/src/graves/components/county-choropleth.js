@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import * as actions from '../actions/counties';
@@ -25,7 +26,7 @@ export default class extends Component {
    * TODO|dev
    */
   componentDidMount() {
-    this.props.renderChoropleth('test');
+    this.props.renderChoropleth('a100001_10');
   }
 
 
@@ -33,7 +34,14 @@ export default class extends Component {
    * Manifest the current choropleth.
    */
   componentDidUpdate() {
-    console.log(this.props.choropleth);
+
+    let key = this.props.choropleth;
+
+    _.each(this.props.layers, (path, id) => {
+      let opacity = path.data()[0].properties.choropleths[key];
+      console.log(opacity);
+    });
+
   }
 
 
