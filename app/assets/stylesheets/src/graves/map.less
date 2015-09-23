@@ -18,6 +18,13 @@
     font-weight: bold;
   }
 
+  svg {
+    pointer-events: none;
+    path {
+      pointer-events: all;
+    }
+  }
+
   path.county {
 
     stroke: white;
@@ -26,7 +33,7 @@
     fill-opacity: 0.7;
 
     &.highlight {
-      fill: orange;
+      fill: darken(orange, 10%);
     }
 
   }

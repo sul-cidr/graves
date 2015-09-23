@@ -83,6 +83,9 @@ export default class extends Component {
           <CountyGroup />
           <CountyHighlight />
 
+          <CollectionGroup />
+          <CollectionHighlight />
+
         </div>
       );
     }
