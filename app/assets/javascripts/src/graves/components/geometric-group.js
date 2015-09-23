@@ -25,10 +25,13 @@ export default class extends Component {
 
     let map = this.context.map;
 
-    // Inject the SVG containers.
-    let pane = this.context.map.getPanes().overlayPane;
+    // SVG container.
+    let pane = map.getPanes().overlayPane;
     this.svg = d3.select(pane).append('svg');
-    this.g = this.svg.append('g').classed('leaflet-zoom-hide', true);
+
+    // Layer group.
+    this.g = this.svg.append('g')
+      .classed('leaflet-zoom-hide', true);
 
     let origin = map.getPixelOrigin();
 
