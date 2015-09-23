@@ -78,26 +78,3 @@ export function unhighlightCollection() {
     type: constants.UNHIGHLIGHT_COLLECTION,
   };
 }
-
-
-/**
- * Select an individual collection.
- *
- * @param {Number} id
- */
-export function selectCollection(id) {
-  return {
-    type: constants.SELECT_COLLECTION,
-    id: id,
-  };
-}
-
-
-/**
- * Unselect collections.
- */
-export function unselectCollection() {
-  return {
-    type: constants.UNSELECT_COLLECTION,
-  };
-}

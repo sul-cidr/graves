@@ -36,14 +36,6 @@ const handlers = {
     highlighted: null,
   }),
 
-  [constants.SELECT_COLLECTION]: (state, action) => ({
-    selected: action.id,
-  }),
-
-  [constants.UNSELECT_COLLECTION]: (state, action) => ({
-    selected: null,
-  }),
-
 };
 
 
