@@ -37,7 +37,7 @@ export default class extends Component {
     this.svg = d3.select(pane).append('svg');
 
     // County wrapper.
-    this.g = this.svg.append('g');
+    this.g = this.svg.append('g').classed('leaflet-zoom-hide', true);
 
   }
 
@@ -48,22 +48,20 @@ export default class extends Component {
   componentDidUpdate() {
 
     let map = this.context.map;
+    let origin = map.getPixelOrigin();
 
     // Map lon/lat -> layer pixels.
     let transform = d3.geo.transform({
       point: function(x, y) {
-
-        let latlng = new L.LatLng(x, y);
-        let origin = map.getPixelOrigin();
-
-        let point = map.project(latlng)._subtract(origin);
+        let point = map.project(new L.LatLng(x, y))._subtract(origin);
         this.stream.point(point.x, point.y);
-
       }
     });
 
-    this.paths = d3.geo.path().projection(transform);
+    // Path generator.
+    this.path = d3.geo.path().projection(transform);
 
+    // Inject <path>'s.
     this.counties = this.g
       .selectAll('path')
       .data(this.props.geojson.features)
@@ -112,7 +110,7 @@ export default class extends Component {
 
       // Set the initial <g> offset.
       this.g.attr('transform', `translate(${-tl.x},${-br.y})`);
-      this.counties.attr('d', this.paths);
+      this.counties.attr('d', this.path);
 
       // Cache the starting corners.
       this.tl0 = tl;
@@ -124,6 +122,7 @@ export default class extends Component {
 
       let t = d3.transform(this.g.attr('transform'));
 
+      // Scale to match zoom level.
       t.scale = [
         t.scale[0] * ((br.x - tl.x) / (this.br.x - this.tl.x)),
         t.scale[1] * ((tl.y - br.y) / (this.tl.y - this.br.y)),
