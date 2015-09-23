@@ -41,8 +41,10 @@ export default class extends Component {
     this.svg = d3.select(pane).append('svg');
 
     // Layer group.
-    this.g = this.svg.append('g')
-      .classed('leaflet-zoom-hide', true);
+    this.g = this.svg.append('g').classed({
+      'leaflet-zoom-hide': true,
+      counties: true,
+    });
 
     let origin = map.getPixelOrigin();
 
