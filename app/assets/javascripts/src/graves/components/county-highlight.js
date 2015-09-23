@@ -44,7 +44,7 @@ export default class extends Component {
    * @param {Number} id
    */
   highlight(id) {
-    console.log(this.props.layers[id]);
+    this.props.layers[id].classed('highlight', true);
   }
 
 
@@ -54,7 +54,7 @@ export default class extends Component {
    * @param {Number} id
    */
   unhighlight(id) {
-    // TODO
+    this.props.layers[id].classed('highlight', false);
   }
 
 

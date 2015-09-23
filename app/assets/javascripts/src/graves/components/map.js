@@ -80,9 +80,6 @@ export default class extends Component {
       return (
         <div id="map" ref="map">
 
-          <CollectionGroup />
-          <CollectionHighlight />
-
           <CountyGroup />
           <CountyHighlight />
 
