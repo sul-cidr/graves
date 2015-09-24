@@ -52,19 +52,6 @@ function receiveCollections(json) {
 
 
 /**
- * Map ids to Leaflet layers.
- *
- * @param {Object} idMap
- */
-export function renderCollections(idMap) {
-  return {
-    type: RENDER_COLLECTIONS,
-    layers: idMap,
-  };
-}
-
-
-/**
  * Highlight an individual collection.
  *
  * @param {Number} id

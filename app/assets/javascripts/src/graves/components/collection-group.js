@@ -64,10 +64,9 @@ export default class extends Component {
 
 
   /**
-   * Publish the id -> layer map to the store.
+   * Ensure the collections are on top.
    */
   componentDidUpdate() {
-    this.props.renderCollections(this.idToLayer);
     this.group.bringToFront();
   }
 
