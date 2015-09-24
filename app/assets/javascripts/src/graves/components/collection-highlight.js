@@ -6,14 +6,13 @@ import styles from './collection.yml';
 
 
 @connect(state => ({
-  layers: state.collections.layers,
   highlighted: state.collections.highlighted,
 }))
 export default class extends Component {
 
 
   static propTypes = {
-    layers: PropTypes.object.isRequired,
+    idToLayer: PropTypes.object.isRequired,
     highlighted: PropTypes.any,
   }
 
@@ -44,8 +43,8 @@ export default class extends Component {
    * @param {Number} id
    */
   highlight(id) {
-    this.props.layers[id].setStyle(styles.path.hl);
-    this.props.layers[id].openPopup();
+    this.props.idToLayer[id].setStyle(styles.path.hl);
+    this.props.idToLayer[id].openPopup();
   }
 
 
@@ -55,8 +54,8 @@ export default class extends Component {
    * @param {Number} id
    */
   unhighlight(id) {
-    this.props.layers[id].setStyle(styles.path.def);
-    this.props.layers[id].closePopup();
+    this.props.idToLayer[id].setStyle(styles.path.def);
+    this.props.idToLayer[id].closePopup();
   }
 
 

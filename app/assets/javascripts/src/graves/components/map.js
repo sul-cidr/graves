@@ -3,7 +3,6 @@
 import L from 'leaflet';
 import React, { Component, findDOMNode, PropTypes } from 'react';
 import CollectionGroup from './collection-group';
-import CollectionHighlight from './collection-highlight';
 
 
 export default class extends Component {
@@ -80,7 +79,6 @@ export default class extends Component {
       return (
         <div id="map" ref="map">
           <CollectionGroup />
-          <CollectionHighlight />
         </div>
       );
     }

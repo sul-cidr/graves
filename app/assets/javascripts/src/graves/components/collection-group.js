@@ -3,9 +3,11 @@
 import L from 'leaflet';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
-import CollectionLayer from './collection-layer';
+
 import * as actions from '../actions/collections';
 import styles from './collection.yml';
+import CollectionHighlight from './collection-highlight';
+import CollectionLayer from './collection-layer';
 
 
 @connect(
@@ -88,7 +90,15 @@ export default class extends Component {
 
     return (
       <span className="collections">
-        {features}
+
+        <span>
+          {features}
+        </span>
+
+        <CollectionHighlight
+          idToLayer={this.idToLayer}
+        />
+
       </span>
     );
 
