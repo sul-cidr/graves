@@ -87,9 +87,9 @@ export default class extends Component {
     });
 
     return (
-      <noscript className="collections">
+      <span className="collections">
         {features}
-      </noscript>
+      </span>
     );
 
   }

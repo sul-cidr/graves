@@ -29,7 +29,9 @@ export default class extends Component {
    * Expose the map instance to children.
    */
   getChildContext() {
-    return { map: this.state.map };
+    return {
+      map: this.state.map
+    };
   }
 
 
