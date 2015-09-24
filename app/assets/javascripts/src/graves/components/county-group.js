@@ -109,13 +109,8 @@ export default class extends Component {
       this.props.unhighlightCounty(c.id);
     });
 
-    let idMap = {};
-    this.counties.each(function(f) {
-      idMap[f.id] = d3.select(this);
-    })
-
-    // Register the id map.
-    this.props.renderCounties(idMap);
+    // Register the markup.
+    this.props.renderCounties(this.g);
 
   }
 

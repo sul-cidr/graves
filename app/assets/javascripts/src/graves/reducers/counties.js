@@ -1,5 +1,6 @@
 
 
+import d3 from 'd3-browserify';
 import createReducer from '../utils/create-reducer';
 
 import {
@@ -16,7 +17,7 @@ const initialState = {
   loading: false,
   geojson: {},
   highlighted: null,
-  layers: {},
+  idToPath: {},
 };
 
 
@@ -31,9 +32,18 @@ const handlers = {
     loading: false,
   }),
 
-  [RENDER_COUNTIES]: (state, action) => ({
-    layers: action.layers,
-  }),
+  [RENDER_COUNTIES]: (state, action) => {
+
+    let idToPath = {};
+    action.g.selectAll('path').each(function(f) {
+      idToPath[f.id] = d3.select(this);
+    });
+
+    return {
+      idToPath: idToPath
+    };
+
+  },
 
   [HIGHLIGHT_COUNTY]: (state, action) => ({
     highlighted: action.id,

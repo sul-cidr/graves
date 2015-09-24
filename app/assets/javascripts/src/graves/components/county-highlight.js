@@ -6,14 +6,14 @@ import styles from './county.yml';
 
 
 @connect(state => ({
-  layers: state.counties.layers,
+  idToPath: state.counties.idToPath,
   highlighted: state.counties.highlighted,
 }))
 export default class extends Component {
 
 
   static propTypes = {
-    layers: PropTypes.object.isRequired,
+    idToPath: PropTypes.object.isRequired,
     highlighted: PropTypes.any,
   }
 
@@ -24,6 +24,8 @@ export default class extends Component {
    * @param {Object} prevProps
    */
   componentDidUpdate(prevProps) {
+
+    console.log(this.props);
 
     // Highlight.
     if (!prevProps.highlighted && this.props.highlighted) {
@@ -44,7 +46,7 @@ export default class extends Component {
    * @param {Number} id
    */
   highlight(id) {
-    this.props.layers[id].classed('highlight', true);
+    this.props.idToPath[id].classed('highlight', true);
   }
 
 
@@ -54,7 +56,7 @@ export default class extends Component {
    * @param {Number} id
    */
   unhighlight(id) {
-    this.props.layers[id].classed('highlight', false);
+    this.props.idToPath[id].classed('highlight', false);
   }
 
 

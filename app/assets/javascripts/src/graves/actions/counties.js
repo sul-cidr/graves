@@ -53,14 +53,14 @@ function receiveCounties(json) {
 
 
 /**
- * Map ids to Leaflet layers.
+ * When counties are rendered.
  *
- * @param {Object} idMap
+ * @param {Object} g
  */
-export function renderCounties(idMap) {
+export function renderCounties(g) {
   return {
     type: RENDER_COUNTIES,
-    layers: idMap,
+    g: g,
   };
 }
 

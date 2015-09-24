@@ -34,14 +34,7 @@ export default class extends Component {
    * Manifest the current choropleth.
    */
   componentDidUpdate() {
-
-    let key = this.props.choropleth;
-
-    _.each(this.props.layers, (path, id) => {
-      let opacity = path.data()[0].properties.choropleths[key];
-      path.attr('fill-opacity', opacity);
-    });
-
+    // TODO
   }
 
 
