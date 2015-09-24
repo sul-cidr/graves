@@ -4,9 +4,6 @@ import L from 'leaflet';
 import React, { Component, findDOMNode, PropTypes } from 'react';
 import CollectionGroup from './collection-group';
 import CollectionHighlight from './collection-highlight';
-import CountyGroup from './county-group';
-import CountyChoropleth from './county-choropleth';
-import CountyHighlight from './county-highlight';
 
 
 export default class extends Component {
@@ -80,14 +77,8 @@ export default class extends Component {
     if (this.state.map) {
       return (
         <div id="map" ref="map">
-
-          <CountyGroup />
-          <CountyChoropleth />
-          <CountyHighlight />
-
           <CollectionGroup />
           <CollectionHighlight />
-
         </div>
       );
     }
