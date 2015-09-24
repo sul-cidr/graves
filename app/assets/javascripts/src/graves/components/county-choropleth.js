@@ -8,25 +8,19 @@ import * as actions from '../actions/counties';
 
 @connect(
   state => ({
-    layers: state.counties.layers,
-    choropleth: state.counties.choropleth,
+    code: state.counties.choropleth,
+    g: state.counties.g,
   }),
   actions
 )
 export default class extends Component {
 
 
-  static propTypes = {
-    layers: PropTypes.object.isRequired,
-    choropleth: PropTypes.any,
-  }
-
-
   /**
    * TODO|dev
    */
   componentDidMount() {
-    this.props.renderChoropleth('a100001_10');
+    this.props.renderChoropleth('a100017_10');
   }
 
 
@@ -34,7 +28,19 @@ export default class extends Component {
    * Manifest the current choropleth.
    */
   componentDidUpdate() {
-    // TODO
+
+    if (!this.props.g) return;
+
+    if (this.props.code) {
+
+      this.props.g.selectAll('path').attr('fill-opacity', f => {
+        return f.properties.choropleths[this.props.code];
+      });
+
+      this.props.g.classed('choropleth', true);
+
+    }
+
   }
 
 

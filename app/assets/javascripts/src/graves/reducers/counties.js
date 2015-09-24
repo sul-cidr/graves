@@ -17,6 +17,7 @@ const initialState = {
   loading: false,
   geojson: {},
   highlighted: null,
+  g: null,
   idToPath: {},
 };
 
@@ -40,7 +41,8 @@ const handlers = {
     });
 
     return {
-      idToPath: idToPath
+      idToPath: idToPath,
+      g: action.g,
     };
 
   },

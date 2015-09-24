@@ -25,15 +25,27 @@
     }
   }
 
-  path.county {
+  g.counties {
 
-    stroke: white;
-    fill: #0051A0;
-    stroke-width: 0.02;
     fill-opacity: 0.7;
 
-    &.highlight {
-      fill: darken(orange, 10%);
+    path {
+
+      stroke: white;
+      fill: black;
+      stroke-width: 0.02;
+
+      &.highlight {
+        fill: darken(orange, 10%);
+      }
+
+    }
+
+    &.choropleth path {
+      fill: #0051A0;
+      &.highlight {
+        fill: darken(orange, 10%);
+      }
     }
 
   }

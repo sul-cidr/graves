@@ -25,8 +25,6 @@ export default class extends Component {
    */
   componentDidUpdate(prevProps) {
 
-    console.log(this.props);
-
     // Highlight.
     if (!prevProps.highlighted && this.props.highlighted) {
       this.highlight(this.props.highlighted);
