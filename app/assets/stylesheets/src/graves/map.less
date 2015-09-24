@@ -18,36 +18,12 @@
     font-weight: bold;
   }
 
+  // Make it possible to stack SVG containers.
   svg {
     pointer-events: none;
     path {
       pointer-events: all;
     }
-  }
-
-  g.counties {
-
-    fill-opacity: 0.7;
-
-    path {
-
-      stroke: white;
-      fill: black;
-      stroke-width: 0.02;
-
-      &.highlight {
-        fill: darken(orange, 10%);
-      }
-
-    }
-
-    &.choropleth path {
-      fill: #0051A0;
-      &.highlight {
-        fill: darken(orange, 10%);
-      }
-    }
-
   }
 
 }
