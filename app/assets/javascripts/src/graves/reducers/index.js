@@ -1,7 +1,7 @@
 
 
 import { combineReducers } from 'redux';
-import { routerStateReducer } from 'redux-react-router';
+import { routerStateReducer } from 'redux-router';
 import collections from './collections';
 
 
