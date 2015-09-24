@@ -16,7 +16,7 @@ export default class extends Component {
   static propTypes = {
     feature: PropTypes.object.isRequired,
     group: PropTypes.object.isRequired,
-    idMap: PropTypes.object.isRequired,
+    idToLayer: PropTypes.object.isRequired,
   }
 
 
@@ -50,7 +50,7 @@ export default class extends Component {
     });
 
     // Register the layer.
-    this.props.idMap[feature.id] = this.layer;
+    this.props.idToLayer[feature.id] = this.layer;
     this.props.group.addLayer(this.layer);
 
   }

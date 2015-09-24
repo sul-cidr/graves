@@ -32,7 +32,7 @@ export default class extends Component {
    */
   componentWillMount() {
 
-    this.idMap = {};
+    this.idToLayer = {};
 
     // Create group.
     this.group = L.featureGroup();
@@ -65,7 +65,7 @@ export default class extends Component {
    * Publish the id -> layer map to the store.
    */
   componentDidUpdate() {
-    this.props.renderCollections(this.idMap);
+    this.props.renderCollections(this.idToLayer);
     this.group.bringToFront();
   }
 
@@ -80,7 +80,7 @@ export default class extends Component {
         <CollectionLayer
           key={f.id}
           group={this.group}
-          idMap={this.idMap}
+          idToLayer={this.idToLayer}
           feature={f}
         />
       );
