@@ -12,7 +12,10 @@ export default class extends Component {
    */
   render() {
     return (
-      <Map />
+      <div className="wrapper">
+        <Map />
+        {this.props.children}
+      </div>
     );
   }
 
