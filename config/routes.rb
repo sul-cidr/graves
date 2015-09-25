@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'graves#index'
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   namespace :api do
-    resources :provinces, only: [:index]
     resources :counties, only: [:index]
     resources :collections, only: [:index]
+    resources :narratives, only: [:show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
