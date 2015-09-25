@@ -31,6 +31,8 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
 
+    config.browser_validations = false
+
     config.included_models = ['Author', 'Narrative']
 
     config.model 'Author' do
