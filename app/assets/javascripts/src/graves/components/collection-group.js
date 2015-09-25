@@ -1,8 +1,8 @@
 
 
 import L from 'leaflet';
-import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import * as actions from '../actions/collections';
 import styles from './collection.yml';

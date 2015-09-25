@@ -19,7 +19,7 @@ export function loadNarrative(slug) {
     // Notify start.
     dispatch(requestNarrative());
 
-    fetch(`/api/narrative/${slug}`)
+    fetch(`/api/narratives/${slug}`)
     .then(res => res.json())
     .then(model => dispatch(receiveNarrative(model)));
 
