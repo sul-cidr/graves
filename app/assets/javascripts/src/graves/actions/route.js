@@ -3,6 +3,7 @@
 import {
   SHOW_SPLASH,
   SHOW_NARRATIVE,
+  SHOW_EXPLORE,
 } from '../constants';
 
 
@@ -25,5 +26,15 @@ export function showNarrative(slug) {
   return {
     type: SHOW_NARRATIVE,
     slug: slug,
+  };
+}
+
+
+/**
+ * Navigate to the "explorer."
+ */
+export function showExplore() {
+  return {
+    type: SHOW_EXPLORE,
   };
 }

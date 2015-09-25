@@ -7,14 +7,13 @@ import Narrative from './narrative';
 import Splash from './splash';
 
 
-@connect(state => ({
-  slug: state.route.narrative
-}))
+@connect(state => state.route)
 export default class extends Component {
 
 
   static propTypes = {
-    slug: PropTypes.any,
+    explore: PropTypes.bool.isRequired,
+    narrative: PropTypes.any,
   }
 
 
@@ -27,9 +26,11 @@ export default class extends Component {
 
         <Map />
 
-        { this.props.slug ?
-          <Narrative slug={this.props.slug} /> :
-          <Splash /> }
+        {this.props.narrative ?
+          <Narrative slug={this.props.narrative} /> : null}
+
+        {!this.props.narrative && !this.props.explore ?
+          <Splash /> : null}
 
       </div>
     );
