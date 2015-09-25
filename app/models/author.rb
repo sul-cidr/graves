@@ -10,4 +10,14 @@
 #
 
 class Author < ActiveRecord::Base
+
+  #
+  # Construct a full name.
+  #
+  # @return [String]
+  #
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
 end

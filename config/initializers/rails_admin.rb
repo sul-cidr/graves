@@ -30,5 +30,12 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+
+    config.included_models = ['Author', 'Narrative']
+
+    config.model 'Author' do
+      object_label_method :full_name
+    end
+
   end
 end
