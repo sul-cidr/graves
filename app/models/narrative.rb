@@ -15,7 +15,9 @@ class Narrative < ActiveRecord::Base
 
   belongs_to :author
 
-  validates :author, :slug, presence: true
+  validates :author, presence: true
+
+  validates :slug, presence: true
   validates :slug, uniqueness: true
   validates :slug, format: { with: /\A[a-z0-9-]*\z/ }
 

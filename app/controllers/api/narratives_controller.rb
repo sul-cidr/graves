@@ -3,7 +3,7 @@ module API
   class NarrativesController < ApplicationController
 
     def show
-      render json: Narrative.find_by(id: params[:id])
+      render json: Narrative.find_by(slug: params[:id])
     end
 
   end
