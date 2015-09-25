@@ -32,10 +32,9 @@ RailsAdmin.config do |config|
     # history_show
 
     config.browser_validations = false
-
     config.included_models = ['Author', 'Narrative']
 
-    config.model 'Author' do
+    config.model Author do
       object_label_method :full_name
     end
 
