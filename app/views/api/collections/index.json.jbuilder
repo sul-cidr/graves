@@ -1,2 +1,2 @@
 
-json.array! @collections
+json.(@collections, *@collections.keys)

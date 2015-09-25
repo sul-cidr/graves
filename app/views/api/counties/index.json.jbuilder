@@ -1,2 +1,2 @@
 
-json.array! @counties
+json.(@counties, *@counties.keys)
