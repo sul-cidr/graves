@@ -2,15 +2,21 @@
 
 import { Router } from 'director';
 import store from './store';
-import { showNarrative } from './actions/route';
+
+import {
+  showSplash,
+  showNarrative,
+} from './actions/route';
 
 
 export default Router({
 
+  '/': () => {
+    store.dispatch(showSplash());
+  },
 
   '/read/:slug': slug => {
     store.dispatch(showNarrative(slug));
   }
-
 
 });
