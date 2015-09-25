@@ -31,6 +31,7 @@
     "bootstrap": "^3.3.5",
     "bootswatch": "^3.3.5",
     "d3-browserify": "^3.4.12",
+    "director": "^1.2.8",
     "history": "^1.10.2",
     "isomorphic-fetch": "^2.1.1",
     "leaflet": "^0.7.5",

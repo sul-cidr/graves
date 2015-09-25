@@ -1,10 +1,21 @@
 
 
-import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import React, { Component, PropTypes } from 'react';
 import Map from './map';
+import Narrative from './narrative';
+import Splash from './splash';
 
 
+@connect(state => ({
+  narrative: state.narrative.slug
+}))
 export default class extends Component {
+
+
+  static propTypes = {
+    narrative: PropTypes.any,
+  }
 
 
   /**
@@ -14,7 +25,6 @@ export default class extends Component {
     return (
       <div className="wrapper">
         <Map />
-        {this.props.children}
       </div>
     );
   }
