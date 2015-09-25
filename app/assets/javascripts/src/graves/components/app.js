@@ -8,13 +8,13 @@ import Splash from './splash';
 
 
 @connect(state => ({
-  narrative: state.route.narrative
+  slug: state.route.narrative
 }))
 export default class extends Component {
 
 
   static propTypes = {
-    narrative: PropTypes.any,
+    slug: PropTypes.any,
   }
 
 
@@ -22,10 +22,15 @@ export default class extends Component {
    * Render the top-level application structure.
    */
   render() {
-    console.log(this.props.narrative);
     return (
       <div className="wrapper">
+
         <Map />
+
+        { this.props.slug ?
+          <Narrative slug={this.props.slug} /> :
+          <Splash /> }
+
       </div>
     );
   }
