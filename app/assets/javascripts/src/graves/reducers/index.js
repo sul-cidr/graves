@@ -1,11 +1,11 @@
 
 
 import { combineReducers } from 'redux';
-import narrative from './narrative';
+import route from './route';
 import collections from './collections';
 
 
 export default combineReducers({
-  narrative,
+  route,
   collections,
 });

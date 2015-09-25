@@ -2,7 +2,7 @@
 
 import { Router } from 'director';
 import store from './store';
-import { showNarrative } from './actions/narrative';
+import { showNarrative } from './actions/route';
 
 
 export default Router({

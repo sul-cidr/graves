@@ -8,7 +8,7 @@ import Splash from './splash';
 
 
 @connect(state => ({
-  narrative: state.narrative.slug
+  narrative: state.route.narrative
 }))
 export default class extends Component {
 
@@ -22,6 +22,7 @@ export default class extends Component {
    * Render the top-level application structure.
    */
   render() {
+    console.log(this.props.narrative);
     return (
       <div className="wrapper">
         <Map />

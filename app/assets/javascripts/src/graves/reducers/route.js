@@ -8,14 +8,14 @@ import {
 
 
 const initialState = {
-  slug: null,
+  narrative: null,
 };
 
 
 const handlers = {
 
   [SHOW_NARRATIVE]: (state, action) => ({
-    slug: action.slug,
+    narrative: action.slug,
   }),
 
 };
