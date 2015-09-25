@@ -11,7 +11,10 @@ export default class extends Component {
    */
   render() {
     return (
-      <h1>Home!</h1>
+      <div className="home">
+        <h1>Chinese Graves</h1>
+        <h6>A digital project by Tom Mullaney</h6>
+      </div>
     );
   }
 
