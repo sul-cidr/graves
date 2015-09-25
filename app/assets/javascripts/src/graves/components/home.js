@@ -11,7 +11,7 @@ export default class extends Component {
    */
   render() {
     return (
-      <h1>Splash!</h1>
+      <h1>Home!</h1>
     );
   }
 
