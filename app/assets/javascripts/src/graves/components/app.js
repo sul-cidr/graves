@@ -2,9 +2,10 @@
 
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
+import Content from './content';
 import Map from './map';
 import Narrative from './narrative';
-import Splash from './splash';
+import Home from './home';
 
 
 @connect(state => state.route)
@@ -21,19 +22,34 @@ export default class extends Component {
    * Render the top-level application structure.
    */
   render() {
+
+    let content = null;
+
+    // Render a narrative, when one is active.
+    if (this.props.narrative) {
+      content = (
+        <Content>
+          <Narrative slug={this.props.narrative} />
+        </Content>
+      );
+    }
+
+    // Or, if explore mode is off, show the home screen.
+    else if (!this.props.explore) {
+      content = (
+        <Content>
+          <Home />
+        </Content>
+      );
+    }
+
     return (
       <div className="wrapper">
-
         <Map />
-
-        {this.props.narrative ?
-          <Narrative slug={this.props.narrative} /> : null}
-
-        {!this.props.narrative && !this.props.explore ?
-          <Splash /> : null}
-
+        {content}
       </div>
     );
+
   }
 
 
