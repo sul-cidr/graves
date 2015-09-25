@@ -64,6 +64,7 @@ group :development, :test do
   gem 'colorize'
   gem 'rack-livereload'
   gem 'geocoder'
+  gem 'rails_admin'
 
 end
 
