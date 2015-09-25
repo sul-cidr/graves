@@ -31,7 +31,6 @@ export default class extends Component {
    * Render the splash screen.
    */
   render() {
-    console.log(this.props);
     return (
       <h1>Narrative</h1>
     );
