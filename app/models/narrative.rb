@@ -8,9 +8,14 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  author_id  :integer          not null
+#  slug       :string           not null
 #
 
 class Narrative < ActiveRecord::Base
+
   belongs_to :author
-  validates :author, presence: true
+
+  validates :author, :slug, presence: true
+  validates :slug, uniqueness: true
+
 end
