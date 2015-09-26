@@ -44,20 +44,5 @@ RailsAdmin.config do |config|
       object_label_method :full_name
     end
 
-    config.model Notice do
-      list do
-        field :id
-        field :pub_date do
-          label 'Publication Date'
-        end
-        field :site_c do
-          label 'Site'
-        end
-        field :title_c do
-          label 'Title'
-        end
-      end
-    end
-
   end
 end
