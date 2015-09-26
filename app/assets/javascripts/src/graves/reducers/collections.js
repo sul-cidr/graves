@@ -7,6 +7,7 @@ import {
   RECEIVE_COLLECTIONS,
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
+  SELECT_COLLECTION,
 } from '../constants';
 
 
@@ -14,7 +15,7 @@ const initialState = {
   loading: false,
   features: [],
   highlighted: null,
-  layers: {},
+  selected: null,
 };
 
 
@@ -35,6 +36,10 @@ const handlers = {
 
   [UNHIGHLIGHT_COLLECTION]: (state, action) => ({
     highlighted: null,
+  }),
+
+  [SELECT_COLLECTION]: (state, action) => ({
+    selected: action.id,
   }),
 
 };

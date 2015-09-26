@@ -7,6 +7,11 @@ import App from './components/app';
 import router from './router';
 
 
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
+
 React.render(
 
   <Provider store={store}>{() =>

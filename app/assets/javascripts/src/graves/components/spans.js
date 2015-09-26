@@ -84,7 +84,8 @@ export default class extends Component {
    * @param {Object} e
    */
   onClick(e) {
-    // TODO
+    let id = this.getBurialIdFromEvent(e);
+    this.props.selectCollection(id);
   }
 
 

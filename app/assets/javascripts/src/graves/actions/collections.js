@@ -8,6 +8,7 @@ import {
   RENDER_COLLECTIONS,
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
+  SELECT_COLLECTION,
 } from '../constants';
 
 
@@ -70,5 +71,18 @@ export function highlightCollection(id) {
 export function unhighlightCollection() {
   return {
     type: UNHIGHLIGHT_COLLECTION,
+  };
+}
+
+
+/**
+ * Select an individual collection.
+ *
+ * @param {Number} id
+ */
+export function selectCollection(id) {
+  return {
+    type: SELECT_COLLECTION,
+    id: id,
   };
 }
