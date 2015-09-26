@@ -1,5 +1,6 @@
 
 compile:
+  - symlink
   - browserify
   - less
 
