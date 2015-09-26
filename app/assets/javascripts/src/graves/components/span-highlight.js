@@ -30,7 +30,48 @@ export default class extends Component {
    * @param {Object} prevProps
    */
   componentDidUpdate(prevProps) {
-    console.log(this.$el);
+
+    // Highlight.
+    if (!prevProps.highlighted && this.props.highlighted) {
+      this.highlight(this.props.highlighted);
+    }
+
+    // Unhighlight.
+    else if (prevProps.highlighted && !this.props.highlighted) {
+      this.unhighlight(prevProps.highlighted);
+    }
+
+  }
+
+
+  /**
+   * Apply a highlight.
+   *
+   * @param {Number} id
+   */
+  highlight(id) {
+    this.getBurialsById(id).addClass('highlight');
+  }
+
+
+  /**
+   * Remove a highlight.
+   *
+   * @param {Number} id
+   */
+  unhighlight(id) {
+    this.getBurialsById(id).removeClass('highlight');
+  }
+
+
+  /**
+   * Get burial spans by id.
+   *
+   * @param {Number} id
+   * @return {Object}
+   */
+  getBurialsById(id) {
+    return this.$el.find(`span.burial[data-id=${id}]`)
   }
 
 
