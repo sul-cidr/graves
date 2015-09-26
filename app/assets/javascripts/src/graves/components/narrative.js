@@ -6,9 +6,7 @@ import * as actions from '../actions/narrative';
 
 
 @connect(
-  state => ({
-    model: state.narrative.model
-  }),
+  state => (state.narrative),
   actions
 )
 export default class extends Component {
