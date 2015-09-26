@@ -20,7 +20,15 @@ export default class extends Component {
    * Wrap the markup container.
    */
   componentDidMount() {
+
     this.$el = $(this.props.markup);
+    this.spans = this.$el.find('span.burial');
+
+    // Listen for cursor events.
+    this.spans.on('mouseenter', this.onEnter.bind(this));
+    this.spans.on('mouseleave', this.onLeave.bind(this));
+    this.spans.on('click', this.onClick.bind(this));
+
   }
 
 
@@ -45,6 +53,37 @@ export default class extends Component {
 
 
   /**
+   * When the cursor enters a span.
+   *
+   * @param {Object} e
+   */
+  onEnter(e) {
+    let id = this.getBurialIdFromEvent(e);
+    console.log(id);
+  }
+
+
+  /**
+   * When the cursor leaves a span.
+   *
+   * @param {Object} e
+   */
+  onLeave(e) {
+    // TODO
+  }
+
+
+  /**
+   * When a span is clicked.
+   *
+   * @param {Object} e
+   */
+  onClick(e) {
+    // TODO
+  }
+
+
+  /**
    * Apply a highlight.
    *
    * @param {Number} id
@@ -64,6 +103,9 @@ export default class extends Component {
   }
 
 
+  // ** Helpers:
+
+
   /**
    * Get burial spans by id.
    *
@@ -72,6 +114,17 @@ export default class extends Component {
    */
   getBurialsById(id) {
     return this.$el.find(`span.burial[data-id=${id}]`)
+  }
+
+
+  /**
+   * Get a burial ID from a cursor event.
+   *
+   * @param {Object} e
+   * @returns {Number}
+   */
+  getBurialIdFromEvent(e) {
+    return Number($(e.currentTarget).attr('data-id'));
   }
 
 
