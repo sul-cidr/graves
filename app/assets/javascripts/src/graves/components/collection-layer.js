@@ -47,6 +47,7 @@ export default class extends Component {
     this.layer.bindPopup(label, {
       minWidth: 0,
       closeButton: false,
+      autoPan: false,
     });
 
     // Register the layer.
