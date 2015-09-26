@@ -12,6 +12,7 @@ module Import
 
         Collection.create(
           notice:       notice,
+          legacy_id:    r[:rid],
           num_graves:   r[:num_graves],
           province_p:   r[:province_e],
           province_c:   r[:province_c],

@@ -41,7 +41,7 @@ class Collection < ActiveRecord::Base
   #
   geocoded_by :address do |event, results|
     if geo = results.first
-      event.lonlat = Helpers::Geo.point(geo.longitude, geo.latitude)
+      event.geometry = Helpers::Geo.point(geo.longitude, geo.latitude)
     end
   end
 
