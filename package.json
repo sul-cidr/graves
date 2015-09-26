@@ -37,6 +37,7 @@
     "font-awesome": "^4.4.0",
     "history": "^1.10.2",
     "isomorphic-fetch": "^2.1.1",
+    "jquery": "^2.1.4",
     "leaflet": "^0.7.5",
     "lesshat": "^3.0.2",
     "lodash": "^3.10.1",

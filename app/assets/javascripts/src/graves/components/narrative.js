@@ -1,9 +1,10 @@
 
 
-import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import React, { Component, PropTypes, findDOMNode } from 'react';
 import * as actions from '../actions/narrative';
 import Spinner from './spinner';
+import SpanHighlight from './span-highlight';
 
 
 @connect(
@@ -19,10 +20,34 @@ export default class extends Component {
 
 
   /**
+   * Set initial state.
+   *
+   * @param {Object} props
+   */
+  constructor(props) {
+    super(props);
+    this.state = { markup: null };
+  }
+
+
+  /**
    * Request the narrative.
    */
   componentDidMount() {
     this.props.loadNarrative(this.props.slug);
+  }
+
+
+  /**
+   * Get the markup DOM when it first renders.
+   */
+  componentDidUpdate() {
+
+    if (!this.state.markup && this.refs.markup) {
+      let markup = findDOMNode(this.refs.markup);
+      this.setState({ markup: markup });
+    }
+
   }
 
 
@@ -37,9 +62,12 @@ export default class extends Component {
 
     else {
 
-      let markup = <div dangerouslySetInnerHTML={{
-        __html: this.props.model.markup
-      }} />;
+      let behaviors = null;
+
+      // Mount behaviors when the markup renders.
+      if (this.state.markup) {
+        behaviors = <SpanHighlight markup={this.state.markup} />
+      }
 
       return (
         <div className="narrative">
@@ -49,7 +77,11 @@ export default class extends Component {
             <p className="byline">By {this.props.model.author}</p>
           </header>
 
-          {markup}
+          <div ref="markup" dangerouslySetInnerHTML={{
+            __html: this.props.model.markup
+          }} />
+
+          {behaviors}
 
         </div>
       );
