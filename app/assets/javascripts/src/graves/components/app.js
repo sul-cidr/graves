@@ -34,15 +34,6 @@ export default class extends Component {
       );
     }
 
-    // Or, if explore mode is off, show the home screen.
-    else if (!this.props.explore) {
-      content = (
-        <Content>
-          <Home />
-        </Content>
-      );
-    }
-
     return (
       <div className="wrapper">
         <Map />
