@@ -12,8 +12,8 @@ export default class extends Component {
   render() {
     return (
       <div className="home">
-        <h1>Chinese Graves</h1>
-        <h6>A digital project by Tom Mullaney</h6>
+        <h1 className="logo">Chinese Graves</h1>
+        <h6>By Tom Mullaney and CIDR</h6>
       </div>
     );
   }
