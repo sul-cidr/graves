@@ -36,7 +36,18 @@ export default class extends Component {
     }
 
     else return (
-      <h1>Narrative</h1>
+      <div className="narrative">
+
+        <header>
+          <h1 className="title">{this.props.model.title}</h1>
+          <p className="byline">By {this.props.model.author}</p>
+        </header>
+
+        <div dangerouslySetInnerHTML={{
+          __html: this.props.model.markup
+        }} />
+
+      </div>
     );
 
   }
