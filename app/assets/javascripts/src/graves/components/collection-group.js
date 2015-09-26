@@ -96,7 +96,7 @@ export default class extends Component {
         </span>
 
         <CollectionHighlight idToLayer={this.idToLayer} />
-        <CollectionSelection />
+        <CollectionSelection idToLayer={this.idToLayer} />
 
       </span>
     );

@@ -10,7 +10,13 @@ import { connect } from 'react-redux';
 export default class extends Component {
 
 
+  static contextTypes = {
+    map: PropTypes.object.isRequired
+  }
+
+
   static propTypes = {
+    idToLayer: PropTypes.object.isRequired,
     selected: PropTypes.any,
   }
 
@@ -19,7 +25,18 @@ export default class extends Component {
    * Manifest the highlighted collection.
    */
   componentDidUpdate() {
-    console.log(this.props.selected);
+
+    if (this.props.selected) {
+
+      // Get a marker for the id.
+      let layer = this.props.idToLayer[this.props.selected];
+      if (!layer) return;
+
+      // Fly to the burial.
+      this.context.map.flyTo(layer.getLatLng(), 8);
+
+    }
+
   }
 
 
