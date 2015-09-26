@@ -3,6 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/narrative';
+import Spinner from './spinner';
 
 
 @connect(
@@ -26,12 +27,18 @@ export default class extends Component {
 
 
   /**
-   * Render the splash screen.
+   * Render a narrative.
    */
   render() {
-    return (
-      <h1>Narrative</h1>
-    );
+
+    //if (this.props.loading) {
+      return <Spinner />;
+    //}
+
+    //else return (
+      //<h1>Narrative</h1>
+    //);
+
   }
 
 
