@@ -2,13 +2,26 @@
 
 .content {
 
-  width: 45vw;
-  margin: 3em auto;
-  padding: 2em 4em;
+  position: absolute;
+  margin: 2em 0;
 
   background: rgba(10, 40, 70, 0.88);
   color: darken(white, 12%);
 
   .border-radius(2);
+  .box-shadow(0 0px 10px rgba(20,20,20,0.1));
+  .transition(all 0.2s ease);
+
+  &.center {
+    width: 40vw;
+    left: 30vw;
+    padding: 2em 4em;
+  }
+
+  &.left {
+    width: 35vw;
+    left: 3vw;
+    padding: 2em 3em;
+  }
 
 }

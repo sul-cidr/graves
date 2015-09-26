@@ -11,7 +11,7 @@ export default class extends Component {
    */
   render() {
     return (
-      <div className="content">
+      <div className="content center">
         {this.props.children}
       </div>
     );

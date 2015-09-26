@@ -44,7 +44,8 @@ export default class extends Component {
     let map = L.map(el, {
       zoomControl: false,
       attributionControl: false,
-      fadeAnimation: false
+      fadeAnimation: false,
+      scrollWheelZoom: false,
     });
 
     // Zoom buttons on top right.
