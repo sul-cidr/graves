@@ -31,13 +31,13 @@ export default class extends Component {
    */
   render() {
 
-    //if (this.props.loading) {
+    if (this.props.loading) {
       return <Spinner />;
-    //}
+    }
 
-    //else return (
-      //<h1>Narrative</h1>
-    //);
+    else return (
+      <h1>Narrative</h1>
+    );
 
   }
 

@@ -7,4 +7,4 @@ json.extract!(
   :slug,
 )
 
-json.author = @narrative.author.full_name
+json.author @narrative.author.full_name
