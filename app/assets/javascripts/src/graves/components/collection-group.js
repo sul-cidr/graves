@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions/collections';
 import styles from './collection.yml';
-import CollectionHighlight from './collection-highlight';
 import CollectionLayer from './collection-layer';
+import CollectionHighlight from './collection-highlight';
+import CollectionSelection from './collection-selection';
 
 
 @connect(
@@ -94,9 +95,8 @@ export default class extends Component {
           {features}
         </span>
 
-        <CollectionHighlight
-          idToLayer={this.idToLayer}
-        />
+        <CollectionHighlight idToLayer={this.idToLayer} />
+        <CollectionSelection />
 
       </span>
     );
