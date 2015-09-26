@@ -3,7 +3,7 @@
 .content {
 
   position: absolute;
-  margin: 2em 0;
+  margin: 2vw 0;
 
   background: rgba(10, 40, 70, 0.88);
   color: darken(white, 12%);
@@ -13,14 +13,12 @@
   .transition(all 0.2s ease);
 
   &.center {
-    width: 40vw;
-    left: 30vw;
-    padding: 2em 4em;
+    // TODO
   }
 
   &.left {
-    width: 35vw;
-    left: 3vw;
+    left: 2vw;
+    width: @width-text - 2vw;
     padding: 2em 3em;
   }
 
