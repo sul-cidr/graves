@@ -3,11 +3,15 @@
 import $ from 'jquery';
 import React, { Component, PropTypes, findDOMNode } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions/collections';
 
 
-@connect(state => ({
-  highlighted: state.collections.highlighted,
-}))
+@connect(
+  state => ({
+    highlighted: state.collections.highlighted,
+  }),
+  actions
+)
 export default class extends Component {
 
 
@@ -59,7 +63,7 @@ export default class extends Component {
    */
   onEnter(e) {
     let id = this.getBurialIdFromEvent(e);
-    console.log(id);
+    this.props.highlightCollection(id);
   }
 
 
@@ -69,7 +73,8 @@ export default class extends Component {
    * @param {Object} e
    */
   onLeave(e) {
-    // TODO
+    let id = this.getBurialIdFromEvent(e);
+    this.props.unhighlightCollection(id);
   }
 
 

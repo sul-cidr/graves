@@ -43,8 +43,13 @@ export default class extends Component {
    * @param {Number} id
    */
   highlight(id) {
-    this.props.idToLayer[id].setStyle(styles.path.hl);
-    this.props.idToLayer[id].openPopup();
+
+    let layer = this.props.idToLayer[id];
+    if (!layer) return;
+
+    layer.setStyle(styles.path.hl);
+    layer.openPopup();
+
   }
 
 
@@ -54,8 +59,13 @@ export default class extends Component {
    * @param {Number} id
    */
   unhighlight(id) {
-    this.props.idToLayer[id].setStyle(styles.path.def);
-    this.props.idToLayer[id].closePopup();
+
+    let layer = this.props.idToLayer[id];
+    if (!layer) return;
+
+    layer.setStyle(styles.path.def);
+    layer.closePopup();
+
   }
 
 
