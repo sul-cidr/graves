@@ -35,20 +35,26 @@ export default class extends Component {
       return <Spinner />;
     }
 
-    else return (
-      <div className="narrative">
+    else {
 
-        <header>
-          <h1 className="title">{this.props.model.title}</h1>
-          <p className="byline">By {this.props.model.author}</p>
-        </header>
+      let markup = <div dangerouslySetInnerHTML={{
+        __html: this.props.model.markup
+      }} />;
 
-        <div dangerouslySetInnerHTML={{
-          __html: this.props.model.markup
-        }} />
+      return (
+        <div className="narrative">
 
-      </div>
-    );
+          <header>
+            <h1 className="title">{this.props.model.title}</h1>
+            <p className="byline">By {this.props.model.author}</p>
+          </header>
+
+          {markup}
+
+        </div>
+      );
+
+    }
 
   }
 
