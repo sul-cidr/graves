@@ -48,26 +48,6 @@ export default class extends RadioComponent {
 
 
   /**
-   * Manifest the highlighted collection.
-   *
-   * @param {Object} prevProps
-   */
-  componentDidUpdate(prevProps) {
-
-    // Highlight.
-    if (!prevProps.highlighted && this.props.highlighted) {
-      this.highlight(this.props.highlighted);
-    }
-
-    // Unhighlight.
-    else if (prevProps.highlighted && !this.props.highlighted) {
-      this.unhighlight(prevProps.highlighted);
-    }
-
-  }
-
-
-  /**
    * When the cursor enters a span.
    *
    * @param {Object} e

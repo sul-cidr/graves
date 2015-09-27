@@ -26,15 +26,10 @@ export default class extends Component {
       throw new Error('Missing channel.');
     }
 
-  }
-
-
-  /**
-   * Bind event / request mappings.
-   */
-  componentDidMount() {
-    this._bindRequests();
+    // Bind event / request mappings
     this._bindEvents();
+    this._bindRequests();
+
   }
 
 
