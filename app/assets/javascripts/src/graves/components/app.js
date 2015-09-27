@@ -2,19 +2,34 @@
 
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
+import Mousetrap from 'mousetrap';
+
+import { toggleEditor } from '../actions/editor';
 import Content from './content';
 import Map from './map';
 import Narrative from './narrative';
-import Home from './home';
 
 
-@connect(state => state.route)
+@connect(
+  state => state.route,
+  dispatch => ({ toggleEditor })
+)
 export default class extends Component {
 
 
   static propTypes = {
     explore: PropTypes.bool.isRequired,
     narrative: PropTypes.any,
+  }
+
+
+  /**
+   * Listen for edit mode toggle.
+   */
+  componentDidMount() {
+    Mousetrap.bind(['command+e', 'ctrl+e'], () => {
+      this.props.toggleEditor();
+    });
   }
 
 

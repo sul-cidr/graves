@@ -42,6 +42,7 @@
     "leaflet": "^1.0.0-beta.1",
     "lesshat": "^3.0.2",
     "lodash": "^3.10.1",
+    "mousetrap": "^1.5.3",
     "react": "^0.13.3",
     "react-redux": "^2.1.1",
     "redux": "^2.0.0",
