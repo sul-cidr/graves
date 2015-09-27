@@ -1,6 +1,6 @@
 
 
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import RadioComponent from '../lib/radio-component';
 import { SELECT_COLLECTION, } from '../constants';
 
