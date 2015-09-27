@@ -33,7 +33,7 @@ export default class extends RadioComponent {
    */
   constructor(props) {
     super(props);
-    this.state = { visible: false };
+    this.state = { span: null };
   }
 
 
@@ -68,22 +68,16 @@ export default class extends RadioComponent {
    * @param {Object} e
    */
   show(e) {
-
-    let span = $(e.target);
-
-    // get size / position.
-
-    this.setState({ visible: true });
+    this.setState({ span: $(e.target) });
     this.bindMoveListener();
-
   }
 
 
   /**
-   * Set the marker offset.
+   * Re-render the line.
    */
   update() {
-    // TODO
+    this.forceUpdate();
   }
 
 
@@ -91,7 +85,7 @@ export default class extends RadioComponent {
    * Hide the line.
    */
   hide() {
-    this.setState({ visible: false });
+    this.setState({ span: false });
     this.unbindMoveListener();
   }
 
@@ -103,8 +97,37 @@ export default class extends RadioComponent {
 
     let line = null;
 
-    if (this.state.visible) {
-      line = <line />
+    if (this.state.span) {
+
+      let id      = this.state.span.attr('data-id');
+      let offset  = this.state.span.offset();
+      let height  = this.state.span.outerHeight();
+      let width   = this.state.span.outerWidth();
+
+      let top = offset.top - $(window).scrollTop();
+
+      // Map offset.
+      let [x2, y2] = getCollectionOffset(id);
+
+      let padding = 5;
+
+      // Text X.
+      let x1 = x2 > offset.left ?
+        offset.left + width + padding :
+        offset.left - padding;
+
+      // Text Y.
+      let y1 = y2 > offset.top ?
+        top + height - padding :
+        top + padding;
+
+      line = <line
+        x1={x1}
+        y1={y1}
+        x2={x2}
+        y2={y2}
+      />;
+
     }
 
     return (
