@@ -3,7 +3,7 @@
 import Radio from 'backbone.radio';
 
 import {
-  MOVE_MAP,
+  GET_LEAFLET_INSTANCE,
 } from '../constants';
 
 
@@ -11,8 +11,10 @@ const channel = Radio.channel('map');
 
 
 /**
- * Notify map movement.
+ * Get the Leaflet map instance.
+ *
+ * @return {Leaflet.Map}
  */
-export function moveMap() {
-  channel.trigger(MOVE_MAP);
+export function getLeafletInstance() {
+  return channel.request(GET_LEAFLET_INSTANCE);
 }

@@ -3,6 +3,7 @@
 import $ from 'jquery';
 import React from 'react';
 import RadioComponent from '../lib/radio-component';
+import { getLeafletInstance } from '../events/map';
 
 import {
   HOVER_COLLECTION,
@@ -32,7 +33,6 @@ export default class extends RadioComponent {
   constructor(props) {
     super(props);
     this.state = { visible: false };
-    // get map instance
   }
 
 
@@ -49,7 +49,7 @@ export default class extends RadioComponent {
    * Update the line when the map moves.
    */
   bindMoveListener() {
-    // TODO
+    getLeafletInstance().on('move', this.update, this);
   }
 
 
@@ -57,7 +57,7 @@ export default class extends RadioComponent {
    * Remove the move listener.
    */
   unbindMoveListener() {
-    // TODO
+    getLeafletInstance().off('move', this.update, this);
   }
 
 
@@ -68,16 +68,21 @@ export default class extends RadioComponent {
    */
   show(e) {
 
-    // Cache size / position.
-    this.span   = $(e.target);
-    this.id     = this.span.attr('data-id');
-    this.offset = this.span.offset();
-    this.height = this.span.outerHeight();
-    this.width  = this.span.outerWidth();
+    let span = $(e.target);
+
+    // get size / position.
 
     this.setState({ visible: true });
     this.bindMoveListener();
 
+  }
+
+
+  /**
+   * Set the marker offset.
+   */
+  update() {
+    // TODO
   }
 
 

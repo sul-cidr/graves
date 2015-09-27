@@ -1,11 +1,24 @@
 
 
 import L from 'leaflet';
-import React, { Component, findDOMNode, PropTypes } from 'react';
+import React, { findDOMNode, PropTypes } from 'react';
+import RadioComponent from '../lib/radio-component';
 import CollectionGroup from './collection-group';
 
+import {
+  GET_LEAFLET_INSTANCE,
+} from '../constants';
 
-export default class extends Component {
+
+export default class extends RadioComponent {
+
+
+  static channelName = 'map'
+
+
+  static requests = {
+    GET_LEAFLET_INSTANCE: 'getMap'
+  }
 
 
   static childContextTypes = {
@@ -89,6 +102,14 @@ export default class extends Component {
       </div>
     );
 
+  }
+
+
+  /**
+   * Expose the Leaflet instance.
+   */
+  getMap() {
+    return this.state.map;
   }
 
 
