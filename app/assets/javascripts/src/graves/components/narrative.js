@@ -3,7 +3,9 @@
 import { connect } from 'react-redux';
 import React, { Component, PropTypes, findDOMNode } from 'react';
 import * as actions from '../actions/narrative';
+
 import Spans from './spans';
+import HighlightLine from './highlight-line';
 import Spinner from './spinner';
 
 
@@ -66,7 +68,12 @@ export default class extends Component {
 
       // Mount behaviors when the markup renders.
       if (this.state.markup) {
-        behaviors = <Spans markup={this.state.markup} />
+        behaviors = (
+          <span>
+            <Spans markup={this.state.markup} />
+            <HighlightLine />
+          </span>
+        );
       }
 
       return (
