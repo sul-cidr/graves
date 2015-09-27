@@ -32,8 +32,13 @@ export default class extends RadioComponent {
    * @param {Object} props
    */
   constructor(props) {
+
     super(props);
     this.state = { id: null };
+
+    // Map move callback.
+    this.update = this.forceUpdate.bind(this, null);
+
   }
 
 
@@ -41,7 +46,7 @@ export default class extends RadioComponent {
    * Update the line when the map moves.
    */
   bindMoveListener() {
-    getLeafletInstance().on('move', this.update, this);
+    getLeafletInstance().on('move', this.update);
   }
 
 
@@ -49,7 +54,7 @@ export default class extends RadioComponent {
    * Remove the move listener.
    */
   unbindMoveListener() {
-    getLeafletInstance().off('move', this.update, this);
+    getLeafletInstance().off('move', this.update);
   }
 
 
@@ -77,15 +82,7 @@ export default class extends RadioComponent {
 
 
   /**
-   * Update the line.
-   */
-  update() {
-    this.forceUpdate();
-  }
-
-
-  /**
-   * Remove the line and move listener.
+   * Remove the line, move listener.
    */
   hide() {
     this.setState({ id: null });
