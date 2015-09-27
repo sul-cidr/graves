@@ -10,6 +10,7 @@ import styles from './collection.yml';
 import CollectionLayer from './collection-layer';
 import CollectionHighlight from './collection-highlight';
 import CollectionSelection from './collection-selection';
+import CollectionOffsets from './collection-offsets';
 
 
 @connect(
@@ -98,6 +99,7 @@ export default class extends Component {
 
         <CollectionHighlight idToLayer={this.idToLayer} />
         <CollectionSelection idToLayer={this.idToLayer} />
+        <CollectionOffsets idToLayer={this.idToLayer} />
 
       </span>
     );

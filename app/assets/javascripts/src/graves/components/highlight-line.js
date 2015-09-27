@@ -4,6 +4,7 @@ import $ from 'jquery';
 import React from 'react';
 import RadioComponent from '../lib/radio-component';
 import { getLeafletInstance } from '../events/map';
+import { getCollectionOffset } from '../events/collections';
 
 import {
   HOVER_COLLECTION,
