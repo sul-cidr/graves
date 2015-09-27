@@ -98,7 +98,7 @@ export default class extends RadioComponent {
    */
   onClick(e) {
     let id = this.getBurialIdFromEvent(e);
-    this.props.selectCollection(id);
+    events.selectCollection(id);
   }
 
 

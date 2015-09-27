@@ -2,12 +2,21 @@
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import RadioComponent from '../lib/radio-component';
+import { SELECT_COLLECTION, } from '../constants';
 
 
-@connect(state => ({
-  selected: state.collections.selected,
-}))
-export default class extends Component {
+export default class extends RadioComponent {
+
+
+  static channelName = 'collection-selection'
+
+
+  static events = {
+    collections: {
+      SELECT_COLLECTION: 'select'
+    }
+  }
 
 
   static contextTypes = {
@@ -22,20 +31,18 @@ export default class extends Component {
 
 
   /**
-   * Manifest the highlighted collection.
+   * Zoom to the selected collection.
+   *
+   * @param {Number} id
    */
-  componentDidUpdate() {
+  select(id) {
 
-    if (this.props.selected) {
+    // Get a marker for the id.
+    let layer = this.props.idToLayer[id];
+    if (!layer) return;
 
-      // Get a marker for the id.
-      let layer = this.props.idToLayer[this.props.selected];
-      if (!layer) return;
-
-      // Fly to the burial.
-      this.context.map.flyTo(layer.getLatLng(), 8);
-
-    }
+    // Fly to the burial.
+    this.context.map.flyTo(layer.getLatLng(), 8);
 
   }
 
