@@ -68,12 +68,11 @@ export default class extends RadioComponent {
     let span    = $(e.target);
     let id      = span.attr('data-id');
     let offset  = span.offset();
-    let height  = span.outerHeight();
-    let width   = span.outerWidth();
     let top     = offset.top - $(window).scrollTop();
+    let width   = span.outerWidth();
 
     this.setState({
-      id, offset, width, height, top,
+      id, offset, width, top,
     });
 
     this.bindMoveListener();
