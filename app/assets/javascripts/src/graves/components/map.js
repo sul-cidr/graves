@@ -2,7 +2,6 @@
 
 import L from 'leaflet';
 import React, { Component, findDOMNode, PropTypes } from 'react';
-import MapPosition from './map-position';
 import CollectionGroup from './collection-group';
 
 
@@ -80,7 +79,6 @@ export default class extends Component {
     if (this.state.map) {
       return (
         <div id="map" ref="map">
-          <MapPosition />
           <CollectionGroup />
         </div>
       );
