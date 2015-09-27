@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import Mousetrap from 'mousetrap';
 
-import { toggleEditor } from '../actions/editor';
+import * as actions from '../actions/editor';
 import Content from './content';
 import Map from './map';
 import Narrative from './narrative';
@@ -12,7 +12,7 @@ import Narrative from './narrative';
 
 @connect(
   state => state.route,
-  dispatch => ({ toggleEditor })
+  actions
 )
 export default class extends Component {
 
