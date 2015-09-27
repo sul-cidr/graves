@@ -5,6 +5,7 @@ import Radio from 'backbone.radio';
 import {
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
+  HOVER_COLLECTION,
   SELECT_COLLECTION,
 } from '../constants';
 
@@ -16,10 +17,19 @@ const channel = Radio.channel('collections');
  * Highlight a collection.
  *
  * @param {Number} id
- * @param {String} origin
  */
-export function highlightCollection(id, origin=null) {
-  channel.trigger(HIGHLIGHT_COLLECTION, id, origin);
+export function highlightCollection(id) {
+  channel.trigger(HIGHLIGHT_COLLECTION, id);
+}
+
+
+/**
+ * When a collection span is hovered.
+ *
+ * @param {Object} e
+ */
+export function hoverCollection(e) {
+  channel.trigger(HOVER_COLLECTION, e);
 }
 
 

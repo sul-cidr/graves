@@ -53,8 +53,12 @@ export default class extends RadioComponent {
    * @param {Object} e
    */
   onEnter(e) {
+
+    events.hoverCollection(e);
+
     let id = this.getBurialIdFromEvent(e);
     events.highlightCollection(id);
+
   }
 
 
@@ -65,7 +69,7 @@ export default class extends RadioComponent {
    */
   onLeave(e) {
     let id = this.getBurialIdFromEvent(e);
-    events.unhighlightCollection(id, 'text');
+    events.unhighlightCollection(id);
   }
 
 

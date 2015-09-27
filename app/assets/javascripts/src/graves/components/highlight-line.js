@@ -1,10 +1,11 @@
 
 
+import $ from 'jquery';
 import React from 'react';
 import RadioComponent from '../lib/radio-component';
 
 import {
-  HIGHLIGHT_COLLECTION,
+  HOVER_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
 } from '../constants';
 
@@ -17,17 +18,38 @@ export default class extends RadioComponent {
 
   static events = {
     collections: {
-      HIGHLIGHT_COLLECTION: 'show',
+      HOVER_COLLECTION: 'show',
       UNHIGHLIGHT_COLLECTION: 'hide',
     }
   }
 
 
   /**
-   * Show the line.
+   * Set initial state.
+   *
+   * @param {Object} props
    */
-  show() {
-    console.log('show');
+  constructor(props) {
+    super(props);
+    this.state = { visible: false };
+  }
+
+
+  /**
+   * Cache the span position, show line.
+   *
+   * @param {Object} e
+   */
+  show(e) {
+
+    this.span   = $(e.target);
+    this.id     = this.span.attr('data-id');
+    this.offset = this.span.offset();
+    this.height = this.span.outerHeight();
+    this.width  = this.span.outerWidth();
+
+    this.setState({ visible: true });
+
   }
 
 
@@ -35,7 +57,7 @@ export default class extends RadioComponent {
    * Hide the line.
    */
   hide() {
-    console.log('hide');
+    this.setState({ visible: false });
   }
 
 
@@ -43,9 +65,19 @@ export default class extends RadioComponent {
    * Render highlight line.
    */
   render() {
+
+    let line = null;
+
+    if (this.state.visible) {
+      line = <line />
+    }
+
     return (
-      <svg></svg>
+      <svg className="highlight-line">
+        {line}
+      </svg>
     );
+
   }
 
 
