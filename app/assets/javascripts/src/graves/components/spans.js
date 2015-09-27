@@ -2,7 +2,6 @@
 
 import $ from 'jquery';
 import React, { Component, PropTypes, findDOMNode } from 'react';
-import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
 import * as events from '../events/collections';
 import * as actions from '../actions/collections';
@@ -13,7 +12,6 @@ import {
 } from '../constants';
 
 
-@connect(null, actions)
 export default class extends RadioComponent {
 
 

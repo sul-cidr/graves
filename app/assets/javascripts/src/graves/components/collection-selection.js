@@ -1,7 +1,6 @@
 
 
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
 import { SELECT_COLLECTION, } from '../constants';
 

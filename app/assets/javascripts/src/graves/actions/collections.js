@@ -6,9 +6,6 @@ import {
   REQUEST_COLLECTIONS,
   RECEIVE_COLLECTIONS,
   RENDER_COLLECTIONS,
-  HIGHLIGHT_COLLECTION,
-  UNHIGHLIGHT_COLLECTION,
-  SELECT_COLLECTION,
 } from '../constants';
 
 
@@ -48,41 +45,5 @@ function receiveCollections(json) {
   return {
     type: RECEIVE_COLLECTIONS,
     geojson: json,
-  };
-}
-
-
-/**
- * Highlight an individual collection.
- *
- * @param {Number} id
- */
-export function highlightCollection(id) {
-  return {
-    type: HIGHLIGHT_COLLECTION,
-    id: id,
-  };
-}
-
-
-/**
- * Unhighlight collections.
- */
-export function unhighlightCollection() {
-  return {
-    type: UNHIGHLIGHT_COLLECTION,
-  };
-}
-
-
-/**
- * Select an individual collection.
- *
- * @param {Number} id
- */
-export function selectCollection(id) {
-  return {
-    type: SELECT_COLLECTION,
-    id: id,
   };
 }
