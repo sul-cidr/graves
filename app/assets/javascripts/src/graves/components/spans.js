@@ -3,16 +3,29 @@
 import $ from 'jquery';
 import React, { Component, PropTypes, findDOMNode } from 'react';
 import { connect } from 'react-redux';
+import RadioComponent from '../lib/radio-component';
+import * as events from '../events/collections';
 import * as actions from '../actions/collections';
 
+import {
+  HIGHLIGHT_COLLECTION,
+  UNHIGHLIGHT_COLLECTION,
+} from '../constants';
 
-@connect(
-  state => ({
-    highlighted: state.collections.highlighted,
-  }),
-  actions
-)
-export default class extends Component {
+
+@connect(null, actions)
+export default class extends RadioComponent {
+
+
+  static channelName = 'spans'
+
+
+  static events = {
+    collections: {
+      HIGHLIGHT_COLLECTION: 'highlight',
+      UNHIGHLIGHT_COLLECTION: 'unhighlight',
+    }
+  }
 
 
   static propTypes = {
@@ -63,7 +76,7 @@ export default class extends Component {
    */
   onEnter(e) {
     let id = this.getBurialIdFromEvent(e);
-    this.props.highlightCollection(id);
+    events.highlightCollection(id);
   }
 
 
@@ -74,7 +87,7 @@ export default class extends Component {
    */
   onLeave(e) {
     let id = this.getBurialIdFromEvent(e);
-    this.props.unhighlightCollection(id);
+    events.unhighlightCollection(id);
   }
 
 

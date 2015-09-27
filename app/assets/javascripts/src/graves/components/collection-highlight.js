@@ -2,38 +2,31 @@
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import RadioComponent from '../lib/radio-component';
 import styles from './collection.yml';
 
+import {
+  HIGHLIGHT_COLLECTION,
+  UNHIGHLIGHT_COLLECTION,
+} from '../constants';
 
-@connect(state => ({
-  highlighted: state.collections.highlighted,
-}))
-export default class extends Component {
+
+export default class extends RadioComponent {
+
+
+  static channelName = 'collection-highlight'
+
+
+  static events = {
+    collections: {
+      HIGHLIGHT_COLLECTION: 'highlight',
+      UNHIGHLIGHT_COLLECTION: 'unhighlight',
+    }
+  }
 
 
   static propTypes = {
     idToLayer: PropTypes.object.isRequired,
-    highlighted: PropTypes.any,
-  }
-
-
-  /**
-   * Manifest the highlighted collection.
-   *
-   * @param {Object} prevProps
-   */
-  componentDidUpdate(prevProps) {
-
-    // Highlight.
-    if (!prevProps.highlighted && this.props.highlighted) {
-      this.highlight(this.props.highlighted);
-    }
-
-    // Unhighlight.
-    else if (prevProps.highlighted && !this.props.highlighted) {
-      this.unhighlight(prevProps.highlighted);
-    }
-
   }
 
 

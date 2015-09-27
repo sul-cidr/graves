@@ -5,6 +5,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../actions/collections';
+import * as events from '../events/collections';
 import styles from './collection.yml';
 import CollectionLayer from './collection-layer';
 import CollectionHighlight from './collection-highlight';
@@ -42,12 +43,12 @@ export default class extends Component {
 
     // HIGHLIGHT
     this.group.on('mouseover', e => {
-      this.props.highlightCollection(e.layer.options.id);
+      events.highlightCollection(e.layer.options.id);
     });
 
     // UNHIGHLIGHT
     this.group.on('mouseout', e => {
-      this.props.unhighlightCollection();
+      events.unhighlightCollection(e.layer.options.id);
     });
 
     // Add to the map.
