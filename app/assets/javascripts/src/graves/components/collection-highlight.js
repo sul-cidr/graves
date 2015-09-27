@@ -61,9 +61,4 @@ export default class extends RadioComponent {
   }
 
 
-  render() {
-    return null;
-  }
-
-
 }
