@@ -38,6 +38,8 @@ export default class extends Component {
    */
   _bindEvents() {
 
+    this._channels = [];
+
     _.each(this.constructor.events, (bindings, channelName) => {
 
       // Connect to channel.
@@ -47,6 +49,8 @@ export default class extends Component {
       _.each(bindings, (method, event) => {
         channel.on(event, this[method], this);
       });
+
+      this._channels.push(channel);
 
     });
 
@@ -62,6 +66,20 @@ export default class extends Component {
     _.each(this.constructor.requests, (method, request) => {
       this.channel.reply(request, this[method], this);
     });
+
+  }
+
+
+  /**
+   * Clean up event listeners.
+   */
+  componentWillUnmount() {
+
+    this.channel.off(null, null, this);
+
+    for (let c of this._channels) {
+      c.off(null, null, this);
+    }
 
   }
 
