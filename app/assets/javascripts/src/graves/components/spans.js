@@ -65,7 +65,7 @@ export default class extends RadioComponent {
    */
   onLeave(e) {
     let id = this.getBurialIdFromEvent(e);
-    events.unhighlightCollection(id);
+    events.unhighlightCollection(id, 'text');
   }
 
 

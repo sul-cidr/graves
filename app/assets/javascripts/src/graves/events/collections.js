@@ -16,9 +16,10 @@ const channel = Radio.channel('collections');
  * Highlight a collection.
  *
  * @param {Number} id
+ * @param {String} origin
  */
-export function highlightCollection(id) {
-  channel.trigger(HIGHLIGHT_COLLECTION, id);
+export function highlightCollection(id, origin=null) {
+  channel.trigger(HIGHLIGHT_COLLECTION, id, origin);
 }
 
 
