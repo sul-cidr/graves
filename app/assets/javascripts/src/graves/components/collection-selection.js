@@ -8,7 +8,7 @@ import { SELECT_COLLECTION, } from '../constants';
 export default class extends RadioComponent {
 
 
-  static channelName = 'collection-selection'
+  static channelName = 'collections'
 
 
   static events = {

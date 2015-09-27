@@ -14,7 +14,7 @@ import {
 export default class extends RadioComponent {
 
 
-  static channelName = 'highlight-line'
+  static channelName = 'spans'
 
 
   static events = {

@@ -13,7 +13,7 @@ import {
 export default class extends RadioComponent {
 
 
-  static channelName = 'collection-highlight'
+  static channelName = 'collections'
 
 
   static events = {
