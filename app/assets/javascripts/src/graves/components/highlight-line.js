@@ -32,6 +32,32 @@ export default class extends RadioComponent {
   constructor(props) {
     super(props);
     this.state = { visible: false };
+    // get map instance
+  }
+
+
+  /**
+   * Ensure that the move listener is removed.
+   */
+  componentWillUnmount() {
+    super.componentWillUnmount();
+    this.unbindMoveListener();
+  }
+
+
+  /**
+   * Update the line when the map moves.
+   */
+  bindMoveListener() {
+    // TODO
+  }
+
+
+  /**
+   * Remove the move listener.
+   */
+  unbindMoveListener() {
+    // TODO
   }
 
 
@@ -42,6 +68,7 @@ export default class extends RadioComponent {
    */
   show(e) {
 
+    // Cache size / position.
     this.span   = $(e.target);
     this.id     = this.span.attr('data-id');
     this.offset = this.span.offset();
@@ -49,6 +76,7 @@ export default class extends RadioComponent {
     this.width  = this.span.outerWidth();
 
     this.setState({ visible: true });
+    this.bindMoveListener();
 
   }
 
@@ -58,6 +86,7 @@ export default class extends RadioComponent {
    */
   hide() {
     this.setState({ visible: false });
+    this.unbindMoveListener();
   }
 
 
