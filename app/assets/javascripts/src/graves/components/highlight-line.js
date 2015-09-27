@@ -33,16 +33,7 @@ export default class extends RadioComponent {
    */
   constructor(props) {
     super(props);
-    this.state = { span: null };
-  }
-
-
-  /**
-   * Ensure that the move listener is removed.
-   */
-  componentWillUnmount() {
-    super.componentWillUnmount();
-    this.unbindMoveListener();
+    this.state = { id: null };
   }
 
 
@@ -68,13 +59,25 @@ export default class extends RadioComponent {
    * @param {Object} e
    */
   show(e) {
-    this.setState({ span: $(e.target) });
+
+    let span    = $(e.target);
+    let id      = span.attr('data-id');
+    let offset  = span.offset();
+    let height  = span.outerHeight();
+    let width   = span.outerWidth();
+    let top     = offset.top - $(window).scrollTop();
+
+    this.setState({
+      id, offset, width, height, top,
+    });
+
     this.bindMoveListener();
+
   }
 
 
   /**
-   * Re-render the line.
+   * Update the line.
    */
   update() {
     this.forceUpdate();
@@ -82,10 +85,19 @@ export default class extends RadioComponent {
 
 
   /**
-   * Hide the line.
+   * Remove the line and move listener.
    */
   hide() {
-    this.setState({ span: false });
+    this.setState({ id: null });
+    this.unbindMoveListener();
+  }
+
+
+  /**
+   * Ensure move listener is removed.
+   */
+  componentWillUnmount() {
+    super.componentWillUnmount();
     this.unbindMoveListener();
   }
 
@@ -97,29 +109,20 @@ export default class extends RadioComponent {
 
     let line = null;
 
-    if (this.state.span) {
-
-      let id      = this.state.span.attr('data-id');
-      let offset  = this.state.span.offset();
-      let height  = this.state.span.outerHeight();
-      let width   = this.state.span.outerWidth();
-
-      let top = offset.top - $(window).scrollTop();
+    if (this.state.id) {
 
       // Map offset.
-      let [x2, y2] = getCollectionOffset(id);
+      let [x2, y2] = getCollectionOffset(this.state.id);
 
       let padding = 5;
 
       // Text X.
-      let x1 = x2 > offset.left ?
-        offset.left + width + padding :
-        offset.left - padding;
+      let x1 = x2 > this.state.offset.left ?
+        this.state.offset.left + this.state.width + padding :
+        this.state.offset.left - padding;
 
       // Text Y.
-      let y1 = y2 > offset.top ?
-        top + height - padding :
-        top + padding;
+      let y1 = this.state.top + padding;
 
       line = <line
         x1={x1}
