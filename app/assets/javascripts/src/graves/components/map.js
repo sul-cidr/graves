@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
 import LonLatHelper from './lonlat-helper';
 import CollectionGroup from './collection-group';
+import SectionGroup from './section-group';
 
 import {
   GET_LEAFLET_INSTANCE,
@@ -106,6 +107,7 @@ export default class extends RadioComponent {
       return (
         <div id="map" ref="map">
           <CollectionGroup />
+          <SectionGroup />
           {this.props.editing ? <LonLatHelper /> : null}
         </div>
       );

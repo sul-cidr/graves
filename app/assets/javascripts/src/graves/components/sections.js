@@ -2,10 +2,13 @@
 
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
 import { parseLonLat } from '../utils';
+import * as actions from '../actions/sections';
 
 
+@connect(null, actions)
 export default class extends RadioComponent {
 
 
@@ -25,7 +28,7 @@ export default class extends RadioComponent {
     this.$el = $(this.props.markup);
     this.sections = this.$el.find('.section');
 
-    // Extract label/tl/br attributes.
+    // Extract data attributes.
     let attrs = [];
     this.sections.each((i, s) => {
 
@@ -39,7 +42,7 @@ export default class extends RadioComponent {
 
     });
 
-    console.log(attrs);
+    this.props.mountSections(attrs);
 
   }
 

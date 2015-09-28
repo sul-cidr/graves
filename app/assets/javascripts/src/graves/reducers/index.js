@@ -2,14 +2,16 @@
 
 import { combineReducers } from 'redux';
 import route from './route';
-import collections from './collections';
 import narrative from './narrative';
 import editor from './editor';
+import collections from './collections';
+import sections from './sections';
 
 
 export default combineReducers({
   route,
-  collections,
   narrative,
   editor,
+  collections,
+  sections,
 });
