@@ -1,6 +1,8 @@
 
 
-import React, { Component, PropTypes } from 'react';
+import $ from 'jquery';
+import React, { Component, PropTypes, findDOMNode } from 'react';
+import Mousetrap from 'mousetrap';
 import classNames from 'classnames';
 
 
@@ -22,7 +24,8 @@ export default class extends Component {
     super(props);
 
     this.state = {
-      flash: false,
+      frozen: false,
+      bounce: false,
       lon: 0,
       lat: 0,
     };
@@ -36,16 +39,46 @@ export default class extends Component {
   componentDidMount() {
 
     this.context.map.on('mousemove', e => {
-      this.setState({
-        lon: e.latlng.lng.toFixed(3),
-        lat: e.latlng.lat.toFixed(3),
-      });
+
+      if (!this.state.frozen) {
+        this.setState({
+          lon: e.latlng.lng.toFixed(3),
+          lat: e.latlng.lat.toFixed(3),
+        });
+      }
+
     });
 
     this.context.map.on('click', () => {
-      this.bounce();
+      this.freeze();
     });
 
+    Mousetrap.bind('escape', () => {
+      this.unfreeze();
+    });
+
+    window.addEventListener('copy', e => {
+      this.bounce();
+      this.unfreeze();
+    });
+
+  }
+
+
+  /**
+   * Freeze and select the listing.
+   */
+  freeze() {
+    this.setState({ frozen: true });
+    $(findDOMNode(this)).select();
+  }
+
+
+  /**
+   * Unfreeze the listing.
+   */
+  unfreeze() {
+    this.setState({ frozen: false });
   }
 
 
@@ -54,10 +87,10 @@ export default class extends Component {
    */
   bounce() {
 
-    this.setState({ flash: true });
+    this.setState({ bounce: true });
 
     setTimeout(() => {
-      this.setState({ flash: false });
+      this.setState({ bounce: false });
     }, 1000);
 
   }
@@ -69,13 +102,15 @@ export default class extends Component {
   render() {
 
     let cx = classNames('lonlats', 'animated', {
-      bounceIn: this.state.flash
+      bounceIn: this.state.bounce
     });
 
     return (
-      <div className={cx}>
-        {this.state.lon}, {this.state.lat}
-      </div>
+      <input
+        className={cx}
+        value={`${this.state.lon}, ${this.state.lat}`}
+        readOnly
+      />
     );
 
   }
