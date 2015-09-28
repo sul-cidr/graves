@@ -46,10 +46,8 @@ export default class extends Component {
    */
   render() {
     return (
-      <div className="lonlats panel panel-default">
-        <div className="panel-body">
-          {this.state.lon},{this.state.lat}
-        </div>
+      <div className="lonlats">
+        {this.state.lon}, {this.state.lat}
       </div>
     );
   }
