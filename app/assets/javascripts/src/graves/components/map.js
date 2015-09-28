@@ -2,7 +2,9 @@
 
 import L from 'leaflet';
 import React, { findDOMNode, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
+import LonLatHelper from './lonlat-helper';
 import CollectionGroup from './collection-group';
 
 import {
@@ -10,6 +12,9 @@ import {
 } from '../constants';
 
 
+@connect(state => ({
+  editing: state.editor.active
+}))
 export default class extends RadioComponent {
 
 
@@ -85,6 +90,14 @@ export default class extends RadioComponent {
 
 
   /**
+   * Expose the Leaflet instance.
+   */
+  getMap() {
+    return this.state.map;
+  }
+
+
+  /**
    * Render the map container.
    */
   render() {
@@ -93,6 +106,7 @@ export default class extends RadioComponent {
       return (
         <div id="map" ref="map">
           <CollectionGroup />
+          {this.props.editing ? <LonLatHelper /> : null}
         </div>
       );
     }
@@ -102,14 +116,6 @@ export default class extends RadioComponent {
       </div>
     );
 
-  }
-
-
-  /**
-   * Expose the Leaflet instance.
-   */
-  getMap() {
-    return this.state.map;
   }
 
 
