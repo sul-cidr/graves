@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import React, { Component, PropTypes, findDOMNode } from 'react';
 import * as actions from '../actions/narrative';
 
-import Spans from './spans';
-import HighlightLine from './highlight-line';
 import Spinner from './spinner';
+import HighlightLine from './highlight-line';
+import Spans from './spans';
+import Sections from './sections';
 
 
 @connect(
@@ -95,6 +96,7 @@ export default class extends Component {
       behaviors = (
         <span>
           <Spans markup={this.state.markup} />
+          <Sections markup={this.state.markup} />
           <HighlightLine />
         </span>
       );

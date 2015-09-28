@@ -1,7 +1,7 @@
 
 
 import $ from 'jquery';
-import React, { Component, PropTypes, findDOMNode } from 'react';
+import React, { PropTypes } from 'react';
 import RadioComponent from '../lib/radio-component';
 import * as events from '../events/collections';
 import * as actions from '../actions/collections';
