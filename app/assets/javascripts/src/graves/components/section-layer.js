@@ -37,9 +37,17 @@ export default class extends Component {
       swap([tl[0], br[1]]),
     ];
 
-    let box = L.polygon(points);
-    this.props.group.addLayer(box);
+    this.box = L.polygon(points);
+    this.props.group.addLayer(this.box);
 
+  }
+
+
+  /**
+   * Remove the box/layer.
+   */
+  componentWillUnmount() {
+    this.context.map.removeLayer(this.box);
   }
 
 

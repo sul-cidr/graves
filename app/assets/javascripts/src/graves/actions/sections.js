@@ -23,7 +23,6 @@ export function mountSections(attrs) {
  * When sections removed.
  */
 export function unmountSections() {
-  console.log('unmount');
   return {
     type: UNMOUNT_SECTIONS,
   };
