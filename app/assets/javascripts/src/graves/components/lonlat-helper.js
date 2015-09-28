@@ -31,7 +31,7 @@ export default class extends Component {
       lat: 0,
     };
 
-    _.bindAll(this, 'onMove', 'onClick', 'onEscape', 'onCopy');
+    _.bindAll(this, 'onMove', 'onClick', 'onCopy', 'onEscape');
 
   }
 
@@ -42,8 +42,8 @@ export default class extends Component {
   componentDidMount() {
     this.context.map.on('mousemove', this.onMove);
     this.context.map.on('click', this.onClick);
-    Mousetrap.bind('escape', this.onEscape);
     window.addEventListener('copy', this.onCopy);
+    Mousetrap.bind('escape', this.onEscape);
   }
 
 
@@ -53,8 +53,8 @@ export default class extends Component {
   componentWillUnmount() {
     this.context.map.off('mousemove', this.onMove);
     this.context.map.off('click', this.onClick);
-    Mousetrap.unbind('escape');
     window.removeEventListener('copy', this.onCopy);
+    Mousetrap.unbind('escape');
   }
 
 
@@ -65,12 +65,12 @@ export default class extends Component {
    */
   onMove(e) {
 
-    if (!this.state.frozen) {
-      this.setState({
-        lon: e.latlng.lng.toFixed(3),
-        lat: e.latlng.lat.toFixed(3),
-      });
-    }
+    if (this.state.frozen) return;
+
+    this.setState({
+      lon: e.latlng.lng.toFixed(3),
+      lat: e.latlng.lat.toFixed(3),
+    });
 
   }
 
@@ -85,17 +85,11 @@ export default class extends Component {
 
 
   /**
-   * Unfreeze the listing.
-   */
-  onEscape() {
-    this.setState({ frozen: false });
-  }
-
-
-  /**
    * "Bounce" the lon/lat display.
    */
   onCopy() {
+
+    if (!this.state.frozen) return;
 
     this.setState({ frozen: false });
     this.setState({ bounce: true });
@@ -104,6 +98,14 @@ export default class extends Component {
       this.setState({ bounce: false });
     }, 1000);
 
+  }
+
+
+  /**
+   * Unfreeze on escape.
+   */
+  onEscape() {
+    this.setState({ frozen: false });
   }
 
 
