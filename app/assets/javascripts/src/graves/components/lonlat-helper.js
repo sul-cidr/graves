@@ -108,7 +108,7 @@ export default class extends Component {
     return (
       <input
         className={cx}
-        value={`${this.state.lon}, ${this.state.lat}`}
+        value={`${this.state.lon},${this.state.lat}`}
         readOnly
       />
     );
