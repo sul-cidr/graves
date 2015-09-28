@@ -59,7 +59,7 @@ export default class extends Component {
 
 
   /**
-   * When the mouse moves.
+   * Update lonlat when the cursor moves.
    *
    * @param {Object} e
    */
@@ -76,7 +76,7 @@ export default class extends Component {
 
 
   /**
-   * Freeze and select the listing.
+   * Freeze and select the lonlat.
    */
   onClick() {
     this.setState({ frozen: true });
@@ -85,7 +85,7 @@ export default class extends Component {
 
 
   /**
-   * "Bounce" the lon/lat display.
+   * Unfreeze and "bounce" the lonlat.
    */
   onCopy() {
 
@@ -102,7 +102,7 @@ export default class extends Component {
 
 
   /**
-   * Unfreeze on escape.
+   * Unfreeze the lonlat.
    */
   onEscape() {
     this.setState({ frozen: false });
