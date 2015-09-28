@@ -38,6 +38,7 @@ export default class extends RadioComponent {
 
     // Map move callback.
     this.update = this.forceUpdate.bind(this, null);
+    this.map = getLeafletInstance();
 
   }
 
@@ -46,7 +47,7 @@ export default class extends RadioComponent {
    * Update the line when the map moves.
    */
   bindMoveListener() {
-    getLeafletInstance().on('move', this.update);
+    this.map.on('move', this.update);
   }
 
 
@@ -54,7 +55,7 @@ export default class extends RadioComponent {
    * Remove the move listener.
    */
   unbindMoveListener() {
-    getLeafletInstance().off('move', this.update);
+    this.map.off('move', this.update);
   }
 
 
