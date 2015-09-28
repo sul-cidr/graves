@@ -53,4 +53,12 @@ export default class extends RadioComponent {
   }
 
 
+  /**
+   * Unmount the section layers.
+   */
+  componentWillUnmount() {
+    this.props.unmountSections();
+  }
+
+
 }
