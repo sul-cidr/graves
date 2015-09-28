@@ -1,6 +1,6 @@
 
 
-import createReducer from '../utils/create-reducer';
+import { createReducer } from '../utils';
 
 import {
   REQUEST_COLLECTIONS,

@@ -9,7 +9,7 @@ import _ from 'lodash';
  * @param {Object} initialState
  * @param {Object} handlers
  */
-export default function createReducer(initialState, handlers) {
+export function createReducer(initialState, handlers) {
   return (state = initialState, action) => {
 
     // If a handler is provided for the current action, apply the reducer
