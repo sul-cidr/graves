@@ -13,7 +13,7 @@ export default class extends Component {
 
 
   static propTypes = {
-    // TODO
+    attrs: PropTypes.object.isRequired,
   }
 
 

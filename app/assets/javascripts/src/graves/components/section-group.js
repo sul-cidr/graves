@@ -43,7 +43,7 @@ export default class extends Component {
 
     let features = this.props.sections.map(s => {
       return (
-        <SectionLayer />
+        <SectionLayer key={s.key} attrs={s} />
       );
     });
 

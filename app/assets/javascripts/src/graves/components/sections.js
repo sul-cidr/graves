@@ -8,7 +8,12 @@ import { parseLonLat } from '../utils';
 import * as actions from '../actions/sections';
 
 
-@connect(null, actions)
+@connect(
+  state => ({
+    slug: state.route.narrative
+  }),
+  actions
+)
 export default class extends RadioComponent {
 
 
@@ -32,12 +37,13 @@ export default class extends RadioComponent {
     let attrs = [];
     this.sections.each((i, s) => {
 
+      let key   = `${this.props.slug}-${i}`;
       let label = $(s).attr('data-label');
-      let tl = parseLonLat($(s).attr('data-tl'));
-      let br = parseLonLat($(s).attr('data-br'));
+      let tl    = parseLonLat($(s).attr('data-tl'));
+      let br    = parseLonLat($(s).attr('data-br'));
 
       if (label && tl && br) {
-        attrs.push({ label, tl, br });
+        attrs.push({ key, label, tl, br });
       }
 
     });
