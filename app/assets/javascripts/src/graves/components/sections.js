@@ -3,6 +3,7 @@
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import RadioComponent from '../lib/radio-component';
+import { parseLonLat } from '../utils';
 
 
 export default class extends RadioComponent {
@@ -27,12 +28,18 @@ export default class extends RadioComponent {
     // Extract label/tl/br attributes.
     let attrs = [];
     this.sections.each((i, s) => {
-      attrs.push({
-        label: $(s).attr('data-label'),
-        tr: $(s).attr('data-tl'),
-        bl: $(s).attr('data-br'),
-      });
+
+      let label = $(s).attr('data-label');
+      let tl = parseLonLat($(s).attr('data-tl'));
+      let br = parseLonLat($(s).attr('data-br'));
+
+      if (label && tl && br) {
+        attrs.push({ label, tl, br });
+      }
+
     });
+
+    console.log(attrs);
 
   }
 

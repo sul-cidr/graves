@@ -30,3 +30,14 @@ export function createReducer(initialState, handlers) {
 
   };
 }
+
+
+/**
+ * Parse a lon/lat string into an array.
+ *
+ * @param {Object} lonlat - "108.040,36.774"
+ * @return {Array<Number>}
+ */
+export function parseLonLat(lonlat='') {
+  return lonlat.split(',').map(Number);
+}
