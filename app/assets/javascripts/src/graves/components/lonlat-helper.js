@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import $ from 'jquery';
 import React, { Component, PropTypes, findDOMNode } from 'react';
 import Mousetrap from 'mousetrap';
@@ -30,6 +31,8 @@ export default class extends Component {
       lat: 0,
     };
 
+    _.bindAll(this, 'onMove', 'onClick', 'onEscape', 'onCopy');
+
   }
 
 
@@ -37,30 +40,37 @@ export default class extends Component {
    * Listen for cursor events.
    */
   componentDidMount() {
+    this.context.map.on('mousemove', this.onMove);
+    this.context.map.on('click', this.onClick);
+    Mousetrap.bind('escape', this.onEscape);
+    window.addEventListener('copy', this.onCopy);
+  }
 
-    this.context.map.on('mousemove', e => {
 
-      if (!this.state.frozen) {
-        this.setState({
-          lon: e.latlng.lng.toFixed(3),
-          lat: e.latlng.lat.toFixed(3),
-        });
-      }
+  /**
+   * Clean up event bindings.
+   */
+  componentWillUnmount() {
+    this.context.map.off('mousemove', this.onMove);
+    this.context.map.off('click', this.onClick);
+    Mousetrap.unbind('escape');
+    window.removeEventListener('copy', this.onCopy);
+  }
 
-    });
 
-    this.context.map.on('click', () => {
-      this.freeze();
-    });
+  /**
+   * When the mouse moves.
+   *
+   * @param {Object} e
+   */
+  onMove(e) {
 
-    Mousetrap.bind('escape', () => {
-      this.unfreeze();
-    });
-
-    window.addEventListener('copy', e => {
-      this.bounce();
-      this.unfreeze();
-    });
+    if (!this.state.frozen) {
+      this.setState({
+        lon: e.latlng.lng.toFixed(3),
+        lat: e.latlng.lat.toFixed(3),
+      });
+    }
 
   }
 
@@ -68,7 +78,7 @@ export default class extends Component {
   /**
    * Freeze and select the listing.
    */
-  freeze() {
+  onClick() {
     this.setState({ frozen: true });
     $(findDOMNode(this)).select();
   }
@@ -77,7 +87,7 @@ export default class extends Component {
   /**
    * Unfreeze the listing.
    */
-  unfreeze() {
+  onEscape() {
     this.setState({ frozen: false });
   }
 
@@ -85,8 +95,9 @@ export default class extends Component {
   /**
    * "Bounce" the lon/lat display.
    */
-  bounce() {
+  onCopy() {
 
+    this.setState({ frozen: false });
     this.setState({ bounce: true });
 
     setTimeout(() => {
