@@ -2,6 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import L from 'leaflet';
+import * as styles from './section.yml';
 import { swap } from '../utils';
 
 
@@ -30,6 +31,8 @@ export default class extends Component {
       br: br,
     } = this.props.attrs;
 
+    // Box:
+
     let points = [
       swap(tl),
       swap([br[0], tl[1]]),
@@ -37,8 +40,18 @@ export default class extends Component {
       swap([tl[0], br[1]]),
     ];
 
-    this.box = L.polygon(points);
+    this.box = L.polygon(points, styles.path.def);
     this.props.group.addLayer(this.box);
+
+    // Label:
+
+    let icon = L.divIcon({
+      html: label,
+      iconSize: null,
+    });
+
+    this.label = L.marker([br[1], tl[0]], { icon });
+    this.props.group.addLayer(this.label);
 
   }
 
@@ -48,6 +61,7 @@ export default class extends Component {
    */
   componentWillUnmount() {
     this.context.map.removeLayer(this.box);
+    this.context.map.removeLayer(this.label);
   }
 
 
