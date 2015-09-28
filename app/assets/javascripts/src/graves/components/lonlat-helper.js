@@ -32,7 +32,12 @@ export default class extends Component {
    * Listen for cursor events.
    */
   componentDidMount() {
-    // TODO
+    this.context.map.on('mousemove', e => {
+      this.setState({
+        lon: e.latlng.lng.toFixed(3),
+        lat: e.latlng.lat.toFixed(3),
+      });
+    });
   }
 
 
@@ -40,7 +45,13 @@ export default class extends Component {
    * Render the cursor position.
    */
   render() {
-    return <h1>lonlat</h1>
+    return (
+      <div className="lonlats panel panel-default">
+        <div className="panel-body">
+          {this.state.lon},{this.state.lat}
+        </div>
+      </div>
+    );
   }
 
 
