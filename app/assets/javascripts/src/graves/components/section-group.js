@@ -37,14 +37,6 @@ export default class extends Component {
 
 
   /**
-   * Drop sections below the collections.
-   */
-  componentDidUpdate() {
-    this.group.bringToBack();
-  }
-
-
-  /**
    * Render the map container.
    */
   render() {

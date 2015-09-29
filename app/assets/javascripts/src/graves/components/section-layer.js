@@ -41,6 +41,8 @@ export default class extends Component {
     ];
 
     this.box = L.polygon(points, styles.path.def);
+    this.box.bringToBack();
+
     this.props.group.addLayer(this.box);
 
     // Label:
