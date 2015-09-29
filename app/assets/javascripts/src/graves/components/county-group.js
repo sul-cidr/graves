@@ -4,7 +4,7 @@ import L from 'leaflet';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import d3 from 'd3-browserify';
-import ChoroplethRenderer from './choropleth-renderer';
+import CountyChoropleth from './county-choropleth';
 import * as actions from '../actions/counties';
 
 
@@ -178,7 +178,7 @@ export default class extends Component {
    * Apply choropleths.
    */
   render() {
-    return <ChoroplethRenderer g={this.g} />;
+    return <CountyChoropleth g={this.g} />;
   }
 
 
