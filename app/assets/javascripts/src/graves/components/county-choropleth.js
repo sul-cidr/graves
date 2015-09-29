@@ -30,7 +30,13 @@ export default class extends Component {
    * Apply the choropleth.
    */
   componentDidUpdate() {
-    console.log(this.props);
+
+    if (this.props.code) {
+      this.props.g.selectAll('path').attr('fill-opacity', f => {
+        return f.properties.choropleths[this.props.code];
+      });
+    }
+
   }
 
 

@@ -40,8 +40,8 @@ export default class extends Component {
 
     // Layer group.
     this.g = this.svg.append('g').classed({
-      'leaflet-zoom-hide': true,
       counties: true,
+      'leaflet-zoom-hide': true,
     });
 
     let origin = map.getPixelOrigin();
@@ -178,7 +178,13 @@ export default class extends Component {
    * Apply choropleths.
    */
   render() {
-    return <CountyChoropleth g={this.g} />;
+
+    // Pass down the GeoJSON to force an update on new counties.
+    return <CountyChoropleth
+      g={this.g}
+      geojson={this.props.geojson}
+    />;
+
   }
 
 
