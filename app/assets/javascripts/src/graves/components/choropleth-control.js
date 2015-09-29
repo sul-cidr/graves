@@ -1,7 +1,7 @@
 
 
 import _ from 'lodash';
-import React, { Component } from 'react';
+import React, { Component, findDOMNode } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/counties';
 import codes from '../data/cdc-codes.yml';
@@ -9,6 +9,15 @@ import codes from '../data/cdc-codes.yml';
 
 @connect(null, actions)
 export default class extends Component {
+
+
+  /**
+   * Render the initial value.
+   */
+  componentDidMount() {
+    let code = findDOMNode(this).value;
+    this.props.showChoropleth(code);
+  }
 
 
   /**
