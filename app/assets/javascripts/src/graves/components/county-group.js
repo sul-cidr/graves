@@ -56,7 +56,7 @@ export default class extends Component {
     this.path = d3.geo.path().projection(transform);
 
     // Scale geometry on zoom.
-    map.on('zoom', this.sync.bind(this, false));
+    map.on('zoom', this.scale.bind(this, false));
 
     // Hide during move.
     map.on('movestart', () => {
@@ -85,23 +85,28 @@ export default class extends Component {
    * @param {Object} props
    */
   componentWillUpdate(props) {
-    this.bounds = d3.geo.path().projection(null).bounds(props.geojson);
-    this.sync(true);
-  }
-
-
-  /**
-   * Render county paths.
-   */
-  componentDidUpdate() {
 
     // Render the counties.
     this.counties = this.g.selectAll('path')
-      .data(this.props.geojson.features)
+      .data(props.geojson.features)
       .enter()
       .append('path')
       .classed({ county: true })
       .attr('d', this.path);
+
+    // Initial scale.
+    this.bounds = d3.geo.path().projection(null).bounds(props.geojson);
+    this.scale(true);
+
+    // HIGHLGHT
+    this.counties.on('mouseover', function() {
+      d3.select(this).classed('highlight', true);
+    });
+
+    // UNHIGHLGHT
+    this.counties.on('mouseout', function() {
+      d3.select(this).classed('highlight', false);
+    });
 
   }
 
@@ -111,7 +116,7 @@ export default class extends Component {
    *
    * @param {Boolean} first
    */
-  sync(first) {
+  scale(first) {
 
     // Top right.
     let tl = this.context.map.latLngToLayerPoint([
