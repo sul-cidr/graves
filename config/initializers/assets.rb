@@ -12,4 +12,3 @@ Rails.application.config.assets.version = '1.0'
 
 # Whitelist Grunt-controlled assets.
 Rails.application.config.assets.precompile += [/.*\.js/,/.*\.css/]
-Rails.application.config.assets.paths = []
