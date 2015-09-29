@@ -31,6 +31,13 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
 
+    # TODO: Devise.
+    config.authenticate_with do
+      authenticate_or_request_with_http_basic do |u, p|
+        u == ENV['GRAVES_USERNAME'] && p = ENV['GRAVES_PASSWORD']
+      end
+    end
+
     config.browser_validations = false
 
     config.included_models = [
