@@ -3,25 +3,25 @@
 import { createReducer } from '../utils';
 
 import {
-  REQUEST_COLLECTIONS,
-  RECEIVE_COLLECTIONS,
+  REQUEST_COUNTIES,
+  RECEIVE_COUNTIES,
 } from '../constants';
 
 
 const initialState = {
   loading: false,
-  features: [],
+  geojson: null,
 };
 
 
 const handlers = {
 
-  [REQUEST_COLLECTIONS]: () => ({
+  [REQUEST_COUNTIES]: () => ({
     loading: true,
   }),
 
-  [RECEIVE_COLLECTIONS]: (state, action) => ({
-    features: action.geojson.features,
+  [RECEIVE_COUNTIES]: (state, action) => ({
+    geojson: action.geojson,
     loading: false,
   }),
 

@@ -5,7 +5,6 @@ import fetch from 'isomorphic-fetch';
 import {
   REQUEST_COLLECTIONS,
   RECEIVE_COLLECTIONS,
-  RENDER_COLLECTIONS,
 } from '../constants';
 
 

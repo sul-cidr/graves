@@ -6,6 +6,7 @@ import narrative from './narrative';
 import editor from './editor';
 import collections from './collections';
 import sections from './sections';
+import counties from './counties';
 
 
 export default combineReducers({
@@ -14,4 +15,5 @@ export default combineReducers({
   editor,
   collections,
   sections,
+  counties,
 });
