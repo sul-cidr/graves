@@ -5,6 +5,7 @@ import fetch from 'isomorphic-fetch';
 import {
   REQUEST_COUNTIES,
   RECEIVE_COUNTIES,
+  SHOW_CHOROPLETH,
 } from '../constants';
 
 
@@ -44,5 +45,18 @@ function receiveCounties(json) {
   return {
     type: RECEIVE_COUNTIES,
     geojson: json,
+  };
+}
+
+
+/**
+ * Show a CDC choropleth.
+ *
+ * @param {String} code
+ */
+export function showChoropleth(code) {
+  return {
+    type: SHOW_CHOROPLETH,
+    code: code,
   };
 }

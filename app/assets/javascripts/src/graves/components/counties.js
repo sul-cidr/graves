@@ -4,6 +4,7 @@ import L from 'leaflet';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import d3 from 'd3-browserify';
+import ChoroplethRenderer from './choropleth-renderer';
 import * as actions from '../actions/counties';
 
 
@@ -22,7 +23,7 @@ export default class extends Component {
 
 
   static propTypes = {
-    geojson: PropTypes.object.isRequired,
+    geojson: PropTypes.any,
   }
 
 
@@ -174,10 +175,10 @@ export default class extends Component {
 
 
   /**
-   * Render d3-controlled paths.
+   * Apply choropleths.
    */
   render() {
-    return null;
+    return <ChoroplethRenderer g={this.g} />;
   }
 
 
