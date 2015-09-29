@@ -55,9 +55,6 @@ group :development, :test do
   gem 'spring'
 
   gem 'annotate'
-  gem 'rspec-rails'
-  gem 'rubocop'
-  gem 'factory_girl_rails'
   gem 'sequel'
   gem 'colorize'
   gem 'rack-livereload'
@@ -65,6 +62,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'shoulda-matchers', require: false
   gem 'rspec-mocks'
   gem 'database_cleaner'
