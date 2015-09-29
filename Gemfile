@@ -44,6 +44,7 @@ gem 'slim-rails'
 gem 'dotenv-rails'
 gem 'oj'
 gem 'rails_admin'
+gem 'geocoder'
 
 group :development, :test do
 
@@ -60,7 +61,6 @@ group :development, :test do
   gem 'sequel'
   gem 'colorize'
   gem 'rack-livereload'
-  gem 'geocoder'
 
 end
 
