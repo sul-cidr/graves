@@ -40,9 +40,12 @@ export default class extends Component {
       swap([tl[0], br[1]]),
     ];
 
-    this.box = L.polygon(points, styles.path.def);
-    this.box.bringToBack();
+    let options = {
+      pointerEvents: 'none',
+      ...styles.path.def
+    };
 
+    this.box = L.polygon(points, options);
     this.props.group.addLayer(this.box);
 
     // Label:
