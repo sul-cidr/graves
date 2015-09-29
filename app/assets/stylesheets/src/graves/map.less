@@ -9,6 +9,14 @@
   top: 0;
   left: 0;
 
+  // Make it possible to stack SVG containers.
+  svg {
+    pointer-events: none;
+    g {
+      pointer-events: all;
+    }
+  }
+
   .leaflet-right {
     right: @width-text;
   }
@@ -28,14 +36,6 @@
 
   .leaflet-control-zoom {
     margin: 25px;
-  }
-
-  // Make it possible to stack SVG containers.
-  svg {
-    pointer-events: none;
-    g {
-      pointer-events: all;
-    }
   }
 
   // Section labels:
@@ -72,6 +72,13 @@
 
     }
 
+  }
+
+  select.choropleth {
+    position: fixed;
+    top: 25px;
+    right: 100px;
+    z-index: @zindex-map+1;
   }
 
 }
