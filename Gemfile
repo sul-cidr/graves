@@ -43,7 +43,7 @@ gem 'rgeo-shapefile'
 gem 'slim-rails'
 gem 'dotenv-rails'
 gem 'oj'
-gem 'friendly_id'
+gem 'rails_admin'
 
 group :development, :test do
 
@@ -64,7 +64,6 @@ group :development, :test do
   gem 'colorize'
   gem 'rack-livereload'
   gem 'geocoder'
-  gem 'rails_admin'
 
 end
 
