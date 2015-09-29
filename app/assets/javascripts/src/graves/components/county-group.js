@@ -55,8 +55,18 @@ export default class extends Component {
 
     this.path = d3.geo.path().projection(transform);
 
-    // Sync geometry when the map zooms.
+    // Scale geometry on zoom.
     map.on('zoom', this.sync.bind(this, false));
+
+    // Hide during move.
+    map.on('movestart', () => {
+      this.g.classed('hide', true);
+    });
+
+    // Show after move.
+    map.on('moveend', () => {
+      this.g.classed('hide', false);
+    });
 
   }
 
