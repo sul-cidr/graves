@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
 import LonLatHelper from './lonlat-helper';
 import CollectionGroup from './collection-group';
-import CountyGroup from './county-group';
+import Counties from './counties';
 import SectionGroup from './section-group';
 
 import {
@@ -108,9 +108,9 @@ export default class extends RadioComponent {
       return (
         <div id="map" ref="map">
 
-          <CollectionGroup />
-          <CountyGroup />
           <SectionGroup />
+          <CollectionGroup />
+          <Counties />
 
           {this.props.editing ? <LonLatHelper /> : null}
 
