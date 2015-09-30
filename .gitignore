@@ -18,3 +18,4 @@
 
 /app/assets/**/dist
 /node_modules
+/public/assets
