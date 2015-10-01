@@ -7,9 +7,11 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-set :deploy_host, ask("Server", 'e.g. hostname with no ".stanford.edu" or server node designator')
-set :user, ask("User", 'e.g. application username on server being deployed to')
-set :deploy_to, ask("deploy file location", 'format follows /app_username_home/app_username/app_name')
+set :deploy_host, 'cidr-graves-dev'
+set :user, 'cidr'
+set :deploy_to, '/opt/app/cidr/graves'
+set :bundle_without, nil
+
 server "#{fetch(:deploy_host)}.stanford.edu", user: fetch(:user), roles: %w{web db app}
 
 Capistrano::OneTimeKey.generate_one_time_key!
