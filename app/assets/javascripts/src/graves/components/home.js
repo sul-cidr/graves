@@ -7,14 +7,10 @@ export default class extends Component {
 
 
   /**
-   * Render the splash screen.
+   * Render the home screen.
    */
   render() {
-    return (
-      <div className="home">
-        <h1 className="logo">Chinese Graves</h1>
-      </div>
-    );
+    return null;
   }
 
 

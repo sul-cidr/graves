@@ -20,8 +20,8 @@ export default class extends RadioComponent {
 
   static events = {
     collections: {
-      HIGHLIGHT_COLLECTION: 'highlight',
-      UNHIGHLIGHT_COLLECTION: 'unhighlight',
+      [HIGHLIGHT_COLLECTION]: 'highlight',
+      [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
     }
   }
 

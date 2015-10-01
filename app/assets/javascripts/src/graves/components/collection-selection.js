@@ -13,7 +13,7 @@ export default class extends RadioComponent {
 
   static events = {
     collections: {
-      SELECT_COLLECTION: 'select'
+      [SELECT_COLLECTION]: 'select'
     }
   }
 

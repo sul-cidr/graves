@@ -25,7 +25,7 @@ export default class extends RadioComponent {
 
 
   static requests = {
-    GET_LEAFLET_INSTANCE: 'getMap'
+    [GET_LEAFLET_INSTANCE]: 'getMap'
   }
 
 

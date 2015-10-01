@@ -15,7 +15,7 @@ export default class extends RadioComponent {
 
 
   static requests = {
-    GET_COLLECTION_OFFSET: 'getOffset',
+    [GET_COLLECTION_OFFSET]: 'getOffset',
   }
 
 
