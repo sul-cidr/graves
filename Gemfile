@@ -23,8 +23,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-gem 'therubyracer', platforms: :ruby
-
 gem 'require_all'
 gem 'squeel'
 gem 'activerecord-postgis-adapter'
@@ -68,5 +66,7 @@ group :deployment do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
+  gem 'capistrano-npm'
   gem 'dlss-capistrano'
+  gem 'therubyracer', platforms: :ruby
 end
