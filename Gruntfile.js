@@ -18,8 +18,8 @@ module.exports = function(grunt) {
         css: 'app/assets/stylesheets',
       },
       dist: {
-        js:  'public/assets/javascripts',
-        css: 'public/assets/stylesheets',
+        js:  'public/javascripts',
+        css: 'public/stylesheets',
       }
     }
 

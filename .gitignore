@@ -16,6 +16,6 @@
 /*.csv
 /*.sql
 
-/app/assets/**/dist
 /node_modules
-/public/assets
+/public/javascripts
+/public/stylesheets
