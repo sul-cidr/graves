@@ -26,8 +26,8 @@ export default {
   },
 
   graves: {
-    src: '<%= js %>/src/graves/index.js',
-    dest: '<%= js %>/dist/graves.js'
+    src: '<%= src.js %>/graves/index.js',
+    dest: '<%= dist.js %>/graves.js'
   }
 
 };

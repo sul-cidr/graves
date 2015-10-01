@@ -13,8 +13,14 @@ module.exports = function(grunt) {
     loadGruntTasks: false,
 
     data: {
-      js:  'app/assets/javascripts',
-      css: 'app/assets/stylesheets',
+      src: {
+        js:  'app/assets/javascripts',
+        css: 'app/assets/stylesheets',
+      },
+      dist: {
+        js:  'public/assets/javascripts',
+        css: 'public/assets/stylesheets',
+      }
     }
 
   });

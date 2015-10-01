@@ -1,5 +1,5 @@
 
 
 export default {
-  dist: 'app/assets/**/dist'
+  dist: 'public/assets'
 };
