@@ -4,7 +4,7 @@ export default {
 
   livereload: {
 
-    files: 'public/assets/**/*',
+    files: 'public/**/*',
 
     options: {
       livereload: true
@@ -13,7 +13,7 @@ export default {
   },
 
   stylesheets: {
-    files: 'public/assets/**/*.less',
+    files: 'app/assets/**/*.less',
     tasks: 'less'
   }
 

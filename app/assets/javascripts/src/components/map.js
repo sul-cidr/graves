@@ -4,7 +4,7 @@ import L from 'leaflet';
 import React, { findDOMNode, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
-import LonLatHelper from './lonlat-helper';
+import CopyLonLat from './copy-lonlat';
 import CollectionGroup from './collection-group';
 import SectionGroup from './section-group';
 import ChoroplethControl from './choropleth-control';
@@ -114,7 +114,7 @@ export default class extends RadioComponent {
           <ChoroplethControl />
           <CountyGroup />
 
-          {this.props.editing ? <LonLatHelper /> : null}
+          {this.props.editing ? <CopyLonLat /> : null}
 
         </div>
       );
