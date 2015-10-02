@@ -21,7 +21,7 @@ export default class extends Component {
 
 
   /**
-   * Render choropleth control.
+   * Render the CDC code select.
    */
   render() {
 

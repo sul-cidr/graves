@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
 import CopyLonLat from './copy-lonlat';
 import CollectionGroup from './collection-group';
-import SectionGroup from './section-group';
-import ChoroplethControl from './choropleth-control';
 import CountyGroup from './county-group';
+import SectionGroup from './section-group';
+import CDCPicker from './cdc-picker';
 
 import {
   GET_LEAFLET_INSTANCE,
@@ -110,9 +110,9 @@ export default class extends RadioComponent {
         <div id="map" ref="map">
 
           <CollectionGroup />
-          <SectionGroup />
-          <ChoroplethControl />
           <CountyGroup />
+          <SectionGroup />
+          <CDCPicker />
 
           {this.props.editing ? <CopyLonLat /> : null}
 
