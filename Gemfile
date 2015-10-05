@@ -62,5 +62,4 @@ group :deployment do
   gem 'capistrano-bundler'
   gem 'capistrano-npm'
   gem 'dlss-capistrano'
-  gem 'therubyracer', platforms: :ruby
 end

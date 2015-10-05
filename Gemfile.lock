@@ -125,7 +125,6 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    libv8 (3.16.14.11)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -199,7 +198,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
-    ref (2.0.0)
     remotipart (1.2.1)
     require_all (1.3.2)
     rgeo (0.3.20)
@@ -267,9 +265,6 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     temple (0.7.6)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
-      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -322,7 +317,6 @@ DEPENDENCIES
   slim-rails
   spring
   squeel
-  therubyracer
   turbolinks
   unicode
   web-console (~> 2.0)
