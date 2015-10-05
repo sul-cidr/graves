@@ -40,7 +40,6 @@ group :development, :test do
   gem 'spring'
 
   gem 'annotate'
-  gem 'sequel'
   gem 'colorize'
   gem 'rack-livereload'
 
