@@ -48,13 +48,25 @@ describe Vacuum::Step, :quiet do
 
   describe '#down()' do
 
-    before(:each) do
-      create(:import_step, step: 'TestStep')
+    context 'when the step is satisfied' do
+
+      before(:each) do
+        create(:import_step, step: 'TestStep')
+      end
+
+      it 'reverts the step' do
+        expect(step.new.down).to be true
+        expect(ImportStep.satisfied?('TestStep')).to be false
+      end
+
     end
 
-    it 'reverts the step' do
-      expect(step.new.down).to be true
-      expect(ImportStep.satisfied?('TestStep')).to be false
+    context 'when the step is not satisfied' do
+
+      it 'does not revert the step' do
+        expect(step.new.down).to be nil
+      end
+
     end
 
   end
