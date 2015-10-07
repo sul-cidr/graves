@@ -10,11 +10,6 @@ describe Vacuum::Runner, :quiet do
     @down = []
   end
 
-  after(:each) do
-    @up   = nil
-    @down = nil
-  end
-
   def make_step(name, depends=[])
 
     suite = self
