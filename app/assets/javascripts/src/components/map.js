@@ -78,7 +78,7 @@ export default class extends RadioComponent {
 
     // OSM base layer.
     let osmLayer = L.tileLayer(
-      '//{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
+      'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
       { detectRetina: true }
     );
 
