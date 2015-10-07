@@ -3,11 +3,11 @@ require 'rails_helper'
 
 describe Vacuum::Runner, :quiet do
 
-  attr_accessor :up, :down
+  attr_accessor :usteps, :dsteps
 
   before(:each) do
-    @up   = []
-    @down = []
+    @usteps = []
+    @dsteps = []
   end
 
   def make_step(name, depends=[])
@@ -23,11 +23,11 @@ describe Vacuum::Runner, :quiet do
       end
 
       define_method :up do
-        suite.up.append(self.class.name)
+        suite.usteps.append(self.class.name)
       end
 
       define_method :down do
-        suite.down.append(self.class.name)
+        suite.dsteps.append(self.class.name)
       end
 
     end
@@ -119,7 +119,7 @@ describe Vacuum::Runner, :quiet do
 
       it 'runs the step, and all steps that it depends on' do
         runner.up('Step2')
-        expect(@up).to eq [
+        expect(@usteps).to eq [
           'Step1',
           'Step2',
         ]
@@ -131,7 +131,7 @@ describe Vacuum::Runner, :quiet do
 
       it 'runs all steps in order' do
         runner.up
-        expect(@up).to eq [
+        expect(@usteps).to eq [
           'Step1',
           'Step2',
           'Step3',
@@ -167,7 +167,7 @@ describe Vacuum::Runner, :quiet do
 
       it 'reverts the step, and all steps that depend on it' do
         runner.down('Step2')
-        expect(@down).to eq [
+        expect(@dsteps).to eq [
           'Step3',
           'Step2',
         ]
@@ -179,7 +179,7 @@ describe Vacuum::Runner, :quiet do
 
       it 'reverts all steps' do
         runner.down
-        expect(@down).to eq [
+        expect(@dsteps).to eq [
           'Step3',
           'Step2',
           'Step1',
