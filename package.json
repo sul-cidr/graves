@@ -49,5 +49,8 @@
     "redux": "^2.0.0",
     "redux-thunk": "^0.1.0",
     "wellknown": "^0.3.2"
+  },
+  "scripts": {
+    "postinstall": "grunt compile:min"
   }
 }
