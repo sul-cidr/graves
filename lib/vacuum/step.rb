@@ -87,5 +87,17 @@ module Vacuum
 
     end
 
+    around :down do |method|
+
+      if ImportStep.satisfied?(slug)
+        puts_reverting
+        method.call
+        ImportStep.down(slug)
+      else
+        puts_satisfied
+      end
+
+    end
+
   end
 end
