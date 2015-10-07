@@ -26,11 +26,17 @@ ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :linked_files, fetch(:linked_files, []).push(
   'config/secrets.yml',
   'config/database.yml',
-  'data',
 )
 
 # Default value for linked_dirs is []
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+ set :linked_dirs, fetch(:linked_dirs, []).push(
+   'log',
+   'public/system',
+   'tmp/pids',
+   'tmp/cache',
+   'tmp/sockets',
+   'data',
+ )
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
