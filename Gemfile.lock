@@ -59,6 +59,8 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-grunt (0.0.4)
+      capistrano (>= 3.0.0.pre)
     capistrano-npm (1.0.1)
       capistrano (>= 3.0.0)
     capistrano-one_time_key (0.0.1)
@@ -288,6 +290,7 @@ DEPENDENCIES
   annotate
   capistrano (~> 3.0)
   capistrano-bundler
+  capistrano-grunt
   capistrano-npm
   capistrano-rails
   capistrano-rvm
