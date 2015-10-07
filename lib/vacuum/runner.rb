@@ -29,7 +29,7 @@ module Vacuum
     #
     # Register an import step.
     #
-    # @param step [Import::Step]
+    # @param step [Vacuum::Step]
     #
     def add_step(step)
 
@@ -70,14 +70,14 @@ module Vacuum
       if name
         @udeps.each_strongly_connected_component_from(@steps[name]) do |cmp|
           cmp.each do |dep|
-            dep.new.up
+            dep.new._up
           end
         end
 
       # Otherwise, run all steps.
       else
         @udeps.tsort_each do |dep|
-          dep.new.up
+          dep.new._up
         end
       end
 
@@ -94,14 +94,14 @@ module Vacuum
       if name
         @ddeps.each_strongly_connected_component_from(@steps[name]) do |cmp|
           cmp.each do |dep|
-            dep.new.down
+            dep.new._down
           end
         end
 
       # Otherwise, revert all steps.
       else
         @ddeps.tsort_each do |dep|
-          dep.new.down
+          dep.new._down
         end
       end
 

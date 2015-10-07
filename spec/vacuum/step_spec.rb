@@ -4,24 +4,35 @@ require 'rails_helper'
 describe Vacuum::Step, :quiet do
 
   let(:step) {
-    Class.new(Vacuum::Step) do
+
+    klass = Class.new(Vacuum::Step) do
+
+      attr_reader :calls
+
+      def initialize
+        super
+        @calls = []
+      end
 
       def self.name
         'TestStep'
       end
 
       def up
-        true
+        @calls << 'u'
       end
 
       def down
-        true
+        @calls << 'd'
       end
 
     end
+
+    klass.new
+
   }
 
-  describe '#up()' do
+  describe '#_up()' do
 
     context 'when the step is safisfied' do
 
@@ -30,7 +41,8 @@ describe Vacuum::Step, :quiet do
       end
 
       it 'does not run the step' do
-        expect(step.new.up).to be nil
+        step._up
+        expect(step.calls).to eq []
       end
 
     end
@@ -38,15 +50,16 @@ describe Vacuum::Step, :quiet do
     context 'when the step is not satisfied' do
 
       it 'runs the step' do
-        expect(step.new.up).to be true
+        step._up
         expect(ImportStep.satisfied?('TestStep')).to be true
+        expect(step.calls).to eq ['u']
       end
 
     end
 
   end
 
-  describe '#down()' do
+  describe '#_down()' do
 
     context 'when the step is satisfied' do
 
@@ -55,8 +68,9 @@ describe Vacuum::Step, :quiet do
       end
 
       it 'reverts the step' do
-        expect(step.new.down).to be true
+        step._down
         expect(ImportStep.satisfied?('TestStep')).to be false
+        expect(step.calls).to eq ['d']
       end
 
     end
@@ -64,7 +78,8 @@ describe Vacuum::Step, :quiet do
     context 'when the step is not satisfied' do
 
       it 'does not revert the step' do
-        expect(step.new.down).to be nil
+        step._down
+        expect(step.calls).to eq []
       end
 
     end

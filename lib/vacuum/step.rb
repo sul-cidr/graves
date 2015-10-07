@@ -44,7 +44,7 @@ module Vacuum
     end
 
     #
-    # Reverse the step.
+    # Revert the step.
     #
     def down
       raise NotImplementedError
@@ -71,7 +71,10 @@ module Vacuum
       puts "REVERTING: #{slug}".colorize(:green)
     end
 
-    around :up do |method|
+    #
+    # (Meta) run the step.
+    #
+    def _up
 
       if count
         @bar = ProgressBar.new(count)
@@ -81,17 +84,20 @@ module Vacuum
         puts_satisfied
       else
         puts_importing
-        method.call
+        up
         ImportStep.up(slug)
       end
 
     end
 
-    around :down do |method|
+    #
+    # (Meta) revert the step.
+    #
+    def _down
 
       if ImportStep.satisfied?(slug)
         puts_reverting
-        method.call
+        down
         ImportStep.down(slug)
       else
         puts_satisfied
