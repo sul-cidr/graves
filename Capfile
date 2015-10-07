@@ -28,6 +28,7 @@ require 'capistrano/deploy'
 # require 'capistrano/passenger'
 
 require 'capistrano/bundler'
+require 'capistrano/npm'
 require 'dlss/capistrano'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
