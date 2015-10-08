@@ -61,5 +61,6 @@ group :deployment do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano-npm'
+  gem 'capistrano-passenger'
   gem 'dlss-capistrano'
 end
