@@ -29,6 +29,7 @@ gem 'slim-rails'
 gem 'dotenv-rails'
 gem 'oj'
 gem 'rails_admin'
+gem 'devise'
 gem 'geocoder'
 gem 'colorize'
 
