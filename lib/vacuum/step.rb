@@ -2,8 +2,6 @@
 module Vacuum
   class Step
 
-    extend MethodHooks
-
     #
     # By default, no dependencies.
     #
@@ -83,6 +81,7 @@ module Vacuum
       if ImportStep.satisfied?(slug)
         puts_satisfied
       else
+        down
         puts_importing
         up
         ImportStep.up(slug)

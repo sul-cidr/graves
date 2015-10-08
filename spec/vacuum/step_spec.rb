@@ -52,7 +52,7 @@ describe Vacuum::Step, :quiet do
       it 'reverts and runs the step' do
         step._up
         expect(ImportStep.satisfied?('TestStep')).to be true
-        expect(step.calls).to eq ['u']
+        expect(step.calls).to eq ['d', 'u']
       end
 
     end
