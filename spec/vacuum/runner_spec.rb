@@ -5,7 +5,7 @@ describe Vacuum::Runner, :quiet do
 
   attr_accessor :usteps, :dsteps
 
-  before(:each) do
+  def listen
     @usteps = []
     @dsteps = []
   end
@@ -23,15 +23,19 @@ describe Vacuum::Runner, :quiet do
       end
 
       define_method :up do
-        suite.usteps.append(self.class.name)
+        suite.usteps << name
       end
 
       define_method :down do
-        suite.dsteps.append(self.class.name)
+        suite.dsteps << name
       end
 
     end
 
+  end
+
+  before(:each) do
+    listen
   end
 
   describe '.from_steps()' do
@@ -161,6 +165,7 @@ describe Vacuum::Runner, :quiet do
 
     before(:each) do
       runner.up
+      listen
     end
 
     context 'when a step is passed' do
