@@ -49,7 +49,7 @@ describe Vacuum::Step, :quiet do
 
     context 'when the step is not satisfied' do
 
-      it 'runs the step' do
+      it 'reverts and runs the step' do
         step._up
         expect(ImportStep.satisfied?('TestStep')).to be true
         expect(step.calls).to eq ['u']
