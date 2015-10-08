@@ -28,8 +28,5 @@ module Graves
     # Autoload modules from /lib.
     config.autoload_paths << Rails.root.join("lib")
 
-    # Disable asset pipeline.
-    config.assets.compile = false
-
   end
 end
