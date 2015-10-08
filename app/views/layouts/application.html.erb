@@ -4,7 +4,7 @@
 
   <title>Graves</title>
 
-  <%= stylesheet_link_tag params[:controller], media: 'all' %>
+  <%= stylesheet_link_tag "/stylesheets/#{params[:controller]}" %>
   <%= csrf_meta_tags %>
   <%= typekit_include_tag 'enx1sko' %>
 
@@ -12,7 +12,7 @@
 <body>
 
   <%= yield %>
-  <%= javascript_include_tag params[:controller] %>
+  <%= javascript_include_tag "/javascripts/#{params[:controller]}" %>
 
 </body>
 </html>
