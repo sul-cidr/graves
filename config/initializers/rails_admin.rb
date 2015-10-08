@@ -44,7 +44,19 @@ RailsAdmin.config do |config|
       'Collection',
       'Author',
       'Narrative',
+      'User',
     ]
+
+    config.model User do
+      list do
+        field :email
+      end
+      edit do
+        field :email
+        field :password
+        field :password_confirmation
+      end
+    end
 
     config.model Author do
       object_label_method :full_name
