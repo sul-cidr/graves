@@ -2,8 +2,9 @@
 #
 # Table name: import_steps
 #
-#  id   :integer          not null, primary key
-#  step :string           not null
+#  id       :integer          not null, primary key
+#  step     :string           not null
+#  finished :boolean          default(FALSE)
 #
 
 require 'rails_helper'

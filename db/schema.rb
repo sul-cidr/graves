@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926211825) do
+ActiveRecord::Schema.define(version: 20151008161519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,8 @@ ActiveRecord::Schema.define(version: 20150926211825) do
   add_index "counties", ["geometry"], name: "index_counties_on_geometry", using: :gist
 
   create_table "import_steps", force: :cascade do |t|
-    t.string "step", null: false
+    t.string  "step",                     null: false
+    t.boolean "finished", default: false
   end
 
   add_index "import_steps", ["step"], name: "index_import_steps_on_step", unique: true, using: :btree
@@ -127,6 +128,24 @@ ActiveRecord::Schema.define(version: 20150926211825) do
 
   add_index "towns", ["cdc_id"], name: "index_towns_on_cdc_id", unique: true, using: :btree
   add_index "towns", ["geometry"], name: "index_towns_on_geometry", using: :gist
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "collections", "counties"
   add_foreign_key "collections", "notices"

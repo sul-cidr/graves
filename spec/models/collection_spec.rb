@@ -23,6 +23,7 @@
 #  province_id :integer
 #  county_id   :integer
 #  town_id     :integer
+#  legacy_id   :integer
 #
 
 require 'rails_helper'
