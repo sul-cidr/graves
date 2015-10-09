@@ -7,16 +7,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-set :deploy_host, ENV['CAP_DEPLOY_HOST']
-set :user, ENV['CAP_USER']
-set :deploy_to, ENV['CAP_DEPLOY_TO']
-set :bundle_without, nil
-
-server "#{fetch(:deploy_host)}.stanford.edu", user: fetch(:user), roles: %w{web db app}
-
-Capistrano::OneTimeKey.generate_one_time_key!
 set :rails_env, "development"
-
 
 # role-based syntax
 # ==================
