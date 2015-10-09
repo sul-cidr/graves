@@ -14,8 +14,8 @@ module.exports = function(grunt) {
 
     data: {
       src: {
-        js:  'app/assets/javascripts',
-        css: 'app/assets/stylesheets',
+        js:  'app/static/javascripts',
+        css: 'app/static/stylesheets',
       },
       dist: {
         js:  'public/javascripts',
