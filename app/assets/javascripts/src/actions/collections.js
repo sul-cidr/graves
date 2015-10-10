@@ -17,7 +17,7 @@ export function loadCollections() {
     // Notify start.
     dispatch(requestCollections());
 
-    fetch('/api/collections')
+    fetch('/api/collections.json')
     .then(res => res.json())
     .then(json => dispatch(receiveCollections(json)));
 

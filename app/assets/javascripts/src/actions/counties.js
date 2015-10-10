@@ -18,7 +18,7 @@ export function loadCounties() {
     // Notify start.
     dispatch(requestCounties());
 
-    fetch('/api/counties')
+    fetch('/api/counties.json')
     .then(res => res.json())
     .then(json => dispatch(receiveCounties(json)));
 
