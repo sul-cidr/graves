@@ -28,12 +28,10 @@ export default class extends RadioComponent {
    * Zoom to the selected anchor.
    *
    * @param {Array<Number>} lonlat
+   * @param {Number} zoom
    */
   select(lonlat, zoom=8) {
-
-    // Fly to the burial.
     this.context.map.flyTo(swap(lonlat), zoom);
-
   }
 
 

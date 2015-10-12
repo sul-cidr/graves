@@ -14,7 +14,8 @@ const channel = Radio.channel('anchors');
  * Select an anchor.
  *
  * @param {Array<Number>} lonlat
+ * @param {Number} zoom
  */
-export function selectAnchor(lonlat) {
-  channel.trigger(SELECT_ANCHOR, lonlat);
+export function selectAnchor(lonlat, zoom) {
+  channel.trigger(SELECT_ANCHOR, lonlat, zoom);
 }

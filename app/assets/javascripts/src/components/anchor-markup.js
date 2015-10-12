@@ -68,7 +68,7 @@ export default class extends RadioComponent {
 
     // Focus on the anchor.
     if (attrs.focus) {
-      events.selectAnchor(attrs.focus);
+      events.selectAnchor(attrs.focus, attrs.zoom);
     }
 
     // Update the choropleth.
