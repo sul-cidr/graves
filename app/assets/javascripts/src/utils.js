@@ -52,3 +52,24 @@ export function parseLonLat(lonlat='') {
 export function swap(coord) {
   return [coord[1], coord[0]];
 }
+
+
+/**
+ * Extract an individual data attribute from an element.
+ *
+ * @param {Object} $el
+ * @param {String} attr
+ * @param {Function} parse
+ * @return {Mixed}
+ */
+export function parseAttr($el, attr, parse) {
+
+  var value = $el.attr(attr);
+
+  if (value && parse) {
+    value = parse(value)
+  }
+
+  return value;
+
+}

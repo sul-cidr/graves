@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
 import * as actions from '../actions/counties';
 import * as events from '../events/collections';
+import { parseAttr } from '../utils';
 
 import {
   HIGHLIGHT_COLLECTION,
@@ -141,34 +142,13 @@ export default class extends RadioComponent {
 
     let span = $(e.currentTarget);
 
-    let id    = this.getAttr(span, 'data-id', Number);
-    let zoom  = this.getAttr(span, 'data-zoom', Number);
-    let cdc   = this.getAttr(span, 'data-cdc');
+    let id    = parseAttr(span, 'data-id', Number);
+    let zoom  = parseAttr(span, 'data-zoom', Number);
+    let cdc   = parseAttr(span, 'data-cdc');
 
     return {
       id, zoom, cdc
     };
-
-  }
-
-
-  /**
-   * Get an individual data attribute from a span.
-   *
-   * @param {Object} span
-   * @param {String} attr
-   * @param {Function} parse
-   * @returns {Mixed}
-   */
-  getAttr(span, attr, parse) {
-
-    var value = span.attr(attr);
-
-    if (value && parse) {
-      value = parse(value);
-    }
-
-    return value;
 
   }
 
