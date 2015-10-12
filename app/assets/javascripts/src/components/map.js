@@ -9,6 +9,7 @@ import CollectionGroup from './collection-group';
 import CountyGroup from './county-group';
 import SectionGroup from './section-group';
 import CDCPicker from './cdc-picker';
+import AnchorSelection from './anchor-selection';
 
 import {
   GET_LEAFLET_INSTANCE,
@@ -113,6 +114,7 @@ export default class extends RadioComponent {
           <CountyGroup />
           <SectionGroup />
           <CDCPicker />
+          <AnchorSelection />
 
           {this.props.editing ? <CopyLonLat /> : null}
 

@@ -5,6 +5,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
 import { parseAttr, parseLonLat } from '../utils';
+import * as events from '../events/anchors';
 import * as actions from '../actions/counties';
 
 
@@ -64,6 +65,11 @@ export default class extends RadioComponent {
   onClick(e) {
 
     let attrs = this.getAttrsFromEvent(e);
+
+    // Focus on the anchor.
+    if (attrs.focus) {
+      events.selectAnchor(attrs.focus);
+    }
 
     // Update the choropleth.
     if (attrs.cdc) {
