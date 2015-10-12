@@ -17,7 +17,7 @@ import {
 export default class extends RadioComponent {
 
 
-  static channelName = 'spans'
+  static channelName = 'anchors'
 
 
   static events = {
@@ -39,7 +39,7 @@ export default class extends RadioComponent {
   componentDidMount() {
 
     this.$el = $(this.props.markup);
-    this.spans = this.$el.find('span.burial');
+    this.spans = this.$el.find('span.anchor');
 
     // Listen for cursor events.
     this.spans.on('mouseenter', this.onEnter.bind(this));
@@ -127,7 +127,7 @@ export default class extends RadioComponent {
    * @return {Object}
    */
   getBurialsById(id) {
-    return this.$el.find(`span.burial[data-id=${id}]`)
+    return this.$el.find(`span.anchor[data-id=${id}]`)
   }
 
 
