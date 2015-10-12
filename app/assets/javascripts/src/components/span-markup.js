@@ -2,9 +2,10 @@
 
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
+import * as actions from '../actions/counties';
 import * as events from '../events/collections';
-import * as actions from '../actions/collections';
 
 import {
   HIGHLIGHT_COLLECTION,
@@ -12,6 +13,7 @@ import {
 } from '../constants';
 
 
+@connect(null, actions)
 export default class extends RadioComponent {
 
 
@@ -56,8 +58,8 @@ export default class extends RadioComponent {
 
     events.hoverCollection(e);
 
-    let id = this.getBurialIdFromEvent(e);
-    events.highlightCollection(id);
+    let attrs = this.getAttrsFromEvent(e);
+    events.highlightCollection(attrs.id);
 
   }
 
@@ -68,8 +70,8 @@ export default class extends RadioComponent {
    * @param {Object} e
    */
   onLeave(e) {
-    let id = this.getBurialIdFromEvent(e);
-    events.unhighlightCollection(id);
+    let attrs = this.getAttrsFromEvent(e);
+    events.unhighlightCollection(attrs.id);
   }
 
 
@@ -79,8 +81,8 @@ export default class extends RadioComponent {
    * @param {Object} e
    */
   onClick(e) {
-    let id = this.getBurialIdFromEvent(e);
-    events.selectCollection(id);
+    let attrs = this.getAttrsFromEvent(e);
+    events.selectCollection(attrs.id);
   }
 
 
@@ -119,13 +121,20 @@ export default class extends RadioComponent {
 
 
   /**
-   * Get a burial ID from a cursor event.
+   * Get data attributes from an event.
    *
    * @param {Object} e
-   * @returns {Number}
+   * @returns {Object}
    */
-  getBurialIdFromEvent(e) {
-    return Number($(e.currentTarget).attr('data-id'));
+  getAttrsFromEvent(e) {
+
+    let span = $(e.currentTarget);
+
+    return {
+      id: Number(span.attr('data-id')),
+      cdc: span.attr('data-cdc'),
+    };
+
   }
 
 
