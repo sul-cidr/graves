@@ -81,8 +81,19 @@ export default class extends RadioComponent {
    * @param {Object} e
    */
   onClick(e) {
+
     let attrs = this.getAttrsFromEvent(e);
-    events.selectCollection(attrs.id);
+
+    // Select the collection.
+    if (attrs.id) {
+      events.selectCollection(attrs.id);
+    }
+
+    // Update the choropleth.
+    if (attrs.cdc) {
+      this.props.showChoropleth(attrs.cdc);
+    }
+
   }
 
 
