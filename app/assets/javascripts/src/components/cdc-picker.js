@@ -7,7 +7,12 @@ import * as actions from '../actions/counties';
 import codes from '../data/cdc-codes.yml';
 
 
-@connect(null, actions)
+@connect(
+  state => ({
+    code: state.counties.choropleth
+  }),
+  actions
+)
 export default class extends Component {
 
 
@@ -32,7 +37,10 @@ export default class extends Component {
     let onChange = this.onChange.bind(this);
 
     return (
-      <select onChange={onChange} className="choropleth">
+      <select
+        className="choropleth">
+        onChange={onChange}
+        value={this.props.code}
         {options}
       </select>
     );
