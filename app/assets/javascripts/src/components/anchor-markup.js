@@ -144,10 +144,9 @@ export default class extends RadioComponent {
     let id    = this.getAttr(span, 'data-id', Number);
     let zoom  = this.getAttr(span, 'data-zoom', Number);
     let cdc   = this.getAttr(span, 'data-cdc');
-    let focus = this.getAttr(span, 'data-focus');
 
     return {
-      id, zoom, cdc, focus
+      id, zoom, cdc
     };
 
   }
