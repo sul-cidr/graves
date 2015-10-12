@@ -48,9 +48,10 @@ export function unhighlightCollection(id) {
  * Select a collection.
  *
  * @param {Number} id
+ * @param {Number} zoom
  */
-export function selectCollection(id) {
-  channel.trigger(SELECT_COLLECTION, id);
+export function selectCollection(id, zoom) {
+  channel.trigger(SELECT_COLLECTION, id, zoom);
 }
 
 

@@ -86,7 +86,7 @@ export default class extends RadioComponent {
 
     // Select the collection.
     if (attrs.id) {
-      events.selectCollection(attrs.id);
+      events.selectCollection(attrs.id, attrs.zoom);
     }
 
     // Update the choropleth.
@@ -141,10 +141,34 @@ export default class extends RadioComponent {
 
     let span = $(e.currentTarget);
 
+    let id    = this.getAttr(span, 'data-id', Number);
+    let zoom  = this.getAttr(span, 'data-zoom', Number);
+    let cdc   = this.getAttr(span, 'data-cdc');
+
     return {
-      id: Number(span.attr('data-id')),
-      cdc: span.attr('data-cdc'),
+      id, zoom, cdc
     };
+
+  }
+
+
+  /**
+   * Get an individual data attribute from a span.
+   *
+   * @param {Object} span
+   * @param {String} attr
+   * @param {Function} parse
+   * @returns {Mixed}
+   */
+  getAttr(span, attr, parse) {
+
+    var value = span.attr(attr);
+
+    if (value && parse) {
+      value = parse(value);
+    }
+
+    return value;
 
   }
 

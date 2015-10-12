@@ -33,15 +33,16 @@ export default class extends RadioComponent {
    * Zoom to the selected collection.
    *
    * @param {Number} id
+   * @param {Number} zoom
    */
-  select(id) {
+  select(id, zoom=8) {
 
     // Get a marker for the id.
     let layer = this.props.idToLayer[id];
     if (!layer) return;
 
     // Fly to the burial.
-    this.context.map.flyTo(layer.getLatLng(), 8);
+    this.context.map.flyTo(layer.getLatLng(), zoom);
 
   }
 
