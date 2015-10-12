@@ -38,9 +38,9 @@ export default class extends Component {
 
     return (
       <select
-        className="choropleth">
+        className="choropleth"
         onChange={onChange}
-        value={this.props.code}
+        value={this.props.code}>
         {options}
       </select>
     );

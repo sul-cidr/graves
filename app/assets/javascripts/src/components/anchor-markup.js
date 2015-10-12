@@ -2,9 +2,13 @@
 
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
+import { parseAttr, parseLonLat } from '../utils';
+import * as actions from '../actions/counties';
 
 
+@connect(null, actions)
 export default class extends RadioComponent {
 
 
@@ -39,7 +43,6 @@ export default class extends RadioComponent {
    */
   onEnter(e) {
     // TODO
-    console.log('enter');
   }
 
 
@@ -50,7 +53,6 @@ export default class extends RadioComponent {
    */
   onLeave(e) {
     // TODO
-    console.log('leave');
   }
 
 
@@ -60,8 +62,38 @@ export default class extends RadioComponent {
    * @param {Object} e
    */
   onClick(e) {
-    // TODO
-    console.log('click');
+
+    let attrs = this.getAttrsFromEvent(e);
+
+    // Update the choropleth.
+    if (attrs.cdc) {
+      this.props.showChoropleth(attrs.cdc);
+    }
+
+  }
+
+
+  // ** Helpers:
+
+
+  /**
+   * Get data attributes from an event.
+   *
+   * @param {Object} e
+   * @returns {Object}
+   */
+  getAttrsFromEvent(e) {
+
+    let span = $(e.currentTarget);
+
+    let zoom  = parseAttr(span, 'data-zoom', Number);
+    let focus = parseAttr(span, 'data-focus', parseLonLat);
+    let cdc   = parseAttr(span, 'data-cdc');
+
+    return {
+      focus, zoom, cdc
+    };
+
   }
 
 
