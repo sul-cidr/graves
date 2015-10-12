@@ -64,15 +64,3 @@ export function selectCollection(id, zoom) {
 export function getCollectionOffset(id) {
   return channel.request(GET_COLLECTION_OFFSET, id);
 }
-
-
-/**
- * Get the pixel-space offset of an anchor.
- *
- * @param {Number} lon
- * @param {Number} lat
- * @return {Array}
- */
-export function getAnchorOffset(lon, lat) {
-  return channel.request(GET_ANCHOR_OFFSET, lon, lat);
-}
