@@ -10,6 +10,7 @@ import { parseAttr } from '../utils';
 import {
   HOVER_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
+  SHOW_HIGHLIGHT_LINE,
 } from '../constants';
 
 
@@ -20,10 +21,15 @@ export default class extends RadioComponent {
 
 
   static events = {
+
+    narrative: {
+      [SHOW_HIGHLIGHT_LINE]: 'show',
+    },
+
     collections: {
-      [HOVER_COLLECTION]: 'show',
       [UNHIGHLIGHT_COLLECTION]: 'hide',
     }
+
   }
 
 

@@ -13,6 +13,10 @@ import {
   UNHIGHLIGHT_COLLECTION,
 } from '../constants';
 
+import {
+  showHighlightLine
+} from '../events/narrative';
+
 
 @connect(null, actions)
 export default class extends RadioComponent {
@@ -62,7 +66,7 @@ export default class extends RadioComponent {
 
     // Show the highlight line.
     let [lon, lat] = events.getCollectionLonLat(id);
-    events.hoverCollection(span, lon, lat);
+    showHighlightLine(span, lon, lat);
 
     // Publish the highlight.
     events.highlightCollection(id);
