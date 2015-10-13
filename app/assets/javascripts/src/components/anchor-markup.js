@@ -5,13 +5,19 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
 import * as actions from '../actions/counties';
-import * as events from '../events/collections';
 import { parseAttr } from '../utils';
 
 import {
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
 } from '../constants';
+
+import {
+  highlightCollection,
+  unhighlightCollection,
+  selectCollection,
+  getCollectionLonLat,
+} from '../events/collections';
 
 import {
   showHighlightLine
@@ -65,11 +71,11 @@ export default class extends RadioComponent {
     let id = parseAttr(span, 'data-id', Number);
 
     // Show the highlight line.
-    let [lon, lat] = events.getCollectionLonLat(id);
+    let [lon, lat] = getCollectionLonLat(id);
     showHighlightLine(span, lon, lat);
 
-    // Publish the highlight.
-    events.highlightCollection(id);
+    // Publish highlight.
+    highlightCollection(id);
 
   }
 
@@ -81,7 +87,7 @@ export default class extends RadioComponent {
    */
   onLeave(e) {
     let attrs = this.getAttrsFromEvent(e);
-    events.unhighlightCollection(attrs.id);
+    unhighlightCollection(attrs.id);
   }
 
 
@@ -96,7 +102,7 @@ export default class extends RadioComponent {
 
     // Select the collection.
     if (attrs.id) {
-      events.selectCollection(attrs.id, attrs.zoom);
+      selectCollection(attrs.id, attrs.zoom);
     }
 
     // Update the choropleth.
