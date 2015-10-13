@@ -40,7 +40,7 @@ export default class extends RadioComponent {
   componentDidMount() {
 
     this.$el = $(this.props.markup);
-    this.spans = this.$el.find('span.collection');
+    this.spans = this.$el.find('span.anchor');
 
     // Listen for cursor events.
     this.spans.on('mouseenter', this.onEnter.bind(this));
@@ -104,7 +104,7 @@ export default class extends RadioComponent {
    * @param {Number} id
    */
   highlight(id) {
-    this.getBurialsById(id).addClass('highlight');
+    this.getAnchorsById(id).addClass('highlight');
   }
 
 
@@ -114,7 +114,7 @@ export default class extends RadioComponent {
    * @param {Number} id
    */
   unhighlight(id) {
-    this.getBurialsById(id).removeClass('highlight');
+    this.getAnchorsById(id).removeClass('highlight');
   }
 
 
@@ -127,8 +127,8 @@ export default class extends RadioComponent {
    * @param {Number} id
    * @return {Object}
    */
-  getBurialsById(id) {
-    return this.$el.find(`span.collection[data-id=${id}]`)
+  getAnchorsById(id) {
+    return this.$el.find(`span.anchor[data-id=${id}]`)
   }
 
 
