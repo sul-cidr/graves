@@ -4,7 +4,8 @@ import $ from 'jquery';
 import React from 'react';
 import RadioComponent from '../lib/radio-component';
 import { getLeafletInstance } from '../events/map';
-import { getCollectionOffset } from '../events/collections';
+import { getCollectionLonLat } from '../events/collections';
+import { parseAttr } from '../utils';
 
 import {
   HOVER_COLLECTION,
@@ -34,7 +35,7 @@ export default class extends RadioComponent {
   constructor(props) {
 
     super(props);
-    this.state = { id: null };
+    this.state = { span: null };
 
     // Map move callback.
     this.update = this.forceUpdate.bind(this, null);
@@ -60,22 +61,19 @@ export default class extends RadioComponent {
 
 
   /**
-   * Cache the span position, show line.
+   * Show a line for a collection.
    *
    * @param {Object} e
    */
   show(e) {
 
-    let span    = $(e.target);
-    let id      = span.attr('data-id');
-    let offset  = span.offset();
-    let top     = offset.top - $(window).scrollTop();
-    let width   = span.outerWidth();
+    let span = $(e.target);
 
-    this.setState({
-      id, offset, width, top,
-    });
+    // Collection -> lon/lat.
+    let id = parseAttr(span, 'data-id', Number);
+    let [lon, lat] = getCollectionLonLat(id);
 
+    this.setState({ span, lon, lat });
     this.bindMoveListener();
 
   }
@@ -85,7 +83,7 @@ export default class extends RadioComponent {
    * Remove the line, move listener.
    */
   hide() {
-    this.setState({ id: null });
+    this.setState({ span: null });
     this.unbindMoveListener();
   }
 
@@ -106,20 +104,27 @@ export default class extends RadioComponent {
 
     let line = null;
 
-    if (this.state.id) {
+    if (this.state.span) {
+
+      let offset  = this.state.span.offset();
+      let top     = offset.top - $(window).scrollTop();
+      let width   = this.state.span.outerWidth();
 
       // Map offset.
-      let [x2, y2] = getCollectionOffset(this.state.id);
+      let [x2, y2] = this.lonLatToXY(
+        this.state.lon,
+        this.state.lat
+      );
 
       let padding = 5;
 
       // Text X.
-      let x1 = x2 > this.state.offset.left ?
-        this.state.offset.left + this.state.width + padding :
-        this.state.offset.left - padding;
+      let x1 = x2 > offset.left ?
+        offset.left + width + padding :
+        offset.left - padding;
 
       // Text Y.
-      let y1 = this.state.top + padding;
+      let y1 = top + padding;
 
       line = <line
         x1={x1}
@@ -135,6 +140,25 @@ export default class extends RadioComponent {
         {line}
       </svg>
     );
+
+  }
+
+
+  /**
+   * Convert lon/lat -> screen pixels.
+   *
+   * @param {Number} lon
+   * @param {Number} lat
+   */
+  lonLatToXY(lon, lat) {
+
+    // Coordinate -> layer point.
+    let layerPoint = this.map.latLngToLayerPoint([lat, lon]);
+
+    // Layer point -> screen point.
+    let point = this.map.layerPointToContainerPoint(layerPoint);
+
+    return [point.x, point.y];
 
   }
 
