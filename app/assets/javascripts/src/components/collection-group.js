@@ -1,11 +1,12 @@
 
 
 import L from 'leaflet';
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../actions/collections';
+import RadioComponent from '../lib/radio-component';
 import * as events from '../events/collections';
+import * as actions from '../actions/collections';
 import styles from './collection.yml';
 import CollectionLayer from './collection-layer';
 import CollectionHighlight from './collection-highlight';
@@ -19,7 +20,10 @@ import CollectionOffsets from './collection-offsets';
   }),
   actions
 )
-export default class extends Component {
+export default class extends RadioComponent {
+
+
+  static channelName = 'collections'
 
 
   static contextTypes = {
