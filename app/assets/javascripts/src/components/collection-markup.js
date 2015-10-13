@@ -61,7 +61,7 @@ export default class extends RadioComponent {
 
 
   /**
-   * When the cursor enters a span.
+   * When the cursor enters a collection.
    *
    * @param {Object} e
    */
@@ -81,7 +81,7 @@ export default class extends RadioComponent {
 
 
   /**
-   * When the cursor leaves a span.
+   * When the cursor leaves a collection.
    *
    * @param {Object} e
    */
@@ -92,7 +92,7 @@ export default class extends RadioComponent {
 
 
   /**
-   * When a span is clicked.
+   * When a collection is clicked.
    *
    * @param {Object} e
    */

@@ -2,9 +2,12 @@
 
 import $ from 'jquery';
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { parseAttr } from '../utils';
+import * as actions from '../actions/counties';
 
 
+@connect(null, actions)
 export default class extends Component {
 
 
@@ -55,7 +58,40 @@ export default class extends Component {
    * @param {Object} e
    */
   onClick(e) {
-    // TODO
+
+    let attrs = this.getAttrsFromEvent(e);
+
+    // Update the choropleth.
+    if (attrs.cdc) {
+      this.props.showChoropleth(attrs.cdc);
+    }
+
+  }
+
+
+  /**
+   * Get data attributes from an event.
+   *
+   * @param {Object} e
+   * @returns {Object}
+   */
+  getAttrsFromEvent(e) {
+
+    let span = $(e.currentTarget);
+
+    let focus = parseAttr(span, 'data-focus');
+    let zoom  = parseAttr(span, 'data-zoom', Number);
+    let cdc   = parseAttr(span, 'data-cdc');
+
+    return {
+      focus, zoom, cdc
+    };
+
+  }
+
+
+  render() {
+    return null;
   }
 
 
