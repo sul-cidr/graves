@@ -9,9 +9,13 @@ import * as events from '../events/collections';
 import * as actions from '../actions/collections';
 import styles from './collection.yml';
 import CollectionLayer from './collection-layer';
-import CollectionHighlight from './collection-highlight';
 import CollectionSelection from './collection-selection';
 import CollectionOffsets from './collection-offsets';
+
+import {
+  HIGHLIGHT_COLLECTION,
+  UNHIGHLIGHT_COLLECTION,
+} from '../constants';
 
 
 @connect(
@@ -24,6 +28,14 @@ export default class extends RadioComponent {
 
 
   static channelName = 'collections'
+
+
+  static events = {
+    collections: {
+      [HIGHLIGHT_COLLECTION]: 'highlight',
+      [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
+    }
+  }
 
 
   static contextTypes = {
@@ -101,12 +113,43 @@ export default class extends RadioComponent {
           {features}
         </span>
 
-        <CollectionHighlight idToLayer={this.idToLayer} />
         <CollectionSelection idToLayer={this.idToLayer} />
         <CollectionOffsets idToLayer={this.idToLayer} />
 
       </span>
     );
+
+  }
+
+
+  /**
+   * Apply a highlight.
+   *
+   * @param {Number} id
+   */
+  highlight(id) {
+
+    let layer = this.idToLayer[id];
+    if (!layer) return;
+
+    layer.setStyle(styles.path.hl);
+    layer.openPopup();
+
+  }
+
+
+  /**
+   * Remove a highlight.
+   *
+   * @param {Number} id
+   */
+  unhighlight(id) {
+
+    let layer = this.idToLayer[id];
+    if (!layer) return;
+
+    layer.setStyle(styles.path.def);
+    layer.closePopup();
 
   }
 
