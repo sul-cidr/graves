@@ -7,15 +7,14 @@ import { connect } from 'react-redux';
 import RadioComponent from '../lib/radio-component';
 import * as events from '../events/collections';
 import * as actions from '../actions/collections';
-import styles from './collection.yml';
 import CollectionLayer from './collection-layer';
-import CollectionSelection from './collection-selection';
-import CollectionOffsets from './collection-offsets';
+import styles from './collection.yml';
 
 import {
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
   SELECT_COLLECTION,
+  GET_COLLECTION_OFFSET,
 } from '../constants';
 
 
@@ -37,6 +36,11 @@ export default class extends RadioComponent {
       [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
       [SELECT_COLLECTION]: 'select',
     }
+  }
+
+
+  static requests = {
+    [GET_COLLECTION_OFFSET]: 'getOffset',
   }
 
 
@@ -110,14 +114,7 @@ export default class extends RadioComponent {
 
     return (
       <span className="collections">
-
-        <span>
-          {features}
-        </span>
-
-        <CollectionSelection idToLayer={this.idToLayer} />
-        <CollectionOffsets idToLayer={this.idToLayer} />
-
+        {features}
       </span>
     );
 
@@ -170,6 +167,28 @@ export default class extends RadioComponent {
 
     // Fly to the burial.
     this.context.map.flyTo(layer.getLatLng(), zoom);
+
+  }
+
+
+  /**
+   * Get the window-space offset of a marker.
+   *
+   * @param {Number} id
+   * @return {Array}
+   */
+  getOffset(id) {
+
+    // ID -> coordinate.
+    let latLng = this.idToLayer[id].getLatLng();
+
+    // Coordinate -> layer point.
+    let layerPoint = this.context.map.latLngToLayerPoint(latLng);
+
+    // Layer point -> container point.
+    let point = this.context.map.layerPointToContainerPoint(layerPoint);
+
+    return [point.x, point.y];
 
   }
 
