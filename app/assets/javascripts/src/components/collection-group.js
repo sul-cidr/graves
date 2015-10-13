@@ -5,9 +5,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import RadioComponent from '../lib/radio-component';
-import * as events from '../events/collections';
-import * as actions from '../actions/collections';
 import CollectionLayer from './collection-layer';
+import * as actions from '../actions/collections';
 import styles from './collection.yml';
 
 import {
@@ -16,6 +15,11 @@ import {
   SELECT_COLLECTION,
   GET_COLLECTION_LON_LAT,
 } from '../constants';
+
+import {
+  highlightCollection,
+  unhighlightCollection,
+} from '../events/collections';
 
 
 @connect(
@@ -66,12 +70,12 @@ export default class extends RadioComponent {
 
     // HIGHLIGHT
     this.group.on('mouseover', e => {
-      events.highlightCollection(e.layer.options.id);
+      highlightCollection(e.layer.options.id);
     });
 
     // UNHIGHLIGHT
     this.group.on('mouseout', e => {
-      events.unhighlightCollection(e.layer.options.id);
+      unhighlightCollection(e.layer.options.id);
     });
 
     // Add to the map.
