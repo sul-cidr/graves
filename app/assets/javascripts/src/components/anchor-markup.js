@@ -57,10 +57,15 @@ export default class extends RadioComponent {
    */
   onEnter(e) {
 
-    events.hoverCollection(e);
+    let span = $(e.currentTarget);
+    let id = parseAttr(span, 'data-id', Number);
 
-    let attrs = this.getAttrsFromEvent(e);
-    events.highlightCollection(attrs.id);
+    // Show the highlight line.
+    let [lon, lat] = events.getCollectionLonLat(id);
+    events.hoverCollection(span, lon, lat);
+
+    // Publish the highlight.
+    events.highlightCollection(id);
 
   }
 

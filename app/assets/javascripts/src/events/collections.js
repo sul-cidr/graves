@@ -28,10 +28,12 @@ export function highlightCollection(id) {
 /**
  * When a collection span is hovered.
  *
- * @param {Object} e
+ * @param {Object} span
+ * @param {Number} lon
+ * @param {Number} lat
  */
-export function hoverCollection(e) {
-  channel.trigger(HOVER_COLLECTION, e);
+export function hoverCollection(span, lon, lat) {
+  channel.trigger(HOVER_COLLECTION, span, lon, lat);
 }
 
 

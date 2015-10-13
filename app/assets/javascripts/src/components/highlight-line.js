@@ -63,19 +63,16 @@ export default class extends RadioComponent {
   /**
    * Show a line for a collection.
    *
-   * @param {Object} e
+   * @param {Object} span
+   * @param {Number} lon
+   * @param {Number} lat
    */
-  show(e) {
+  show(span, lon, lat) {
 
-    let span    = $(e.target);
-    let id      = parseAttr(span, 'data-id', Number);
     let width   = span.outerWidth();
     let offset  = span.offset();
     let top     = offset.top - $(window).scrollTop();
     let left    = offset.left;
-
-    // Get the marker lon/lat.
-    let [lon, lat] = getCollectionLonLat(id);
 
     this.setState({ span, lon, lat, width, top, left });
     this.bindMoveListener();
