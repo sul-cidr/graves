@@ -15,7 +15,6 @@ import {
   UNHIGHLIGHT_COLLECTION,
   SELECT_COLLECTION,
   GET_COLLECTION_LON_LAT,
-  GET_COLLECTION_OFFSET,
 } from '../constants';
 
 
@@ -41,7 +40,6 @@ export default class extends RadioComponent {
 
 
   static requests = {
-    [GET_COLLECTION_OFFSET]: 'getOffset',
     [GET_COLLECTION_LON_LAT]: 'getLonLat',
   }
 
@@ -169,28 +167,6 @@ export default class extends RadioComponent {
 
     // Fly to the burial.
     this.context.map.flyTo(layer.getLatLng(), zoom);
-
-  }
-
-
-  /**
-   * Get the window-space offset of a marker.
-   *
-   * @param {Number} id
-   * @return {Array}
-   */
-  getOffset(id) {
-
-    // ID -> coordinate.
-    let latLng = this.idToLayer[id].getLatLng();
-
-    // Coordinate -> layer point.
-    let layerPoint = this.context.map.latLngToLayerPoint(latLng);
-
-    // Layer point -> container point.
-    let point = this.context.map.layerPointToContainerPoint(layerPoint);
-
-    return [point.x, point.y];
 
   }
 

@@ -8,7 +8,6 @@ import {
   HOVER_COLLECTION,
   SELECT_COLLECTION,
   GET_COLLECTION_LON_LAT,
-  GET_COLLECTION_OFFSET,
 } from '../constants';
 
 
@@ -55,17 +54,6 @@ export function unhighlightCollection(id) {
  */
 export function selectCollection(id, zoom) {
   channel.trigger(SELECT_COLLECTION, id, zoom);
-}
-
-
-/**
- * Get the pixel-space offset of a collection.
- *
- * @param {Number} id
- * @return {Array}
- */
-export function getCollectionOffset(id) {
-  return channel.request(GET_COLLECTION_OFFSET, id);
 }
 
 
