@@ -67,13 +67,17 @@ export default class extends RadioComponent {
    */
   show(e) {
 
-    let span = $(e.target);
+    let span    = $(e.target);
+    let id      = parseAttr(span, 'data-id', Number);
+    let width   = span.outerWidth();
+    let offset  = span.offset();
+    let top     = offset.top - $(window).scrollTop();
+    let left    = offset.left;
 
-    // Collection -> lon/lat.
-    let id = parseAttr(span, 'data-id', Number);
+    // Get the marker lon/lat.
     let [lon, lat] = getCollectionLonLat(id);
 
-    this.setState({ span, lon, lat });
+    this.setState({ span, lon, lat, width, top, left });
     this.bindMoveListener();
 
   }
@@ -106,10 +110,6 @@ export default class extends RadioComponent {
 
     if (this.state.span) {
 
-      let offset  = this.state.span.offset();
-      let top     = offset.top - $(window).scrollTop();
-      let width   = this.state.span.outerWidth();
-
       // Map offset.
       let [x2, y2] = this.lonLatToXY(
         this.state.lon,
@@ -119,12 +119,12 @@ export default class extends RadioComponent {
       let padding = 5;
 
       // Text X.
-      let x1 = x2 > offset.left ?
-        offset.left + width + padding :
-        offset.left - padding;
+      let x1 = x2 > this.state.left ?
+        this.state.left + this.state.width + padding :
+        this.state.left - padding;
 
       // Text Y.
-      let y1 = top + padding;
+      let y1 = this.state.top + padding;
 
       line = <line
         x1={x1}
