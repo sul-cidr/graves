@@ -15,6 +15,7 @@ import CollectionOffsets from './collection-offsets';
 import {
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
+  SELECT_COLLECTION,
 } from '../constants';
 
 
@@ -34,6 +35,7 @@ export default class extends RadioComponent {
     collections: {
       [HIGHLIGHT_COLLECTION]: 'highlight',
       [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
+      [SELECT_COLLECTION]: 'select',
     }
   }
 
@@ -150,6 +152,24 @@ export default class extends RadioComponent {
 
     layer.setStyle(styles.path.def);
     layer.closePopup();
+
+  }
+
+
+  /**
+   * Zoom to the selected collection.
+   *
+   * @param {Number} id
+   * @param {Number} zoom
+   */
+  select(id, zoom=8) {
+
+    // Get a marker for the id.
+    let layer = this.idToLayer[id];
+    if (!layer) return;
+
+    // Fly to the burial.
+    this.context.map.flyTo(layer.getLatLng(), zoom);
 
   }
 
