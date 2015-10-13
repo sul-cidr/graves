@@ -14,6 +14,7 @@ import {
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
   SELECT_COLLECTION,
+  GET_COLLECTION_LON_LAT,
   GET_COLLECTION_OFFSET,
 } from '../constants';
 
@@ -41,6 +42,7 @@ export default class extends RadioComponent {
 
   static requests = {
     [GET_COLLECTION_OFFSET]: 'getOffset',
+    [GET_COLLECTION_LON_LAT]: 'getLonLat',
   }
 
 
@@ -190,6 +192,18 @@ export default class extends RadioComponent {
 
     return [point.x, point.y];
 
+  }
+
+
+  /**
+   * Get the lon/lat of a collection.
+   *
+   * @param {Number} id
+   * @return {Array}
+   */
+  getLonLat(id) {
+    let latLng = this.idToLayer[id].getLatLng();
+    return [latLng.lng, latLng.lat];
   }
 
 

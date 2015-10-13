@@ -7,6 +7,7 @@ import {
   UNHIGHLIGHT_COLLECTION,
   HOVER_COLLECTION,
   SELECT_COLLECTION,
+  GET_COLLECTION_LON_LAT,
   GET_COLLECTION_OFFSET,
 } from '../constants';
 
@@ -63,4 +64,15 @@ export function selectCollection(id, zoom) {
  */
 export function getCollectionOffset(id) {
   return channel.request(GET_COLLECTION_OFFSET, id);
+}
+
+
+/**
+ * Get the lon/lat of a collection.
+ *
+ * @param {Number} id
+ * @return {Array}
+ */
+export function getCollectionLonLat(id) {
+  return channel.request(GET_COLLECTION_LON_LAT, id);
 }
