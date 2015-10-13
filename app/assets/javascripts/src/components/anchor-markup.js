@@ -3,8 +3,12 @@
 import $ from 'jquery';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { parseAttr } from '../utils';
+import { parseAttr, parseLonLat } from '../utils';
 import * as actions from '../actions/counties';
+
+import {
+  showHighlightLine
+} from '../events/narrative';
 
 
 @connect(null, actions)
@@ -38,7 +42,17 @@ export default class extends Component {
    * @param {Object} e
    */
   onEnter(e) {
-    // TODO
+
+    let span = $(e.currentTarget);
+
+    let focus = parseAttr(span, 'data-focus', parseLonLat);
+
+    if (focus) {
+      let [lon, lat] = focus;
+      showHighlightLine(span, lon, lat);
+      span.addClass('highlight');
+    }
+
   }
 
 
@@ -79,8 +93,8 @@ export default class extends Component {
 
     let span = $(e.currentTarget);
 
-    let focus = parseAttr(span, 'data-focus');
     let zoom  = parseAttr(span, 'data-zoom', Number);
+    let focus = parseAttr(span, 'data-focus', parseLonLat);
     let cdc   = parseAttr(span, 'data-cdc');
 
     return {
