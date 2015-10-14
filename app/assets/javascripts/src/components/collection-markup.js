@@ -15,7 +15,6 @@ import {
 import {
   highlightCollection,
   unhighlightCollection,
-  selectCollection,
   getCollectionLonLat,
 } from '../events/collections';
 

@@ -6,7 +6,6 @@ import {
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
   HOVER_COLLECTION,
-  SELECT_COLLECTION,
   GET_COLLECTION_LON_LAT,
 } from '../constants';
 
@@ -43,17 +42,6 @@ export function hoverCollection(span, lon, lat) {
  */
 export function unhighlightCollection(id) {
   channel.trigger(UNHIGHLIGHT_COLLECTION, id);
-}
-
-
-/**
- * Select a collection.
- *
- * @param {Number} id
- * @param {Number} zoom
- */
-export function selectCollection(id, zoom) {
-  channel.trigger(SELECT_COLLECTION, id, zoom);
 }
 
 
