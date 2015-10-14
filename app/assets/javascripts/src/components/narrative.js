@@ -5,7 +5,6 @@ import React, { Component, PropTypes, findDOMNode } from 'react';
 import * as actions from '../actions/narrative';
 
 import Spinner from './spinner';
-import AnchorMarkup from './anchor-markup';
 import CollectionMarkup from './collection-markup';
 import SectionMarkup from './section-markup';
 import HighlightLine from './highlight-line';
@@ -97,9 +96,8 @@ export default class extends Component {
       behaviors = (
         <span>
 
-          <AnchorMarkup markup={this.state.markup} />
-          <CollectionMarkup markup={this.state.markup} />
           <SectionMarkup markup={this.state.markup} />
+          <CollectionMarkup markup={this.state.markup} />
 
           <HighlightLine />
 
