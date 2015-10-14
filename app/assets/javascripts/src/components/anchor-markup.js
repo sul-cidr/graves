@@ -7,6 +7,11 @@ import { parseAttr, parseLonLat } from '../utils';
 import * as actions from '../actions/counties';
 
 import {
+  showHighlightLine,
+  hideHighlightLine,
+} from '../events/narrative';
+
+import {
   focusMap,
 } from '../events/map';
 
@@ -42,8 +47,18 @@ export default class extends Component {
    * @param {Object} e
    */
   onEnter(e) {
-    // TODO
-    console.log('enter');
+
+    let attrs = this.getAttrsFromEvent(e);
+    let span = $(e.currentTarget);
+
+    // Show the highlight line.
+    if (attrs.focus) {
+      let [lon, lat] = attrs.focus;
+      showHighlightLine(span, lon, lat);
+    }
+
+    span.addClass('highlight');
+
   }
 
 
@@ -53,8 +68,12 @@ export default class extends Component {
    * @param {Object} e
    */
   onLeave(e) {
-    // TODO
-    console.log('leave');
+
+    let span = $(e.currentTarget);
+
+    hideHighlightLine();
+    span.removeClass('highlight');
+
   }
 
 
