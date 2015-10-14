@@ -20,6 +20,10 @@ import {
 } from '../events/collections';
 
 import {
+  focusMap,
+} from '../events/map';
+
+import {
   showHighlightLine,
   hideHighlightLine,
 } from '../events/narrative';
@@ -108,7 +112,8 @@ export default class extends RadioComponent {
 
     // Select the collection.
     if (attrs.id) {
-      selectCollection(attrs.id, attrs.zoom);
+      let [lon, lat] = getCollectionLonLat(attrs.id);
+      focusMap(lon, lat, attrs.zoom);
     }
 
     // Update the choropleth.

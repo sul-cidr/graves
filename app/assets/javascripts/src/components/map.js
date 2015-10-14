@@ -12,6 +12,7 @@ import CDCPicker from './cdc-picker';
 
 import {
   GET_LEAFLET_INSTANCE,
+  FOCUS_MAP,
 } from '../constants';
 
 
@@ -25,7 +26,8 @@ export default class extends RadioComponent {
 
 
   static requests = {
-    [GET_LEAFLET_INSTANCE]: 'getMap'
+    [GET_LEAFLET_INSTANCE]: 'getMap',
+    [FOCUS_MAP]: 'focus'
   }
 
 
@@ -93,14 +95,6 @@ export default class extends RadioComponent {
 
 
   /**
-   * Expose the Leaflet instance.
-   */
-  getMap() {
-    return this.state.map;
-  }
-
-
-  /**
    * Render the map container.
    */
   render() {
@@ -125,6 +119,28 @@ export default class extends RadioComponent {
       </div>
     );
 
+  }
+
+
+  /**
+   * Expose the Leaflet instance.
+   *
+   * @return {Leaflet.Map}
+   */
+  getMap() {
+    return this.state.map;
+  }
+
+
+  /**
+   * Expose the Leaflet instance.
+   *
+   * @param {Number} lon
+   * @param {Number} lat
+   * @param {Number} zoom
+   */
+  focus(lon, lat, zoom=8) {
+    this.state.map.flyTo([lat, lon], zoom);
   }
 
 
