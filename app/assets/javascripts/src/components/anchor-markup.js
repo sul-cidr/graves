@@ -6,6 +6,10 @@ import { connect } from 'react-redux';
 import { parseAttr, parseLonLat } from '../utils';
 import * as actions from '../actions/counties';
 
+import {
+  focusMap,
+} from '../events/map';
+
 
 @connect(null, actions)
 export default class extends Component {
@@ -63,6 +67,13 @@ export default class extends Component {
 
     let attrs = this.getAttrsFromEvent(e);
 
+    // Focus the map.
+    if (attrs.focus) {
+      let [lon, lat] = attrs.focus;
+      focusMap(lon, lat, attrs.zoom);
+    }
+
+    // Update the choropleth.
     if (attrs.cdc) {
       this.props.showChoropleth(attrs.cdc);
     }

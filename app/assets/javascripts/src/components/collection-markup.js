@@ -109,7 +109,7 @@ export default class extends RadioComponent {
 
     let attrs = this.getAttrsFromEvent(e);
 
-    // Select the collection.
+    // Focus the map.
     if (attrs.id) {
       let [lon, lat] = getCollectionLonLat(attrs.id);
       focusMap(lon, lat, attrs.zoom);
