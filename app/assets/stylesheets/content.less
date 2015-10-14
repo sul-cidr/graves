@@ -3,16 +3,23 @@
 .content {
 
   position: absolute;
-  margin: 2vw 0;
   background: rgba(245,245,245,0.95);
+  margin: 2vw 0;
+  padding: 2em 3em;
 
+  .transition(left 0.3s ease-in);
   .box-shadow(0 0px 10px rgba(20,20,20,0.1));
   .border-radius(2);
 
+
   &.left {
-    left: 2vw;
     width: @width-text - 2vw;
-    padding: 2em 3em;
+    left: 2vw;
+  }
+
+  &.center {
+    width: @width-text-center;
+    left: 50vw - (@width-text-center/2);
   }
 
 }
