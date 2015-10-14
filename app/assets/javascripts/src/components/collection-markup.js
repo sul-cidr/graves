@@ -72,15 +72,15 @@ export default class extends RadioComponent {
    */
   onEnter(e) {
 
+    let attrs = this.getAttrsFromEvent(e);
     let span = $(e.currentTarget);
-    let id = parseAttr(span, 'data-id', Number);
 
     // Show the highlight line.
-    let [lon, lat] = getCollectionLonLat(id);
+    let [lon, lat] = getCollectionLonLat(attrs.id);
     showHighlightLine(span, lon, lat);
 
     // Publish highlight.
-    highlightCollection(id);
+    highlightCollection(attrs.id);
 
   }
 
