@@ -20,7 +20,8 @@ import {
 } from '../events/collections';
 
 import {
-  showHighlightLine
+  showHighlightLine,
+  hideHighlightLine,
 } from '../events/narrative';
 
 
@@ -86,8 +87,13 @@ export default class extends RadioComponent {
    * @param {Object} e
    */
   onLeave(e) {
+
+    hideHighlightLine();
+
+    // Publish unhighlight.
     let attrs = this.getAttrsFromEvent(e);
     unhighlightCollection(attrs.id);
+
   }
 
 
