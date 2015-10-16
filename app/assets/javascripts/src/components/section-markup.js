@@ -3,6 +3,7 @@
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Waypoint from 'waypoints';
 import RadioComponent from '../lib/radio-component';
 import { parseLonLat } from '../utils';
 import * as actions from '../actions/sections';
@@ -34,6 +35,7 @@ export default class extends RadioComponent {
     this.sections = this.$el.find('.section');
 
     this.publishData();
+    this.listenForScroll();
 
   }
 
@@ -68,6 +70,14 @@ export default class extends RadioComponent {
 
     this.props.mountSections(attrs);
 
+  }
+
+
+  /**
+   * Monitor the visible section.
+   */
+  listenForScroll() {
+    // TODO
   }
 
 

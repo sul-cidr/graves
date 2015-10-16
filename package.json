@@ -14,6 +14,8 @@
   "homepage": "https://github.com/sul-cidr/graves",
   "devDependencies": {
     "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "browserify-shim": "^3.8.10",
     "grunt": "^0.4.5",
     "grunt-browserify": "^4.0.1",
     "grunt-cli": "^0.1.13",
@@ -49,9 +51,21 @@
     "react-redux": "^2.1.1",
     "redux": "^2.0.0",
     "redux-thunk": "^0.1.0",
+    "waypoints": "^4.0.0",
     "wellknown": "^0.3.2"
   },
   "scripts": {
     "postinstall": "./node_modules/grunt-cli/bin/grunt compile:min"
+  },
+  "browser": {
+    "waypoints": "./node_modules/waypoints/lib/noframework.waypoints.js"
+  },
+  "browserify-shim": {
+    "waypoints": "Waypoint"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
   }
 }
