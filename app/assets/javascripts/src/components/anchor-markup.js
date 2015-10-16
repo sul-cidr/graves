@@ -34,9 +34,10 @@ export default class extends Component {
     this.spans = this.$el.find('span.anchor');
 
     // Listen for cursor events.
-    this.spans.on('mouseenter', this.onEnter.bind(this));
-    this.spans.on('mouseleave', this.onLeave.bind(this));
-    this.spans.on('click', this.onClick.bind(this));
+    this.spans
+      .on('mouseenter', this.onEnter.bind(this))
+      .on('mouseleave', this.onLeave.bind(this))
+      .on('click', this.onClick.bind(this));
 
   }
 
