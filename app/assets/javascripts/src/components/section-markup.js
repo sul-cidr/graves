@@ -33,8 +33,26 @@ export default class extends RadioComponent {
     this.$el = $(this.props.markup);
     this.sections = this.$el.find('.section');
 
-    // Extract data attributes.
+    this.publishData();
+
+  }
+
+
+  /**
+   * Unmount the section layers.
+   */
+  componentWillUnmount() {
+    this.props.unmountSections();
+  }
+
+
+  /**
+   * Mount data attributes to the store.
+   */
+  publishData() {
+
     let attrs = [];
+
     this.sections.each((i, s) => {
 
       let key   = `${this.props.slug}-${i}`;
@@ -50,14 +68,6 @@ export default class extends RadioComponent {
 
     this.props.mountSections(attrs);
 
-  }
-
-
-  /**
-   * Unmount the section layers.
-   */
-  componentWillUnmount() {
-    this.props.unmountSections();
   }
 
 
