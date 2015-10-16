@@ -66,10 +66,7 @@ export function parseAttr($el, attr, parse) {
 
   var value = $el.attr(attr);
 
-  if (value && parse) {
-    value = parse(value)
-  }
-
-  return value;
+  return (value && _.isFunction(parse)) ?
+    parse(value) : undefined;
 
 }

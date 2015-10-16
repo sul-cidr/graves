@@ -48,8 +48,8 @@ export default class extends Component {
    */
   onEnter(e) {
 
+    let span = $(e.target);
     let attrs = this.getAttrsFromEvent(e);
-    let span = $(e.currentTarget);
 
     // Show the highlight line.
     if (attrs.focus) {
@@ -69,7 +69,7 @@ export default class extends Component {
    */
   onLeave(e) {
 
-    let span = $(e.currentTarget);
+    let span = $(e.target);
 
     hideHighlightLine();
     span.removeClass('highlight');
@@ -108,10 +108,10 @@ export default class extends Component {
    */
   getAttrsFromEvent(e) {
 
-    let span = $(e.currentTarget);
+    let span = $(e.target);
 
-    let focus = parseAttr(span, 'data-focus', parseLonLat);
     let zoom  = parseAttr(span, 'data-zoom', Number);
+    let focus = parseAttr(span, 'data-focus', parseLonLat);
     let cdc   = parseAttr(span, 'data-cdc');
 
     return {

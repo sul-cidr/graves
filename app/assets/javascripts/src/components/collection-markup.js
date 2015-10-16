@@ -71,8 +71,8 @@ export default class extends RadioComponent {
    */
   onEnter(e) {
 
+    let span = $(e.target);
     let attrs = this.getAttrsFromEvent(e);
-    let span = $(e.currentTarget);
 
     // Show the highlight line.
     let [lon, lat] = getCollectionLonLat(attrs.id);
@@ -165,7 +165,7 @@ export default class extends RadioComponent {
    */
   getAttrsFromEvent(e) {
 
-    let span = $(e.currentTarget);
+    let span = $(e.target);
 
     let id    = parseAttr(span, 'data-id', Number);
     let zoom  = parseAttr(span, 'data-zoom', Number);
