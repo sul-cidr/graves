@@ -77,7 +77,20 @@ export default class extends RadioComponent {
    * Monitor the visible section.
    */
   listenForScroll() {
-    // TODO
+
+    this.sections.each((i, s) => {
+      new Waypoint({
+
+        element: s,
+        offset: 100,
+
+        handler: dir => {
+          console.log(s, dir);
+        }
+
+      });
+    });
+
   }
 
 
