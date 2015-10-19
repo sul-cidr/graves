@@ -84,8 +84,9 @@ export default class extends RadioComponent {
         element: s,
         offset: 100,
 
-        handler: dir => {
-          console.log(s, dir);
+        handler: function(dir) {
+          let spatial = $(this.element).is('[data-spatial]');
+          console.log(spatial);
         }
 
       });
