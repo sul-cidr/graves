@@ -63,13 +63,13 @@ export default class extends RadioComponent {
 
     this.sections.each((i, s) => {
 
-      let key   = `${this.props.slug}-${i}`;
+      let key = `${this.props.slug}-${i}`;
+      let tl = parseLonLat($(s).attr('data-tl'));
+      let br = parseLonLat($(s).attr('data-br'));
       let label = $(s).attr('data-label');
-      let tl    = parseLonLat($(s).attr('data-tl'));
-      let br    = parseLonLat($(s).attr('data-br'));
 
       if (label && tl && br) {
-        attrs.push({ key, label, tl, br });
+        attrs.push({ key, tl, br, label });
       }
 
     });
@@ -91,8 +91,13 @@ export default class extends RadioComponent {
         offset: 100,
 
         handler: function(dir) {
-          let spatial = $(this.element).is('[data-spatial]');
-          console.log(spatial);
+
+          let span = (dir == 'up') ?
+            $(this.element).prev('.section') :
+            $(this.element);
+
+          // TODO
+
         }
 
       });
