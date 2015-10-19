@@ -4,6 +4,7 @@ import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Waypoint from 'waypoints';
+import imagesLoaded from 'imagesloaded';
 import RadioComponent from '../lib/radio-component';
 import { parseLonLat } from '../utils';
 import * as actions from '../actions/sections';
@@ -36,6 +37,11 @@ export default class extends RadioComponent {
 
     this.publishData();
     this.listenForScroll();
+
+    // Update waypoint offsets.
+    imagesLoaded(this.props.markup, () => {
+      Waypoint.refreshAll();
+    });
 
   }
 
