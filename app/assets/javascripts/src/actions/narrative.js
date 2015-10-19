@@ -5,6 +5,7 @@ import fetch from 'isomorphic-fetch';
 import {
   REQUEST_NARRATIVE,
   RECEIVE_NARRATIVE,
+  SCROLL_SECTION,
 } from '../constants';
 
 
@@ -46,5 +47,18 @@ function receiveNarrative(model) {
   return {
     type: RECEIVE_NARRATIVE,
     model: model,
+  };
+}
+
+
+/**
+ * When the narrative scrolls to a section.
+ *
+ * @param {Boolean} spatial
+ */
+export function scrollSection(spatial) {
+  return {
+    type: SCROLL_SECTION,
+    spatial: spatial,
   };
 }

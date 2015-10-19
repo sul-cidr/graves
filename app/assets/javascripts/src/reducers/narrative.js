@@ -5,11 +5,13 @@ import { createReducer } from '../utils';
 import {
   REQUEST_NARRATIVE,
   RECEIVE_NARRATIVE,
+  SCROLL_SECTION,
 } from '../constants';
 
 
 const initialState = {
   loading: false,
+  spatial: false,
   model: {},
 };
 
@@ -23,6 +25,10 @@ const handlers = {
   [RECEIVE_NARRATIVE]: (state, action) => ({
     model: action.model,
     loading: false,
+  }),
+
+  [SCROLL_SECTION]: (state, action) => ({
+    spatial: action.spatial,
   }),
 
 };
