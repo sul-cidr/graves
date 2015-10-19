@@ -3,18 +3,29 @@
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Waypoint from 'waypoints';
 import imagesLoaded from 'imagesloaded';
 import RadioComponent from '../lib/radio-component';
 import { parseLonLat } from '../utils';
-import * as actions from '../actions/sections';
+
+import * as narrativeActions from '../actions/narrative';
+import * as sectionActions from '../actions/sections';
 
 
 @connect(
+
   state => ({
     slug: state.route.narrative
   }),
-  actions
+
+  dispatch => {
+    return bindActionCreators({
+      ...sectionActions,
+      ...narrativeActions,
+    }, dispatch)
+  }
+
 )
 export default class extends RadioComponent {
 
