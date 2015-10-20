@@ -101,7 +101,7 @@ export default class extends RadioComponent {
       new Waypoint({
 
         element: s,
-        offset: 100,
+        offset: 200,
 
         handler: function(dir) {
 
