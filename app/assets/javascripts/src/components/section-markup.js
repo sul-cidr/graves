@@ -1,36 +1,19 @@
 
 
 import $ from 'jquery';
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import Waypoint from 'waypoints';
-import imagesLoaded from 'imagesloaded';
-import RadioComponent from '../lib/radio-component';
 import { parseLonLat } from '../utils';
-
-import * as narrativeActions from '../actions/narrative';
-import * as sectionActions from '../actions/sections';
+import * as actions from '../actions/sections';
 
 
 @connect(
-
   state => ({
     slug: state.route.narrative
   }),
-
-  dispatch => {
-    return bindActionCreators({
-      ...sectionActions,
-      ...narrativeActions,
-    }, dispatch)
-  }
-
+  actions
 )
-export default class extends RadioComponent {
-
-
-  static channelName = 'sections';
+export default class extends Component {
 
 
   static propTypes = {
@@ -47,12 +30,6 @@ export default class extends RadioComponent {
     this.sections = this.$el.find('.section');
 
     this.publishData();
-    this.listenForScroll();
-
-    // Update waypoint offsets.
-    imagesLoaded(this.props.markup, () => {
-      Waypoint.refreshAll();
-    });
 
   }
 
@@ -90,34 +67,8 @@ export default class extends RadioComponent {
   }
 
 
-  /**
-   * Monitor the visible section.
-   */
-  listenForScroll() {
-
-    let props = this.props;
-
-    this.sections.each((i, s) => {
-      new Waypoint({
-
-        element: s,
-        offset: 200,
-
-        handler: function(dir) {
-
-          let span = (dir == 'up') ?
-            $(this.element).prev('.section') :
-            $(this.element);
-
-          // Shift the container.
-          let spatial = span.is('[data-spatial]');
-          props.scrollSection(spatial);
-
-        }
-
-      });
-    });
-
+  render() {
+    return null;
   }
 
 
