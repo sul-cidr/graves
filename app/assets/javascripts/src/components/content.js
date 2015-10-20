@@ -1,6 +1,7 @@
 
 
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 
 
@@ -15,10 +16,12 @@ export default class extends Component {
    */
   render() {
 
-    console.log(this.props.spatial);
+    let cx = classNames('content', {
+      left: this.props.spatial
+    });
 
     return (
-      <div className="content left">
+      <div className={cx}>
         {this.props.children}
       </div>
     );

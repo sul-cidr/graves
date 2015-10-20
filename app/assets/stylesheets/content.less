@@ -7,19 +7,16 @@
   margin: 4vw 0;
   padding: 2em 3em;
 
-  .transition(all 0.3s ease-in);
+  .transition(left 0.3s linear);
   .box-shadow(0 0px 10px rgba(20,20,20,0.1));
   .border-radius(2);
 
+  // Centered by default.
+  width: @width-text;
+  left: 50vw - (@width-text/2);
 
   &.left {
-    width: @width-text - 2vw;
     left: 2vw;
-  }
-
-  &.center {
-    width: @width-text-center;
-    left: 50vw - (@width-text-center/2);
   }
 
 }
