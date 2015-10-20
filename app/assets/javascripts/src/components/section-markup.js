@@ -95,6 +95,8 @@ export default class extends RadioComponent {
    */
   listenForScroll() {
 
+    let props = this.props;
+
     this.sections.each((i, s) => {
       new Waypoint({
 
@@ -107,7 +109,9 @@ export default class extends RadioComponent {
             $(this.element).prev('.section') :
             $(this.element);
 
-          // TODO
+          // Shift the container.
+          let spatial = span.is('[data-spatial]');
+          props.scrollSection(spatial);
 
         }
 
