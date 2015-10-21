@@ -20,7 +20,7 @@ namespace :csv do
       ]
     ) do |fh|
 
-      Collection.where { lonlat != nil }.each do |c|
+      Collection.where { geometry != nil }.each do |c|
         fh << [
           c.province_p,
           c.province_c,
@@ -28,8 +28,8 @@ namespace :csv do
           c.county_c,
           c.town_p,
           c.town_c,
-          c.lonlat.x,
-          c.lonlat.y,
+          c.geometry.x,
+          c.geometry.y,
         ]
       end
 
@@ -38,9 +38,9 @@ namespace :csv do
   end
 
   desc 'Geocoding QA'
-  task :geocoding, [:path] => :environment do |t, args|
+  task :geocoding_qa, [:path] => :environment do |t, args|
 
-    args.with_defaults(path: 'geocoding.csv')
+    args.with_defaults(path: 'geocoding-qa.csv')
 
     CSV.open(args.path, 'w',
       :write_headers => true,
