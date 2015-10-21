@@ -2,8 +2,10 @@
 
 import L from 'leaflet';
 import { connect } from 'react-redux';
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import d3 from 'd3-browserify';
+
+import Component from './component';
 import CountyChoropleth from './county-choropleth';
 import * as actions from '../actions/counties';
 

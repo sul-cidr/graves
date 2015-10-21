@@ -1,7 +1,9 @@
 
 
-import React, { Component } from 'react';
+import React from 'react';
 import classNames from 'classnames';
+
+import Component from './component';
 
 
 export default class extends Component {

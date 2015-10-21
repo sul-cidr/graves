@@ -1,7 +1,9 @@
 
 
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import L from 'leaflet';
+
+import Component from './component';
 import * as styles from './section.yml';
 import { swap } from '../utils';
 

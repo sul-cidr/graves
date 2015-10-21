@@ -1,8 +1,10 @@
 
 
 import $ from 'jquery';
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+
+import Component from './component';
 import { parseAttr, parseLonLat } from '../utils';
 import * as actions from '../actions/counties';
 

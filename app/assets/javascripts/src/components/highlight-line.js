@@ -2,6 +2,7 @@
 
 import $ from 'jquery';
 import React from 'react';
+
 import { parseAttr } from '../utils';
 import Component from './component';
 

@@ -1,9 +1,10 @@
 
 
 import { connect } from 'react-redux';
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Mousetrap from 'mousetrap';
 
+import Component from './component';
 import * as actions from '../actions/editor';
 import Content from './content';
 import Map from './map';

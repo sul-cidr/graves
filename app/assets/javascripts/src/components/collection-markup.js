@@ -3,6 +3,7 @@
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+
 import Component from './component';
 import * as actions from '../actions/counties';
 import { parseAttr } from '../utils';

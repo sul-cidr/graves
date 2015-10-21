@@ -1,8 +1,10 @@
 
 
 import _ from 'lodash';
-import React, { Component, findDOMNode } from 'react';
+import React, { findDOMNode } from 'react';
 import { connect } from 'react-redux';
+
+import Component from './component';
 import * as actions from '../actions/counties';
 import codes from '../data/cdc-codes.yml';
 

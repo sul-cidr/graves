@@ -2,9 +2,11 @@
 
 import _ from 'lodash';
 import $ from 'jquery';
-import React, { Component, PropTypes, findDOMNode } from 'react';
+import React, { PropTypes, findDOMNode } from 'react';
 import Mousetrap from 'mousetrap';
 import classNames from 'classnames';
+
+import Component from './component';
 
 
 export default class extends Component {

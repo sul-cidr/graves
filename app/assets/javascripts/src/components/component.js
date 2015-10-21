@@ -74,7 +74,9 @@ export default class extends Component {
   componentWillUnmount() {
 
     // Unbind requests.
-    this._requestChannel.off(null, null, this);
+    if (this._requestChannel) {
+      this._requestChannel.off(null, null, this);
+    }
 
     // Unbind events.
     for (let c of this._eventChannels) {

@@ -1,9 +1,10 @@
 
 
 import { connect } from 'react-redux';
-import React, { Component, PropTypes, findDOMNode } from 'react';
+import React, { PropTypes, findDOMNode } from 'react';
 import * as actions from '../actions/narrative';
 
+import Component from './component';
 import Spinner from './spinner';
 import SectionMarkup from './section-markup';
 import CollectionMarkup from './collection-markup';

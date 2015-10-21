@@ -1,8 +1,10 @@
 
 
-import React, { Component } from 'react';
-import classNames from 'classnames';
+import React from 'react';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
+
+import Component from './component';
 
 
 @connect(state => ({
