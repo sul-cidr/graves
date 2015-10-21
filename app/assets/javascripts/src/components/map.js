@@ -1,7 +1,8 @@
 
 
 import L from 'leaflet';
-import React, { findDOMNode, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
 
 import Component from './component';

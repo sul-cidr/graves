@@ -1,7 +1,8 @@
 
 
 import _ from 'lodash';
-import React, { findDOMNode } from 'react';
+import React from 'react';
+import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
 
 import Component from './component';

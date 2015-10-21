@@ -1,7 +1,8 @@
 
 
 import { connect } from 'react-redux';
-import React, { PropTypes, findDOMNode } from 'react';
+import React, { PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
 import * as actions from '../actions/narrative';
 
 import Component from './component';

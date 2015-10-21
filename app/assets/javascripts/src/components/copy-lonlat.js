@@ -2,7 +2,8 @@
 
 import _ from 'lodash';
 import $ from 'jquery';
-import React, { PropTypes, findDOMNode } from 'react';
+import React, { PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
 import Mousetrap from 'mousetrap';
 import classNames from 'classnames';
 
