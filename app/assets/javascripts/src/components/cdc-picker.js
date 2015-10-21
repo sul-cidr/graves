@@ -21,15 +21,6 @@ export default class extends Component {
 
 
   /**
-   * Render the initial value.
-   */
-  componentDidMount() {
-    let code = findDOMNode(this).value;
-    this.props.showChoropleth(code);
-  }
-
-
-  /**
    * Render the CDC code select.
    */
   render() {
@@ -47,6 +38,7 @@ export default class extends Component {
       <Select
         className="cdc-picker"
         options={options}
+        value={this.props.code}
         onChange={onChange}
       />
     );
