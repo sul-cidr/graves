@@ -3,7 +3,7 @@
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import RadioComponent from '../lib/radio-component';
+import Component from './component';
 import * as actions from '../actions/counties';
 import { parseAttr } from '../utils';
 
@@ -29,10 +29,7 @@ import {
 
 
 @connect(null, actions)
-export default class extends RadioComponent {
-
-
-  static channelName = 'collections'
+export default class extends Component {
 
 
   static events = {

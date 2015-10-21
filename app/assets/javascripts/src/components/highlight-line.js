@@ -2,18 +2,24 @@
 
 import $ from 'jquery';
 import React from 'react';
-import RadioComponent from '../lib/radio-component';
-import { getLeafletInstance } from '../events/map';
-import { getCollectionLonLat } from '../events/collections';
 import { parseAttr } from '../utils';
+import Component from './component';
 
 import {
   SHOW_HIGHLIGHT_LINE,
   HIDE_HIGHLIGHT_LINE,
 } from '../constants';
 
+import {
+  getCollectionLonLat
+} from '../events/collections';
 
-export default class extends RadioComponent {
+import {
+  getLeafletInstance
+} from '../events/map';
+
+
+export default class extends Component {
 
 
   static channelName = 'narrative'

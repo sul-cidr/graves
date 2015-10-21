@@ -3,7 +3,7 @@
 import L from 'leaflet';
 import React, { findDOMNode, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import RadioComponent from '../lib/radio-component';
+import Component from './component';
 import CopyLonLat from './copy-lonlat';
 import CollectionGroup from './collection-group';
 import CountyGroup from './county-group';
@@ -19,7 +19,7 @@ import {
 @connect(state => ({
   editing: state.editor.active
 }))
-export default class extends RadioComponent {
+export default class extends Component {
 
 
   static channelName = 'map'

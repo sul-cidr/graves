@@ -14,12 +14,32 @@ export default class extends Component {
    * @param {Object} props
    */
   constructor(props) {
-
     super(props);
-
-    // Bind event / request mappings
-    this._bindEvents();
     this._bindRequests();
+    this._bindEvents();
+  }
+
+
+  /**
+   * Bind request mappings to the local channel.
+   */
+  _bindRequests() {
+
+    let name = this.constructor.channelName;
+
+    // Set local channel.
+    if (_.isString(name)) {
+      this._requestChannel = Radio.channel(name);
+    }
+
+    else if (this.constructor.requests) {
+      throw new Error('Missing channel.');
+    }
+
+    // Bind requests -> callbacks.
+    _.each(this.constructor.requests, (method, request) => {
+      this._requestChannel.reply(request, this[method], this);
+    });
 
   }
 
@@ -29,7 +49,7 @@ export default class extends Component {
    */
   _bindEvents() {
 
-    this.eventChannels = [];
+    this._eventChannels = [];
 
     _.each(this.constructor.events, (bindings, channelName) => {
 
@@ -41,35 +61,9 @@ export default class extends Component {
         channel.on(event, this[method], this);
       });
 
-      this.eventChannels.push(channel);
+      this._eventChannels.push(channel);
 
     });
-
-  }
-
-
-  /**
-   * Bind request mappings to the local channel.
-   */
-  _bindRequests() {
-
-    if (this.constructor.channelName) {
-
-      let name = this.constructor.channelName;
-
-      // Set local channel.
-      if (_.isString(name)) {
-        this.requestChannel = Radio.channel(name);
-      } else {
-        throw new Error('Missing channel.');
-      }
-
-      // Bind requests -> callbacks.
-      _.each(this.constructor.requests, (method, request) => {
-        this.requestChannel.reply(request, this[method], this);
-      });
-
-    }
 
   }
 
@@ -80,10 +74,10 @@ export default class extends Component {
   componentWillUnmount() {
 
     // Unbind requests.
-    this.requestChannel.off(null, null, this);
+    this._requestChannel.off(null, null, this);
 
     // Unbind events.
-    for (let c of this.eventChannels) {
+    for (let c of this._eventChannels) {
       c.off(null, null, this);
     }
 

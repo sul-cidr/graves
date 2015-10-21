@@ -4,7 +4,7 @@ import L from 'leaflet';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import RadioComponent from '../lib/radio-component';
+import Component from './component';
 import CollectionLayer from './collection-layer';
 import * as actions from '../actions/collections';
 import styles from './collection.yml';
@@ -27,7 +27,7 @@ import {
   }),
   actions
 )
-export default class extends RadioComponent {
+export default class extends Component {
 
 
   static channelName = 'collections'
