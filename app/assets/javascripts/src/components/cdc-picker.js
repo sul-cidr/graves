@@ -4,6 +4,7 @@ import _ from 'lodash';
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
+import Select from 'react-select';
 
 import Component from './component';
 import * as actions from '../actions/counties';
@@ -34,18 +35,20 @@ export default class extends Component {
   render() {
 
     let options = _.map(codes.counties, (label, code) => {
-      return <option key={code} value={code}>{label}</option>
+      return {
+        value: code,
+        label: label,
+      }
     });
 
     let onChange = this.onChange.bind(this);
 
     return (
-      <select
-        className="choropleth"
+      <Select
+        className="cdc-picker"
+        options={options}
         onChange={onChange}
-        value={this.props.code}>
-        {options}
-      </select>
+      />
     );
 
   }
@@ -54,10 +57,10 @@ export default class extends Component {
   /**
    * When the code is changed.
    *
-   * @param {Object} e
+   * @param {String} code
    */
-  onChange(e) {
-    this.props.showChoropleth(e.target.value);
+  onChange(code) {
+    this.props.showChoropleth(code);
   }
 
 

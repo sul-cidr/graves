@@ -88,7 +88,7 @@ export default class extends Component {
 
 
   /**
-   * Render a narrative.
+   * Render narrative behaviors.
    */
   getBehaviors() {
 

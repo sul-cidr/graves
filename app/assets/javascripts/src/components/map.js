@@ -100,10 +100,27 @@ export default class extends Component {
    * Render the map container.
    */
   render() {
+    return (
+      <div className="map-wrapper">
+        <div id="map" ref="map"></div>
+        {this.getBehaviors()}
+      </div>
+    );
+  }
+
+
+  /**
+   * Render map behaviors.
+   *
+   * @return {Leaflet.Map}
+   */
+  getBehaviors() {
+
+    let behaviors = null;
 
     if (this.state.map) {
-      return (
-        <div id="map" ref="map">
+      behaviors = (
+        <span>
 
           <CollectionGroup />
           <CountyGroup />
@@ -112,14 +129,11 @@ export default class extends Component {
 
           {this.props.editing ? <CopyLonLat /> : null}
 
-        </div>
+        </span>
       );
     }
 
-    else return (
-      <div id="map" ref="map">
-      </div>
-    );
+    return behaviors;
 
   }
 
