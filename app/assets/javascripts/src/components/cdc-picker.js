@@ -37,6 +37,7 @@ export default class extends Component {
     return (
       <Select
         className="cdc-picker"
+        placeholder="Select a demographic variable"
         options={options}
         value={this.props.code}
         onChange={onChange}
