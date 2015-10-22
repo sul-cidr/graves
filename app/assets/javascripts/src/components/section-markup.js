@@ -33,6 +33,7 @@ export default class extends Component {
     this.$el = $(this.props.markup);
     this.sections = this.$el.find('.section');
 
+    this.generateKeys();
     this.publishData();
     this.listenForScroll();
 
@@ -44,6 +45,16 @@ export default class extends Component {
    */
   componentWillUnmount() {
     this.props.unmountSections();
+  }
+
+
+  /**
+   * Mount data attributes to the store.
+   */
+  generateKeys() {
+    this.sections.each((i, s) => {
+      $(s).attr('data-key', i);
+    });
   }
 
 
@@ -89,7 +100,7 @@ export default class extends Component {
             $(s) :
             $(s).prev('.section');
 
-          this.highlight(section)
+          console.log(section);
 
         }
 
@@ -101,14 +112,6 @@ export default class extends Component {
       Waypoint.refreshAll();
     });
 
-  }
-
-
-  /**
-   * Highlight the current section.
-   */
-  highlight(section) {
-    section.addClass('highlighted');
   }
 
 
