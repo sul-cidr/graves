@@ -23,11 +23,9 @@ export default class extends Component {
    */
   componentDidUpdate() {
 
-    if (this.props.code) {
-      this.props.g.selectAll('path').attr('fill-opacity', f => {
-        return f.properties.choropleths[this.props.code];
-      });
-    }
+    this.props.g.selectAll('path').attr('fill-opacity', f => {
+      return f.properties.choropleths[this.props.code] || 0;
+    });
 
   }
 
