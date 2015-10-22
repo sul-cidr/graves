@@ -83,13 +83,13 @@ export default class extends Component {
         element: s,
         offset: 200,
 
-        handler: function(dir) {
+        handler: dir => {
 
-          let span = (dir == 'up') ?
-            $(this.element).prev('.section') :
-            $(this.element);
+          let section = (dir == 'down') ?
+            $(s) :
+            $(s).prev('.section');
 
-          console.log(span);
+          this.highlight(section)
 
         }
 
@@ -101,6 +101,14 @@ export default class extends Component {
       Waypoint.refreshAll();
     });
 
+  }
+
+
+  /**
+   * Highlight the current section.
+   */
+  highlight(section) {
+    section.addClass('highlighted');
   }
 
 
