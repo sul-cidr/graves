@@ -32,6 +32,7 @@ export default class extends Component {
     this.sections = this.$el.find('.section');
 
     this.publishData();
+    this.listenForScroll();
 
   }
 
@@ -66,6 +67,14 @@ export default class extends Component {
 
     this.props.mountSections(attrs);
 
+  }
+
+
+  /**
+   * Track the currently-visible section.
+   */
+  listenForScroll() {
+    // TODO
   }
 
 
