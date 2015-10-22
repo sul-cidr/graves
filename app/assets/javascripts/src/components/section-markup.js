@@ -3,6 +3,8 @@
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Waypoints from 'waypoints';
+import imagesLoaded from 'imagesloaded';
 
 import Component from './component';
 import { parseLonLat } from '../utils';
@@ -74,7 +76,31 @@ export default class extends Component {
    * Track the currently-visible section.
    */
   listenForScroll() {
-    // TODO
+
+    this.sections.each((i, s) => {
+      new Waypoint({
+
+        element: s,
+        offset: 200,
+
+        handler: function(dir) {
+
+          let span = (dir == 'up') ?
+            $(this.element).prev('.section') :
+            $(this.element);
+
+          console.log(span);
+
+        }
+
+      });
+    });
+
+    // Compensate for image heights.
+    imagesLoaded(this.props.markup, () => {
+      Waypoint.refreshAll();
+    });
+
   }
 
 
