@@ -103,7 +103,7 @@ export default class extends Component {
             $(s) :
             $(s).prev('.section');
 
-          console.log(section);
+          this.highlight(section);
 
         }
 
@@ -115,6 +115,17 @@ export default class extends Component {
       Waypoint.refreshAll();
     });
 
+  }
+
+
+  /**
+   * When a section comes into view.
+   *
+   * @param {jQuery} section
+   */
+  highlight(section) {
+    this.sections.removeClass('highlighted');
+    section.addClass('highlighted');
   }
 
 
