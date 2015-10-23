@@ -5,7 +5,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Component from './component';
-import { parseAttr, parseLonLat } from '../utils';
+import { parseAttrs, parseLonLat } from '../utils';
 import * as actions from '../actions/counties';
 
 import {
@@ -52,7 +52,10 @@ export default class extends Component {
   onEnter(e) {
 
     let span = $(e.target);
-    let attrs = this.getAttrsFromEvent(e);
+
+    let attrs = parseAttrs(span, {
+      focus: ['data-focus', parseLonLat]
+    });
 
     // Show the highlight line.
     if (attrs.focus) {
@@ -87,7 +90,11 @@ export default class extends Component {
    */
   onClick(e) {
 
-    let attrs = this.getAttrsFromEvent(e);
+    let attrs = parseAttrs($(e.target), {
+      zoom:   ['data-zoom', Number],
+      focus:  ['data-focus', parseLonLat],
+      cdc:    'data-cdc',
+    });
 
     // Focus the map.
     if (attrs.focus) {
@@ -99,27 +106,6 @@ export default class extends Component {
     if (attrs.cdc) {
       this.props.showChoropleth(attrs.cdc);
     }
-
-  }
-
-
-  /**
-   * Get data attributes from an event.
-   *
-   * @param {Object} e
-   * @returns {Object}
-   */
-  getAttrsFromEvent(e) {
-
-    let span = $(e.target);
-
-    let zoom  = parseAttr(span, 'data-zoom', Number);
-    let focus = parseAttr(span, 'data-focus', parseLonLat);
-    let cdc   = parseAttr(span, 'data-cdc');
-
-    return {
-      focus, zoom, cdc
-    };
 
   }
 
