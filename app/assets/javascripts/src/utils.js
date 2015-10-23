@@ -70,3 +70,33 @@ export function parseAttr($el, attr, parse) {
     parse(value) : undefined;
 
 }
+
+
+/**
+ * Extract and parse attributes from an element.
+ *
+ * @param {Object} $el
+ * @param {Object} map
+ * @return {Object}
+ */
+export function parseAttrs($el, map) {
+
+  let attrs = {};
+
+  _.each(map, (attr, key) => {
+
+    let [name, parse] = attr;
+
+    let value = $el.attr(name);
+
+    if (parse) {
+      value = parse(value);
+    }
+
+    attrs[key] = value;
+
+  });
+
+  return attrs;
+
+}

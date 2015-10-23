@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -7,7 +8,7 @@ import Waypoints from 'waypoints';
 import imagesLoaded from 'imagesloaded';
 
 import Component from './component';
-import { parseLonLat } from '../utils';
+import { parseAttrs, parseLonLat } from '../utils';
 import * as actions from '../actions/sections';
 
 
@@ -53,7 +54,7 @@ export default class extends Component {
    */
   generateKeys() {
     this.sections.each((i, s) => {
-      $(s).attr('data-key', i);
+      $(s).attr('data-id', i);
     });
   }
 
@@ -63,22 +64,24 @@ export default class extends Component {
    */
   publishData() {
 
-    let attrs = [];
+    let data = [];
 
     this.sections.each((i, s) => {
 
-      let key = `${this.props.slug}-${i}`;
-      let tl = parseLonLat($(s).attr('data-tl'));
-      let br = parseLonLat($(s).attr('data-br'));
-      let label = $(s).attr('data-label');
+      let attrs = parseAttrs($(s), {
+        id:     ['data-id', Number],
+        tl:     ['data-tl', parseLonLat],
+        br:     ['data-br', parseLonLat],
+        label:  ['data-label', null],
+      });
 
-      if (label && tl && br) {
-        attrs.push({ key, tl, br, label });
+      if (!_.contains(attrs, undefined)) {
+        data.push(attrs);
       }
 
     });
 
-    this.props.mountSections(attrs);
+    this.props.mountSections(data);
 
   }
 

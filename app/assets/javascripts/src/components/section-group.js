@@ -46,7 +46,7 @@ export default class extends Component {
     let features = this.props.sections.map(s => {
       return (
         <SectionLayer
-          key={s.key}
+          key={s.id}
           attrs={s}
           group={this.group}
         />
