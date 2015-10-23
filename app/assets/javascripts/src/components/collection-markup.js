@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import Component from './component';
 import * as actions from '../actions/counties';
-import { parseAttr } from '../utils';
+import { parseAttrs } from '../utils';
 
 import {
   HIGHLIGHT_COLLECTION,
@@ -71,7 +71,10 @@ export default class extends Component {
   onEnter(e) {
 
     let span = $(e.target);
-    let attrs = this.getAttrsFromEvent(e);
+
+    let attrs = parseAttrs(span, {
+      id: ['data-id', Number]
+    });
 
     // Show the highlight line.
     let [lon, lat] = getCollectionLonLat(attrs.id);
@@ -90,10 +93,12 @@ export default class extends Component {
    */
   onLeave(e) {
 
+    let attrs = parseAttrs($(e.target), {
+      id: ['data-id', Number]
+    });
+
     hideHighlightLine();
 
-    // Publish unhighlight.
-    let attrs = this.getAttrsFromEvent(e);
     unhighlightCollection(attrs.id);
 
   }
@@ -106,7 +111,11 @@ export default class extends Component {
    */
   onClick(e) {
 
-    let attrs = this.getAttrsFromEvent(e);
+    let attrs = parseAttrs($(e.target), {
+      id:   ['data-id', Number],
+      zoom: ['data-zoom', Number],
+      cdc:  'data-cdc',
+    });
 
     // Focus the map.
     if (attrs.id) {
@@ -119,6 +128,17 @@ export default class extends Component {
       this.props.showChoropleth(attrs.cdc);
     }
 
+  }
+
+
+  /**
+   * Get collection spans by id.
+   *
+   * @param {Number} id
+   * @return {Object}
+   */
+  getAnchorsById(id) {
+    return this.$el.find(`span.collection[data-id=${id}]`)
   }
 
 
@@ -139,41 +159,6 @@ export default class extends Component {
    */
   unhighlight(id) {
     this.getAnchorsById(id).removeClass('highlight');
-  }
-
-
-  // ** Helpers:
-
-
-  /**
-   * Get collection spans by id.
-   *
-   * @param {Number} id
-   * @return {Object}
-   */
-  getAnchorsById(id) {
-    return this.$el.find(`span.collection[data-id=${id}]`)
-  }
-
-
-  /**
-   * Get data attributes from an event.
-   *
-   * @param {Object} e
-   * @returns {Object}
-   */
-  getAttrsFromEvent(e) {
-
-    let span = $(e.target);
-
-    let id    = parseAttr(span, 'data-id', Number);
-    let zoom  = parseAttr(span, 'data-zoom', Number);
-    let cdc   = parseAttr(span, 'data-cdc');
-
-    return {
-      id, zoom, cdc
-    };
-
   }
 
 
