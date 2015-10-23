@@ -87,9 +87,11 @@ export function parseAttrs($el, map) {
 
     let [name, parse] = attr;
 
+    // Get the raw value.
     let value = $el.attr(name);
 
-    if (parse) {
+    // Apply parser, if provided.
+    if (value && parse) {
       value = parse(value);
     }
 
