@@ -85,17 +85,27 @@ export function parseAttrs($el, map) {
 
   _.each(map, (attr, key) => {
 
-    let [name, parse] = attr;
-
-    // Get the raw value.
-    let value = $el.attr(name);
-
-    // Apply parser, if provided.
-    if (value && parse) {
-      value = parse(value);
+    // Attribute, no parser.
+    if (_.isString(attr)) {
+      attrs[key] = $el.attr(attr);
     }
 
-    attrs[key] = value;
+    // Attribute + parser.
+    else if (_.isArray(attr)) {
+
+      let [name, parse] = attr;
+
+      // Get the raw value.
+      let value = $el.attr(name);
+
+      // Apply parser, if provided.
+      if (value && parse) {
+        value = parse(value);
+      }
+
+      attrs[key] = value;
+
+    }
 
   });
 

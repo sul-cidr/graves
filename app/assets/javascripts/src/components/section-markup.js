@@ -72,7 +72,7 @@ export default class extends Component {
         id:     ['data-id', Number],
         tl:     ['data-tl', parseLonLat],
         br:     ['data-br', parseLonLat],
-        label:  ['data-label', null],
+        label:  'data-label',
       });
 
       if (!_.contains(attrs, undefined)) {
