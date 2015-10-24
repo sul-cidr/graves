@@ -7,11 +7,24 @@ import { connect } from 'react-redux';
 import Component from './component';
 import SectionLayer from './section-layer';
 
+import {
+  HIGHLIGHT_SECTION,
+  UNHIGHLIGHT_SECTION,
+} from '../constants';
+
 
 @connect(state => ({
   sections: state.sections.attrs
 }))
 export default class extends Component {
+
+
+  static events = {
+    sections: {
+      [HIGHLIGHT_SECTION]: 'highlight',
+      [UNHIGHLIGHT_SECTION]: 'unhighlight',
+    }
+  }
 
 
   static contextTypes = {
@@ -59,6 +72,26 @@ export default class extends Component {
       </span>
     );
 
+  }
+
+
+  /**
+   * Apply a highlight.
+   *
+   * @param {Number} id
+   */
+  highlight(id) {
+    console.log(id);
+  }
+
+
+  /**
+   * Remove a highlight.
+   *
+   * @param {Number} id
+   */
+  unhighlight(id) {
+    console.log(id);
   }
 
 

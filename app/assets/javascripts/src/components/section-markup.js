@@ -11,6 +11,11 @@ import Component from './component';
 import { parseAttrs, parseLonLat } from '../utils';
 import * as actions from '../actions/sections';
 
+import {
+  highlightSection,
+  unhighlightSection,
+} from '../events/sections';
+
 
 @connect(
   state => ({
@@ -68,12 +73,7 @@ export default class extends Component {
 
     this.sections.each((i, s) => {
 
-      let attrs = parseAttrs($(s), {
-        id:     ['data-id', Number],
-        tl:     ['data-tl', parseLonLat],
-        br:     ['data-br', parseLonLat],
-        label:  'data-label',
-      });
+      let attrs = this.parseAttrs(s)
 
       if (!_.contains(attrs, undefined)) {
         data.push(attrs);
@@ -105,6 +105,10 @@ export default class extends Component {
    */
   onEnter(e) {
 
+    // TODO|dev
+    let attrs = this.parseAttrs(e.currentTarget);
+    highlightSection(attrs.id);
+
     // highlight
     // if not focused, enable select
 
@@ -118,8 +122,29 @@ export default class extends Component {
    */
   onLeave(e) {
 
+    // TODO|dev
+    let attrs = this.parseAttrs(e.currentTarget);
+    unhighlightSection(attrs.id);
+
     // unhighlight
     // disable select
+
+  }
+
+
+  /**
+   * Extract data attributes from a section.
+   *
+   * @param {HTMLDivElement} section
+   */
+  parseAttrs(section) {
+
+    return parseAttrs($(section), {
+      id:     ['data-id', Number],
+      tl:     ['data-tl', parseLonLat],
+      br:     ['data-br', parseLonLat],
+      label:  'data-label',
+    });
 
   }
 
