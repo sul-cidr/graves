@@ -36,7 +36,6 @@ export default class extends Component {
 
     this.generateKeys();
     this.publishData();
-    this.bindScrollEvents();
     this.bindCursorEvents();
 
   }
@@ -88,49 +87,6 @@ export default class extends Component {
 
 
   /**
-   * Track the currently-visible section.
-   */
-  bindScrollEvents() {
-
-    this.sections.each((i, s) => {
-      new Waypoint({
-
-        element: s,
-        offset: 200,
-
-        handler: dir => {
-
-          let section = (dir == 'down') ?
-            $(s) :
-            $(s).prev('.section');
-
-          this.bump(section);
-
-        }
-
-      });
-    });
-
-    // Compensate for image heights.
-    imagesLoaded(this.props.markup, () => {
-      Waypoint.refreshAll();
-    });
-
-  }
-
-
-  /**
-   * When a section comes into view.
-   *
-   * @param {jQuery} section
-   */
-  bump(section) {
-    this.sections.removeClass('highlighted');
-    section.addClass('highlighted');
-  }
-
-
-  /**
    * Listen for section hover/blur.
    */
   bindCursorEvents() {
@@ -148,7 +104,10 @@ export default class extends Component {
    * @param {Object} e
    */
   onEnter(e) {
-    console.log(e);
+
+    // highlight
+    // if not focused, enable select
+
   }
 
 
@@ -158,7 +117,10 @@ export default class extends Component {
    * @param {Object} e
    */
   onLeave(e) {
-    console.log(e);
+
+    // unhighlight
+    // disable select
+
   }
 
 
