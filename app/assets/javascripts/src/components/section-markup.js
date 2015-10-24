@@ -36,7 +36,8 @@ export default class extends Component {
 
     this.generateKeys();
     this.publishData();
-    this.listenForScroll();
+    this.bindScrollEvents();
+    this.bindCursorEvents();
 
   }
 
@@ -89,7 +90,7 @@ export default class extends Component {
   /**
    * Track the currently-visible section.
    */
-  listenForScroll() {
+  bindScrollEvents() {
 
     this.sections.each((i, s) => {
       new Waypoint({
@@ -103,7 +104,7 @@ export default class extends Component {
             $(s) :
             $(s).prev('.section');
 
-          this.highlight(section);
+          this.bump(section);
 
         }
 
@@ -123,9 +124,41 @@ export default class extends Component {
    *
    * @param {jQuery} section
    */
-  highlight(section) {
+  bump(section) {
     this.sections.removeClass('highlighted');
     section.addClass('highlighted');
+  }
+
+
+  /**
+   * Listen for section hover/blur.
+   */
+  bindCursorEvents() {
+
+    this.sections
+      .on('mouseenter', this.onEnter.bind(this))
+      .on('mouseleave', this.onLeave.bind(this));
+
+  }
+
+
+  /**
+   * When the cursor enters a section.
+   *
+   * @param {Object} e
+   */
+  onEnter(e) {
+    console.log(e);
+  }
+
+
+  /**
+   * When the cursor leaves a section.
+   *
+   * @param {Object} e
+   */
+  onLeave(e) {
+    console.log(e);
   }
 
 
