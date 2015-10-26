@@ -118,7 +118,7 @@ export default class extends Component {
         this.state.lat
       );
 
-      let padding = 5;
+      let padding = 10;
 
       // Text X.
       let x1 = x2 > this.state.left ?
