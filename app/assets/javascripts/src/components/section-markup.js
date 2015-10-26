@@ -11,18 +11,8 @@ import Component from './component';
 import { parseAttrs, parseLonLat } from '../utils';
 import * as actions from '../actions/sections';
 
-import {
-  highlightSection,
-  unhighlightSection,
-} from '../events/sections';
 
-
-@connect(
-  state => ({
-    slug: state.route.narrative
-  }),
-  actions
-)
+@connect(null, actions)
 export default class extends Component {
 
 
@@ -39,7 +29,7 @@ export default class extends Component {
     this.$el = $(this.props.markup);
     this.sections = this.$el.find('.section');
 
-    this.generateKeys();
+    this.generateDataIds();
     this.publishData();
     this.bindCursorEvents();
 
@@ -55,9 +45,9 @@ export default class extends Component {
 
 
   /**
-   * Mount data attributes to the store.
+   * Write `data-id` attributes.
    */
-  generateKeys() {
+  generateDataIds() {
     this.sections.each((i, s) => {
       $(s).attr('data-id', i);
     });
@@ -75,6 +65,7 @@ export default class extends Component {
 
       let attrs = this.parseAttrs(s)
 
+      // Validate the attributes.
       if (!_.contains(attrs, undefined)) {
         data.push(attrs);
       }
@@ -104,14 +95,7 @@ export default class extends Component {
    * @param {Object} e
    */
   onEnter(e) {
-
-    // TODO|dev
-    let attrs = this.parseAttrs(e.currentTarget);
-    highlightSection(attrs.id);
-
-    // highlight
-    // if not focused, enable select
-
+    // TODO
   }
 
 
@@ -121,14 +105,7 @@ export default class extends Component {
    * @param {Object} e
    */
   onLeave(e) {
-
-    // TODO|dev
-    let attrs = this.parseAttrs(e.currentTarget);
-    unhighlightSection(attrs.id);
-
-    // unhighlight
-    // disable select
-
+    // TODO
   }
 
 
