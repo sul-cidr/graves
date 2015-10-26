@@ -31,9 +31,6 @@ import {
 export default class extends Component {
 
 
-  static channelName = COLLECTIONS
-
-
   static events = {
     [COLLECTIONS]: {
       [HIGHLIGHT_COLLECTION]: 'highlight',
@@ -43,7 +40,9 @@ export default class extends Component {
 
 
   static requests = {
-    [GET_COLLECTION_LON_LAT]: 'getLonLat',
+    [COLLECTIONS]: {
+      [GET_COLLECTION_LON_LAT]: 'getLonLat',
+    }
   }
 
 

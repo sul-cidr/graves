@@ -9,7 +9,7 @@ export default class extends Component {
 
 
   /**
-   * Bind local channel, initialize.
+   * Bind events and requests.
    *
    * @param {Object} props
    */
@@ -21,24 +21,23 @@ export default class extends Component {
 
 
   /**
-   * Bind request mappings to the local channel.
+   * Bind request mappings.
    */
   _bindRequests() {
 
-    let name = this.constructor.channelName;
+    this._requestChannels = [];
 
-    // Set local channel.
-    if (_.isString(name)) {
-      this._requestChannel = Radio.channel(name);
-    }
+    _.each(this.constructor.requests, (bindings, channelName) => {
 
-    else if (this.constructor.requests) {
-      throw new Error('Missing channel.');
-    }
+      let channel = Radio.channel(channelName);
 
-    // Bind requests -> callbacks.
-    _.each(this.constructor.requests, (method, request) => {
-      this._requestChannel.reply(request, this[method], this);
+      // Bind requests -> callbacks.
+      _.each(bindings, (method, request) => {
+        channel.reply(request, this[method], this);
+      });
+
+      this._requestChannels.push(channel);
+
     });
 
   }
@@ -53,7 +52,6 @@ export default class extends Component {
 
     _.each(this.constructor.events, (bindings, channelName) => {
 
-      // Connect to channel.
       let channel = Radio.channel(channelName);
 
       // Bind events -> callbacks.
@@ -69,16 +67,14 @@ export default class extends Component {
 
 
   /**
-   * Clean up event listeners.
+   * Clean up event / request listeners.
    */
   componentWillUnmount() {
 
-    // Unbind requests.
-    if (this._requestChannel) {
-      this._requestChannel.off(null, null, this);
+    for (let c of this._requestChannels) {
+      c.off(null, null, this);
     }
 
-    // Unbind events.
     for (let c of this._eventChannels) {
       c.off(null, null, this);
     }

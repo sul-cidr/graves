@@ -24,12 +24,11 @@ import {
 export default class extends Component {
 
 
-  static channelName = NARRATIVE
-
-
   static requests = {
-    [SHOW_HIGHLIGHT_LINE]: 'show',
-    [HIDE_HIGHLIGHT_LINE]: 'hide',
+    [NARRATIVE]: {
+      [SHOW_HIGHLIGHT_LINE]: 'show',
+      [HIDE_HIGHLIGHT_LINE]: 'hide',
+    }
   }
 
 

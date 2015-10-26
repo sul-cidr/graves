@@ -25,12 +25,11 @@ import {
 export default class extends Component {
 
 
-  static channelName = MAP
-
-
   static requests = {
-    [GET_LEAFLET_INSTANCE]: 'getMap',
-    [FOCUS_MAP]: 'focus'
+    [MAP]: {
+      [GET_LEAFLET_INSTANCE]: 'getMap',
+      [FOCUS_MAP]: 'focus'
+    }
   }
 
 
