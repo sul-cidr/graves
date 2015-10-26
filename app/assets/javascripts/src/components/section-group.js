@@ -60,8 +60,9 @@ export default class extends Component {
       return (
         <SectionLayer
           key={s.id}
-          attrs={s}
           group={this.group}
+          idToLayer={this.idToLayer}
+          data={s}
         />
       );
     });
@@ -81,7 +82,7 @@ export default class extends Component {
    * @param {Number} id
    */
   highlight(id) {
-    console.log(id);
+    console.log(this.idToLayer[id]);
   }
 
 
@@ -91,7 +92,7 @@ export default class extends Component {
    * @param {Number} id
    */
   unhighlight(id) {
-    console.log(id);
+    // TODO
   }
 
 

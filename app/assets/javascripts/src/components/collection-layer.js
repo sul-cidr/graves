@@ -16,9 +16,9 @@ export default class extends Component {
 
 
   static propTypes = {
-    feature: PropTypes.object.isRequired,
     group: PropTypes.object.isRequired,
     idToLayer: PropTypes.object.isRequired,
+    feature: PropTypes.object.isRequired,
   }
 
 
