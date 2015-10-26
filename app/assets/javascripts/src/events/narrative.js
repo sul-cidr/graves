@@ -3,12 +3,13 @@
 import Radio from 'backbone.radio';
 
 import {
+  NARRATIVE,
   SHOW_HIGHLIGHT_LINE,
   HIDE_HIGHLIGHT_LINE,
 } from '../constants';
 
 
-const channel = Radio.channel('narrative');
+const channel = Radio.channel(NARRATIVE);
 
 
 /**

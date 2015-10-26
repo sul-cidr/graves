@@ -7,6 +7,7 @@ import { parseAttr } from '../utils';
 import Component from './component';
 
 import {
+  NARRATIVE,
   SHOW_HIGHLIGHT_LINE,
   HIDE_HIGHLIGHT_LINE,
 } from '../constants';
@@ -23,7 +24,7 @@ import {
 export default class extends Component {
 
 
-  static channelName = 'narrative'
+  static channelName = NARRATIVE
 
 
   static requests = {
