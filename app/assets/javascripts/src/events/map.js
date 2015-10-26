@@ -3,12 +3,13 @@
 import Radio from 'backbone.radio';
 
 import {
+  MAP,
   GET_LEAFLET_INSTANCE,
   FOCUS_MAP,
 } from '../constants';
 
 
-const channel = Radio.channel('map');
+const channel = Radio.channel(MAP);
 
 
 /**

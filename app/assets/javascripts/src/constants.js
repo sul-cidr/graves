@@ -9,6 +9,7 @@ export const SHOW_EXPLORE = 'SHOW_EXPLORE';
 export const TOGGLE_EDITOR = 'TOGGLE_EDITOR';
 
 // MAP
+export const MAP = 'MAP';
 export const GET_LEAFLET_INSTANCE = 'GET_LEAFLET_INSTANCE';
 export const FOCUS_MAP = 'FOCUS_MAP';
 

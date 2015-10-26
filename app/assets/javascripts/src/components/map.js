@@ -13,6 +13,7 @@ import SectionGroup from './section-group';
 import CDCPicker from './cdc-picker';
 
 import {
+  MAP,
   GET_LEAFLET_INSTANCE,
   FOCUS_MAP,
 } from '../constants';
@@ -24,7 +25,7 @@ import {
 export default class extends Component {
 
 
-  static channelName = 'map'
+  static channelName = MAP
 
 
   static requests = {
