@@ -8,24 +8,11 @@ import { connect } from 'react-redux';
 import Component from './component';
 import SectionLayer from './section-layer';
 
-import {
-  HIGHLIGHT_SECTION,
-  UNHIGHLIGHT_SECTION,
-} from '../constants';
-
 
 @connect(state => ({
   sections: state.sections.attrs
 }))
 export default class extends Component {
-
-
-  static events = {
-    sections: {
-      [HIGHLIGHT_SECTION]: 'highlight',
-      [UNHIGHLIGHT_SECTION]: 'unhighlight',
-    }
-  }
 
 
   static contextTypes = {
@@ -73,38 +60,6 @@ export default class extends Component {
         {features}
       </span>
     );
-
-  }
-
-
-  /**
-   * Apply a highlight.
-   *
-   * @param {Number} id
-   */
-  highlight(id) {
-
-    let layers = this.idToLayers[id];
-
-    // Add `highlight`.
-    let label = $(layers.label._icon);
-    label.addClass('highlight');
-
-  }
-
-
-  /**
-   * Remove a highlight.
-   *
-   * @param {Number} id
-   */
-  unhighlight(id) {
-
-    let layers = this.idToLayers[id];
-
-    // Remove `highlight`.
-    let label = $(layers.label._icon);
-    label.removeClass('highlight');
 
   }
 
