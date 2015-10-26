@@ -10,6 +10,7 @@ import * as actions from '../actions/collections';
 import styles from './collection.yml';
 
 import {
+  COLLECTIONS,
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
   GET_COLLECTION_LON_LAT,
@@ -30,11 +31,11 @@ import {
 export default class extends Component {
 
 
-  static channelName = 'collections'
+  static channelName = COLLECTIONS
 
 
   static events = {
-    collections: {
+    [COLLECTIONS]: {
       [HIGHLIGHT_COLLECTION]: 'highlight',
       [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
     }

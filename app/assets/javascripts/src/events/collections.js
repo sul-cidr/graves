@@ -3,6 +3,7 @@
 import Radio from 'backbone.radio';
 
 import {
+  COLLECTIONS,
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
   HOVER_COLLECTION,
@@ -10,7 +11,7 @@ import {
 } from '../constants';
 
 
-const channel = Radio.channel('collections');
+const channel = Radio.channel(COLLECTIONS);
 
 
 /**

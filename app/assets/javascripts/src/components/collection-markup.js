@@ -9,6 +9,7 @@ import * as actions from '../actions/counties';
 import { parseAttrs } from '../utils';
 
 import {
+  COLLECTIONS,
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
 } from '../constants';
@@ -34,7 +35,7 @@ export default class extends Component {
 
 
   static events = {
-    collections: {
+    [COLLECTIONS]: {
       [HIGHLIGHT_COLLECTION]: 'highlight',
       [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
     }
