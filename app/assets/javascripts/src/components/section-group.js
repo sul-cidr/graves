@@ -1,5 +1,6 @@
 
 
+import $ from 'jquery';
 import L from 'leaflet';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -42,7 +43,7 @@ export default class extends Component {
    */
   componentWillMount() {
 
-    this.idToLayer = {};
+    this.idToLayers = {};
 
     // Create group.
     this.group = L.featureGroup();
@@ -61,7 +62,7 @@ export default class extends Component {
         <SectionLayer
           key={s.id}
           group={this.group}
-          idToLayer={this.idToLayer}
+          idToLayers={this.idToLayers}
           data={s}
         />
       );
@@ -82,7 +83,13 @@ export default class extends Component {
    * @param {Number} id
    */
   highlight(id) {
-    console.log(this.idToLayer[id]);
+
+    let layers = this.idToLayers[id];
+
+    // Add `highlight`.
+    let label = $(layers.label._icon);
+    label.addClass('highlight');
+
   }
 
 
@@ -92,7 +99,13 @@ export default class extends Component {
    * @param {Number} id
    */
   unhighlight(id) {
-    // TODO
+
+    let layers = this.idToLayers[id];
+
+    // Remove `highlight`.
+    let label = $(layers.label._icon);
+    label.removeClass('highlight');
+
   }
 
 

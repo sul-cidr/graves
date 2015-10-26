@@ -18,7 +18,7 @@ export default class extends Component {
 
   static propTypes = {
     group: PropTypes.object.isRequired,
-    idToLayer: PropTypes.object.isRequired,
+    idToLayers: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
   }
 
@@ -62,7 +62,7 @@ export default class extends Component {
     this.label = L.marker([br[1], tl[0]], { icon });
     this.props.group.addLayer(this.label);
 
-    this.props.idToLayer[id] = {
+    this.props.idToLayers[id] = {
       box: this.box,
       label: this.label,
     };
