@@ -174,7 +174,7 @@ export default class extends Component {
    */
   cachePosition() {
 
-    let content = this.$el.closest('.content');
+    let content = $('#content');
 
     this.width  = content.outerWidth();
     this.offset = content.offset();
