@@ -53,11 +53,11 @@ export default class extends Component {
     this.$el = $(this.props.markup);
     this.sections = this.$el.find('.section');
 
-    this.generateDataIds();
-    this.publishData();
-    this.bindCursorEvents();
-    this.monitorScroll();
-    this.bindResizeEvent();
+    this._generateDataIds();
+    this._publishData();
+    this._bindCursorEvents();
+    this._monitorScroll();
+    this._bindResizeEvent();
 
   }
 
@@ -73,7 +73,7 @@ export default class extends Component {
   /**
    * Write `data-id` attributes.
    */
-  generateDataIds() {
+  _generateDataIds() {
     this.sections.each((i, s) => {
       $(s).attr('data-id', i);
     });
@@ -83,7 +83,7 @@ export default class extends Component {
   /**
    * Mount data attributes to the store.
    */
-  publishData() {
+  _publishData() {
 
     let data = [];
 
@@ -111,7 +111,7 @@ export default class extends Component {
   /**
    * Listen for section enter/leave.
    */
-  bindCursorEvents() {
+  _bindCursorEvents() {
 
     this.sections
       .on('mouseenter', this.onEnter.bind(this))
@@ -123,7 +123,7 @@ export default class extends Component {
   /**
    * Monitor the visible section.
    */
-  monitorScroll() {
+  _monitorScroll() {
 
     this.sections.each((i, s) => {
       new Waypoint({
@@ -158,7 +158,7 @@ export default class extends Component {
   /**
    * On resize, cache container position.
    */
-  bindResizeEvent() {
+  _bindResizeEvent() {
 
     this.cachePosition();
 
