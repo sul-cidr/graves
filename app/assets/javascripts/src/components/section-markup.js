@@ -85,7 +85,12 @@ export default class extends Component {
 
     this.sections.each((i, s) => {
 
-      let attrs = this.parseAttrs(s)
+      let attrs = parseAttrs($(s), {
+        id:     ['data-id', Number],
+        tl:     ['data-tl', parseLonLat],
+        br:     ['data-br', parseLonLat],
+        label:  'data-label',
+      });
 
       // Don't publish invalid sections.
       if (!_.contains(attrs, undefined)) {
@@ -210,23 +215,6 @@ export default class extends Component {
    */
   getSectionById(id) {
     return this.sections.filter(`[data-id="${id}"]`);
-  }
-
-
-  /**
-   * Extract data attributes from a section.
-   *
-   * @param {HTMLDivElement} section
-   */
-  parseAttrs(section) {
-
-    return parseAttrs($(section), {
-      id:     ['data-id', Number],
-      tl:     ['data-tl', parseLonLat],
-      br:     ['data-br', parseLonLat],
-      label:  'data-label',
-    });
-
   }
 
 
