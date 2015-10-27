@@ -64,6 +64,14 @@ export default class extends Component {
    * Spin up the Leaflet instance.
    */
   componentDidMount() {
+    this._initLeaflet();
+  }
+
+
+  /**
+   * Spin up the Leaflet instance.
+   */
+  _initLeaflet() {
 
     let el = findDOMNode(this.refs.map);
 
@@ -94,6 +102,30 @@ export default class extends Component {
 
     this.setState({ map: map });
 
+  }
+
+
+  /**
+   * Expose the Leaflet instance.
+   *
+   * @return {Leaflet.Map}
+   */
+  getMap() {
+    return this.state.map;
+  }
+
+
+  /**
+   * Expose the Leaflet instance.
+   *
+   * @param {Number} lon
+   * @param {Number} lat
+   * @param {Number} zoom
+   */
+  focus(lon, lat, zoom=8) {
+    this.state.map.flyTo([lat, lon], zoom, {
+      duration: 2
+    });
   }
 
 
@@ -138,30 +170,6 @@ export default class extends Component {
 
     return behaviors;
 
-  }
-
-
-  /**
-   * Expose the Leaflet instance.
-   *
-   * @return {Leaflet.Map}
-   */
-  getMap() {
-    return this.state.map;
-  }
-
-
-  /**
-   * Expose the Leaflet instance.
-   *
-   * @param {Number} lon
-   * @param {Number} lat
-   * @param {Number} zoom
-   */
-  focus(lon, lat, zoom=8) {
-    this.state.map.flyTo([lat, lon], zoom, {
-      duration: 2
-    });
   }
 
 
