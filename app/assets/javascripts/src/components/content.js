@@ -17,17 +17,11 @@ export default class extends Component {
    * Render content container.
    */
   render() {
-
-    let cx = classNames('content', {
-      left: this.props.spatial
-    });
-
     return (
-      <div className={cx}>
+      <div id="content">
         {this.props.children}
       </div>
     );
-
   }
 
 
