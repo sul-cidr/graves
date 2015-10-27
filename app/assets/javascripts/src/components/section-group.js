@@ -12,6 +12,7 @@ import SectionLayer from './section-layer';
 import {
   SECTIONS,
   MAP,
+  IS_SECTION_FOCUSED,
   SCROLL_SECTION,
 } from '../constants';
 
@@ -33,6 +34,13 @@ export default class extends Component {
   }
 
 
+  static requests = {
+    [MAP]: {
+      [IS_SECTION_FOCUSED]: 'isFocused'
+    }
+  }
+
+
   static contextTypes = {
     map: PropTypes.object.isRequired
   }
@@ -49,6 +57,7 @@ export default class extends Component {
   componentWillMount() {
 
     this.idToLabel = {};
+    this.idToBox = {};
 
     // Label group.
     this.labels = L.featureGroup();
@@ -78,6 +87,7 @@ export default class extends Component {
           labels={this.labels}
           boxes={this.boxes}
           idToLabel={this.idToLabel}
+          idToBox={this.idToBox}
           data={s}
         />
       );
@@ -102,6 +112,25 @@ export default class extends Component {
     _.each(this.idToLabel, label => {
       $(label._icon).toggleClass('highlight', label.options.id == id);
     });
+
+  }
+
+
+  /**
+   * Check to see if a section is focused.
+   *
+   * @param {Number} id
+   * @return {Boolean}
+   */
+  isFocused(id) {
+
+    // Get section and map centers.
+    let sCenter = this.idToBox[id].getBounds().getCenter();
+    let mCenter = this.context.map.getCenter();
+
+    // Measure distance to center.
+    let d = mCenter.distanceTo(sCenter);
+    return d < 300000;
 
   }
 

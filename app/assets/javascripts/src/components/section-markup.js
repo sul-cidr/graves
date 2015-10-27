@@ -21,6 +21,10 @@ import {
   scrollSection
 } from '../events/sections';
 
+import {
+  isSectionFocused
+} from '../events/map';
+
 
 @connect(null, actions)
 export default class extends Component {
@@ -108,26 +112,6 @@ export default class extends Component {
 
 
   /**
-   * When the cursor enters a section.
-   *
-   * @param {Object} e
-   */
-  onEnter(e) {
-    // TODO
-  }
-
-
-  /**
-   * When the cursor leaves a section.
-   *
-   * @param {Object} e
-   */
-  onLeave(e) {
-    // TODO
-  }
-
-
-  /**
    * Monitor the visible section.
    */
   monitorScroll() {
@@ -162,6 +146,40 @@ export default class extends Component {
   }
 
 
+  // ** Publishers:
+
+
+  /**
+   * When the cursor enters a section.
+   *
+   * @param {Object} e
+   */
+  onEnter(e) {
+
+    let attrs = parseAttrs($(e.currentTarget), {
+      id: ['data-id', Number]
+    });
+
+    // Is the section focused on the map?
+    let focused = isSectionFocused(attrs.id);
+    console.log(focused);
+
+  }
+
+
+  /**
+   * When the cursor leaves a section.
+   *
+   * @param {Object} e
+   */
+  onLeave(e) {
+    // TODO
+  }
+
+
+  // ** Renderers:
+
+
   /**
    * Scroll a section into view.
    *
@@ -180,6 +198,9 @@ export default class extends Component {
     });
 
   }
+
+
+  // ** Helpers:
 
 
   /**

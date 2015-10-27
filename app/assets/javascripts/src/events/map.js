@@ -6,6 +6,7 @@ import {
   MAP,
   GET_LEAFLET_INSTANCE,
   FOCUS_MAP,
+  IS_SECTION_FOCUSED,
 } from '../constants';
 
 
@@ -31,4 +32,14 @@ export function getLeafletInstance() {
  */
 export function focusMap(lon, lat, zoom) {
   return channel.request(FOCUS_MAP, lon, lat, zoom);
+}
+
+
+/**
+ * Is a map section in focus?
+ *
+ * @param {Number} id
+ */
+export function isSectionFocused(id) {
+  return channel.request(IS_SECTION_FOCUSED, id);
 }

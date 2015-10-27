@@ -12,6 +12,7 @@ export const TOGGLE_EDITOR = 'TOGGLE_EDITOR';
 export const MAP = 'MAP';
 export const GET_LEAFLET_INSTANCE = 'GET_LEAFLET_INSTANCE';
 export const FOCUS_MAP = 'FOCUS_MAP';
+export const IS_SECTION_FOCUSE = 'IS_SECTION_FOCUSED';
 
 // COLLECTIONS
 export const COLLECTIONS = 'COLLECTIONS';
