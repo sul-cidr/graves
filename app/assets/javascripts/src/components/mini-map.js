@@ -16,8 +16,12 @@ export default class extends Component {
    * Draw China, inject extent box.
    */
   componentDidMount() {
+
     this.svg = d3.select(findDOMNode(this));
+
     this._initChina();
+    this._initMarkup();
+
   }
 
 
@@ -45,6 +49,18 @@ export default class extends Component {
       .append('path')
       .datum(chinaJSON)
       .attr('d', path);
+
+  }
+
+
+  /**
+   * Inject UI elements.
+   */
+  _initMarkup() {
+
+    // Extent <rect>.
+    this.extent = this.svg.append('rect')
+      .classed({ extent: true });
 
   }
 
