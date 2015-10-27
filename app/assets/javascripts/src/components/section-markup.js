@@ -12,12 +12,25 @@ import { parseAttrs, parseLonLat } from '../utils';
 import * as actions from '../actions/sections';
 
 import {
+  SECTIONS,
+  MAP,
+  SELECT_SECTION
+} from '../constants';
+
+import {
   scrollSection
 } from '../events/sections';
 
 
 @connect(null, actions)
 export default class extends Component {
+
+
+  static events = {
+    [SECTIONS]: {
+      [SELECT_SECTION]: 'select'
+    }
+  }
 
 
   static propTypes = {
@@ -113,6 +126,36 @@ export default class extends Component {
       Waypoint.refreshAll();
     });
 
+  }
+
+
+  /**
+   * Scroll a section into view.
+   *
+   * @param {Number} id
+   * @param {String} origin
+   */
+  select(id, origin) {
+
+    let section = this.getSectionById(id);
+
+    // Scroll into view.
+    $('body').animate({
+      scrollTop: section[0].offsetTop - 50
+    }, {
+      duration: 700
+    });
+
+  }
+
+
+  /**
+   * Get a section by `data-id`.
+   *
+   * @param {Number} id
+   */
+  getSectionById(id) {
+    return this.sections.filter(`[data-id="${id}"]`);
   }
 
 

@@ -11,8 +11,13 @@ import SectionLayer from './section-layer';
 
 import {
   SECTIONS,
+  MAP,
   SCROLL_SECTION,
 } from '../constants';
+
+import {
+  selectSection
+} from '../events/sections';
 
 
 @connect(state => ({
@@ -52,6 +57,11 @@ export default class extends Component {
     // Box group.
     this.boxes = L.featureGroup();
     this.boxes.addTo(this.context.map);
+
+    // Select section.
+    this.labels.on('click', e => {
+      selectSection(e.layer.options.id, MAP);
+    });
 
   }
 
