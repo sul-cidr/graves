@@ -167,7 +167,11 @@ export default class extends Component {
 
     // Is the section focused on the map?
     let focused = isSectionFocused(attrs.id);
-    console.log(focused);
+
+    // If not, click to select.
+    if (!focused) {
+      this.enableSelect(attrs.id);
+    }
 
   }
 
@@ -201,6 +205,40 @@ export default class extends Component {
     }, {
       duration: 700
     });
+
+  }
+
+
+  /**
+   * Select a section on click.
+   *
+   * @param {Number} id
+   */
+  enableSelect(id) {
+
+    let section = this.getSectionById(id);
+
+    section.addClass('selectable');
+
+    section.click(e => {
+      console.log(id);
+      this.disableSelect(id);
+    });
+
+  }
+
+
+  /**
+   * Remove the select listener.
+   *
+   * @param {Number} id
+   */
+  disableSelect(id) {
+
+    let section = this.getSectionById(id);
+
+    section.removeClass('selectable');
+    section.off('click');
 
   }
 
