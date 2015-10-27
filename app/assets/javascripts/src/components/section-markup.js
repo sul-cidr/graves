@@ -31,7 +31,7 @@ export default class extends Component {
 
     this.generateDataIds();
     this.publishData();
-    this.bindCursorEvents();
+    this.listenForScroll();
 
   }
 
@@ -65,7 +65,7 @@ export default class extends Component {
 
       let attrs = this.parseAttrs(s)
 
-      // Validate the attributes.
+      // Don't publish invalid sections.
       if (!_.contains(attrs, undefined)) {
         data.push(attrs);
       }
@@ -78,34 +78,33 @@ export default class extends Component {
 
 
   /**
-   * Listen for section hover/blur.
+   * Monitor the visible section.
    */
-  bindCursorEvents() {
+  listenForScroll() {
 
-    this.sections
-      .on('mouseenter', this.onEnter.bind(this))
-      .on('mouseleave', this.onLeave.bind(this));
+    this.sections.each((i, s) => {
+      new Waypoint({
 
-  }
+        element: s,
+        offset: 100,
 
+        handler: dir => {
 
-  /**
-   * When the cursor enters a section.
-   *
-   * @param {Object} e
-   */
-  onEnter(e) {
-    // TODO
-  }
+          let section = (dir == 'down') ?
+            $(s) : $(s).prev('.section');
 
+          console.log(section);
 
-  /**
-   * When the cursor leaves a section.
-   *
-   * @param {Object} e
-   */
-  onLeave(e) {
-    // TODO
+        }
+
+      });
+    });
+
+    // Update waypoint offsets.
+    imagesLoaded(this.props.markup, () => {
+      Waypoint.refreshAll();
+    });
+
   }
 
 
