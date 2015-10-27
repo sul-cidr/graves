@@ -42,7 +42,7 @@ export default class extends Component {
       iconSize: null,
     });
 
-    this.label = L.marker([br[1], tl[0]], { icon });
+    this.label = L.marker([br[1], tl[0]], { icon, id });
     this.props.group.addLayer(this.label);
 
     // Map id -> label.

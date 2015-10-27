@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import $ from 'jquery';
 import L from 'leaflet';
 import React, { PropTypes } from 'react';
@@ -8,11 +9,23 @@ import { connect } from 'react-redux';
 import Component from './component';
 import SectionLayer from './section-layer';
 
+import {
+  SECTIONS,
+  SCROLL_SECTION,
+} from '../constants';
+
 
 @connect(state => ({
   sections: state.sections.attrs
 }))
 export default class extends Component {
+
+
+  static events = {
+    [SECTIONS]: {
+      [SCROLL_SECTION]: 'highlight'
+    }
+  }
 
 
   static contextTypes = {
@@ -60,6 +73,20 @@ export default class extends Component {
         {features}
       </span>
     );
+
+  }
+
+
+  /**
+   * Highlight the scrolled-to section.
+   *
+   * @param {Number} id
+   */
+  highlight(id) {
+
+    _.each(this.idToLabel, label => {
+      $(label._icon).toggleClass('highlight', label.options.id == id);
+    });
 
   }
 

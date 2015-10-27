@@ -11,6 +11,10 @@ import Component from './component';
 import { parseAttrs, parseLonLat } from '../utils';
 import * as actions from '../actions/sections';
 
+import {
+  scrollSection
+} from '../events/sections';
+
 
 @connect(null, actions)
 export default class extends Component {
@@ -93,7 +97,11 @@ export default class extends Component {
           let section = (dir == 'down') ?
             $(s) : $(s).prev('.section');
 
-          console.log(section);
+          let attrs = parseAttrs(section, {
+            id: ['data-id', Number]
+          });
+
+          scrollSection(attrs.id);
 
         }
 
