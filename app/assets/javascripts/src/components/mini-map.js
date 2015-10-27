@@ -19,8 +19,8 @@ export default class extends Component {
 
     this.svg = d3.select(findDOMNode(this));
 
-    this._initChina();
-    this._initMarkup();
+    this._plotChina();
+    this._addMarkup();
 
   }
 
@@ -28,7 +28,7 @@ export default class extends Component {
   /**
    * Plot the Chinese borders.
    */
-  _initChina() {
+  _plotChina() {
 
     let $el = $(findDOMNode(this));
 
@@ -56,7 +56,7 @@ export default class extends Component {
   /**
    * Inject UI elements.
    */
-  _initMarkup() {
+  _addMarkup() {
 
     // Extent <rect>.
     this.extent = this.svg.append('rect')
