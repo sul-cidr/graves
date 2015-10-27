@@ -14,6 +14,7 @@ import {
   MAP,
   IS_SECTION_FOCUSED,
   SCROLL_SECTION,
+  SELECT_SECTION,
 } from '../constants';
 
 import {
@@ -29,7 +30,8 @@ export default class extends Component {
 
   static events = {
     [SECTIONS]: {
-      [SCROLL_SECTION]: 'highlight'
+      [SCROLL_SECTION]: 'highlight',
+      [SELECT_SECTION]: 'select',
     }
   }
 
@@ -112,6 +114,20 @@ export default class extends Component {
     _.each(this.idToLabel, label => {
       $(label._icon).toggleClass('highlight', label.options.id == id);
     });
+
+  }
+
+
+  /**
+   * Select a section.
+   *
+   * @param {Number} id
+   * @param {String} origin
+   */
+  select(id, origin) {
+
+    let box = this.idToBox[id];
+    this.context.map.flyTo(box.getBounds().getCenter(), 7)
 
   }
 
