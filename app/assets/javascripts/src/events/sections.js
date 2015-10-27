@@ -29,5 +29,5 @@ export function scrollSection(id) {
  * @param {String} id
  */
 export function selectSection(id, origin) {
-  channel.trigger(SELECT_SECTION, id);
+  channel.trigger(SELECT_SECTION, id, origin);
 }

@@ -13,8 +13,9 @@ import * as actions from '../actions/sections';
 import tipTpl from './tip.jade';
 
 import {
-  SECTIONS,
+  NARRATIVE,
   MAP,
+  SECTIONS,
   SELECT_SECTION
 } from '../constants';
 
@@ -234,6 +235,9 @@ export default class extends Component {
    */
   select(id, origin) {
 
+    // Don't re-consume.
+    if (origin == NARRATIVE) return;
+
     let section = this.getSectionById(id);
 
     // Scroll into view.
@@ -266,7 +270,7 @@ export default class extends Component {
 
     // Click to select.
     section.click(e => {
-      selectSection(id);
+      selectSection(id, NARRATIVE);
       this.disableSelect(id);
     });
 
