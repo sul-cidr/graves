@@ -19,7 +19,8 @@ import {
 } from '../constants';
 
 import {
-  scrollSection
+  scrollSection,
+  selectSection,
 } from '../events/sections';
 
 import {
@@ -265,7 +266,7 @@ export default class extends Component {
 
     // Click to select.
     section.click(e => {
-      // TODO: Select.
+      selectSection(id);
       this.disableSelect(id);
     });
 
