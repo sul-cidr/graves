@@ -48,7 +48,8 @@ export default class extends Component {
 
     this.generateDataIds();
     this.publishData();
-    this.listenForScroll();
+    this.bindCursorEvents();
+    this.monitorScroll();
 
   }
 
@@ -95,9 +96,41 @@ export default class extends Component {
 
 
   /**
+   * Listen for section enter/leave.
+   */
+  bindCursorEvents() {
+
+    this.sections
+      .on('mouseenter', this.onEnter.bind(this))
+      .on('mouseleave', this.onLeave.bind(this));
+
+  }
+
+
+  /**
+   * When the cursor enters a section.
+   *
+   * @param {Object} e
+   */
+  onEnter(e) {
+    // TODO
+  }
+
+
+  /**
+   * When the cursor leaves a section.
+   *
+   * @param {Object} e
+   */
+  onLeave(e) {
+    // TODO
+  }
+
+
+  /**
    * Monitor the visible section.
    */
-  listenForScroll() {
+  monitorScroll() {
 
     this.sections.each((i, s) => {
       new Waypoint({
