@@ -10,6 +10,7 @@ import imagesLoaded from 'imagesloaded';
 import Component from './component';
 import { parseAttrs, parseLonLat } from '../utils';
 import * as actions from '../actions/sections';
+import tipTpl from './tip.jade';
 
 import {
   SECTIONS,
@@ -54,6 +55,7 @@ export default class extends Component {
     this.publishData();
     this.bindCursorEvents();
     this.monitorScroll();
+    this.bindResizeEvent();
 
   }
 
@@ -151,6 +153,34 @@ export default class extends Component {
   }
 
 
+  /**
+   * On resize, cache container position.
+   */
+  bindResizeEvent() {
+
+    this.cachePosition();
+
+    // Re-cache on resize.
+    let resize = _.debounce(this.cachePosition.bind(this), 500);
+    $(window).resize(resize);
+
+  }
+
+
+  /**
+   * Cache container boundaries.
+   */
+  cachePosition() {
+
+    let content = this.$el.closest('.content');
+
+    this.width  = content.outerWidth();
+    this.offset = content.offset();
+    this.right  = this.offset.left + this.width;
+
+  }
+
+
   // ** Publishers:
 
 
@@ -165,7 +195,7 @@ export default class extends Component {
       id: ['data-id', Number]
     });
 
-    // Is the section focused on the map?
+    // Is the section focused?
     let focused = isSectionFocused(attrs.id);
 
     // If not, click to select.
@@ -182,7 +212,13 @@ export default class extends Component {
    * @param {Object} e
    */
   onLeave(e) {
-    // TODO
+
+    let attrs = parseAttrs($(e.currentTarget), {
+      id: ['data-id', Number]
+    });
+
+    this.disableSelect(attrs.id);
+
   }
 
 
@@ -217,11 +253,19 @@ export default class extends Component {
   enableSelect(id) {
 
     let section = this.getSectionById(id);
-
     section.addClass('selectable');
 
+    // Inject the tooltip.
+    this.tip = $(tipTpl()).appendTo('body');
+
+    // Sync tooltip Y with cursor.
+    section.mousemove(e => {
+      this.tip.css({ top: e.clientY, left: this.right+10 });
+    });
+
+    // Click to select.
     section.click(e => {
-      console.log(id);
+      // TODO: Select.
       this.disableSelect(id);
     });
 
@@ -235,10 +279,13 @@ export default class extends Component {
    */
   disableSelect(id) {
 
+    // Clear event listeners.
     let section = this.getSectionById(id);
-
+    section.off('click mousemove');
     section.removeClass('selectable');
-    section.off('click');
+
+    // Clear tip.
+    this.tip.remove();
 
   }
 

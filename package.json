@@ -43,6 +43,7 @@
     "history": "^1.10.2",
     "imagesloaded": "^3.1.8",
     "isomorphic-fetch": "^2.1.1",
+    "jadeify": "^4.4.0",
     "jquery": "^2.1.4",
     "leaflet": "^1.0.0-beta.1",
     "lesshat": "^3.0.2",
