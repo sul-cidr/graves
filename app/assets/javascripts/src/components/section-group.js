@@ -45,9 +45,13 @@ export default class extends Component {
 
     this.idToLabel = {};
 
-    // Create group.
-    this.group = L.featureGroup();
-    this.group.addTo(this.context.map);
+    // Label group.
+    this.labels = L.featureGroup();
+    this.labels.addTo(this.context.map);
+
+    // Box group.
+    this.boxes = L.featureGroup();
+    this.boxes.addTo(this.context.map);
 
   }
 
@@ -61,7 +65,8 @@ export default class extends Component {
       return (
         <SectionLayer
           key={s.id}
-          group={this.group}
+          labels={this.labels}
+          boxes={this.boxes}
           idToLabel={this.idToLabel}
           data={s}
         />
