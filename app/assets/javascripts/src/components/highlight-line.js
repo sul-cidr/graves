@@ -138,7 +138,7 @@ export default class extends Component {
     }
 
     return (
-      <svg className="highlight-line">
+      <svg id="highlight-line">
         {line}
       </svg>
     );

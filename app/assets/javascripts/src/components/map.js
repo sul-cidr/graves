@@ -11,6 +11,7 @@ import CollectionGroup from './collection-group';
 import CountyGroup from './county-group';
 import SectionGroup from './section-group';
 import CDCPicker from './cdc-picker';
+import MiniMap from './mini-map';
 
 import {
   MAP,
@@ -122,10 +123,12 @@ export default class extends Component {
       behaviors = (
         <span>
 
+          <CDCPicker />
+          <MiniMap />
+
           <CollectionGroup />
           <CountyGroup />
           <SectionGroup />
-          <CDCPicker />
 
           {this.props.editing ? <CopyLonLat /> : null}
 
