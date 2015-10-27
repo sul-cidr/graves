@@ -106,30 +106,6 @@ export default class extends Component {
 
 
   /**
-   * Expose the Leaflet instance.
-   *
-   * @return {Leaflet.Map}
-   */
-  getMap() {
-    return this.state.map;
-  }
-
-
-  /**
-   * Expose the Leaflet instance.
-   *
-   * @param {Number} lon
-   * @param {Number} lat
-   * @param {Number} zoom
-   */
-  focus(lon, lat, zoom=8) {
-    this.state.map.flyTo([lat, lon], zoom, {
-      duration: 2
-    });
-  }
-
-
-  /**
    * Render the map container.
    */
   render() {
@@ -170,6 +146,33 @@ export default class extends Component {
 
     return behaviors;
 
+  }
+
+
+  // ** Requests:
+
+
+  /**
+   * Expose the Leaflet instance.
+   *
+   * @return {Leaflet.Map}
+   */
+  getMap() {
+    return this.state.map;
+  }
+
+
+  /**
+   * Expose the Leaflet instance.
+   *
+   * @param {Number} lon
+   * @param {Number} lat
+   * @param {Number} zoom
+   */
+  focus(lon, lat, zoom=8) {
+    this.state.map.flyTo([lat, lon], zoom, {
+      duration: 2
+    });
   }
 
 
