@@ -30,7 +30,7 @@ export default class extends Component {
    */
   componentWillMount() {
 
-    this.idToLayers = {};
+    this.idToLabel = {};
 
     // Create group.
     this.group = L.featureGroup();
@@ -49,7 +49,7 @@ export default class extends Component {
         <SectionLayer
           key={s.id}
           group={this.group}
-          idToLayers={this.idToLayers}
+          idToLabel={this.idToLabel}
           data={s}
         />
       );

@@ -18,7 +18,7 @@ export default class extends Component {
 
   static propTypes = {
     group: PropTypes.object.isRequired,
-    idToLayers: PropTypes.object.isRequired,
+    idToLabel: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
   }
 
@@ -35,7 +35,20 @@ export default class extends Component {
       br: br,
     } = this.props.data;
 
-    // Box:
+    // ** Label:
+
+    let icon = L.divIcon({
+      html: label,
+      iconSize: null,
+    });
+
+    this.label = L.marker([br[1], tl[0]], { icon });
+    this.props.group.addLayer(this.label);
+
+    // Map id -> label.
+    this.props.idToLabel[id] = this.label;
+
+    // ** Box:
 
     let points = [
       swap(tl),
@@ -51,21 +64,6 @@ export default class extends Component {
 
     this.box = L.polygon(points, options);
     this.props.group.addLayer(this.box);
-
-    // Label:
-
-    let icon = L.divIcon({
-      html: label,
-      iconSize: null,
-    });
-
-    this.label = L.marker([br[1], tl[0]], { icon });
-    this.props.group.addLayer(this.label);
-
-    this.props.idToLayers[id] = {
-      box: this.box,
-      label: this.label,
-    };
 
   }
 
