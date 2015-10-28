@@ -6,11 +6,15 @@ import React from 'react';
 import { Modal } from 'react-bootstrap'
 
 import Component from './component';
+import * as actions from '../actions/collections';
 
 
-@connect(state => ({
-  feature: state.collections.selected
-}))
+@connect(
+  state => ({
+    feature: state.collections.selected
+  }),
+  actions
+)
 export default class extends Component {
 
 
@@ -22,7 +26,7 @@ export default class extends Component {
     let show = Boolean(this.props.feature);
 
     return (
-      <Modal show={show} onHide={this.onHide}>
+      <Modal show={show} onHide={this.onHide.bind(this)}>
 
         <Modal.Header closeButton>
           <Modal.Title>Collection</Modal.Title>
@@ -42,7 +46,7 @@ export default class extends Component {
    * Close the modal.
    */
   onHide() {
-    console.log('close');
+    this.props.unselectCollection();
   }
 
 

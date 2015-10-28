@@ -61,3 +61,15 @@ export function selectCollection(feature) {
     feature: feature,
   };
 }
+
+
+/**
+ * Unselect a collection.
+ *
+ * @param {Object} feature
+ */
+export function unselectCollection() {
+  return {
+    type: UNSELECT_COLLECTION,
+  };
+}

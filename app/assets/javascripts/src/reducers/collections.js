@@ -6,6 +6,7 @@ import {
   REQUEST_COLLECTIONS,
   RECEIVE_COLLECTIONS,
   SELECT_COLLECTION,
+  UNSELECT_COLLECTION,
 } from '../constants';
 
 
@@ -29,6 +30,10 @@ const handlers = {
 
   [SELECT_COLLECTION]: (state, action) => ({
     selected: action.feature,
+  }),
+
+  [UNSELECT_COLLECTION]: () => ({
+    selected: null,
   }),
 
 };
