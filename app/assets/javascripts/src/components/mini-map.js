@@ -30,16 +30,16 @@ export default class extends Component {
    */
   _plotChina() {
 
-    let $el = $(findDOMNode(this));
+    let bbox = this.svg.node().getBBox();
 
     let offset = [
-      $el.width()  / 2,
-      $el.height() / 2,
+      bbox.width  / 2,
+      bbox.height / 2,
     ];
 
     this.projection = d3.geo.mercator()
       .center(d3.geo.centroid(chinaJSON))
-      .scale($el.width() * 0.8)
+      .scale(bbox.width * 0.8)
       .translate(offset);
 
     let path = d3.geo.path()
