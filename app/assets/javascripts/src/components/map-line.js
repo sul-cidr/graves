@@ -7,9 +7,9 @@ import { parseAttr } from '../utils';
 import Component from './component';
 
 import {
-  NARRATIVE,
-  SHOW_HIGHLIGHT_LINE,
-  HIDE_HIGHLIGHT_LINE,
+  MAP,
+  SHOW_MAP_LINE,
+  HIDE_MAP_LINE,
 } from '../constants';
 
 
@@ -17,9 +17,9 @@ export default class extends Component {
 
 
   static requests = {
-    [NARRATIVE]: {
-      [SHOW_HIGHLIGHT_LINE]: 'show',
-      [HIDE_HIGHLIGHT_LINE]: 'hide',
+    [MAP]: {
+      [SHOW_MAP_LINE]: 'show',
+      [HIDE_MAP_LINE]: 'hide',
     }
   }
 

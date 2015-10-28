@@ -4,23 +4,14 @@ import Radio from 'backbone.radio';
 
 import {
   MAP,
-  GET_LEAFLET_INSTANCE,
   FOCUS_MAP,
   IS_SECTION_FOCUSED,
+  SHOW_MAP_LINE,
+  HIDE_MAP_LINE,
 } from '../constants';
 
 
 const channel = Radio.channel(MAP);
-
-
-/**
- * Get the Leaflet map instance.
- *
- * @return {Leaflet.Map}
- */
-export function getLeafletInstance() {
-  return channel.request(GET_LEAFLET_INSTANCE);
-}
 
 
 /**
@@ -42,4 +33,24 @@ export function focusMap(lon, lat, zoom) {
  */
 export function isSectionFocused(id) {
   return channel.request(IS_SECTION_FOCUSED, id);
+}
+
+
+/**
+ * Show the text -> map highlight line.
+ *
+ * @param {Object} span
+ * @param {Number} lon
+ * @param {Number} lat
+ */
+export function showMapLine(span, lon, lat) {
+  channel.request(SHOW_MAP_LINE, span, lon, lat);
+}
+
+
+/**
+ * Hide the highlight line.
+ */
+export function hideMapLine() {
+  channel.request(HIDE_MAP_LINE);
 }

@@ -21,13 +21,10 @@ import {
 } from '../events/collections';
 
 import {
+  showMapLine,
+  hideMapLine,
   focusMap,
 } from '../events/map';
-
-import {
-  showHighlightLine,
-  hideHighlightLine,
-} from '../events/narrative';
 
 
 @connect(null, actions)
@@ -79,7 +76,7 @@ export default class extends Component {
 
     // Show the highlight line.
     let [lon, lat] = getCollectionLonLat(attrs.id);
-    showHighlightLine(span, lon, lat);
+    showMapLine(span, lon, lat);
 
     // Publish highlight.
     highlightCollection(attrs.id);
@@ -98,7 +95,7 @@ export default class extends Component {
       id: ['data-id', Number]
     });
 
-    hideHighlightLine();
+    hideMapLine();
 
     unhighlightCollection(attrs.id);
 

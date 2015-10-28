@@ -16,7 +16,6 @@ import MapLine from './map-line';
 
 import {
   MAP,
-  GET_LEAFLET_INSTANCE,
   FOCUS_MAP,
 } from '../constants';
 
@@ -29,7 +28,6 @@ export default class extends Component {
 
   static requests = {
     [MAP]: {
-      [GET_LEAFLET_INSTANCE]: 'getMap',
       [FOCUS_MAP]: 'focus'
     }
   }
@@ -148,19 +146,6 @@ export default class extends Component {
 
     return behaviors;
 
-  }
-
-
-  // ** Requests:
-
-
-  /**
-   * Expose the Leaflet instance.
-   *
-   * @return {Leaflet.Map}
-   */
-  getMap() {
-    return this.state.map;
   }
 
 
