@@ -77,6 +77,11 @@ export default class extends Component {
       unhighlightCollection(e.layer.options.feature.id);
     });
 
+    // SELECT
+    this.group.on('click', e => {
+      this.props.selectCollection(e.layer.options.feature);
+    });
+
   }
 
 

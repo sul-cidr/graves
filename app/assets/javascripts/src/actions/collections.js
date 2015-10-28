@@ -5,6 +5,8 @@ import fetch from 'isomorphic-fetch';
 import {
   REQUEST_COLLECTIONS,
   RECEIVE_COLLECTIONS,
+  SELECT_COLLECTION,
+  UNSELECT_COLLECTION,
 } from '../constants';
 
 
@@ -44,5 +46,18 @@ function receiveCollections(json) {
   return {
     type: RECEIVE_COLLECTIONS,
     geojson: json,
+  };
+}
+
+
+/**
+ * Select a collection.
+ *
+ * @param {Object} feature
+ */
+export function selectCollection(feature) {
+  return {
+    type: SELECT_COLLECTION,
+    feature: feature,
   };
 }

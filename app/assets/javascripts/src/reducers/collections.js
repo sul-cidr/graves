@@ -5,6 +5,7 @@ import { createReducer } from '../utils';
 import {
   REQUEST_COLLECTIONS,
   RECEIVE_COLLECTIONS,
+  SELECT_COLLECTION,
 } from '../constants';
 
 
@@ -24,6 +25,10 @@ const handlers = {
   [RECEIVE_COLLECTIONS]: (state, action) => ({
     features: action.geojson.features,
     loading: false,
+  }),
+
+  [SELECT_COLLECTION]: (state, action) => ({
+    selected: action.feature,
   }),
 
 };
