@@ -63,10 +63,11 @@ export default class extends Component {
 
 
   /**
-   * Unmount the section layers.
+   * Unmount the section layers, clean up events.
    */
   componentWillUnmount() {
     this.props.unmountSections();
+    $(window).off('resize.sections');
   }
 
 
@@ -164,7 +165,7 @@ export default class extends Component {
 
     // Re-cache on resize.
     let resize = _.debounce(this.cachePosition.bind(this), 500);
-    $(window).resize(resize);
+    $(window).on('resize.sections', resize);
 
   }
 
