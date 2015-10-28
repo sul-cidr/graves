@@ -69,12 +69,12 @@ export default class extends Component {
 
     // HIGHLIGHT
     this.group.on('mouseover', e => {
-      highlightCollection(e.layer.options.id);
+      highlightCollection(e.layer.options.feature.id);
     });
 
     // UNHIGHLIGHT
     this.group.on('mouseout', e => {
-      unhighlightCollection(e.layer.options.id);
+      unhighlightCollection(e.layer.options.feature.id);
     });
 
   }

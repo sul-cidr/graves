@@ -31,7 +31,7 @@ export default class extends Component {
 
     // Create the marker.
     this.layer = L.circleMarker(feature.geometry.coordinates, {
-      id: feature.id,
+      feature,
       ...styles.path.def,
     });
 
