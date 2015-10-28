@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import $ from 'jquery';
 import d3 from 'd3-browserify';
 import React, { PropTypes } from 'react';
@@ -26,6 +27,7 @@ export default class extends Component {
 
     this._plotChina();
     this._addMarkup();
+    this._listenForResize();
     this._listenForMove();
 
   }
@@ -72,11 +74,39 @@ export default class extends Component {
 
 
   /**
-   * Mirror the map pan state.
+   * Cache the viewport coordinates on resize.
+   */
+  _listenForResize() {
+
+    this.cacheViewport();
+
+    // Re-cache on resize.
+    let resize = _.debounce(this.cacheViewport.bind(this), 500);
+    $(window).resize(resize);
+
+  }
+
+
+  /**
+   * Update the viewport rectangle when the map moves.
    */
   _listenForMove() {
     this.context.map.on('move', this.setExtent.bind(this));
+  }
+
+
+  /**
+   * Set the container coordinates.
+   */
+  cacheViewport() {
+
+    let w = $(window);
+
+    this.tl = [0, 0];
+    this.br = [w.width(), w.height()];
+
     this.setExtent();
+
   }
 
 
@@ -85,24 +115,17 @@ export default class extends Component {
    */
   setExtent() {
 
-    let tl = this.context.map.containerPointToLatLng([
-      0, 0
-    ]);
+    var tl = this.context.map.containerPointToLatLng(this.tl);
+    var br = this.context.map.containerPointToLatLng(this.br);
 
-    let br = this.context.map.containerPointToLatLng([
-      $(window).width(),
-      $(window).height()
-    ]);
-
-    let c1 = this.projection([tl.lng, tl.lat]);
-
-    let c2 = this.projection([br.lng, br.lat]);
+    tl = this.projection([tl.lng, tl.lat]);
+    br = this.projection([br.lng, br.lat]);
 
     this.extent.attr({
-      x:      c1[0],
-      y:      c1[1],
-      height: c2[1]-c1[1],
-      width:  c2[0]-c1[0],
+      x:      tl[0],
+      y:      tl[1],
+      height: br[1]-tl[1],
+      width:  br[0]-tl[0],
     });
 
   }
