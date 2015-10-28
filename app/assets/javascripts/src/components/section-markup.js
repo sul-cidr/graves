@@ -66,8 +66,12 @@ export default class extends Component {
    * Unmount the section layers, clean up events.
    */
   componentWillUnmount() {
+
     this.props.unmountSections();
+
     $(window).off('resize.sections');
+    Waypoint.destroyAll();
+
   }
 
 
