@@ -129,6 +129,9 @@ export default class extends Component {
       this.props.showChoropleth(attrs.cdc);
     }
 
+    // Don't select the section.
+    e.stopPropagation();
+
   }
 
 
