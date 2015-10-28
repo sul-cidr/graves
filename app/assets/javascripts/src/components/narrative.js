@@ -10,7 +10,6 @@ import Spinner from './spinner';
 import SectionMarkup from './section-markup';
 import CollectionMarkup from './collection-markup';
 import AnchorMarkup from './anchor-markup';
-import MapLine from './map-line';
 
 
 @connect(
@@ -98,13 +97,9 @@ export default class extends Component {
     if (this.state.markup) {
       behaviors = (
         <span>
-
           <SectionMarkup markup={this.state.markup} />
           <CollectionMarkup markup={this.state.markup} />
           <AnchorMarkup markup={this.state.markup} />
-
-          <MapLine />
-
         </span>
       );
     }

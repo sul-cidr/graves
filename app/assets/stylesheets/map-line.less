@@ -1,6 +1,6 @@
 
 
-#highlight-line {
+#map-line {
 
   position: fixed;
   width: 100vw;
@@ -8,6 +8,8 @@
   pointer-events: none;
   top: 0;
   left: 0;
+
+  z-index: @zindex-content+1;
 
   line {
     stroke: @color-blue;

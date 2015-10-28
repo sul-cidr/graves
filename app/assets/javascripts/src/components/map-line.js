@@ -1,7 +1,7 @@
 
 
 import $ from 'jquery';
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import { parseAttr } from '../utils';
 import Component from './component';
@@ -12,14 +12,6 @@ import {
   HIDE_HIGHLIGHT_LINE,
 } from '../constants';
 
-import {
-  getCollectionLonLat
-} from '../events/collections';
-
-import {
-  getLeafletInstance
-} from '../events/map';
-
 
 export default class extends Component {
 
@@ -29,6 +21,11 @@ export default class extends Component {
       [SHOW_HIGHLIGHT_LINE]: 'show',
       [HIDE_HIGHLIGHT_LINE]: 'hide',
     }
+  }
+
+
+  static contextTypes = {
+    map: PropTypes.object.isRequired
   }
 
 
@@ -44,7 +41,6 @@ export default class extends Component {
 
     // Map move callback.
     this.update = this.forceUpdate.bind(this, null);
-    this.map = getLeafletInstance();
 
   }
 
@@ -53,7 +49,7 @@ export default class extends Component {
    * Update the line when the map moves.
    */
   bindMoveListener() {
-    this.map.on('move', this.update);
+    this.context.map.on('move', this.update);
   }
 
 
@@ -61,7 +57,7 @@ export default class extends Component {
    * Remove the move listener.
    */
   unbindMoveListener() {
-    this.map.off('move', this.update);
+    this.context.map.off('move', this.update);
   }
 
 
@@ -138,7 +134,7 @@ export default class extends Component {
     }
 
     return (
-      <svg id="highlight-line">
+      <svg id="map-line">
         {line}
       </svg>
     );
@@ -155,10 +151,10 @@ export default class extends Component {
   lonLatToXY(lon, lat) {
 
     // Coordinate -> layer point.
-    let layerPoint = this.map.latLngToLayerPoint([lat, lon]);
+    let layerPoint = this.context.map.latLngToLayerPoint([lat, lon]);
 
     // Layer point -> screen point.
-    let point = this.map.layerPointToContainerPoint(layerPoint);
+    let point = this.context.map.layerPointToContainerPoint(layerPoint);
 
     return [point.x, point.y];
 
