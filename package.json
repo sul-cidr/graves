@@ -50,6 +50,7 @@
     "lodash": "^3.10.1",
     "mousetrap": "^1.5.3",
     "react": "^0.14.0",
+    "react-bootstrap": "^0.27.3",
     "react-dom": "^0.14.0",
     "react-redux": "^2.1.1",
     "react-select": "^0.8.1",

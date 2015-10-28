@@ -11,6 +11,7 @@ import {
 const initialState = {
   loading: false,
   features: [],
+  selected: null,
 };
 
 
