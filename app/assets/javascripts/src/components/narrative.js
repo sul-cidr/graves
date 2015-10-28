@@ -10,7 +10,7 @@ import Spinner from './spinner';
 import SectionMarkup from './section-markup';
 import CollectionMarkup from './collection-markup';
 import AnchorMarkup from './anchor-markup';
-import HighlightLine from './highlight-line';
+import MapLine from './map-line';
 
 
 @connect(
@@ -103,7 +103,7 @@ export default class extends Component {
           <CollectionMarkup markup={this.state.markup} />
           <AnchorMarkup markup={this.state.markup} />
 
-          <HighlightLine />
+          <MapLine />
 
         </span>
       );
