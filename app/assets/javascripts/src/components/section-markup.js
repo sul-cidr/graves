@@ -247,7 +247,7 @@ export default class extends Component {
 
     // Scroll into view.
     $('body').animate({
-      scrollTop: section[0].offsetTop - 50
+      scrollTop: section.offset().top - 50
     }, {
       duration: 700
     });
