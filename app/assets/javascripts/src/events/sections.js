@@ -26,8 +26,7 @@ export function scrollSection(id) {
  * Select a collection.
  *
  * @param {Number} id
- * @param {String} id
  */
-export function selectSection(id, origin) {
-  channel.trigger(SELECT_SECTION, id, origin);
+export function selectSection(id) {
+  channel.trigger(SELECT_SECTION, id);
 }

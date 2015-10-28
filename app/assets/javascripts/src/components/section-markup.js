@@ -13,13 +13,6 @@ import * as actions from '../actions/sections';
 import tipTpl from './tip.jade';
 
 import {
-  NARRATIVE,
-  MAP,
-  SECTIONS,
-  SELECT_SECTION
-} from '../constants';
-
-import {
   scrollSection,
   selectSection,
 } from '../events/sections';
@@ -31,13 +24,6 @@ import {
 
 @connect(null, actions)
 export default class extends Component {
-
-
-  static events = {
-    [SECTIONS]: {
-      [SELECT_SECTION]: 'select'
-    }
-  }
 
 
   static propTypes = {
@@ -233,29 +219,6 @@ export default class extends Component {
 
 
   /**
-   * Scroll a section into view.
-   *
-   * @param {Number} id
-   * @param {String} origin
-   */
-  select(id, origin) {
-
-    // Don't re-consume.
-    if (origin == NARRATIVE) return;
-
-    let section = this.getSectionById(id);
-
-    // Scroll into view.
-    $('body').animate({
-      scrollTop: section.offset().top - 50
-    }, {
-      duration: 700
-    });
-
-  }
-
-
-  /**
    * Select a section on click.
    *
    * @param {Number} id
@@ -275,7 +238,7 @@ export default class extends Component {
 
     // Click to select.
     section.click(e => {
-      selectSection(id, NARRATIVE);
+      selectSection(id);
       this.disableSelect(id);
     });
 

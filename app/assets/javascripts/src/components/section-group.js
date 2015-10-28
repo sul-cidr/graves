@@ -17,10 +17,6 @@ import {
   SELECT_SECTION,
 } from '../constants';
 
-import {
-  selectSection
-} from '../events/sections';
-
 
 @connect(state => ({
   sections: state.sections.attrs
@@ -68,11 +64,6 @@ export default class extends Component {
     // Box group.
     this.boxes = L.featureGroup();
     this.boxes.addTo(this.context.map);
-
-    // Select section.
-    this.labels.on('click', e => {
-      selectSection(e.layer.options.id, MAP);
-    });
 
   }
 
@@ -122,9 +113,8 @@ export default class extends Component {
    * Select a section.
    *
    * @param {Number} id
-   * @param {String} origin
    */
-  select(id, origin) {
+  select(id) {
 
     let box = this.idToBox[id];
     this.context.map.flyTo(box.getBounds().getCenter(), 7)
