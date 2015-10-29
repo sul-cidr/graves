@@ -140,7 +140,10 @@ export default class extends Component {
           <CDCPicker />
           <MiniMap />
 
-          {this.props.editing ? <CopyLonLat /> : null}
+          {
+            this.props.editing ?
+            <CopyLonLat /> : null
+          }
 
         </span>
       );
