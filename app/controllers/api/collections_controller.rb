@@ -3,7 +3,7 @@ module API
   class CollectionsController < ApplicationController
 
     def index
-      @collections = Collection.snap.to_geojson(
+      @collections = Collection.includes(:notice).snap.to_geojson(
         :num_graves,
         :location,
         :destination,
@@ -13,6 +13,7 @@ module API
         :county_c,
         :town_p,
         :town_c,
+        :notice,
       )
     end
 

@@ -64,64 +64,40 @@ export default class extends Component {
    */
   render() {
 
-    return !this.state.feature ? null : (
-      <Modal show={this.state.show} onHide={this.onHide.bind(this)}>
+    if (this.state.feature) {
 
-        <Modal.Header closeButton>
-          <Modal.Title>Collection #{this.state.feature.id}</Modal.Title>
-        </Modal.Header>
+      let c = this.state.feature.properties;
 
-        <Modal.Body>
+      return (
 
-          <Field
-            value={this.state.feature.properties.location}
-            label="Location"
-          />
+        <Modal show={this.state.show} onHide={this.onHide.bind(this)}>
 
-          <Field
-            value={this.state.feature.properties.num_graves}
-            label="Grave Count"
-          />
+          <Modal.Header closeButton>
+            <Modal.Title>
+              Collection #{this.state.feature.id}
+            </Modal.Title>
+          </Modal.Header>
 
-          <Field
-            value={this.state.feature.properties.destination}
-            label="Destination"
-          />
+          <Modal.Body>
 
-          <Field
-            value={this.state.feature.properties.province_c}
-            label="Province"
-          />
+            <Field value={c.location} label="Location" />
+            <Field value={c.num_graves} label="Grave Count" />
+            <Field value={c.destination} label="Destination" />
+            <Field value={c.province_c} label="Province" />
+            <Field value={c.province_p} label="Province (Pinyin)" />
+            <Field value={c.county_c} label="County" />
+            <Field value={c.county_p} label="County (Pinyin)" />
+            <Field value={c.town_c} label="Town" />
+            <Field value={c.town_p} label="Town (Pinyin)" />
 
-          <Field
-            value={this.state.feature.properties.province_p}
-            label="Province (Pinyin)"
-          />
+          </Modal.Body>
 
-          <Field
-            value={this.state.feature.properties.county_c}
-            label="County"
-          />
+        </Modal>
+      );
 
-          <Field
-            value={this.state.feature.properties.county_p}
-            label="County (Pinyin)"
-          />
+    }
 
-          <Field
-            value={this.state.feature.properties.town_c}
-            label="Town"
-          />
-
-          <Field
-            value={this.state.feature.properties.town_p}
-            label="Town (Pinyin)"
-          />
-
-        </Modal.Body>
-
-      </Modal>
-    );
+    else return null;
 
   }
 
