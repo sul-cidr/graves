@@ -67,6 +67,7 @@ export default class extends Component {
     if (this.state.feature) {
 
       let c = this.state.feature.properties;
+      let n = c.notice;
 
       return (
 
@@ -89,6 +90,20 @@ export default class extends Component {
             <Field value={c.county_p} label="County (Pinyin)" />
             <Field value={c.town_c} label="Town" />
             <Field value={c.town_p} label="Town (Pinyin)" />
+
+            <Field value={n.pub_date} label="Publication Date" />
+            <Field value={n.notice_date} label="Notice Date" />
+            <Field value={n.deadline} label="Deadline" />
+            <Field value={n.url} label="URL" />
+            <Field value={n.site_c} label="Site" />
+            <Field value={n.site_p} label="Site (Pinyin)" />
+            <Field value={n.title_c} label="Title" />
+            <Field value={n.title_p} label="Title (Pinyin)" />
+            <Field value={n.org_c} label="Organization" />
+            <Field value={n.org_p} label="Organization (Pinyin)" />
+            <Field value={n.contact_phone} label="Contact Phone" />
+            <Field value={n.contact_c} label="Contact" />
+            <Field value={n.contact_p} label="Contact (Pinyin)" />
 
           </Modal.Body>
 
