@@ -104,7 +104,7 @@ export default class extends Component {
             <Field value={n.contact_c} label="Contact" />
             <Field value={n.contact_p} label="Contact (Pinyin)" />
 
-            <Field value={n.url} label="URL" >
+            <Field value={n.url} label="URL">
               <a href={n.url}>Link</a>
             </Field>
 

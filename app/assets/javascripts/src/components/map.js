@@ -9,6 +9,7 @@ import Component from './component';
 import CopyLonLat from './copy-lonlat';
 import CollectionGroup from './collection-group';
 import CollectionModal from './collection-modal';
+import CollectionLegend from './collection-legend';
 import CountyGroup from './county-group';
 import SectionGroup from './section-group';
 import CDCPicker from './cdc-picker';
@@ -133,6 +134,7 @@ export default class extends Component {
 
           <CollectionGroup />
           <CollectionModal />
+          <CollectionLegend />
           <CountyGroup />
           <SectionGroup />
 
