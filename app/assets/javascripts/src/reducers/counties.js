@@ -10,9 +10,13 @@ import {
 
 
 const initialState = {
+
   loading: false,
   geojson: null,
-  choropleth: null,
+
+  // "Total Population"
+  choropleth: 'a100001_10',
+
 };
 
 
