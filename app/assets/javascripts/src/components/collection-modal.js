@@ -6,6 +6,7 @@ import React from 'react';
 import { Modal } from 'react-bootstrap'
 
 import Component from './component';
+import Field from './field';
 import * as actions from '../actions/collections';
 
 
@@ -71,7 +72,52 @@ export default class extends Component {
         </Modal.Header>
 
         <Modal.Body>
-          <p>Metadata.</p>
+
+          <Field
+            value={this.state.feature.properties.location}
+            label="Location"
+          />
+
+          <Field
+            value={this.state.feature.properties.num_graves}
+            label="Grave Count"
+          />
+
+          <Field
+            value={this.state.feature.properties.destination}
+            label="Destination"
+          />
+
+          <Field
+            value={this.state.feature.properties.province_c}
+            label="Province"
+          />
+
+          <Field
+            value={this.state.feature.properties.province_p}
+            label="Province (Pinyin)"
+          />
+
+          <Field
+            value={this.state.feature.properties.county_c}
+            label="County"
+          />
+
+          <Field
+            value={this.state.feature.properties.county_p}
+            label="County (Pinyin)"
+          />
+
+          <Field
+            value={this.state.feature.properties.town_c}
+            label="Town"
+          />
+
+          <Field
+            value={this.state.feature.properties.town_p}
+            label="Town (Pinyin)"
+          />
+
         </Modal.Body>
 
       </Modal>

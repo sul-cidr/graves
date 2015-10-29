@@ -4,10 +4,15 @@ module API
 
     def index
       @collections = Collection.snap.to_geojson(
-        :province_p,
-        :county_p,
-        :town_p,
         :num_graves,
+        :location,
+        :destination,
+        :province_p,
+        :province_c,
+        :county_p,
+        :county_c,
+        :town_p,
+        :town_c,
       )
     end
 
