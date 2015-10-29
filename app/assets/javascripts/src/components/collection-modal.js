@@ -19,17 +19,55 @@ export default class extends Component {
 
 
   /**
+   * Set initial state.
+   *
+   * @param {Object} props
+   */
+  constructor(props) {
+
+    super(props);
+
+    this.state = {
+      show: false,
+      feature: null,
+    };
+
+  }
+
+
+  /**
+   * Map the props into state.
+   *
+   * @param {Object} props
+   */
+  componentWillReceiveProps(props) {
+
+    if (props.feature) {
+      this.setState({
+        show: true,
+        feature: props.feature,
+      });
+    }
+
+    else {
+      this.setState({
+        show: false
+      });
+    }
+
+  }
+
+
+  /**
    * Render the collection metadata modal.
    */
   render() {
 
-    let show = Boolean(this.props.feature);
-
-    return (
-      <Modal show={show} onHide={this.onHide.bind(this)}>
+    return !this.state.feature ? null : (
+      <Modal show={this.state.show} onHide={this.onHide.bind(this)}>
 
         <Modal.Header closeButton>
-          <Modal.Title>Collection</Modal.Title>
+          <Modal.Title>Collection #{this.state.feature.id}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
