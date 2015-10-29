@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react';
 import L from 'leaflet';
 
 import Component from './component';
+import scale from './collection-scale';
 import styles from './collection.yml';
 
 
@@ -36,7 +37,7 @@ export default class extends Component {
     });
 
     // Size by grave count.
-    let r = Math.log(feature.properties.num_graves || 20) * 3;
+    let r = scale(feature.properties.num_graves || 20);
     this.layer.setRadius(r);
 
     let label = (
