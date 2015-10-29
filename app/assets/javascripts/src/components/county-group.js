@@ -1,9 +1,9 @@
 
 
 import L from 'leaflet';
+import d3 from 'd3';
 import { connect } from 'react-redux';
 import React, { PropTypes } from 'react';
-import d3 from 'd3-browserify';
 
 import Component from './component';
 import CountyChoropleth from './county-choropleth';

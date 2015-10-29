@@ -1,8 +1,8 @@
 
 
 import _ from 'lodash';
+import d3 from 'd3';
 import $ from 'jquery';
-import d3 from 'd3-browserify';
 import React, { PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import Component from './component';
