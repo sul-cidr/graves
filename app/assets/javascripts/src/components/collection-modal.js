@@ -94,7 +94,6 @@ export default class extends Component {
             <Field value={n.pub_date} label="Publication Date" />
             <Field value={n.notice_date} label="Notice Date" />
             <Field value={n.deadline} label="Deadline" />
-            <Field value={n.url} label="URL" />
             <Field value={n.site_c} label="Site" />
             <Field value={n.site_p} label="Site (Pinyin)" />
             <Field value={n.title_c} label="Title" />
@@ -104,6 +103,10 @@ export default class extends Component {
             <Field value={n.contact_phone} label="Contact Phone" />
             <Field value={n.contact_c} label="Contact" />
             <Field value={n.contact_p} label="Contact (Pinyin)" />
+
+            <Field value={n.url} label="URL" >
+              <a href={n.url}>Link</a>
+            </Field>
 
           </Modal.Body>
 

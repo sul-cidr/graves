@@ -18,8 +18,13 @@ export default class extends Component {
   render() {
     return !this.props.value ? null : (
       <div className="field">
+
         <h5>{this.props.label}</h5>
-        <p>{this.props.value}</p>
+
+        {this.props.children ? this.props.children : (
+          <p>{this.props.value}</p>
+        )}
+
       </div>
     );
   }
