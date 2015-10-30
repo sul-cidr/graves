@@ -33,6 +33,7 @@ ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :linked_files, fetch(:linked_files, []).push(
   'config/secrets.yml',
   'config/database.yml',
+  '.env',
 )
 
 # Default value for linked_dirs is []
@@ -46,10 +47,7 @@ set :linked_files, fetch(:linked_files, []).push(
  )
 
 # Default value for default_env is {}
-set :default_env, {
-  GRAVES_USER: ENV['GRAVES_USER'],
-  GRAVES_PASS: ENV['GRAVES_PASS'],
-}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
