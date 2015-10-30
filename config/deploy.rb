@@ -46,7 +46,10 @@ set :linked_files, fetch(:linked_files, []).push(
  )
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, {
+  GRAVES_USER: ENV['GRAVES_USER'],
+  GRAVES_PASS: ENV['GRAVES_PASS'],
+}
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
