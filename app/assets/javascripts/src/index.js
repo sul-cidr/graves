@@ -21,5 +21,4 @@ ReactDOM.render(
 );
 
 
-// TODO|dev
-router.init('read/no-room-for-the-dead');
+router.init();
