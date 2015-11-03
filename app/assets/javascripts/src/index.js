@@ -10,15 +10,23 @@ import App from './components/app';
 import router from './router';
 
 
-ReactDOM.render(
+export default function start() {
 
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  ReactDOM.render(
 
-  document.getElementById('root')
+    <Provider store={store}>
+      <App />
+    </Provider>,
 
-);
+    document.getElementById('root')
+
+  );
+
+  router.init();
+
+}
 
 
-router.init();
+if (!window.JASMINE) {
+  start();
+}
