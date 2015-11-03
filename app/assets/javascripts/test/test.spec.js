@@ -6,6 +6,12 @@ import start from '../src';
 import CollectionGroup from '../src/components/collection-group';
 
 
+function unwrap(tree, type) {
+  let component = TestUtils.findRenderedComponentWithType(tree, type);
+  return component.refs.wrappedInstance;
+}
+
+
 describe('Collections', function() {
 
   let group;
@@ -13,17 +19,12 @@ describe('Collections', function() {
   beforeEach(function() {
 
     let app = start();
-    group = TestUtils.findRenderedComponentWithType(app, CollectionGroup);
-    console.log(group);
+    group = unwrap(app, CollectionGroup);
 
   });
 
-  it('test1', function() {
-    expect(true).toBe(true);
-  });
-
-  it('test2', function() {
-    expect(true).toBe(true);
+  it('loads collections on startup', function() {
+    expect(group.group.getLayers().length).toEqual(100);
   });
 
 });
