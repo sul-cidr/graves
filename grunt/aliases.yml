@@ -13,3 +13,7 @@ default:
   - clean
   - compile
   - watch
+
+jasmine:browser:
+  - jasmine:graves:build
+  - connect
