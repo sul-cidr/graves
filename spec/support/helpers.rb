@@ -12,7 +12,7 @@ module Helpers
   def write_fixture(slug, json)
 
     # Ensure the directory exists.
-    path = "#{Rails.root}/public/javascripts/fixtures/#{slug}.json"
+    path = "#{Rails.root}/app/assets/javascripts/graves/test/fixtures/#{slug}.json"
     FileUtils.mkdir_p(File.dirname(path))
 
     # Write the fixture.
