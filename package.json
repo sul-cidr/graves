@@ -27,6 +27,7 @@
     "grunt-contrib-symlink": "^0.3.0",
     "grunt-contrib-uglify": "^0.9.2",
     "grunt-contrib-watch": "^0.6.1",
+    "jasmine-ajax": "^3.2.0",
     "jit-grunt": "^0.9.1",
     "load-grunt-config": "^0.17.2",
     "react-addons-test-utils": "^0.14.2",

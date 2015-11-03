@@ -1,6 +1,6 @@
 
 
-import fetch from 'isomorphic-fetch';
+import $ from 'jquery';
 
 import {
   REQUEST_COLLECTIONS,
@@ -19,9 +19,9 @@ export function loadCollections() {
     // Notify start.
     dispatch(requestCollections());
 
-    fetch('/api/collections.json')
-    .then(res => res.json())
-    .then(json => dispatch(receiveCollections(json)));
+    $.getJSON('/api/collections.json', json => {
+      dispatch(receiveCollections(json));
+    })
 
   };
 }

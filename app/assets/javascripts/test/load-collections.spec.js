@@ -1,5 +1,7 @@
 
 
+import 'jasmine-ajax';
+
 import start from '../src';
 import CollectionGroup from '../src/components/collection-group';
 import { unwrap } from './utils';
@@ -11,13 +13,15 @@ describe('Collections', function() {
 
   beforeEach(function() {
 
+    jasmine.Ajax.install();
+
     let app = start();
     group = unwrap(app, CollectionGroup);
 
   });
 
-  it('loads collections on startup', function() {
-    expect(group.group.getLayers().length).toEqual(100);
+  it('requests collections on startup', function() {
+    console.log(jasmine.Ajax.requests.count());
   });
 
 });
