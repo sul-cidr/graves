@@ -12,7 +12,7 @@ import router from './router';
 
 export default function start() {
 
-  ReactDOM.render(
+  let app = ReactDOM.render(
 
     <Provider store={store}>
       <App />
@@ -23,6 +23,8 @@ export default function start() {
   );
 
   router.init();
+
+  return app;
 
 }
 

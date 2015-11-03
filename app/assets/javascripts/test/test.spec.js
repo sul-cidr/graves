@@ -1,12 +1,21 @@
 
 
+import TestUtils from 'react-addons-test-utils';
+
 import start from '../src';
+import CollectionGroup from '../src/components/collection-group';
 
 
-describe('test', function() {
+describe('Collections', function() {
+
+  let group;
 
   beforeEach(function() {
-    start();
+
+    let app = start();
+    group = TestUtils.findRenderedComponentWithType(app, CollectionGroup);
+    console.log(group);
+
   });
 
   it('test1', function() {
