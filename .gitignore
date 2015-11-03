@@ -20,3 +20,6 @@
 /public/javascripts
 /public/stylesheets
 /public/assets
+
+/.grunt
+/_SpecRunner.html
