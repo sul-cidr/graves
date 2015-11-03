@@ -1,15 +1,8 @@
 
 
-import TestUtils from 'react-addons-test-utils';
-
 import start from '../src';
 import CollectionGroup from '../src/components/collection-group';
-
-
-function unwrap(tree, type) {
-  let component = TestUtils.findRenderedComponentWithType(tree, type);
-  return component.refs.wrappedInstance;
-}
+import { unwrap } from './utils';
 
 
 describe('Collections', function() {
