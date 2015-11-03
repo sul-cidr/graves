@@ -35,7 +35,7 @@ describe('Collections', function() {
 
     req.respondWith({
       status: 200,
-      responseText: JSON.stringify(collections),
+      responseText: collections,
     });
 
     expect(group.group.getLayers().length).toEqual(3);
