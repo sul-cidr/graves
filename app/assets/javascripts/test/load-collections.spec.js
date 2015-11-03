@@ -21,7 +21,12 @@ describe('Collections', function() {
   });
 
   it('requests collections on startup', function() {
-    console.log(jasmine.Ajax.requests.count());
+
+    let req = jasmine.Ajax.requests.filter(/collections/)[0];
+
+    expect(req.method).toEqual('GET');
+    expect(req.url).toEqual('/api/collections.json');
+
   });
 
 });
