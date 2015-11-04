@@ -8,6 +8,7 @@ import { unwrap } from './utils';
 import collections from './fixtures/collections.json';
 
 
+// TODO: Move to global beforeEach().
 jasmine.Ajax.install();
 
 
@@ -33,6 +34,7 @@ describe('Collections', function() {
 
     let req = jasmine.Ajax.requests.filter(/collections/)[0];
 
+    // TODO: respond200(req, body) helper.
     req.respondWith({
       status: 200,
       responseText: collections,
