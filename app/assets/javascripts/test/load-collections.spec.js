@@ -8,10 +8,6 @@ import * as utils from './utils';
 import collections from './fixtures/collections.json';
 
 
-// TODO: Move to global beforeEach().
-jasmine.Ajax.install();
-
-
 describe('Collections', function() {
 
   let group;
