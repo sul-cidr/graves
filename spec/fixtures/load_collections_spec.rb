@@ -19,7 +19,11 @@ describe API::CollectionsController, type: :controller do
 
       get :index
 
-      write_fixture('collections', response.body)
+      write_fixture(
+        'load-collections',
+        'display-markers',
+        response.body
+      )
 
     end
 
