@@ -13,7 +13,7 @@ module Helpers
   def write_fixture(suite, test, data)
 
     # Form the fixture path.
-    base = "#{Rails.root}/app/assets/javascripts/graves/test/fixtures/"
+    base = "#{Rails.root}/app/assets/javascripts/graves/test/"
     path = "#{base}/#{suite}/#{test}.json"
 
     # Ensure the directory exists.

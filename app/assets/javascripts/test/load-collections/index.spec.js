@@ -2,11 +2,11 @@
 
 import 'jasmine-ajax';
 
-import start from '../src';
-import CollectionGroup from '../src/components/collection-group';
-import * as utils from './utils';
+import start from '../../src';
+import CollectionGroup from '../../src/components/collection-group';
+import * as utils from '../utils';
 
-import markers from './fixtures/load-collections/display-markers.json';
+import displayMarkersJSON from './display-markers.json';
 
 
 describe('Collections', function() {
@@ -32,7 +32,7 @@ describe('Collections', function() {
 
     // Inject the fixture.
     let req = jasmine.Ajax.requests.filter(/collections/)[0];
-    utils.respond200(req, markers)
+    utils.respond200(req, displayMarkersJSON)
 
     expect(group.group.getLayers().length).toEqual(3);
 
