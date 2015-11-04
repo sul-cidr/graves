@@ -4,7 +4,7 @@ import 'jasmine-ajax';
 
 import start from '../src';
 import CollectionGroup from '../src/components/collection-group';
-import { unwrap } from './utils';
+import * as utils from './utils';
 import collections from './fixtures/collections.json';
 
 
@@ -18,11 +18,12 @@ describe('Collections', function() {
 
   beforeEach(function() {
     let app = start();
-    group = unwrap(app, CollectionGroup);
+    group = utils.unwrap(app, CollectionGroup);
   });
 
   it('requests collections on startup', function() {
 
+    // Get the collections request.
     let req = jasmine.Ajax.requests.filter(/collections/)[0];
 
     expect(req.method).toEqual('GET');
@@ -32,13 +33,9 @@ describe('Collections', function() {
 
   it('displays markers on the map', function() {
 
+    // Inject the fixture.
     let req = jasmine.Ajax.requests.filter(/collections/)[0];
-
-    // TODO: respond200(req, body) helper.
-    req.respondWith({
-      status: 200,
-      responseText: collections,
-    });
+    utils.respond200(req, collections)
 
     expect(group.group.getLayers().length).toEqual(3);
 

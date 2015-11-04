@@ -14,3 +14,17 @@ export function unwrap(tree, type) {
   let component = TestUtils.findRenderedComponentWithType(tree, type);
   return component.refs.wrappedInstance;
 }
+
+
+/**
+ * Respond 200 to a request.
+ *
+ * @param {FakeXMLHttpRequest} req
+ * @param {String} res
+ */
+export function respond200(req, res) {
+  req.respondWith({
+    status: 200,
+    responseText: res,
+  });
+}
