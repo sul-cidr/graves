@@ -13,9 +13,9 @@ describe API::CollectionsController, type: :controller do
 
     it "collections" do
 
-      create(:collection, geometry: Helpers::Geo.point(1, 2))
-      create(:collection, geometry: Helpers::Geo.point(3, 4))
-      create(:collection, geometry: Helpers::Geo.point(5, 6))
+      create(:collection, id: 1, geometry: Helpers::Geo.point(1, 2))
+      create(:collection, id: 2, geometry: Helpers::Geo.point(3, 4))
+      create(:collection, id: 3, geometry: Helpers::Geo.point(5, 6))
 
       get :index
 

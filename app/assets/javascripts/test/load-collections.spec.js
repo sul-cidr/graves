@@ -8,16 +8,16 @@ import { unwrap } from './utils';
 import collections from './fixtures/collections.json';
 
 
+jasmine.Ajax.install();
+
+
 describe('Collections', function() {
 
   let group;
-  jasmine.Ajax.install();
 
   beforeEach(function() {
-
     let app = start();
     group = unwrap(app, CollectionGroup);
-
   });
 
   it('requests collections on startup', function() {
@@ -39,6 +39,21 @@ describe('Collections', function() {
     });
 
     expect(group.group.getLayers().length).toEqual(3);
+
+    expect(group.idToLayer[1].getLatLng()).toEqual({
+      lng: 1,
+      lat: 2,
+    });
+
+    expect(group.idToLayer[2].getLatLng()).toEqual({
+      lng: 3,
+      lat: 4,
+    });
+
+    expect(group.idToLayer[3].getLatLng()).toEqual({
+      lng: 5,
+      lat: 6,
+    });
 
   });
 
