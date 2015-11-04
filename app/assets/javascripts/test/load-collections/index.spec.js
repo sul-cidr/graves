@@ -53,4 +53,6 @@ describe('Collections', function() {
 
   });
 
+  it('shows a tooltip on hover');
+
 });

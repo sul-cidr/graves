@@ -6,26 +6,22 @@ describe API::CollectionsController, type: :controller do
   render_views
 
   before(:each) do
-    request.headers["Accept"] = "application/json"
+    request.headers['Accept'] = 'application/json'
   end
 
-  describe "GET #index" do
+  it 'display markers' do
 
-    it "collections" do
+    create(:collection, id: 1, geometry: Helpers::Geo.point(1, 2))
+    create(:collection, id: 2, geometry: Helpers::Geo.point(3, 4))
+    create(:collection, id: 3, geometry: Helpers::Geo.point(5, 6))
 
-      create(:collection, id: 1, geometry: Helpers::Geo.point(1, 2))
-      create(:collection, id: 2, geometry: Helpers::Geo.point(3, 4))
-      create(:collection, id: 3, geometry: Helpers::Geo.point(5, 6))
+    get :index
 
-      get :index
-
-      write_fixture(
-        'load-collections',
-        'display-markers',
-        response.body
-      )
-
-    end
+    write_fixture(
+      'load-collections',
+      'display-markers',
+      response.body
+    )
 
   end
 
