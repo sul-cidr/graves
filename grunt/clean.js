@@ -1,5 +1,11 @@
 
 
 export default {
-  dist: 'public/assets'
+
+  // JS/CSS payloads.
+  dist: 'public/assets',
+
+  // Jasmine fixtures.
+  fixtures: 'app/assets/javascripts/graves/test/*/*.json',
+
 };
