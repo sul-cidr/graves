@@ -6,7 +6,8 @@ import start from '../src';
 import CollectionGroup from '../src/components/collection-group';
 import * as utils from './utils';
 
-import markersJSON from './fixtures/load-collections/markers.json';
+import markersJSON from './fixtures/collections/markers.json';
+import tooltipsJSON from './fixtures/collections/tooltips.json';
 
 
 jasmine.Ajax.install();
@@ -51,6 +52,18 @@ describe('Collections', function() {
     expect(group.idToLayer[3].getLatLng()).toEqual({
       lng: 5,
       lat: 6,
+    });
+
+  });
+
+  xdescribe('shows a tooltip on hover', function() {
+
+    beforeEach(function() {
+      utils.respondCollections(tooltipsJSON);
+    });
+
+    it('when a town is resolved', function() {
+      console.log(group.idToLayer[1]);
     });
 
   });

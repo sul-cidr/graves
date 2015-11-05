@@ -18,7 +18,7 @@ describe API::CollectionsController, type: :controller do
     get :index
 
     write_fixture(
-      'load-collections',
+      'collections',
       'markers',
       response.body
     )
@@ -54,7 +54,7 @@ describe API::CollectionsController, type: :controller do
     get :index
 
     write_fixture(
-      'load-collections',
+      'collections',
       'tooltips',
       response.body
     )

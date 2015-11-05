@@ -13,8 +13,15 @@ export default {
   },
 
   stylesheets: {
-    files: 'app/assets/**/*.less',
+    files: '<%= src.css %>/*.less',
     tasks: 'less'
+  },
+
+  jasmine: {
+    files: '<%= src.js %>/test/*.spec.js',
+    options: {
+      reload: true
+    }
   }
 
 };
