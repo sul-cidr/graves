@@ -28,3 +28,14 @@ export function respond200(req, res) {
     responseText: res,
   });
 }
+
+
+/**
+ * Inject a collections fixture.
+ *
+ * @param {String} res
+ */
+export function respondCollections(res) {
+  let req = jasmine.Ajax.requests.filter(/collections/)[0];
+  respond200(req, res)
+}

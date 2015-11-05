@@ -34,8 +34,7 @@ describe('Collections', function() {
   it('displays markers on the map', function() {
 
     // Inject the fixture.
-    let req = jasmine.Ajax.requests.filter(/collections/)[0];
-    utils.respond200(req, markersJSON)
+    utils.respondCollections(markersJSON);
 
     expect(group.group.getLayers().length).toEqual(3);
 
