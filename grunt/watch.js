@@ -15,13 +15,6 @@ export default {
   stylesheets: {
     files: '<%= src.css %>/*.less',
     tasks: 'less'
-  },
-
-  jasmine: {
-    files: '<%= src.js %>/test/*.spec.js',
-    options: {
-      reload: true
-    }
   }
 
 };

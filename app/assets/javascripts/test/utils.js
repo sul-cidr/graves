@@ -37,5 +37,5 @@ export function respond200(req, res) {
  */
 export function respondCollections(res) {
   let req = jasmine.Ajax.requests.filter(/collections/)[0];
-  respond200(req, res)
+  respond200(req, res);
 }
