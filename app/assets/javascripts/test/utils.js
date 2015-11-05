@@ -3,7 +3,7 @@
 import 'jasmine-ajax';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import startGraves from '../src';
+import { mount } from '../src';
 
 
 /**
@@ -11,7 +11,7 @@ import startGraves from '../src';
  */
 export function start() {
   jasmine.Ajax.install();
-  return startGraves();
+  return mount();
 }
 
 

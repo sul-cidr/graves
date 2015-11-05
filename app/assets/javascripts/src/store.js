@@ -10,4 +10,4 @@ const createStoreWithMiddleware = compose(
 )(createStore);
 
 
-export default createStoreWithMiddleware(reducers);
+export default createStoreWithMiddleware;

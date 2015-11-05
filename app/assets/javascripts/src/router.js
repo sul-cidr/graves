@@ -1,7 +1,7 @@
 
 
 import { Router } from 'director';
-import store from './store';
+import { store } from '.';
 
 import {
   showSplash,
