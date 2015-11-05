@@ -25,4 +25,37 @@ describe API::CollectionsController, type: :controller do
 
   end
 
+  it 'show tooltip' do
+
+    create(
+      :collection,
+      id: 1,
+      geometry: Helpers::Geo.point(0, 0),
+      town_p: 'town',
+    )
+
+    create(
+      :collection,
+      id: 2,
+      geometry: Helpers::Geo.point(0, 0),
+      county_p: 'county',
+    )
+
+    create(
+      :collection,
+      id: 3,
+      geometry: Helpers::Geo.point(0, 0),
+      province_p: 'province',
+    )
+
+    get :index
+
+    write_fixture(
+      'load-collections',
+      'show-tooltip',
+      response.body
+    )
+
+  end
+
 end
