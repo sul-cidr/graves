@@ -32,6 +32,8 @@ describe API::CollectionsController, type: :controller do
       id: 1,
       geometry: Helpers::Geo.point(0, 0),
       town_p: 'town',
+      county_p: 'county',
+      province_p: 'province',
     )
 
     create(
@@ -39,6 +41,7 @@ describe API::CollectionsController, type: :controller do
       id: 2,
       geometry: Helpers::Geo.point(0, 0),
       county_p: 'county',
+      province_p: 'province',
     )
 
     create(
