@@ -1,6 +1,27 @@
 
 
+import 'jasmine-ajax';
+import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
+import startGraves from '../src';
+
+
+/**
+ * Mock the environment and start the app.
+ */
+export function start() {
+  jasmine.Ajax.install();
+  return startGraves();
+}
+
+
+/**
+ * Start the app.
+ */
+export function stop() {
+  ReactDOM.unmountComponentAtNode(document.getElementById('root'));
+  jasmine.Ajax.uninstall();
+}
 
 
 /**

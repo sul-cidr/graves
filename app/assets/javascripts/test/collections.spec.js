@@ -1,11 +1,7 @@
 
 
-import 'jasmine-ajax';
-import ReactDOM from 'react-dom';
-
-import start from '../src';
-import CollectionGroup from '../src/components/collection-group';
 import * as utils from './utils';
+import CollectionGroup from '../src/components/collection-group';
 
 import markersJSON from './fixtures/collections/markers.json';
 import tooltipsJSON from './fixtures/collections/tooltips.json';
@@ -16,17 +12,12 @@ describe('Collections', function() {
   let group;
 
   beforeEach(function() {
-
-    jasmine.Ajax.install();
-
-    let app = start();
+    let app = utils.start();
     group = utils.unwrap(app, CollectionGroup);
-
   });
 
   afterEach(function() {
-    ReactDOM.unmountComponentAtNode(document.getElementById('root'));
-    jasmine.Ajax.uninstall();
+    utils.stop();
   });
 
   it('requests collections on startup', function() {
