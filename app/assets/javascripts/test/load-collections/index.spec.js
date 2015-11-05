@@ -9,6 +9,9 @@ import * as utils from '../utils';
 import displayMarkersJSON from './display-markers.json';
 
 
+jasmine.Ajax.install();
+
+
 describe('Collections', function() {
 
   let group;
