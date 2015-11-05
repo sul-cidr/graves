@@ -6,7 +6,7 @@ export default {
     options: {
       specs: '<%= dist.js %>/graves-test.js',
       styles: '<%= dist.css %>/graves.css',
-      template: '<%= src.js %>/graves/test/runner.tmpl',
+      template: '<%= src.js %>/test/runner.tmpl',
     }
   }
 

@@ -19,13 +19,13 @@ describe API::CollectionsController, type: :controller do
 
     write_fixture(
       'load-collections',
-      'display-markers',
+      'markers',
       response.body
     )
 
   end
 
-  it 'show tooltip' do
+  it 'show tooltips' do
 
     create(
       :collection,
@@ -55,7 +55,7 @@ describe API::CollectionsController, type: :controller do
 
     write_fixture(
       'load-collections',
-      'show-tooltip',
+      'tooltips',
       response.body
     )
 

@@ -7,7 +7,7 @@ export default {
   },
 
   graves: {
-    src: '<%= src.css %>/graves/index.less',
+    src: '<%= src.css %>/index.less',
     dest: '<%= dist.css %>/graves.css'
   }
 
