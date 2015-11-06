@@ -117,12 +117,13 @@ export default class extends Component {
    */
   render() {
 
-    let cx = classNames('lonlats', 'animated', {
+    let cx = classNames('animated', {
       bounceIn: this.state.bounce
     });
 
     return (
       <input
+        id="copy-lonlat"
         className={cx}
         value={`${this.state.lon},${this.state.lat}`}
         readOnly
