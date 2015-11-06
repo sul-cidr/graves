@@ -9,7 +9,7 @@ describe API::CollectionsController, type: :controller do
     request.headers['Accept'] = 'application/json'
   end
 
-  it 'display markers' do
+  it 'add markers' do
 
     create(:collection, id: 1, geometry: Helpers::Geo.point(1, 2))
     create(:collection, id: 2, geometry: Helpers::Geo.point(3, 4))
@@ -18,14 +18,14 @@ describe API::CollectionsController, type: :controller do
     get :index
 
     write_fixture(
-      'collections',
-      'markers',
+      'collection-markers',
+      'add-markers',
       response.body
     )
 
   end
 
-  it 'show tooltips' do
+  it 'show tooltip' do
 
     create(
       :collection,
@@ -54,8 +54,8 @@ describe API::CollectionsController, type: :controller do
     get :index
 
     write_fixture(
-      'collections',
-      'tooltips',
+      'collection-markers',
+      'show-tooltip',
       response.body
     )
 

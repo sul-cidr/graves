@@ -7,12 +7,14 @@ import $ from 'jquery';
 import CollectionGroup from '../src/components/collection-group';
 import * as utils from './utils';
 
-// FIXTURES
-import markersJSON from './fixtures/collections/markers.json';
-import tooltipsJSON from './fixtures/collections/tooltips.json';
+import addMarkersJSON from
+'./fixtures/collection-markers/add-markers.json';
+
+import showTooltipJSON from
+'./fixtures/collection-markers/show-tooltip.json';
 
 
-describe('Collections', function() {
+describe('Collection Markers', function() {
 
   let group;
 
@@ -35,10 +37,10 @@ describe('Collections', function() {
 
   });
 
-  it('displays markers on the map', function() {
+  it('adds markers to the map', function() {
 
     // Inject the fixture.
-    utils.respondCollections(markersJSON);
+    utils.respondCollections(addMarkersJSON);
 
     expect(group.group.getLayers().length).toEqual(3);
 
@@ -62,7 +64,7 @@ describe('Collections', function() {
   describe('shows a tooltip on hover', function() {
 
     beforeEach(function() {
-      utils.respondCollections(tooltipsJSON);
+      utils.respondCollections(showTooltipJSON);
     });
 
     it('uses the town as the label, when possible', function() {
