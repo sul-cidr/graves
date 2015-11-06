@@ -1,5 +1,6 @@
 
 
+import $ from 'jquery';
 import fetch from 'isomorphic-fetch';
 
 import {
@@ -18,9 +19,9 @@ export function loadCounties() {
     // Notify start.
     dispatch(requestCounties());
 
-    fetch('/api/counties.json')
-    .then(res => res.json())
-    .then(json => dispatch(receiveCounties(json)));
+    $.getJSON('/api/counties.json', json => {
+      dispatch(receiveCounties(json));
+    })
 
   };
 }

@@ -1,5 +1,6 @@
 
 
+import $ from 'jquery';
 import fetch from 'isomorphic-fetch';
 
 import {
@@ -19,9 +20,9 @@ export function loadNarrative(slug) {
     // Notify start.
     dispatch(requestNarrative());
 
-    fetch(`/api/narratives/${slug}.json`)
-    .then(res => res.json())
-    .then(model => dispatch(receiveNarrative(model)));
+    $.getJSON(`/api/narratives/${slug}.json`, model => {
+      dispatch(receiveNarrative(model));
+    })
 
   };
 }

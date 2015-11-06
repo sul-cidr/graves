@@ -1,8 +1,12 @@
 
 
-import * as utils from './utils';
-import CollectionGroup from '../src/components/collection-group';
+import 'jasmine-jquery';
 
+import L from 'leaflet';
+import CollectionGroup from '../src/components/collection-group';
+import * as utils from './utils';
+
+// FIXTURES
 import markersJSON from './fixtures/collections/markers.json';
 import tooltipsJSON from './fixtures/collections/tooltips.json';
 
@@ -60,9 +64,9 @@ describe('Collections', function() {
       utils.respondCollections(tooltipsJSON);
     });
 
-    it('when a town is resolved', function() {
-      console.log(group.idToLayer[1]);
-    });
+    it('uses the town as the label, when possible');
+    it('uses the county as the label, when possible');
+    it('falls back to the province as the label');
 
   });
 
