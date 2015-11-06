@@ -22,7 +22,5 @@ before_script:
 
 after_script:
 
-  - npm install -g grunt-cli
   - npm install
-  - grunt compile
-  - grunt jasmine
+  - npm test
