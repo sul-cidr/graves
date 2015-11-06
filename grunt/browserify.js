@@ -32,7 +32,7 @@ export default {
   },
 
   graves_test: {
-    src: '<%= src.js %>/test/*.spec.js',
+    src: '<%= src.js %>/test/index.js',
     dest: '<%= dist.js %>/graves-test.js'
   }
 
