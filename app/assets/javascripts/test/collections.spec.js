@@ -3,6 +3,7 @@
 import 'jasmine-jquery';
 
 import L from 'leaflet';
+import $ from 'jquery';
 import CollectionGroup from '../src/components/collection-group';
 import * as utils from './utils';
 
@@ -64,10 +65,42 @@ describe('Collections', function() {
       utils.respondCollections(tooltipsJSON);
     });
 
-    it('uses the town as the label, when possible');
-    it('uses the county as the label, when possible');
-    it('falls back to the province as the label');
+    it('uses the town as the label, when possible', function() {
+
+      // Hover on collection with town.
+      group.group.fire('mouseover', {
+        layer: group.idToLayer[1]
+      });
+
+      expect($('.leaflet-popup-content')).toHaveText('town');
+
+    });
+
+    it('uses the county as the label, when possible', function() {
+
+      // Hover on collection with county.
+      group.group.fire('mouseover', {
+        layer: group.idToLayer[2]
+      });
+
+      expect($('.leaflet-popup-content')).toHaveText('county');
+
+    });
+
+    it('falls back to the province as the label', function() {
+
+      // Hover on collection with province.
+      group.group.fire('mouseover', {
+        layer: group.idToLayer[3]
+      });
+
+      expect($('.leaflet-popup-content')).toHaveText('province');
+
+    });
 
   });
+
+  it('hides the tooltip on blur');
+  it('shows metadata on click');
 
 });
