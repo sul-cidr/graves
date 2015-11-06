@@ -20,5 +20,9 @@ before_script:
   - psql -c "CREATE DATABASE graves_legacy;" -U postgres
   - cp config/database.yml.travis config/database.yml
 
+after_script:
+
   - npm install -g grunt-cli
   - npm install
+  - grunt compile
+  - grunt jasmine
