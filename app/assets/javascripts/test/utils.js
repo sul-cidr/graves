@@ -4,6 +4,7 @@ import 'jasmine-ajax';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { mount } from '../src';
+import router from '../src/router';
 
 
 /**
@@ -59,4 +60,25 @@ export function respond200(req, res) {
 export function respondCollections(res) {
   let req = jasmine.Ajax.requests.filter(/collections/)[0];
   respond200(req, res);
+}
+
+
+/**
+ * Inject a narrative fixture.
+ *
+ * @param {String} res
+ */
+export function respondNarrative(res) {
+  let req = jasmine.Ajax.requests.filter(/narratives/)[0];
+  respond200(req, res);
+}
+
+
+/**
+ * Navigate to a narrative.
+ *
+ * @param {String} slug
+ */
+export function navToNarrative(slug) {
+  router.setRoute(`read/${slug}`);
 }

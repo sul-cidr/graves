@@ -18,6 +18,7 @@ export default Router({
 
   '/read/:slug': slug => {
     store.dispatch(showNarrative(slug));
+    console.log(slug);
   },
 
   '/explore': () => {
