@@ -1,11 +1,12 @@
 
 require 'rails_helper'
 
-describe API::CollectionsController, type: :controller do
+describe 'Collection Markers', type: :controller do
 
   render_views
 
   before(:each) do
+    @controller = API::CollectionsController.new
     request.headers['Accept'] = 'application/json'
   end
 

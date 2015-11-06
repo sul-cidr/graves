@@ -12,7 +12,14 @@
 #
 
 FactoryGirl.define do
+
+  sequence :narrative_slug do |n|
+    "narrative-#{n}"
+  end
+
   factory :narrative do
     author
+    slug { generate(:narrative_slug) }
   end
+
 end
