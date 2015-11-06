@@ -61,4 +61,18 @@ describe API::CollectionsController, type: :controller do
 
   end
 
+  it 'hide tooltip' do
+
+    create(:collection, id: 1, geometry: Helpers::Geo.point(0, 0))
+
+    get :index
+
+    write_fixture(
+      'collection-markers',
+      'hide-tooltip',
+      response.body
+    )
+
+  end
+
 end

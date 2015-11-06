@@ -13,6 +13,9 @@ import addMarkersJSON from
 import showTooltipJSON from
 './fixtures/collection-markers/show-tooltip.json';
 
+import hideTooltipJSON from
+'./fixtures/collection-markers/hide-tooltip.json';
+
 
 describe('Collection Markers', function() {
 
@@ -102,7 +105,24 @@ describe('Collection Markers', function() {
 
   });
 
-  it('hides the tooltip on blur');
+  it('hides the tooltip on blur', function() {
+
+    utils.respondCollections(hideTooltipJSON);
+
+    // Hover.
+    group.group.fire('mouseover', {
+      layer: group.idToLayer[1]
+    });
+
+    // Blur.
+    group.group.fire('mouseout', {
+      layer: group.idToLayer[1]
+    });
+
+    expect($('.leaflet-popup')).not.toBeInDOM();
+
+  });
+
   it('shows metadata on click');
 
 });
