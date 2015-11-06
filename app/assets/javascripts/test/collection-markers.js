@@ -25,12 +25,7 @@ describe('Collection Markers', function() {
   let group;
 
   beforeEach(function() {
-    let app = utils.start();
-    group = utils.unwrap(app, CollectionGroup);
-  });
-
-  afterEach(function() {
-    utils.stop();
+    group = utils.unwrap(GRAVES, CollectionGroup);
   });
 
   it('requests collections on startup', function() {

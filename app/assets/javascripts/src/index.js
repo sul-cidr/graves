@@ -24,9 +24,10 @@ export function mount() {
     document.getElementById('root')
   );
 
-  // Listen for routes.
   router.init();
 
+  // For Jasmine.
+  window.GRAVES = app;
   return app;
 
 }

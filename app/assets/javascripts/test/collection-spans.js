@@ -14,14 +14,6 @@ import showLineNarrativeJSON from
 
 describe('Collection Spans', function() {
 
-  beforeEach(function() {
-    utils.start();
-  });
-
-  afterEach(function() {
-    utils.stop();
-  });
-
   xit('shows a highlight line on hover', function() {
 
     utils.navToNarrative('narrative');
