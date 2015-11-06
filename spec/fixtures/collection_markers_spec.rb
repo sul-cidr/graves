@@ -75,4 +75,18 @@ describe API::CollectionsController, type: :controller do
 
   end
 
+  it 'show modal' do
+
+    create(:collection, id: 1, geometry: Helpers::Geo.point(0, 0))
+
+    get :index
+
+    write_fixture(
+      'collection-markers',
+      'show-modal',
+      response.body
+    )
+
+  end
+
 end

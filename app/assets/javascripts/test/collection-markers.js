@@ -16,6 +16,9 @@ import showTooltipJSON from
 import hideTooltipJSON from
 './fixtures/collection-markers/hide-tooltip.json';
 
+import showModalJSON from
+'./fixtures/collection-markers/show-modal.json';
+
 
 describe('Collection Markers', function() {
 
@@ -123,6 +126,18 @@ describe('Collection Markers', function() {
 
   });
 
-  it('shows metadata on click');
+  it('shows metadata on click', function() {
+
+    utils.respondCollections(showModalJSON);
+
+    // Select.
+    group.group.fire('click', {
+      layer: group.idToLayer[1]
+    });
+
+    expect($('.modal.collection')).toBeVisible();
+    expect($('.modal-title')).toHaveText('Collection #1');
+
+  });
 
 });

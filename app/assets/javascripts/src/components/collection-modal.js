@@ -71,7 +71,11 @@ export default class extends Component {
 
       return (
 
-        <Modal show={this.state.show} onHide={this.onHide.bind(this)}>
+        <Modal
+          show={this.state.show}
+          onHide={this.onHide.bind(this)}
+          className="collection"
+        >
 
           <Modal.Header closeButton>
             <Modal.Title>
