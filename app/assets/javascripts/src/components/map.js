@@ -2,9 +2,11 @@
 
 import L from 'leaflet';
 import React, { PropTypes } from 'react';
+import Mousetrap from 'mousetrap';
 import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
 
+import * as actions from '../actions/editor';
 import Component from './component';
 import CopyLonLat from './copy-lonlat';
 import CollectionGroup from './collection-group';
@@ -12,9 +14,9 @@ import CollectionModal from './collection-modal';
 import CollectionLegend from './collection-legend';
 import CountyGroup from './county-group';
 import SectionGroup from './section-group';
+import MapLine from './map-line';
 import CDCPicker from './cdc-picker';
 import MiniMap from './mini-map';
-import MapLine from './map-line';
 
 import {
   MAP,
@@ -22,9 +24,12 @@ import {
 } from '../constants';
 
 
-@connect(state => ({
-  editing: state.editor.active
-}))
+@connect(
+  state => ({
+    editing: state.editor.active
+  }),
+  actions
+)
 export default class extends Component {
 
 
@@ -66,6 +71,7 @@ export default class extends Component {
    */
   componentDidMount() {
     this._initLeaflet();
+    this._listenForEdit();
   }
 
 
@@ -103,6 +109,16 @@ export default class extends Component {
 
     this.setState({ map: map });
 
+  }
+
+
+  /**
+   * Toggle edit mode with control+e.
+   */
+  _listenForEdit() {
+    Mousetrap.bind(['command+e', 'ctrl+e'], () => {
+      this.props.toggleEditor();
+    });
   }
 
 
