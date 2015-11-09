@@ -55,7 +55,7 @@ export default class extends Component {
    * Tear down router.
    */
   componentWillUnmount() {
-    // TODO
+    this.router.destroy();
   }
 
 
