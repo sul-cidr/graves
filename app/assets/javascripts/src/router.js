@@ -24,6 +24,7 @@ export default function createRouter(store) {
 
     '/read/:slug': slug => {
       store.dispatch(showNarrative(slug));
+      console.log(slug);
     },
 
     '/explore': () => {

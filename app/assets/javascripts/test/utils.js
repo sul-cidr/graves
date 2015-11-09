@@ -86,6 +86,6 @@ export function respondNarrative(res) {
  * @param {Function} cb
  */
 export function navigate(route, cb) {
-  GRAVES.router.setRoute(route);
+  window.location.hash = route;
   setTimeout(cb, 1);
 }
