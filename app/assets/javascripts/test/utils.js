@@ -4,18 +4,15 @@ import 'jasmine-ajax';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { mount } from '../src';
+import App from '../src/components/app';
 
 
 /**
  * Mock the environment and start the app.
  */
 export function start() {
-
   jasmine.Ajax.install();
-  let app = mount();
-
-  window.GRAVES = app;
-
+  window.GRAVES = mount();
 }
 
 
@@ -23,10 +20,8 @@ export function start() {
  * Start the app.
  */
 export function stop() {
-
   ReactDOM.unmountComponentAtNode(document.getElementById('root'));
   jasmine.Ajax.uninstall();
-
 }
 
 
@@ -85,6 +80,6 @@ export function respondNarrative(res) {
  * @param {String} route
  * @param {Function} cb
  */
-export function navigate(route, cb) {
-  window.location.hash = route;
+export function navigate(route) {
+  unwrap(GRAVES, App).router.dispatch('on', route);
 }

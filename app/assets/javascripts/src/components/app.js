@@ -37,7 +37,6 @@ export default class extends Component {
 
       '/read/:slug': slug => {
         this.props.showNarrative(slug);
-        console.log(slug);
       },
 
       '/explore': () => {
@@ -47,6 +46,7 @@ export default class extends Component {
     });
 
     this.router.init();
+    window.ROUTER = this.router;
 
   }
 
@@ -55,6 +55,7 @@ export default class extends Component {
    * Tear down router.
    */
   componentWillUnmount() {
+    this.router.setRoute();
     this.router.destroy();
   }
 

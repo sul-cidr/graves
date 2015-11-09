@@ -16,7 +16,7 @@ describe('Collection Spans', function() {
 
   it('shows a highlight line on hover', function() {
 
-    utils.navigate('read/narrative');
+    utils.navigate('/read/narrative');
 
     utils.respondCollections(showLineCollectionsJSON);
     utils.respondNarrative(showLineNarrativeJSON);
