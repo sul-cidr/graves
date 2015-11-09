@@ -87,5 +87,4 @@ export function respondNarrative(res) {
  */
 export function navigate(route, cb) {
   window.location.hash = route;
-  setTimeout(cb, 1);
 }

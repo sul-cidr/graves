@@ -14,21 +14,18 @@ import showLineNarrativeJSON from
 
 describe('Collection Spans', function() {
 
-  it('shows a highlight line on hover', function(done) {
+  it('shows a highlight line on hover', function() {
 
-    utils.navigate('read/narrative', function() {
+    utils.navigate('read/narrative');
 
-      utils.respondCollections(showLineCollectionsJSON);
-      utils.respondNarrative(showLineNarrativeJSON);
+    utils.respondCollections(showLineCollectionsJSON);
+    utils.respondNarrative(showLineNarrativeJSON);
 
-      // Hover on the span.
-      $('.collection[data-id="1"]').trigger('mouseenter');
-      let line = $('#map-line line');
+    // Hover on the span.
+    $('.collection[data-id="1"]').trigger('mouseenter');
+    let line = $('#map-line line');
 
-      expect(line).toBeInDOM();
-      done();
-
-    });
+    expect(line).toBeInDOM();
 
   });
 
