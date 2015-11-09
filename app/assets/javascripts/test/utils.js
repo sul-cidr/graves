@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { mount } from '../src';
 import App from '../src/components/app';
+import Map from '../src/components/map';
 
 
 /**
@@ -82,4 +83,14 @@ export function respondNarrative(res) {
  */
 export function navigate(route) {
   unwrap(GRAVES, App).router.dispatch('on', route);
+}
+
+
+/**
+ * Pluck out the Leaflet map instance.
+ *
+ * @return {Leaflet.Map}
+ */
+export function getLeaflet() {
+  unwrap(GRAVES, Map).state.map;
 }
