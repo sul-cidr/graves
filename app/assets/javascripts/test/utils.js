@@ -82,8 +82,10 @@ export function respondNarrative(res) {
 /**
  * Navigate to a narrative.
  *
- * @param {String} slug
+ * @param {String} route
+ * @param {Function} cb
  */
-export function navToNarrative(slug) {
-  GRAVES.router.setRoute(`read/${slug}`);
+export function navigate(route, cb) {
+  GRAVES.router.setRoute(route);
+  setTimeout(cb, 1);
 }
