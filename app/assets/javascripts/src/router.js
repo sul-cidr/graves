@@ -1,7 +1,6 @@
 
 
 import { Router } from 'director';
-import { store } from '.';
 
 import {
   showSplash,
@@ -10,19 +9,27 @@ import {
 } from './actions/route';
 
 
-export default Router({
+/**
+ * Listen for routes.
+ *
+ * @param {Object} store
+ */
+export default function createRouter(store) {
 
-  '/': () => {
-    store.dispatch(showSplash());
-  },
+  return Router({
 
-  '/read/:slug': slug => {
-    store.dispatch(showNarrative(slug));
-    console.log(slug);
-  },
+    '/': () => {
+      store.dispatch(showSplash());
+    },
 
-  '/explore': () => {
-    store.dispatch(showExplore());
-  },
+    '/read/:slug': slug => {
+      store.dispatch(showNarrative(slug));
+    },
 
-});
+    '/explore': () => {
+      store.dispatch(showExplore());
+    },
+
+  });
+
+}

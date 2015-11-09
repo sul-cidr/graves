@@ -4,15 +4,18 @@ import 'jasmine-ajax';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { mount } from '../src';
-import router from '../src/router';
 
 
 /**
  * Mock the environment and start the app.
  */
 export function start() {
+
   jasmine.Ajax.install();
-  return mount();
+  let app = mount();
+
+  window.GRAVES = app;
+
 }
 
 
@@ -20,8 +23,10 @@ export function start() {
  * Start the app.
  */
 export function stop() {
+
   ReactDOM.unmountComponentAtNode(document.getElementById('root'));
   jasmine.Ajax.uninstall();
+
 }
 
 
@@ -80,5 +85,5 @@ export function respondNarrative(res) {
  * @param {String} slug
  */
 export function navToNarrative(slug) {
-  router.setRoute(`read/${slug}`);
+  GRAVES.router.setRoute(`read/${slug}`);
 }

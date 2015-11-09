@@ -5,18 +5,19 @@ import 'babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import page from 'page';
 import createStore from './store';
 import App from './components/app';
-import router from './router';
+import createRouter from './router';
 import reducers from './reducers';
 
 
-export var store;
-
-
+/**
+ * Render the application.
+ */
 export function mount() {
 
-  store = createStore(reducers);
+  let store = createStore(reducers);
 
   // Mount the app.
   let app = ReactDOM.render(
@@ -24,10 +25,10 @@ export function mount() {
     document.getElementById('root')
   );
 
-  router.init();
+  // Listen for routes.
+  app.router = createRouter(store);
+  app.router.init();
 
-  // For Jasmine.
-  window.GRAVES = app;
   return app;
 
 }
