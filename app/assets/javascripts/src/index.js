@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import page from 'page';
 import createStore from './store';
 import App from './components/app';
-import createRouter from './router';
 import reducers from './reducers';
 
 
@@ -24,10 +23,6 @@ export function mount() {
     <Provider store={store}><App /></Provider>,
     document.getElementById('root')
   );
-
-  // Listen for routes.
-  app.router = createRouter(store);
-  app.router.init();
 
   return app;
 
