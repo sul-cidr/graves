@@ -92,5 +92,5 @@ export function navigate(route) {
  * @return {Leaflet.Map}
  */
 export function getLeaflet() {
-  unwrap(GRAVES, Map).state.map;
+  return unwrap(GRAVES, Map).state.map;
 }

@@ -121,6 +121,8 @@ export default class extends Component {
    */
   scale(first) {
 
+    if (!this.bounds) return;
+
     // Top right.
     let tl = this.context.map.latLngToLayerPoint([
       this.bounds[0][0],

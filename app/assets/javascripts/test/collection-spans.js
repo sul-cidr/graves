@@ -30,12 +30,14 @@ describe('Collection Spans', function() {
 
   });
 
-  it('focuses the map on click', function() {
+  it('focuses the map on click', function(done) {
 
     $('.collection[data-id="1"]').trigger('click');
 
-    // TODO
-    console.log(utils.getLeaflet());
+    setTimeout(function() {
+      console.log(utils.getLeaflet().getCenter());
+      done();
+    }, 3000);
 
   });
 
