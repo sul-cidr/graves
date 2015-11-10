@@ -1,5 +1,6 @@
 
 
+import 'jasmine-jquery';
 import * as utils from './utils';
 
 
@@ -14,3 +15,4 @@ afterEach(function() {
 
 import './collection-markers';
 import './collection-spans';
+import './anchor-spans';

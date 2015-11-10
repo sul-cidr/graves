@@ -1,10 +1,7 @@
 
 
-import 'jasmine-jquery';
-
 import _ from 'lodash';
 import $ from 'jquery';
-import L from 'leaflet';
 import * as utils from './utils';
 
 import dataIdCollectionsJSON from

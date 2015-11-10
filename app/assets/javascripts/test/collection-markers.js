@@ -1,7 +1,5 @@
 
 
-import 'jasmine-jquery';
-
 import L from 'leaflet';
 import $ from 'jquery';
 import CollectionGroup from '../src/components/collection-group';
