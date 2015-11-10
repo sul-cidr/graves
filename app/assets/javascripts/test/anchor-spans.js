@@ -31,7 +31,25 @@ describe('Anchor Spans', function() {
 
     });
 
-    it('focuses the map on click');
+    it('focuses the map on click', function(done) {
+
+      // Click on the span.
+      $('.anchor:first-child').trigger('click');
+
+      setTimeout(function() {
+
+        let {
+          lng: lon,
+          lat: lat,
+        } = utils.getLeaflet().getCenter();
+
+        expect(lon).toEqual(1);
+        expect(lat).toEqual(2);
+        done();
+
+      }, 2000);
+
+    });
 
   });
 
