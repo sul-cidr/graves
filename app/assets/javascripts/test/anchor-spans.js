@@ -6,6 +6,9 @@ import * as utils from './utils';
 import dataFocusNarrativeJSON from
 './fixtures/anchor-spans/data-focus.narrative.json';
 
+import dataZoomNarrativeJSON from
+'./fixtures/anchor-spans/data-zoom.narrative.json';
+
 
 describe('Anchor Spans', function() {
 
@@ -52,5 +55,26 @@ describe('Anchor Spans', function() {
     });
 
   });
+
+  describe('data-zoom', function() {
+
+    beforeEach(function() {
+      utils.respondNarrative(dataZoomNarrativeJSON);
+    });
+
+    it('applies a custom zoom level on click', function(done) {
+
+      // Click on the span.
+      $('.anchor:first-child').trigger('click');
+
+      setTimeout(function() {
+        let zoom = utils.getLeaflet().getZoom();
+        expect(zoom).toEqual(1);
+        done();
+      }, 2000);
+
+    });
+
+  })
 
 });
