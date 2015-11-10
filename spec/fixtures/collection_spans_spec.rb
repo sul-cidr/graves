@@ -16,7 +16,7 @@ describe 'Collection Spans', type: :controller do
     create(
       :collection,
       id: 1,
-      geometry: Helpers::Geo.point(0, 0)
+      geometry: Helpers::Geo.point(1, 2)
     )
 
     @controller = API::CollectionsController.new

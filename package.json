@@ -30,6 +30,7 @@
     "jasmine-ajax": "^3.2.0",
     "jit-grunt": "^0.9.1",
     "load-grunt-config": "^0.17.2",
+    "mock-raf": "0.0.2",
     "react-addons-test-utils": "^0.14.2",
     "time-grunt": "^1.2.1",
     "yamlify": "^0.1.2"
@@ -62,6 +63,7 @@
     "react-select": "^0.8.1",
     "redux": "^2.0.0",
     "redux-thunk": "^0.1.0",
+    "sinon": "^1.17.2",
     "waypoints": "^4.0.0",
     "wellknown": "^0.3.2"
   },
