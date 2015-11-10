@@ -7,57 +7,59 @@ import $ from 'jquery';
 import L from 'leaflet';
 import * as utils from './utils';
 
-import showLineCollectionsJSON from
-'./fixtures/collection-spans/show-line.collections.json';
+import dataIdCollectionsJSON from
+'./fixtures/collection-spans/data-id.collections.json';
 
-import showLineNarrativeJSON from
-'./fixtures/collection-spans/show-line.narrative.json';
+import dataIdNarrativeJSON from
+'./fixtures/collection-spans/data-id.narrative.json';
 
 
 describe('Collection Spans', function() {
 
-  let mockRaf;
-
   beforeEach(function() {
-
-    // Open narrative.
     utils.navigate('/read/narrative');
-
-    // Inject fixtures.
-    utils.respondCollections(showLineCollectionsJSON);
-    utils.respondNarrative(showLineNarrativeJSON);
-
   });
 
-  it('shows a highlight line on hover', function() {
+  describe('data-id', function() {
 
-    // Hover on the span.
-    $('.collection[data-id="1"]').trigger('mouseenter');
-    let line = $('#map-line line');
+    beforeEach(function() {
+      utils.respondCollections(dataIdCollectionsJSON);
+      utils.respondNarrative(dataIdNarrativeJSON);
+    });
 
-    expect(line).toBeInDOM();
+    it('shows a highlight line on hover', function() {
 
-    // TODO: Test position?
+      // Hover on the span.
+      $('.collection[data-id="1"]').trigger('mouseenter');
+      let line = $('#map-line line');
 
-  });
+      expect(line).toBeInDOM();
 
-  it('focuses the map on click', function(done) {
+      // TODO: Test position?
 
-    // Click on the span.
-    $('.collection[data-id="1"]').trigger('click');
+    });
 
-    setTimeout(function() {
+    it('focuses the map on click', function(done) {
 
-      let {
-        lng: lon,
-        lat: lat,
-      } = utils.getLeaflet().getCenter();
+      // Click on the span.
+      $('.collection[data-id="1"]').trigger('click');
 
-      expect(lon).toEqual(1);
-      expect(lat).toEqual(2);
-      done();
+      // TODO: Mock window.requestAnimationFrame?
 
-    }, 2000);
+      setTimeout(function() {
+
+        let {
+          lng: lon,
+          lat: lat,
+        } = utils.getLeaflet().getCenter();
+
+        expect(lon).toEqual(1);
+        expect(lat).toEqual(2);
+        done();
+
+      }, 2000);
+
+    });
 
   });
 

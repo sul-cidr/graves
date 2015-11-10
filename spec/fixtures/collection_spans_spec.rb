@@ -9,7 +9,7 @@ describe 'Collection Spans', type: :controller do
     request.headers['Accept'] = 'application/json'
   end
 
-  it 'show line' do
+  it 'data-id' do
 
     # COLLECTION
 
@@ -24,7 +24,7 @@ describe 'Collection Spans', type: :controller do
 
     write_fixture(
       'collection-spans',
-      'show-line.collections',
+      'data-id.collections',
       response.body
     )
 
@@ -45,7 +45,7 @@ describe 'Collection Spans', type: :controller do
 
     write_fixture(
       'collection-spans',
-      'show-line.narrative',
+      'data-id.narrative',
       response.body
     )
 
