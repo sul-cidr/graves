@@ -181,7 +181,7 @@ export default class extends Component {
    */
   focus(lon, lat, zoom=8) {
     this.state.map.flyTo([lat, lon], zoom, {
-      duration: 2
+      duration: 1.5
     });
   }
 

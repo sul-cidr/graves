@@ -2,9 +2,9 @@
 
 import 'jasmine-jquery';
 
+import _ from 'lodash';
 import $ from 'jquery';
-import createMockRaf from 'mock-raf';
-import sinon from 'sinon';
+import L from 'leaflet';
 import * as utils from './utils';
 
 import showLineCollectionsJSON from
@@ -27,14 +27,6 @@ describe('Collection Spans', function() {
     utils.respondCollections(showLineCollectionsJSON);
     utils.respondNarrative(showLineNarrativeJSON);
 
-    // TODO|dev
-    mockRaf = createMockRaf();
-    sinon.stub(window, 'requestAnimationFrame', mockRaf.raf);
-
-  });
-
-  afterEach(function() {
-    window.requestAnimationFrame.restore();
   });
 
   it('shows a highlight line on hover', function() {
@@ -49,20 +41,23 @@ describe('Collection Spans', function() {
 
   });
 
-  it('focuses the map on click', function() {
+  it('focuses the map on click', function(done) {
 
     // Click on the span.
     $('.collection[data-id="1"]').trigger('click');
 
-    mockRaf.step(1000);
+    setTimeout(function() {
 
-    let {
-      lng: lon,
-      lat: lat,
-    } = utils.getLeaflet().getCenter();
+      let {
+        lng: lon,
+        lat: lat,
+      } = utils.getLeaflet().getCenter();
 
-    expect(lon).toEqual(1);
-    expect(lat).toEqual(2);
+      expect(lon).toEqual(1);
+      expect(lat).toEqual(2);
+      done();
+
+    }, 2000);
 
   });
 
