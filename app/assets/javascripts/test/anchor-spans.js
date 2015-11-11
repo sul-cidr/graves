@@ -46,8 +46,8 @@ describe('Anchor Spans', function() {
           lat: lat,
         } = utils.getLeaflet().getCenter();
 
-        expect(lon).toEqual(1);
-        expect(lat).toEqual(2);
+        expect(Math.round(lon)).toEqual(1);
+        expect(Math.round(lat)).toEqual(2);
         done();
 
       }, 2000);

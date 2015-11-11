@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import L from 'leaflet';
 import React, { PropTypes } from 'react';
 import Mousetrap from 'mousetrap';
@@ -26,7 +27,8 @@ import {
 
 @connect(
   state => ({
-    editing: state.editor.active
+    editing: state.editor.active,
+    route: state.route,
   }),
   actions
 )
@@ -72,6 +74,23 @@ export default class extends Component {
   componentDidMount() {
     this._initLeaflet();
     this._listenForEdit();
+  }
+
+
+  /**
+   * Update the map size.
+   */
+  componentDidUpdate() {
+
+    if (this.state.map) {
+
+      // Wait for the width to paint.
+      _.delay(() => {
+        this.state.map.invalidateSize();
+      }, 10);
+
+    }
+
   }
 
 
