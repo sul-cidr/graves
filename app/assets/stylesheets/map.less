@@ -4,7 +4,7 @@
 
   z-index: -1;
   position: fixed !important;
-  width: 100vw + @width-text;
+  width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
@@ -15,10 +15,6 @@
     g {
       pointer-events: all;
     }
-  }
-
-  .leaflet-right {
-    right: @width-text;
   }
 
   .leaflet-popup {
@@ -75,6 +71,17 @@
 
     }
 
+  }
+
+}
+
+// Shift right around a narrative.
+.narrative #map {
+
+  width: 100vw + @width-text;
+
+  .leaflet-right {
+    right: @width-text;
   }
 
 }
