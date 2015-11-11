@@ -6,16 +6,16 @@ import CollectionGroup from '../src/components/collection-group';
 import * as utils from './utils';
 
 import addMarkersJSON from
-'./fixtures/collection-markers/add-markers.json';
+'./fixtures/collection-markers/add-markers.collections.json';
 
 import showTooltipJSON from
-'./fixtures/collection-markers/show-tooltip.json';
+'./fixtures/collection-markers/show-tooltip.collections.json';
 
 import hideTooltipJSON from
-'./fixtures/collection-markers/hide-tooltip.json';
+'./fixtures/collection-markers/hide-tooltip.collections.json';
 
 import showModalJSON from
-'./fixtures/collection-markers/show-modal.json';
+'./fixtures/collection-markers/show-modal.collections.json';
 
 
 describe('Collection Markers', function() {

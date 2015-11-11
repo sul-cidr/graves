@@ -13,6 +13,7 @@ afterEach(function() {
 });
 
 
+import './anchor-spans';
 import './collection-markers';
 import './collection-spans';
-import './anchor-spans';
+import './sections';

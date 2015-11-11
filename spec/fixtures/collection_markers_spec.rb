@@ -20,7 +20,7 @@ describe 'Collection Markers', type: :controller do
 
     write_fixture(
       'collection-markers',
-      'add-markers',
+      'add-markers.collections',
       response.body
     )
 
@@ -56,7 +56,7 @@ describe 'Collection Markers', type: :controller do
 
     write_fixture(
       'collection-markers',
-      'show-tooltip',
+      'show-tooltip.collections',
       response.body
     )
 
@@ -70,7 +70,7 @@ describe 'Collection Markers', type: :controller do
 
     write_fixture(
       'collection-markers',
-      'hide-tooltip',
+      'hide-tooltip.collections',
       response.body
     )
 
@@ -84,7 +84,7 @@ describe 'Collection Markers', type: :controller do
 
     write_fixture(
       'collection-markers',
-      'show-modal',
+      'show-modal.collections',
       response.body
     )
 
