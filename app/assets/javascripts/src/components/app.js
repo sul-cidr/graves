@@ -3,6 +3,7 @@
 import { connect } from 'react-redux';
 import React, { PropTypes } from 'react';
 import { Router } from 'director';
+import classNames from 'classnames';
 
 import * as actions from '../actions/route';
 import Component from './component';
@@ -76,8 +77,12 @@ export default class extends Component {
       );
     }
 
+    let cx = classNames('wrapper', {
+      narrative: this.props.narrative
+    });
+
     return (
-      <div className="wrapper">
+      <div className={cx}>
         <Map />
         {content}
       </div>
