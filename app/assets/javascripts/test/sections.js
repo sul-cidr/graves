@@ -1,7 +1,9 @@
 
 
-import * as utils from './utils';
+import _ from 'lodash';
+import $ from 'jquery';
 import SectionGroup from '../src/components/section-group';
+import * as utils from './utils';
 
 import validSectionsJSON from
 './fixtures/sections/valid.narrative.json';
@@ -15,21 +17,35 @@ describe('Sections', function() {
     group = utils.unwrap(GRAVES, SectionGroup);
   });
 
-  it('adds map layers when a narrative loads', function() {
+  it('adds map boxes when a narrative loads', function() {
 
-    expect(group.labels.getLayers().length).toEqual(0);
     expect(group.boxes.getLayers().length).toEqual(0);
 
     utils.navigate('/read/narrative');
     utils.respondNarrative(validSectionsJSON);
 
-    expect(group.labels.getLayers().length).toEqual(10);
     expect(group.boxes.getLayers().length).toEqual(10);
 
-    // test labels, coords
+    _.times(10, function(i) {
+
+      let tl = [0, 100*(i+1)];
+      let br = [100, 100*i];
+
+      // Get the box layer.
+      let s = $(`[data-tl="${tl.join()}"][data-br="${br.join()}"]`);
+      let box = group.idToBox[Number(s.attr('data-id'))];
+
+      let nw = box.getBounds().getNorthWest();
+      let se = box.getBounds().getSouthEast();
+
+      expect(nw).toEqual({ lng: tl[0], lat: tl[1] });
+      expect(se).toEqual({ lng: br[0], lat: br[1] });
+
+    });
 
   });
 
+  it('adds map labels when a narrative loads');
   it('removes map layers when a narrative closes');
   it('highlights the label of the visible section');
   it('shows a zoom tip for unfocused section');
