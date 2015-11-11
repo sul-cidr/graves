@@ -67,7 +67,7 @@ export default class extends Component {
     }
 
     else return (
-      <div className="narrative">
+      <div id="narrative">
 
         <header>
           <h1 className="title">{this.props.model.title}</h1>
