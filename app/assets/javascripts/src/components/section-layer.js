@@ -77,8 +77,8 @@ export default class extends Component {
    * Remove the box/layer.
    */
   componentWillUnmount() {
-    this.context.map.removeLayer(this.box);
-    this.context.map.removeLayer(this.label);
+    this.props.boxes.removeLayer(this.box);
+    this.props.labels.removeLayer(this.label);
   }
 
 

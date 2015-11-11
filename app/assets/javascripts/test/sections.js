@@ -66,7 +66,17 @@ describe('Sections', function() {
 
   });
 
-  it('removes map layers when a narrative closes');
+  it('removes map layers when a narrative closes', function() {
+
+    utils.navigate('/read/narrative');
+    utils.respondNarrative(validSectionsJSON);
+    utils.navigate('/');
+
+    expect(group.boxes.getLayers().length).toEqual(0);
+    expect(group.labels.getLayers().length).toEqual(0);
+
+  });
+
   it('highlights the label of the visible section');
   it('shows a zoom tip for unfocused section');
   it('does not show a zoom tip for a focused section');
