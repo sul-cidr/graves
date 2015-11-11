@@ -152,7 +152,11 @@ export default class extends Component {
     let layer = this.idToLayer[id];
     if (!layer) return;
 
-    layer.setStyle(styles.path.def);
+    let path = layer.options.feature.properties.num_graves ?
+      styles.path.count :
+      styles.path.nocount;
+
+    layer.setStyle(path);
     layer.closePopup();
 
   }

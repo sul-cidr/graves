@@ -2,7 +2,12 @@
 
 path:
 
-  def:
+  nocount:
+    fillColor: black
+    fillOpacity: 0.4
+    weight: 0
+
+  count:
     color: orange
     fillColor: black
     fillOpacity: 0.2

@@ -30,14 +30,17 @@ export default class extends Component {
 
     let feature = this.props.feature;
 
+    let path = feature.properties.num_graves ?
+      styles.path.count :
+      styles.path.nocount;
+
     // Create the marker.
     this.layer = L.circleMarker(feature.geometry.coordinates, {
-      feature,
-      ...styles.path.def,
+      feature, ...path
     });
 
     // Size by grave count.
-    let r = scale(feature.properties.num_graves || 20);
+    let r = scale(feature.properties.num_graves || 10);
     this.layer.setRadius(r);
 
     let label = (
