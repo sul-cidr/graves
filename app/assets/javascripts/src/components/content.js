@@ -6,6 +6,7 @@ import classNames from 'classnames';
 
 import * as actions from '../actions/route';
 import Component from './component';
+import Menu from './menu';
 import Narrative from './narrative';
 
 
@@ -19,6 +20,8 @@ export default class extends Component {
   render() {
     return (
       <div id="content">
+
+        <Menu />
 
         {
           this.props.narrative ?
