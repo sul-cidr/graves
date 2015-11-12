@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  author_id  :integer          not null
 #  slug       :string           not null
+#  blurb      :string
 #
 
 class Narrative < ActiveRecord::Base
@@ -26,7 +27,7 @@ class Narrative < ActiveRecord::Base
   #
   def bootstrap
     Jbuilder.new do |json|
-      json.(self, :title, :slug)
+      json.(self, :title, :slug, :blurb)
       json.author author
     end.attributes!
   end

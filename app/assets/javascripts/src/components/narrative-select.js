@@ -33,6 +33,8 @@ export default class extends Component {
       },
     ];
 
+    console.log(window.GRAVES.narratives);
+
     return <Select
       options={narratives}
     />;
