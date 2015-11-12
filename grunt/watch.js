@@ -4,7 +4,10 @@ export default {
 
   livereload: {
 
-    files: 'public/**/*',
+    files: [
+      'public/javascripts/graves.js',
+      'public/stylesheets/graves.css',
+    ],
 
     options: {
       livereload: true
