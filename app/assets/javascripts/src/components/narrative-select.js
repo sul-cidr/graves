@@ -12,28 +12,21 @@ export default class extends Component {
    */
   render() {
 
-    // TODO|dev
+    let narratives = window.GRAVES.narratives.map(function(n) {
 
-    let narratives = [
-      {
-        value: 'n1',
-        label: 'Narrative 1',
-      },
-      {
-        value: 'n2',
-        label: 'Narrative 2',
-      },
-      {
-        value: 'n3',
-        label: 'Narrative 3',
-      },
-      {
-        value: 'n4',
-        label: 'Narrative 4',
-      },
-    ];
+      let label = (
+        <div>
+          <h6>{n.title}</h6>
+          <small>{n.blurb}</small>
+        </div>
+      );
 
-    console.log(window.GRAVES.narratives);
+      return {
+        value: n.slug,
+        label: label,
+      };
+
+    });
 
     return <Select
       options={narratives}
