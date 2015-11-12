@@ -50,10 +50,10 @@ export default class extends Component {
   /**
    * When the code is changed.
    *
-   * @param {String} code
+   * @param {Object} option
    */
-  onChange(code) {
-    this.props.showChoropleth(code);
+  onChange(option) {
+    this.props.showChoropleth(option.value);
   }
 
 
