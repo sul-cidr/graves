@@ -16,7 +16,7 @@ import CollectionLegend from './collection-legend';
 import CountyGroup from './county-group';
 import SectionGroup from './section-group';
 import MapLine from './map-line';
-import CDCPicker from './cdc-picker';
+import CDCSelect from './cdc-select';
 import MiniMap from './mini-map';
 
 import {
@@ -174,7 +174,7 @@ export default class extends Component {
           <SectionGroup />
 
           <MapLine />
-          <CDCPicker />
+          <CDCSelect />
           <MiniMap />
 
           {
