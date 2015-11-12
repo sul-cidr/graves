@@ -1,9 +1,8 @@
 
 
-import React from 'react';
+import _ from 'lodash';
+import React, { Component } from 'react';
 import classNames from 'classnames';
-
-import Component from './component';
 
 
 export default class extends Component {
@@ -14,16 +13,15 @@ export default class extends Component {
    */
   render() {
 
-    let cx = classNames(
-      'fa',
-      'fa-spinner',
-      'fa-spin'
-    );
+    let circles = _.range(1, 13).map(function(i) {
+      let cx = classNames('sk-child', `sk-circle${i}`);
+      return <div key={i} className={cx}></div>;
+    });
 
     return (
       <div className="spinner">
-        <i className={cx}></i>
-        <p>Loading &#8230;</p>
+        <div className="sk-circle">{circles}</div>
+        <p>Loading</p>
       </div>
     );
 
