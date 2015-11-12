@@ -28,7 +28,7 @@ class Narrative < ActiveRecord::Base
   def bootstrap
     Jbuilder.new do |json|
       json.(self, :title, :slug, :blurb)
-      json.author author
+      json.author author.full_name
     end.attributes!
   end
 

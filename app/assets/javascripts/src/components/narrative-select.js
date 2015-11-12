@@ -15,9 +15,10 @@ export default class extends Component {
     let narratives = window.GRAVES.narratives.map(function(n) {
 
       let label = (
-        <div>
-          <h6>{n.title}</h6>
-          <small>{n.blurb}</small>
+        <div className="narrative">
+          <div className="title">{n.title}</div>
+          <div className="author">{n.author}</div>
+          <div className="blurb">{n.blurb}</div>
         </div>
       );
 
