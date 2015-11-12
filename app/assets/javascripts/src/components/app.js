@@ -66,17 +66,6 @@ export default class extends Component {
    */
   render() {
 
-    let content = null;
-
-    // Render a narrative, when one is active.
-    if (this.props.narrative) {
-      content = (
-        <Content>
-          <Narrative slug={this.props.narrative} />
-        </Content>
-      );
-    }
-
     let cx = classNames('wrapper', {
       narrative: this.props.narrative
     });
@@ -84,7 +73,7 @@ export default class extends Component {
     return (
       <div className={cx}>
         <Map />
-        {content}
+        <Content />
       </div>
     );
 

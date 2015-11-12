@@ -19,7 +19,13 @@ export default class extends Component {
   render() {
     return (
       <div id="content">
-        {this.props.children}
+
+        {
+          this.props.narrative ?
+          <Narrative slug={this.props.narrative} /> :
+          null
+        }
+
       </div>
     );
   }
