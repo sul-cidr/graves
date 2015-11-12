@@ -12,7 +12,12 @@ export default class extends Component {
   render() {
     return (
       <div id="menu">
-        <h1 className="wordmark">Chinese Graves</h1>
+
+        <h1 className="wordmark">
+          <i className="fa fa-home"></i>{' '}
+          Chinese Graves
+        </h1>
+
       </div>
     );
   }
