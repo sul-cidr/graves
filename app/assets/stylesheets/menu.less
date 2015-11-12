@@ -36,4 +36,20 @@
 
   }
 
+  // "Detach" the dropdown.
+
+  .Select-menu-outer {
+
+    margin-top: 5px;
+    width: 300px;
+
+    .border-radius(@select-input-border-radius);
+    border-top-color: @select-input-border-color;
+
+  }
+
+  .is-open > .Select-control {
+    .border-bottom-radius(@select-input-border-radius);
+  }
+
 }
