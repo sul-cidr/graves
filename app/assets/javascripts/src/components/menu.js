@@ -10,7 +10,11 @@ export default class extends Component {
    * Render the menu.
    */
   render() {
-    return <h1>Menu</h1>;
+    return (
+      <div id="menu">
+        <h1 className="wordmark">Chinese Graves</h1>
+      </div>
+    );
   }
 
 
