@@ -36,6 +36,7 @@ export default class extends Component {
 
     return <Select
 
+      placeholder="Select a narrative"
       options={narratives}
       onChange={this.onChange.bind(this)}
       value={this.props.value}
