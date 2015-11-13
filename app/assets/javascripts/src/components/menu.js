@@ -1,9 +1,13 @@
 
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import NarrativeSelect from './narrative-select';
 
 
+@connect(state => ({
+  narrative: state.route.narrative
+}))
 export default class extends Component {
 
 
@@ -11,6 +15,11 @@ export default class extends Component {
    * Render the menu.
    */
   render() {
+
+    let x = !this.props.narrative ? null : (
+      <i className="fa fa-times close"></i>
+    );
+
     return (
       <div id="menu">
 
@@ -21,8 +30,11 @@ export default class extends Component {
 
         <NarrativeSelect />
 
+        {x}
+
       </div>
     );
+
   }
 
 
