@@ -35,11 +35,15 @@ export default class extends Component {
 
     $(window).scroll(e => {
 
-      let scrollTop = $(window).scrollTop();
-      let winHeight = $(window).height();
-      let docHeight = $(document).height();
+      // Get window / doc heights.
+      // TODO: Cache these?
+      let dHeight = $(document).height();
+      let wHeight = $(window).height();
 
-      let pct = scrollTop / (docHeight - winHeight);
+      // Get the window scroll percentage.
+      let top = $(window).scrollTop();
+      let pct = top / (dHeight - wHeight);
+
       this.setState({ scroll: pct*100 });
 
     });
