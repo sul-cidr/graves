@@ -3,21 +3,22 @@
 #menu {
 
   position: fixed;
+  padding: 0 20px;
   height: 60px;
   width: @width-text;
 
   display: flex;
   align-items: center;
 
-  border-bottom: 3px solid lighten(@color-blue, 10%);
+  border-bottom: 5px solid lighten(@color-blue, 5%);
   background: rgba(245,245,245,0.9);
 
   .wordmark {
+    flex: none;
     font-weight: bold;
     text-transform: uppercase;
-    margin: 0 15px;
     font-size: 16px;
-    flex: none;
+    margin: 0 15px 0 0;
   }
 
   .Select {
@@ -57,9 +58,9 @@
 
   i.close {
 
-    margin: 0 10px;
-    font-size: 28px;
+    margin-left: 15px;
     opacity: 0.6;
+    font-size: 28px;
 
     &:hover {
       color: #a00;
