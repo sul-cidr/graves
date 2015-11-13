@@ -75,10 +75,12 @@ export default class extends Component {
     return (
       <div id="menu">
 
-        <h1 className="wordmark">
-          <i className="fa fa-home"></i>{' '}
-          Chinese Graves
-        </h1>
+        <a href="#read/no-room-for-the-dead" className="wordmark">
+          <h1>
+            <i className="fa fa-home"></i>{' '}
+            Chinese Graves
+          </h1>
+        </a>
 
         <NarrativeSelect />
 
