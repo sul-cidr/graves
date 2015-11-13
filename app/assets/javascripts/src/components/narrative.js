@@ -46,9 +46,16 @@ export default class extends Component {
   /**
    * Get the markup DOM when it first renders.
    */
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
 
-    if (!this.state.markup && this.refs.markup) {
+    // When the narrative is switched.
+    if (prevProps.slug != this.props.slug) {
+      this.setState({ markup: null });
+      this.props.loadNarrative(this.props.slug);
+    }
+
+    // After new markup has been rendered.
+    else if (!this.state.markup && this.refs.markup) {
       this.setState({
         markup: findDOMNode(this.refs.markup)
       });
