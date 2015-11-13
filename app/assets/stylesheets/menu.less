@@ -19,7 +19,6 @@
 
   .Select {
 
-    font-size: 12px;
     flex: 1;
 
     .title {
@@ -38,19 +37,14 @@
 
   }
 
-  .Select-value {
-    max-width: 85%;
-  }
-
   // "Detach" the dropdown.
 
   .Select-menu-outer {
 
     margin-top: 5px;
-    width: 300px;
 
-    .border-radius(@select-input-border-radius);
     border-top-color: @select-input-border-color;
+    .border-radius(@select-input-border-radius);
 
   }
 
