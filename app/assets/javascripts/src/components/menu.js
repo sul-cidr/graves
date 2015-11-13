@@ -17,7 +17,10 @@ export default class extends Component {
   render() {
 
     let x = !this.props.narrative ? null : (
-      <i className="fa fa-times close"></i>
+      <i
+        className="fa fa-times close"
+        onClick={this.onClose.bind(this)}
+      ></i>
     );
 
     return (
@@ -35,6 +38,14 @@ export default class extends Component {
       </div>
     );
 
+  }
+
+
+  /**
+   * Close the current narrative.
+   */
+  onClose() {
+    console.log('close');
   }
 
 
