@@ -27,16 +27,23 @@ export default class extends Component {
       );
 
       return {
-        value: n.slug,
         label: label,
+        value: n.slug,
+        model: n,
       };
 
     });
 
     return <Select
+
       options={narratives}
       onChange={this.onChange.bind(this)}
       value={this.props.value}
+
+      valueRenderer={function(op) {
+        return op.model.title;
+      }}
+
     />;
 
   }
