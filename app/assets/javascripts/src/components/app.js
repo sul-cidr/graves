@@ -47,7 +47,6 @@ export default class extends Component {
     });
 
     this.router.init();
-    window.ROUTER = this.router;
 
   }
 
