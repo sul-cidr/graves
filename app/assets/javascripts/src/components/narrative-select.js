@@ -31,8 +31,19 @@ export default class extends Component {
 
     return <Select
       options={narratives}
+      onChange={this.onChange.bind(this)}
     />;
 
+  }
+
+
+  /**
+   * When the narrative is changed.
+   *
+   * @param {Object} option
+   */
+  onChange(option) {
+    window.location.hash = `read/${option.value}`;
   }
 
 
