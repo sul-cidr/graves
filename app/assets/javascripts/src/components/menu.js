@@ -35,6 +35,8 @@ export default class extends Component {
 
         {x}
 
+        <div className="scroll"></div>
+
       </div>
     );
 

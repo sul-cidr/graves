@@ -8,6 +8,7 @@
   width: @width-text;
 
   display: flex;
+  justify-content: center;
   align-items: center;
 
   border-bottom: 5px solid lighten(@color-blue, 5%);
@@ -67,6 +68,17 @@
       opacity: 1;
     }
 
+  }
+
+  .scroll {
+    position: absolute;
+    align-self: flex-end;
+    height: 5px;
+    left: 0;
+    bottom: 0;
+    background: orange;
+    width: 40%;
+    bottom: -5px;
   }
 
 }
