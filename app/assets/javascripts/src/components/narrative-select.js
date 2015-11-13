@@ -1,9 +1,13 @@
 
 
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import Select from 'react-select';
 
 
+@connect(state => ({
+  value: state.route.narrative
+}))
 export default class extends Component {
 
 
@@ -32,6 +36,7 @@ export default class extends Component {
     return <Select
       options={narratives}
       onChange={this.onChange.bind(this)}
+      value={this.props.value}
     />;
 
   }
