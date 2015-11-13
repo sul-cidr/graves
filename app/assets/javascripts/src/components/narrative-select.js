@@ -39,6 +39,7 @@ export default class extends Component {
       options={narratives}
       onChange={this.onChange.bind(this)}
       value={this.props.value}
+      clearable={false}
 
       valueRenderer={function(op) {
         return op.model.title;
