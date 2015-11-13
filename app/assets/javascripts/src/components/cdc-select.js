@@ -53,7 +53,9 @@ export default class extends Component {
    * @param {Object} option
    */
   onChange(option) {
-    this.props.showChoropleth(option.value);
+    let code = option ? option.value : null;
+    this.props.showChoropleth(code);
+
   }
 
 

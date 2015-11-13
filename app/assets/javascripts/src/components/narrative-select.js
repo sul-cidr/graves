@@ -55,7 +55,8 @@ export default class extends Component {
    * @param {Object} option
    */
   onChange(option) {
-    window.location.hash = `read/${option.value}`;
+    let hash = option ? `read/${option.value}` : '';
+    window.location.hash = hash;
   }
 
 
