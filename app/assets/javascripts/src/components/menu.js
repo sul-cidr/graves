@@ -45,7 +45,7 @@ export default class extends Component {
    * Close the current narrative.
    */
   onClose() {
-    console.log('close');
+    window.location.hash = '';
   }
 
 
