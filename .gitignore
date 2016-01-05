@@ -17,6 +17,8 @@
 /*.sql
 
 /node_modules
+/npm-debug.log
+
 /public/javascripts
 /public/stylesheets
 /public/assets
