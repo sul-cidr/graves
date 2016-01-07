@@ -22,7 +22,7 @@ export default class extends Component {
   static propTypes = {
     explore: PropTypes.bool.isRequired,
     narrative: PropTypes.any,
-  }
+  };
 
 
   /**

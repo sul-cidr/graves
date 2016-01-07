@@ -21,12 +21,12 @@ export default class extends Component {
       [SHOW_MAP_LINE]: 'show',
       [HIDE_MAP_LINE]: 'hide',
     }
-  }
+  };
 
 
   static contextTypes = {
     map: PropTypes.object.isRequired
-  }
+  };
 
 
   /**

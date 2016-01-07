@@ -15,7 +15,7 @@ export default class extends Component {
   static propTypes = {
     g: PropTypes.array.isRequired,
     code: PropTypes.any,
-  }
+  };
 
 
   /**

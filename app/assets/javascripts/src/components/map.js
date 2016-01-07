@@ -39,12 +39,12 @@ export default class extends Component {
     [MAP]: {
       [FOCUS_MAP]: 'focus'
     }
-  }
+  };
 
 
   static childContextTypes = {
     map: PropTypes.object
-  }
+  };
 
 
   /**

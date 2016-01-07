@@ -29,24 +29,24 @@ export default class extends Component {
       [SCROLL_SECTION]: 'highlight',
       [SELECT_SECTION]: 'select',
     }
-  }
+  };
 
 
   static requests = {
     [MAP]: {
       [IS_SECTION_FOCUSED]: 'isFocused'
     }
-  }
+  };
 
 
   static contextTypes = {
     map: PropTypes.object.isRequired
-  }
+  };
 
 
   static propTypes = {
     sections: PropTypes.array.isRequired,
-  }
+  };
 
 
   /**

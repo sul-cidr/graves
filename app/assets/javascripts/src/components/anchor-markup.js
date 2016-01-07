@@ -21,7 +21,7 @@ export default class extends Component {
 
   static propTypes = {
     markup: PropTypes.object.isRequired,
-  }
+  };
 
 
   /**

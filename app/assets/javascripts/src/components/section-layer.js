@@ -13,7 +13,7 @@ export default class extends Component {
 
   static contextTypes = {
     map: PropTypes.object.isRequired
-  }
+  };
 
 
   static propTypes = {
@@ -22,7 +22,7 @@ export default class extends Component {
     idToLabel: PropTypes.object.isRequired,
     idToBox: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
-  }
+  };
 
 
   /**

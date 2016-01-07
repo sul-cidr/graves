@@ -15,7 +15,7 @@ export default class extends Component {
 
   static contextTypes = {
     map: PropTypes.object.isRequired
-  }
+  };
 
 
   /**

@@ -36,24 +36,24 @@ export default class extends Component {
       [HIGHLIGHT_COLLECTION]: 'highlight',
       [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
     }
-  }
+  };
 
 
   static requests = {
     [COLLECTIONS]: {
       [GET_COLLECTION_LON_LAT]: 'getLonLat',
     }
-  }
+  };
 
 
   static contextTypes = {
     map: PropTypes.object.isRequired
-  }
+  };
 
 
   static propTypes = {
     features: PropTypes.array.isRequired,
-  }
+  };
 
 
   /**

@@ -36,12 +36,12 @@ export default class extends Component {
       [HIGHLIGHT_COLLECTION]: 'highlight',
       [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
     }
-  }
+  };
 
 
   static propTypes = {
     markup: PropTypes.object.isRequired,
-  }
+  };
 
 
   /**

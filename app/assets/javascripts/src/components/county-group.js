@@ -21,12 +21,12 @@ export default class extends Component {
 
   static contextTypes = {
     map: PropTypes.object.isRequired
-  }
+  };
 
 
   static propTypes = {
     geojson: PropTypes.any,
-  }
+  };
 
 
   /**

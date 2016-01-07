@@ -13,14 +13,14 @@ export default class extends Component {
 
   static contextTypes = {
     map: PropTypes.object.isRequired
-  }
+  };
 
 
   static propTypes = {
     group: PropTypes.object.isRequired,
     idToLayer: PropTypes.object.isRequired,
     feature: PropTypes.object.isRequired,
-  }
+  };
 
 
   /**

@@ -9,7 +9,7 @@ export default class extends Component {
   static propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.any,
-  }
+  };
 
 
   /**
