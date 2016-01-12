@@ -12,7 +12,6 @@ import Component from './component';
 import CopyLonLat from './copy-lonlat';
 import CollectionGroup from './collection-group';
 import CollectionModal from './collection-modal';
-import CollectionLegend from './collection-legend';
 import CountyGroup from './county-group';
 import SectionGroup from './section-group';
 import MapLine from './map-line';
@@ -169,7 +168,6 @@ export default class extends Component {
 
           <CollectionGroup />
           <CollectionModal />
-          <CollectionLegend />
           <CountyGroup />
           <SectionGroup />
 
