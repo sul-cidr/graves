@@ -4,7 +4,7 @@ path:
 
   nocount:
     fillColor: black
-    fillOpacity: 0.4
+    fillOpacity: 0.7
     weight: 0
 
   count:
