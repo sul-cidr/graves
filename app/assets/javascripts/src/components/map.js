@@ -8,6 +8,8 @@ import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
 
 import * as actions from '../actions/editor';
+import config from './map.yml';
+
 import Component from './component';
 import CopyLonLat from './copy-lonlat';
 import CollectionGroup from './collection-group';
@@ -123,7 +125,8 @@ export default class extends Component {
     map.addLayer(osmLayer);
 
     // Default viewport.
-    map.setView([30, 115], 5);
+    let { lat, lng, zoom } = config.focus;
+    map.setView([lat, lng], zoom);
 
     this.setState({ map: map });
 
@@ -190,7 +193,7 @@ export default class extends Component {
 
 
   /**
-   * Expose the Leaflet instance.
+   * Animate to a new focus / zoom.
    *
    * @param {Number} lon
    * @param {Number} lat
