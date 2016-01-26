@@ -1,8 +1,9 @@
 
 
-import 'jasmine-ajax';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
+import 'jasmine-ajax';
+
 import { mount } from '../src';
 import App from '../src/components/app';
 import Map from '../src/components/map';
