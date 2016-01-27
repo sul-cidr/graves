@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  root 'graves#index'
-
   devise_for :users
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -11,6 +9,12 @@ Rails.application.routes.draw do
     resources :collections, only: [:index]
     resources :narratives, only: [:show]
   end
+
+  # Home page
+  root 'graves#index'
+
+  # Read narrative
+  get 'read/:slug', to: 'graves#read'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
