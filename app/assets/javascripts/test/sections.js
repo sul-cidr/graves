@@ -14,7 +14,7 @@ describe('Sections', function() {
   let group;
 
   beforeEach(function() {
-    group = utils.unwrap(GRAVES, SectionGroup);
+    group = utils.unwrap(APP, SectionGroup);
   });
 
   it('adds map boxes when a narrative loads', function() {

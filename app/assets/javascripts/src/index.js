@@ -18,7 +18,7 @@ export function mount() {
   let store = createStore(reducers);
 
   // Mount the app.
-  window.GRAVES = ReactDOM.render(
+  window.APP = ReactDOM.render(
     <Provider store={store}><App /></Provider>,
     document.getElementById('root')
   );

@@ -23,7 +23,7 @@ describe('Collection Markers', function() {
   let group;
 
   beforeEach(function() {
-    group = utils.unwrap(GRAVES, CollectionGroup);
+    group = utils.unwrap(APP, CollectionGroup);
   });
 
   it('requests collections on startup', function() {

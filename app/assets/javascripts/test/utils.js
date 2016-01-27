@@ -94,7 +94,7 @@ export function respondNarrative(res) {
  * @param {Function} cb
  */
 export function navigate(route) {
-  unwrap(GRAVES, App).router.dispatch('on', route);
+  unwrap(APP, App).router.dispatch('on', route);
 }
 
 
@@ -104,5 +104,5 @@ export function navigate(route) {
  * @return {Leaflet.Map}
  */
 export function getLeaflet() {
-  return unwrap(GRAVES, Map).state.map;
+  return unwrap(APP, Map).state.map;
 }
