@@ -12,8 +12,11 @@ import dataZoomNarrativeJSON from
 
 describe('Anchor Spans', function() {
 
+  let mockRaf;
+
   beforeEach(function() {
     utils.navigate('/read/narrative');
+    mockRaf = utils.mockRaf();
   });
 
   describe('data-focus', function() {
@@ -34,23 +37,20 @@ describe('Anchor Spans', function() {
 
     });
 
-    it('focuses the map on click', function(done) {
+    it('focuses the map on click', function() {
 
       // Click on the span.
       $('.anchor:first-child').trigger('click');
 
-      setTimeout(function() {
+      mockRaf.step(2000);
 
-        let {
-          lng: lon,
-          lat: lat,
-        } = utils.getLeaflet().getCenter();
+      let {
+        lng: lon,
+        lat: lat,
+      } = utils.getLeaflet().getCenter();
 
-        expect(Math.round(lon)).toEqual(1);
-        expect(Math.round(lat)).toEqual(2);
-        done();
-
-      }, 2000);
+      expect(Math.round(lon)).toEqual(1);
+      expect(Math.round(lat)).toEqual(2);
 
     });
 
@@ -62,16 +62,13 @@ describe('Anchor Spans', function() {
       utils.respondNarrative(dataZoomNarrativeJSON);
     });
 
-    it('applies a custom zoom level on click', function(done) {
+    it('applies a custom zoom level on click', function() {
 
       // Click on the span.
       $('.anchor:first-child').trigger('click');
 
-      setTimeout(function() {
-        let zoom = utils.getLeaflet().getZoom();
-        expect(zoom).toEqual(1);
-        done();
-      }, 2000);
+      let zoom = utils.getLeaflet().getZoom();
+      expect(zoom).toEqual(1);
 
     });
 

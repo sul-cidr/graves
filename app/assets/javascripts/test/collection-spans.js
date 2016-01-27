@@ -19,8 +19,11 @@ import dataZoomNarrativeJSON from
 
 describe('Collection Spans', function() {
 
+  let mockRaf;
+
   beforeEach(function() {
     utils.navigate('/read/narrative');
+    mockRaf = utils.mockRaf();
   });
 
   describe('data-id', function() {
@@ -42,25 +45,20 @@ describe('Collection Spans', function() {
 
     });
 
-    it('focuses the map on click', function(done) {
+    it('focuses the map on click', function() {
 
       // Click on the span.
       $('.collection[data-id="1"]').trigger('click');
 
-      // TODO: Mock window.requestAnimationFrame?
+      mockRaf.step(2000);
 
-      setTimeout(function() {
+      let {
+        lng: lon,
+        lat: lat,
+      } = utils.getLeaflet().getCenter();
 
-        let {
-          lng: lon,
-          lat: lat,
-        } = utils.getLeaflet().getCenter();
-
-        expect(Math.round(lon)).toEqual(1);
-        expect(Math.round(lat)).toEqual(2);
-        done();
-
-      }, 2000);
+      expect(Math.round(lon)).toEqual(1);
+      expect(Math.round(lat)).toEqual(2);
 
     });
 
@@ -73,16 +71,15 @@ describe('Collection Spans', function() {
       utils.respondNarrative(dataZoomNarrativeJSON);
     });
 
-    it('applies a custom zoom level on click', function(done) {
+    it('applies a custom zoom level on click', function() {
 
       // Click on the span.
       $('.collection[data-id="1"]').trigger('click');
 
-      setTimeout(function() {
-        let zoom = utils.getLeaflet().getZoom();
-        expect(zoom).toEqual(1);
-        done();
-      }, 2000);
+      mockRaf.step(2000);
+
+      let zoom = utils.getLeaflet().getZoom();
+      expect(zoom).toEqual(1);
 
     });
 

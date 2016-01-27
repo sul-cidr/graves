@@ -2,6 +2,7 @@
 
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
+import createMockRaf from 'mock-raf';
 import 'jasmine-ajax';
 
 import { mount } from '../src';
@@ -24,6 +25,16 @@ export function start() {
 export function stop() {
   ReactDOM.unmountComponentAtNode(document.getElementById('root'));
   jasmine.Ajax.uninstall();
+}
+
+
+/**
+ * Stub window.requestAnimationFrame.
+ */
+export function mockRaf() {
+  let mock = createMockRaf();
+  window.requestAnimationFrame = mock.raf;
+  return mock;
 }
 
 
