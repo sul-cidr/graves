@@ -5,6 +5,7 @@ class GravesController < ApplicationController
   end
 
   def read
+    @narrative = Narrative.find_by(slug: params[:slug])
   end
 
 end
