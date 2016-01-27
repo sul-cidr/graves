@@ -15,7 +15,7 @@ import Map from '../src/components/map';
  */
 export function start() {
   jasmine.Ajax.install();
-  window.GRAVES = mount();
+  mount();
 }
 
 
@@ -29,7 +29,7 @@ export function stop() {
 
 
 /**
- * Stub window.requestAnimationFrame.
+ * Stub `window.requestAnimationFrame`.
  */
 export function mockRaf() {
   let mock = createMockRaf();
