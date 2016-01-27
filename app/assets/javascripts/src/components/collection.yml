@@ -3,16 +3,16 @@
 path:
 
   nocount:
-    fillColor: black
+    fillColor: '#041B45'
     fillOpacity: 0.7
     weight: 0
 
   count:
-    color: '#E6B916'
+    color: '#E3BA1F'
     fillColor: black
     fillOpacity: 0.2
     weight: 1
 
   hl:
-    fillColor: '#E6B916'
+    fillColor: '#E3BA1F'
     fillOpacity: 0.7

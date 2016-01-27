@@ -40,7 +40,7 @@ export default class extends Component {
     });
 
     // Size by grave count.
-    let r = scale(feature.properties.num_graves || 10);
+    let r = scale(feature.properties.num_graves || 7);
     this.layer.setRadius(r);
 
     let label = (
