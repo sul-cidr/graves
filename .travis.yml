@@ -24,12 +24,12 @@ before_script:
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
 
-  # Compile assets.
+  # Install packages.
   - npm install grunt-cli -g
   - npm install
-  - grunt compile:min
 
 script:
 
   - bundle exec rake
+  - grunt compile:min
   - grunt jasmine
