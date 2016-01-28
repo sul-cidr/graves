@@ -2,9 +2,13 @@
 
 export default {
 
-  graves: {
-    src: '<%= browserify.graves.dest %>',
-    dest: '<%= browserify.graves.dest %>'
-  }
+  dist: {
+    files: [{
+      expand: true,
+      cwd: '<%= dist.js %>',
+      dest: '<%= dist.js %>',
+      src: '*.js',
+    }]
+  },
 
 };

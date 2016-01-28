@@ -2,9 +2,13 @@
 
 export default {
 
-  graves: {
-    src: '<%= less.graves.dest %>',
-    dest: '<%= less.graves.dest %>'
-  }
+  dist: {
+    files: [{
+      expand: true,
+      cwd: '<%= dist.css %>',
+      dest: '<%= dist.css %>',
+      src: '*.css',
+    }]
+  },
 
 };
