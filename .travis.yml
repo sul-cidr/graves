@@ -20,13 +20,16 @@ before_script:
   - psql -c "CREATE DATABASE graves_legacy;" -U postgres
   - cp config/database.yml.travis config/database.yml
 
-  # Install npm.
+  # Load the schema.
+  - bundle exec rake db:schema:load
+  - bundle exec rake db:test:prepare
+
+  # Compile assets.
   - npm install grunt-cli -g
   - npm install
+  - grunt compile:min
 
 script:
 
-  - bundle exec rake db:schema:load
-  - bundle exec rake db:test:prepare
   - bundle exec rake
   - grunt jasmine
