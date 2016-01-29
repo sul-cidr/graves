@@ -22,14 +22,4 @@ class Narrative < ActiveRecord::Base
   validates :slug, uniqueness: true
   validates :slug, format: { with: /\A[a-z0-9-]*\z/ }
 
-  #
-  # Exclude the markup.
-  #
-  def bootstrap
-    Jbuilder.new do |json|
-      json.(self, :title, :slug, :blurb)
-      json.author author.full_name
-    end.attributes!
-  end
-
 end
