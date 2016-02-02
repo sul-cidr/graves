@@ -1,3 +1,6 @@
 
 h1= @narrative.title
-p= @narrative.author.full_name
+h3= @narrative.author.full_name
+h3= @narrative.blurb
+
+#narrative= @narrative.markup.html_safe
