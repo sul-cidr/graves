@@ -31,12 +31,16 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
 
+
+    # Authenticate with Devise
+
     config.authenticate_with do
       warden.authenticate! scope: :user
     end
 
     config.current_user_method(&:current_user)
 
+    # Disable .js form validation
     config.browser_validations = false
 
     config.included_models = [
@@ -61,6 +65,7 @@ RailsAdmin.config do |config|
     config.model Author do
       object_label_method :full_name
     end
+
 
   end
 end
