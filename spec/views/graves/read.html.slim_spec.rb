@@ -4,19 +4,16 @@ require 'rails_helper'
 describe 'graves/read', type: :view do
 
   let!(:narrative) {
-    create(:narrative, title: 'Title')
+    create(:narrative)
   }
 
-  it 'displays the title' do
+  it 'displays the narrative' do
 
-    assign(:narrative, create(
-      :narrative,
-      title: 'Title',
-    ))
-
+    assign(:narrative, narrative)
     render
 
-    expect(rendered).to have_tag('h1.title', 'Title')
+    expect(rendered).to have_tag('h1.title', narrative.title)
+    expect(rendered).to have_tag('h3.author', narrative.author.full_name)
 
   end
 

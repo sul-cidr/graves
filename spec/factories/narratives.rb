@@ -22,7 +22,10 @@ FactoryGirl.define do
 
     author
 
+    title 'Title'
+
     slug { generate(:narrative_slug) }
+
     markup '<div>narrative</div>'
 
   end

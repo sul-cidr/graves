@@ -11,5 +11,10 @@
 
 FactoryGirl.define do
   factory :author do
+
+    first_name 'Tom'
+
+    last_name 'Mullaney'
+
   end
 end
