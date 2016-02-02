@@ -4,11 +4,13 @@ html
 
     title Chinese Graves
 
-    = stylesheet_link_tag "/stylesheets/#{params[:controller]}"
     = csrf_meta_tags
     = typekit_include_tag 'enx1sko'
+
+    = yield :css
 
   body
 
     = yield
-    = javascript_include_tag "/javascripts/#{params[:controller]}"
+
+    = yield :js
