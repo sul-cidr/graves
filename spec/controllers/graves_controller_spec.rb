@@ -7,7 +7,7 @@ describe GravesController, type: :controller do
 
     it 'templates the narrative markup' do
 
-      narrative = create(:narrative, title: 'Title')
+      narrative = create(:narrative)
 
       get :read, slug: narrative.slug
 

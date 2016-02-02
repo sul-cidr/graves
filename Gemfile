@@ -56,6 +56,7 @@ group :test do
   gem 'rspec-mocks'
   gem 'database_cleaner'
   gem 'with_model'
+  gem 'rspec-html-matchers'
 end
 
 group :deployment do

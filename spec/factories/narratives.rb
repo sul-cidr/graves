@@ -19,8 +19,12 @@ FactoryGirl.define do
   end
 
   factory :narrative do
+
     author
+
     slug { generate(:narrative_slug) }
+    markup '<div>narrative</div>'
+
   end
 
 end

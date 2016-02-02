@@ -222,11 +222,18 @@ GEM
     rgeo-shapefile (0.2.3)
       dbf (>= 1.7.0)
       rgeo (>= 0.3.3)
+    rspec (3.3.0)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
     rspec-core (3.3.1)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
+    rspec-html-matchers (0.7.0)
+      nokogiri (~> 1)
+      rspec (~> 3)
     rspec-mocks (3.3.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
@@ -328,6 +335,7 @@ DEPENDENCIES
   require_all
   rgeo-geojson
   rgeo-shapefile
+  rspec-html-matchers
   rspec-mocks
   rspec-rails
   sdoc (~> 0.4.0)
@@ -342,4 +350,4 @@ DEPENDENCIES
   with_model
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

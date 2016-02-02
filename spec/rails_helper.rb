@@ -60,6 +60,7 @@ RSpec.configure do |config|
 
   # Patch in custom matchers.
   config.include FactoryGirl::Syntax::Methods
+  config.include RSpecHtmlMatchers
 
   # Swallow STDOUT and STDERR.
   config.around(:each, :quiet) do |test|
