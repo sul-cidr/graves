@@ -2,6 +2,7 @@
 class GravesController < ApplicationController
 
   def index
+    @narratives = Narrative.all
   end
 
   def read

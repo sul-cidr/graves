@@ -1,8 +1,5 @@
 
-= content_for :css do
-  = stylesheet_link_tag "/stylesheets/#{params[:controller]}"
+h1 Grave Reform in Modern China
 
-= content_for :js do
-  = javascript_include_tag "/javascripts/#{params[:controller]}"
-
-#root
+- @narratives.each do |n|
+  h3= link_to n.title, "read/#{n.slug}"
