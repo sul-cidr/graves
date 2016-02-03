@@ -28,7 +28,7 @@ FactoryGirl.define do
 
     blurb 'Short description.'
 
-    markup '<div>narrative</div>'
+    markup '<p>Markup.</p>'
 
   end
 
