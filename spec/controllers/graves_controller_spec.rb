@@ -4,6 +4,19 @@ require 'rails_helper'
 describe GravesController, type: :controller do
 
   describe 'GET index' do
+
+    before(:each) do
+      get :index
+    end
+
+    it 'assigns the narratives' do
+      expect(assigns(:narratives)).to eq(Narrative.all)
+    end
+
+    it 'renders the index template' do
+      expect(response).to render_template(:index)
+    end
+
   end
 
   describe 'GET read' do
