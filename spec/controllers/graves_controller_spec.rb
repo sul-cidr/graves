@@ -3,17 +3,25 @@ require 'rails_helper'
 
 describe GravesController, type: :controller do
 
+  describe 'GET index' do
+  end
+
   describe 'GET read' do
 
-    it 'templates the narrative markup' do
+    let!(:narrative) {
+      create(:narrative)
+    }
 
-      narrative = create(:narrative)
-
+    before(:each) do
       get :read, slug: narrative.slug
+    end
 
-      expect(response).to render_template(:read)
+    it 'assigns the narrative' do
       expect(assigns(:narrative)).to eq(narrative)
+    end
 
+    it 'renders the read template' do
+      expect(response).to render_template(:read)
     end
 
   end
