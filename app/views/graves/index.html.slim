@@ -1,5 +1,11 @@
 
+ul.nav
+  li
+    a href="/about" About
+  li
+    a href="/people" People
+
 h1 Grave Reform in Modern China
 
 - @narratives.each do |n|
-  h3= link_to n.title, "read/#{n.slug}"
+  h3= link_to n.title, "/read/#{n.slug}"
