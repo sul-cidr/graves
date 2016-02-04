@@ -1,7 +1,7 @@
 
 require 'rails_helper'
 
-describe 'Home Page', type: :feature do
+describe '/', type: :feature do
 
   it 'links to the narratives' do
 
