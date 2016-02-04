@@ -19,17 +19,23 @@ FactoryGirl.define do
     "narrative-#{n}"
   end
 
+  sequence :narrative_title do |n|
+    "Title #{n}"
+  end
+
   factory :narrative do
 
     author
 
     slug { generate(:narrative_slug) }
 
-    title 'Title'
+    title { generate(:narrative_title) }
 
     blurb 'Short description.'
 
-    markup '<p>Markup.</p>'
+    markup '<p>Narrative.</p>'
+
+    pub_date Date.today
 
   end
 

@@ -11,9 +11,9 @@ describe '/', type: :feature do
 
     visit('/')
 
-    expect(page).to have_link(n1.title, href: "read/#{n1.slug}")
-    expect(page).to have_link(n2.title, href: "read/#{n2.slug}")
-    expect(page).to have_link(n3.title, href: "read/#{n3.slug}")
+    expect(page).to have_link(n1.title, href: "/read/#{n1.slug}")
+    expect(page).to have_link(n2.title, href: "/read/#{n2.slug}")
+    expect(page).to have_link(n3.title, href: "/read/#{n3.slug}")
 
   end
 
