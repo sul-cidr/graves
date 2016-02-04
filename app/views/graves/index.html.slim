@@ -10,4 +10,4 @@ h1 Grave Reform in Modern China
 - @narratives.each do |n|
   h5= n.author.full_name
   h3= link_to n.title, "/read/#{n.slug}"
-  h5= n.pub_date
+  h5= l n.pub_date
