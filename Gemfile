@@ -35,6 +35,7 @@ gem 'rails_admin'
 gem 'devise'
 gem 'geocoder'
 gem 'colorize'
+gem 'high_voltage'
 
 group :development do
 
