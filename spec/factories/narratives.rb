@@ -10,6 +10,7 @@
 #  author_id  :integer          not null
 #  slug       :string           not null
 #  blurb      :string
+#  pub_date   :date
 #
 
 FactoryGirl.define do

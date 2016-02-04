@@ -52,18 +52,30 @@ RailsAdmin.config do |config|
     ]
 
     config.model User do
+
       list do
         field :email
       end
+
       edit do
         field :email
         field :password
         field :password_confirmation
       end
+
     end
 
     config.model Author do
       object_label_method :full_name
+    end
+
+    config.model Narrative do
+
+      configure :pub_date do
+        show
+        label 'Publication Date'
+      end
+
     end
 
 
