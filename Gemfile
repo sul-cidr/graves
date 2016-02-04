@@ -57,6 +57,7 @@ group :test do
   gem 'database_cleaner'
   gem 'with_model'
   gem 'rspec-html-matchers'
+  gem 'capybara'
 end
 
 group :deployment do
