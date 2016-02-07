@@ -5,8 +5,8 @@ export default {
   livereload: {
 
     files: [
-      'public/javascripts/graves.js',
-      'public/stylesheets/graves.css',
+      'public/javascripts/*.js',
+      'public/stylesheets/*.css',
     ],
 
     options: {
