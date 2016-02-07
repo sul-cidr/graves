@@ -2,19 +2,19 @@
 = content_for :css do
   = stylesheet_link_tag "/stylesheets/home"
 
-ul.nav
-  li
-    a href="/about" About
-  li
-    a href="/people" People
+.container
 
-h1 Grave Reform in Modern China
+  ul.nav
+    li
+      a href="/about" About
+    li
+      a href="/people" People
 
-p Grave Reform in Modern China is a digital humanities initiative based at Stanford that is building an interactive spatial and textual analysis platform to examine the phenomenon of grave relocation in modern China, a campaign that has led to the exhumation and reburial of 10 million corpses in the past decade alone, and has transformed China’s graveyards into sites of acute personal, social, political, and economic contestation.
+  h1 Grave Reform in Modern China
 
-- @narratives.each do |n|
+  p Grave Reform in Modern China is a digital humanities initiative based at Stanford that is building an interactive spatial and textual analysis platform to examine the phenomenon of grave relocation in modern China, a campaign that has led to the exhumation and reburial of 10 million corpses in the past decade alone, and has transformed China’s graveyards into sites of acute personal, social, political, and economic contestation.
 
-  h5= n.author.full_name
-  small= n.author.affiliation
-
-  h3= link_to n.title, "/read/#{n.slug}"
+  - @narratives.each do |n|
+    h3= link_to n.title, "/read/#{n.slug}"
+    h5= n.author.full_name
+    small= n.author.affiliation
