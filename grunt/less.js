@@ -6,9 +6,9 @@ export default {
     paths: 'node_modules'
   },
 
-  graves: {
-    src: '<%= src.css %>/index.less',
-    dest: '<%= dist.css %>/graves.css'
+  read: {
+    src: '<%= src.css %>/read/index.less',
+    dest: '<%= dist.css %>/read.css'
   }
 
 };
