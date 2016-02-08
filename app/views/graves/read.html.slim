@@ -1,4 +1,7 @@
 
+= content_for :css do
+  = stylesheet_link_tag "/stylesheets/read"
+
 h1.title= @narrative.title
 
 h3.author= @narrative.author.full_name
