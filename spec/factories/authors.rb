@@ -2,11 +2,12 @@
 #
 # Table name: authors
 #
-#  id         :integer          not null, primary key
-#  first_name :text
-#  last_name  :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  first_name  :text
+#  last_name   :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  affiliation :string
 #
 
 FactoryGirl.define do
