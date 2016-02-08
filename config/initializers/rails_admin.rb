@@ -76,6 +76,19 @@ RailsAdmin.config do |config|
         label 'Publication Date'
       end
 
+      edit do
+
+        field :title
+        field :subtitle
+        field :author
+        field :slug
+        field :blurb
+        field :markup
+
+        include_all_fields
+
+      end
+
     end
 
 
