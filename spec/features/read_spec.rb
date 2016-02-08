@@ -11,7 +11,7 @@ describe '/read/:slug', type: :feature do
 
     expect(page).to have_css('h1.title', text: n.title)
     expect(page).to have_css('h3.author', text: n.author.full_name)
-    expect(page).to have_css('h3.blurb', text: n.blurb)
+    expect(page).to have_css('p.blurb', text: n.blurb)
 
     # Check for the raw narrative markup.
     markup = Nokogiri::HTML(page.body).css('#narrative')
