@@ -6,10 +6,14 @@
   .content
 
     .leader
-      h1.title= @narrative.title
-      h2.subtitle= @narrative.subtitle
-      h3.author= @narrative.author.full_name
-      h3= @narrative.author.affiliation
+
+      .title
+        h1.title= @narrative.title
+        h2.subtitle= @narrative.subtitle
+
+      .byline
+        h3.author= @narrative.author.full_name
+        h3.affiliation= @narrative.author.affiliation
 
     p.blurb= @narrative.blurb
 
