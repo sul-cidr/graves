@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import $ from 'jquery';
 
 
@@ -9,7 +10,7 @@ let height, fixed = false;
 /**
  * Cache the window height.
  */
-function getHeight() {
+function cacheHeight() {
   height = $(window).height();
 }
 
@@ -17,25 +18,14 @@ function getHeight() {
 /**
  * When the header scroll out of view, fix the map.
  */
-function fixMap() {
-
+function positionMap() {
   let top = $(window).scrollTop();
-
-  if (top > height && !fixed) {
-    $('#map').addClass('fixed');
-    fixed = true;
-  }
-
-  else if (top < height && fixed) {
-    $('#map').removeClass('fixed');
-    fixed = false;
-  }
-
+  $('#map').toggleClass('fixed', top > height);
 }
 
 
-$(window).resize(getHeight);
-getHeight();
+$(window).resize(cacheHeight);
+cacheHeight();
 
-$(window).scroll(fixMap);
-fixMap();
+$(window).scroll(positionMap);
+positionMap();
