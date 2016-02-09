@@ -2,19 +2,15 @@
 
 import React, { Component } from 'react';
 
-import Map from './map';
-
 
 export default class extends Component {
 
 
   /**
-   * Render the top-level application structure.
+   * Render the map container.
    */
   render() {
-    return (
-      <Map />
-    );
+    return <div id="map" ref="map"></div>;
   }
 
 
