@@ -49,6 +49,7 @@
     "classnames": "^2.1.3",
     "d3": "^3.5.14",
     "director": "^1.2.8",
+    "dropcap.js": "^1.0.1",
     "font-awesome": "^4.4.0",
     "history": "^1.10.2",
     "imagesloaded": "^3.1.8",

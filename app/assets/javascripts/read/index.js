@@ -1,3 +1,3 @@
 
 
-alert('test');
+import './typography';
