@@ -34,14 +34,9 @@ export default {
 
   },
 
-  graves: {
-    src: '<%= src.js %>/src/index.js',
-    dest: '<%= dist.js %>/graves.js'
+  read: {
+    src: '<%= src.js %>/read/index.js',
+    dest: '<%= dist.js %>/read.js'
   },
-
-  graves_test: {
-    src: '<%= src.js %>/test/index.js',
-    dest: '<%= dist.js %>/graves-test.js'
-  }
 
 };
