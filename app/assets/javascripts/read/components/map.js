@@ -82,7 +82,7 @@ export default class extends Component {
       <div id="map" ref="map">
 
         {this.state.map ? (
-          <CollectionMarkers />
+          <CollectionMarkers map={this.state.map} />
         ) : null}
 
       </div>
