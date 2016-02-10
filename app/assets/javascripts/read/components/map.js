@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import L from 'leaflet';
 
 import config from './map.yml';
+import CollectionMarkers from './collection-markers';
 
 
 export default class extends Component {
@@ -81,7 +82,7 @@ export default class extends Component {
       <div id="map" ref="map">
 
         {this.state.map ? (
-          <h1>behaviors</h1>
+          <CollectionMarkers />
         ) : null}
 
       </div>

@@ -1,8 +1,12 @@
 
 
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
+import * as actions from '../actions/collections';
 
+
+@connect(null, actions)
 export default class extends Component {
 
 
@@ -18,7 +22,7 @@ export default class extends Component {
    * Request collections.
    */
   componentDidMount() {
-    // TODO
+    this.props.loadCollections();
   }
 
 
