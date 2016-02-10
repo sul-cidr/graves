@@ -2,10 +2,12 @@
 
 import L from 'leaflet';
 import _ from 'lodash';
+import classNames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../actions/collections';
+import scale from './collection-scale';
 
 
 @connect(
@@ -53,10 +55,18 @@ export default class extends Component {
 
       _.each(this.props.geojson.features, f => {
 
+        let cx = classNames('collection', {
+          nocount: !f.properties.num_graves,
+        });
+
         let marker = L.circleMarker(f.geometry.coordinates, {
           feature: f,
-          className: 'collection',
+          className: cx,
         });
+
+        // Size by grave count.
+        let r = scale(f.properties.num_graves || 7);
+        marker.setRadius(r);
 
         let label = (
           f.properties.town_p ||
