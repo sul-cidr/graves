@@ -55,6 +55,7 @@ export default class extends Component {
 
         let marker = L.circleMarker(f.geometry.coordinates, {
           feature: f,
+          className: 'collection',
         });
 
         let label = (
