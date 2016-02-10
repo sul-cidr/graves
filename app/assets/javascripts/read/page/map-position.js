@@ -3,7 +3,7 @@
 import $ from 'jquery';
 
 
-let height, fixed = false;
+let height;
 
 
 /**
