@@ -11,6 +11,22 @@ export default class extends Component {
 
 
   /**
+   * Set initial state.
+   *
+   * @param {Object} props
+   */
+  constructor(props) {
+
+    super(props);
+
+    this.state = {
+      map: null,
+    };
+
+  }
+
+
+  /**
    * Start the map.
    */
   componentDidMount() {
@@ -51,6 +67,9 @@ export default class extends Component {
     let { lat, lng, zoom } = config.focus;
     map.setView([lat, lng], zoom);
 
+    // Mount behaviors.
+    this.setState({ map });
+
   }
 
 
@@ -60,6 +79,11 @@ export default class extends Component {
   render() {
     return (
       <div id="map" ref="map">
+
+        {this.state.map ? (
+          <h1>behaviors</h1>
+        ) : null}
+
       </div>
     );
   }
