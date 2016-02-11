@@ -1,12 +1,18 @@
 
 
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { Modal } from 'react-bootstrap';
+
+import * as actions from '../actions/collections';
 
 
-@connect(state => ({
-  selected: state.collections.selected
-}))
+@connect(
+  state => ({
+    feature: state.collections.selected
+  }),
+  actions
+)
 export default class extends Component {
 
 
@@ -14,12 +20,8 @@ export default class extends Component {
    * Render a collection modal.
    */
   render() {
-
-    console.log(this.props.selected);
-
-    // TODO
+    console.log(this.props.feature);
     return null;
-
   }
 
 
