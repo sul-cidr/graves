@@ -35,6 +35,11 @@ export default class extends Component {
     this.group = L.featureGroup();
     this.group.addTo(this.props.map);
 
+    // SELECT
+    this.group.on('click', e => {
+      this.props.selectCollection(e.layer.options.feature);
+    });
+
   }
 
 

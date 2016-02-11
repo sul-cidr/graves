@@ -6,6 +6,7 @@ import L from 'leaflet';
 
 import config from './map.yml';
 import CollectionMarkers from './collection-markers';
+import CollectionModal from './collection-modal';
 
 
 export default class extends Component {
@@ -82,7 +83,12 @@ export default class extends Component {
       <div id="map" ref="map">
 
         {this.state.map ? (
-          <CollectionMarkers map={this.state.map} />
+          <div>
+
+            <CollectionMarkers map={this.state.map} />
+            <CollectionModal />
+
+          </div>
         ) : null}
 
       </div>
