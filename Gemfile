@@ -51,14 +51,17 @@ group :development do
 end
 
 group :test do
+
+  gem 'shoulda-matchers', require: false
+
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers', require: false
   gem 'rspec-mocks'
   gem 'database_cleaner'
   gem 'with_model'
   gem 'rspec-html-matchers'
   gem 'capybara'
+
 end
 
 group :deployment do

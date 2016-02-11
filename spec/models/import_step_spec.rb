@@ -16,6 +16,7 @@ describe ImportStep, type: :model do
   end
 
   describe 'validations' do
+    subject { create(:import_step) }
     it { should validate_uniqueness_of(:step) }
   end
 
