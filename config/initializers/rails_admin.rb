@@ -1,5 +1,6 @@
 RailsAdmin.config do |config|
 
+
   ### Popular gems integration
 
   ## == Devise ==
@@ -31,66 +32,71 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
 
+  end
 
-    # Authenticate with Devise
 
-    config.authenticate_with do
-      warden.authenticate! scope: :user
+  # Authenticate with Devise
+
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+  end
+
+  config.current_user_method(&:current_user)
+
+
+  # Disable .js form validation
+  config.browser_validations = false
+
+  config.included_models = [
+    'Notice',
+    'Collection',
+    'Author',
+    'Narrative',
+    'User',
+  ]
+
+
+  config.model User do
+
+    list do
+      field :email
     end
 
-    config.current_user_method(&:current_user)
-
-    # Disable .js form validation
-    config.browser_validations = false
-
-    config.included_models = [
-      'Notice',
-      'Collection',
-      'Author',
-      'Narrative',
-      'User',
-    ]
-
-    config.model User do
-
-      list do
-        field :email
-      end
-
-      edit do
-        field :email
-        field :password
-        field :password_confirmation
-      end
-
+    edit do
+      field :email
+      field :password
+      field :password_confirmation
     end
-
-    config.model Author do
-      object_label_method :full_name
-    end
-
-    config.model Narrative do
-
-      configure :pub_date do
-        show
-        label 'Publication Date'
-      end
-
-      edit do
-
-        field :title
-        field :subtitle
-        field :author
-        field :slug
-        field :blurb
-        field :markup
-
-        include_all_fields
-
-      end
-
-    end
-
 
   end
+
+
+  config.model Author do
+    object_label_method :full_name
+  end
+
+
+  config.model Narrative do
+
+    configure :pub_date do
+      show
+      label 'Publication Date'
+    end
+
+    edit do
+
+      field :title
+      field :subtitle
+      field :author
+      field :slug
+      field :blurb
+      field :markup
+
+      include_all_fields
+
+    end
+
+  end
+
+
 end
