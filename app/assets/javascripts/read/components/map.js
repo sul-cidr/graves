@@ -6,6 +6,7 @@ import L from 'leaflet';
 
 import config from './map.yml';
 import CollectionMarkers from './collection-markers';
+import MapMenu from './map-menu';
 
 
 export default class extends Component {
@@ -85,6 +86,7 @@ export default class extends Component {
           <div>
 
             <CollectionMarkers map={this.state.map} />
+            <MapMenu />
 
           </div>
         ) : null}
