@@ -1,7 +1,8 @@
 
 
 import React, { Component } from 'react';
-import classNames from 'classnames';
+
+import BurgerMenu from './burger-menu';
 
 
 export default class extends Component {
@@ -11,10 +12,7 @@ export default class extends Component {
    * Render the map burger menu.
    */
   render() {
-    return (
-      <div id="map-menu">
-      </div>
-    );
+    return <BurgerMenu />;
   }
 
 

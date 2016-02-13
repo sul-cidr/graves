@@ -1,5 +1,13 @@
 
 
 body {
-  overflow-x: hidden;
+
+  position: relative;
+
+  .transition(right 0.5s);
+
+  &.menu {
+    right: @width-burger;
+  }
+
 }
