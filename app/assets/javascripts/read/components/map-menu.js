@@ -12,7 +12,11 @@ export default class extends Component {
    * Render the map burger menu.
    */
   render() {
-    return <BurgerMenu />;
+    return (
+      <BurgerMenu>
+        <h3>Map Options</h3>
+      </BurgerMenu>
+    );
   }
 
 

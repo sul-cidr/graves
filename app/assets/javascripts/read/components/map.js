@@ -80,7 +80,10 @@ export default class extends Component {
    */
   render() {
     return (
-      <div id="map" ref="map">
+      <div className="map-wrapper">
+
+        <div id="map" ref="map">
+        </div>
 
         {this.state.map ? (
           <div>
