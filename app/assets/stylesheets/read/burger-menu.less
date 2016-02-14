@@ -1,5 +1,25 @@
 
 
+body {
+
+  position: relative;
+  right: 0;
+
+  .transition(right 0.5s);
+
+  &.menu {
+
+    right: @width-burger;
+
+    .burger {
+      left: calc(~"100vw - "@width-burger);
+    }
+
+  }
+
+}
+
+
 .burger {
 
   position: fixed;
@@ -7,9 +27,11 @@
   height: 100vh;
 
   top: 0;
-  left: calc(~"100vw - "@width-burger);
+  left: 100vw;
 
-  background: #eee;
+  background: #555;
   z-index: 999;
+
+  .transition(left 0.5s);
 
 }
