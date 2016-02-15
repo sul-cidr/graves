@@ -59,4 +59,19 @@ describe BaseLayer, type: :model do
 
   end
 
+  describe '.clear_default!()' do
+
+    it 'flips off all is_default flags' do
+
+      create(:base_layer, is_default: true)
+      create(:base_layer, is_default: true)
+
+      BaseLayer.clear_default!
+
+      expect(BaseLayer.where{is_default==true}.count).to eq(0)
+
+    end
+
+  end
+
 end

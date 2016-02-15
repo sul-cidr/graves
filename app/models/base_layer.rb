@@ -22,4 +22,11 @@ class BaseLayer < ActiveRecord::Base
     find_by(is_default: true) or first
   end
 
+  #
+  # Flip off the is_default flag.
+  #
+  def self.clear_default!
+    update_all(is_default: false)
+  end
+
 end
