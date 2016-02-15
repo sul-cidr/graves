@@ -49,12 +49,18 @@ export default class extends Component {
       fadeAnimation: false,
     });
 
+    // Default viewport.
+    let { lat, lng, zoom } = config.focus;
+    map.setView([lat, lng], zoom);
+
     // Zoom buttons on top right.
     let zoomControl = L.control.zoom({
       position: 'topright'
     });
 
     map.addControl(zoomControl);
+
+    // TODO: <BaseLayer />
 
     // OSP base layer.
     let osmLayer = L.tileLayer(
@@ -63,10 +69,6 @@ export default class extends Component {
     );
 
     map.addLayer(osmLayer);
-
-    // Default viewport.
-    let { lat, lng, zoom } = config.focus;
-    map.setView([lat, lng], zoom);
 
     // Mount behaviors.
     this.setState({ map });
