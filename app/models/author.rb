@@ -12,6 +12,10 @@
 
 class Author < ActiveRecord::Base
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :affiliation, presence: true
+
   #
   # Construct a full name.
   #

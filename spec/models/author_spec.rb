@@ -13,5 +13,17 @@
 require 'rails_helper'
 
 describe Author, type: :model do
-  # TODO
+
+  describe 'columns' do
+    it { should have_db_column(:first_name).with_options(null: false) }
+    it { should have_db_column(:last_name).with_options(null: false) }
+    it { should have_db_column(:affiliation).with_options(null: false) }
+  end
+
+  describe 'validations' do
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:last_name) }
+    it { should validate_presence_of(:affiliation) }
+  end
+
 end

@@ -17,5 +17,7 @@ FactoryGirl.define do
 
     last_name 'Mullaney'
 
+    affiliation 'Stanford'
+
   end
 end

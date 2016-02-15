@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215220317) do
+ActiveRecord::Schema.define(version: 20160215220732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
 
   create_table "authors", force: :cascade do |t|
-    t.text     "first_name"
-    t.text     "last_name"
+    t.text     "first_name",  null: false
+    t.text     "last_name",   null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "affiliation"
+    t.string   "affiliation", null: false
   end
 
   create_table "base_layers", force: :cascade do |t|
