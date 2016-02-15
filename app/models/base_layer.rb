@@ -16,17 +16,19 @@ class BaseLayer < ActiveRecord::Base
   validates :url, presence: true
 
   #
+  # Flip off the is_default flag.
+  #
+  before_save do
+    if is_default
+      self.class.update_all(is_default: false)
+    end
+  end
+
+  #
   # Get the default layer.
   #
   def self.default
     find_by(is_default: true) or first
-  end
-
-  #
-  # Flip off the is_default flag.
-  #
-  def self.clear_default!
-    update_all(is_default: false)
   end
 
 end

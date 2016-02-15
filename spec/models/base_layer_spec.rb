@@ -59,16 +59,18 @@ describe BaseLayer, type: :model do
 
   end
 
-  describe '.clear_default!()' do
+  describe 'before_save' do
 
-    it 'flips off all is_default flags' do
+    it 'clears old default when a new default is saved' do
 
-      create(:base_layer, is_default: true)
-      create(:base_layer, is_default: true)
+      old = create(:base_layer, is_default: true)
+      new = create(:base_layer, is_default: true)
 
-      BaseLayer.clear_default!
+      old.reload
+      new.reload
 
-      expect(BaseLayer.where{is_default==true}.count).to eq(0)
+      expect(old.is_default).to be(false)
+      expect(new.is_default).to be(true)
 
     end
 
