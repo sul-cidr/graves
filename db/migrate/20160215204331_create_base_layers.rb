@@ -4,7 +4,7 @@ class CreateBaseLayers < ActiveRecord::Migration
 
       t.string :label, null: false
       t.string :url, null: false
-      t.boolean :default, null: false
+      t.boolean :default, null: false, default: false
 
       t.timestamps null: false
 

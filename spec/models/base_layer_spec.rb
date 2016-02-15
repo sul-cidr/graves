@@ -10,10 +10,13 @@
 #  updated_at :datetime         not null
 #
 
+require 'rails_helper'
 
-class BaseLayer < ActiveRecord::Base
+describe BaseLayer, type: :model do
 
-  validates :label, presence: true
-  validates :url, presence: true
+  describe "validations" do
+    it { should validate_presence_of(:label) }
+    it { should validate_presence_of(:url) }
+  end
 
 end

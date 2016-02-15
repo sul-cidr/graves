@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(version: 20160215204331) do
   end
 
   create_table "base_layers", force: :cascade do |t|
-    t.string   "label",      null: false
-    t.string   "url",        null: false
-    t.boolean  "default",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "label",                      null: false
+    t.string   "url",                        null: false
+    t.boolean  "default",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "collections", force: :cascade do |t|
