@@ -80,7 +80,7 @@ export default class extends Component {
    */
   render() {
     return (
-      <div className="map-wrapper">
+      <div id="map-wrapper">
 
         <div id="map" ref="map">
         </div>

@@ -2,6 +2,8 @@
 
 import React, { Component } from 'react';
 
+import BaseLayerSelect from './base-layer-select';
+
 
 export default class extends Component {
 
@@ -12,7 +14,7 @@ export default class extends Component {
   render() {
     return (
       <div id="map-menu">
-        <h3>Map Menu</h3>
+        <BaseLayerSelect />
       </div>
     );
   }
