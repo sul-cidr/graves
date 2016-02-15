@@ -41,7 +41,7 @@ export default class extends Component {
    */
   createMap() {
 
-    let el = findDOMNode(this.refs.map);
+    let el = findDOMNode(this.refs.leaflet);
 
     let map = L.map(el, {
       detectRetina: true,
@@ -80,9 +80,9 @@ export default class extends Component {
    */
   render() {
     return (
-      <div id="map-wrapper">
+      <div id="map">
 
-        <div id="map" ref="map">
+        <div id="leaflet" ref="leaflet">
         </div>
 
         {this.state.map ? (
