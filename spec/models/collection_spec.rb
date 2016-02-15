@@ -30,7 +30,7 @@ require 'rails_helper'
 
 describe Collection, type: :model do
 
-  describe "columns" do
+  describe 'columns' do
     it { should have_db_column(:notice_id).with_options(null: false) }
   end
 
@@ -43,7 +43,7 @@ describe Collection, type: :model do
     it { should have_db_index(:town_id) }
   end
 
-  describe "validations" do
+  describe 'validations' do
     it { should validate_presence_of(:notice) }
   end
 
