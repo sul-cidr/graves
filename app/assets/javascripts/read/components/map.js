@@ -44,7 +44,6 @@ export default class extends Component {
     let el = findDOMNode(this.refs.leaflet);
 
     let map = L.map(el, {
-      detectRetina: true,
       scrollWheelZoom: false,
       zoomControl: false,
       fadeAnimation: false,
