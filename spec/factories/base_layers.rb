@@ -10,16 +10,14 @@
 #  updated_at :datetime         not null
 #
 
-class BaseLayer < ActiveRecord::Base
+FactoryGirl.define do
+  factory :base_layer do
 
-  validates :label, presence: true
-  validates :url, presence: true
+    label 'Layer'
 
-  #
-  # Get the default layer.
-  #
-  def self.default
-    find_by(is_default: true) or first
+    url 'http://{s}.osm.org/{z}/{x}/{y}.png'
+
+    is_default false
+
   end
-
 end

@@ -33,4 +33,30 @@ describe BaseLayer, type: :model do
     it { should validate_presence_of(:url) }
   end
 
+  describe '.default()' do
+
+    it 'returns the layer marked default, when one exists' do
+
+      create(:base_layer)
+      create(:base_layer)
+
+      default = create(:base_layer, is_default: true)
+
+      expect(BaseLayer.default).to eq(default)
+
+    end
+
+    it 'returns the first layer added, when no layer is marked' do
+
+      first = create(:base_layer)
+
+      create(:base_layer)
+      create(:base_layer)
+
+      expect(BaseLayer.default).to eq(first)
+
+    end
+
+  end
+
 end
