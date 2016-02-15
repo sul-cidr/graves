@@ -52,6 +52,7 @@ RailsAdmin.config do |config|
     'Collection',
     'Author',
     'Narrative',
+    'BaseLayer',
     'User',
   ]
 
