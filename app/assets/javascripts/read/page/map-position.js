@@ -19,7 +19,7 @@ function cacheHeight() {
  */
 function positionMap() {
   let top = $(window).scrollTop();
-  $('body').toggleClass('fixed', top > height);
+  $('body').toggleClass('fixed', top >= height);
 }
 
 
