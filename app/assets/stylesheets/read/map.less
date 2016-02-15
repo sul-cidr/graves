@@ -1,9 +1,19 @@
 
 
-#leaflet {
+#map {
 
   position: absolute;
   top: 100vh;
+
+  height: 100vh;
+  width: 100vw;
+
+  background: #ccc;
+
+}
+
+
+#leaflet {
 
   width: calc(~"100vw + "@width-text);
   height: 100vh;
@@ -15,8 +25,7 @@
   }
 
   .leaflet-control-zoom {
-    margin: 2em;
-    font-size: @font-size-text;
+    margin: @margin-content;
   }
 
   // Popups
@@ -54,7 +63,7 @@
 }
 
 
-.fixed #leaflet {
+.fixed #map {
   position: fixed;
   top: 0;
 }
