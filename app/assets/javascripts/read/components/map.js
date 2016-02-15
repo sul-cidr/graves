@@ -86,12 +86,12 @@ export default class extends Component {
         </div>
 
         {this.state.map ? (
-          <div>
+          <behaviors>
 
             <CollectionMarkers map={this.state.map} />
             <MapMenu />
 
-          </div>
+          </behaviors>
         ) : null}
 
       </div>
