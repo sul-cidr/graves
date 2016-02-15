@@ -8,8 +8,8 @@
 #  name_p       :string
 #  name_c       :string
 #  geometry     :geometry({:srid= geometry, 4326
-#  demographics :jsonb            default({}), not null
-#  choropleths  :jsonb            default({}), not null
+#  demographics :jsonb            not null
+#  choropleths  :jsonb            not null
 #
 
 FactoryGirl.define do

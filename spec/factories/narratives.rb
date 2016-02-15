@@ -3,14 +3,15 @@
 # Table name: narratives
 #
 #  id         :integer          not null, primary key
-#  title      :text
+#  title      :string
 #  markup     :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  author_id  :integer          not null
 #  slug       :string           not null
-#  blurb      :string
+#  blurb      :text
 #  pub_date   :date
+#  subtitle   :string
 #
 
 FactoryGirl.define do
