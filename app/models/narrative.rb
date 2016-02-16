@@ -17,6 +17,7 @@
 
 class Narrative < ActiveRecord::Base
 
+
   belongs_to :author
   belongs_to :base_layer
 
@@ -26,5 +27,19 @@ class Narrative < ActiveRecord::Base
   validates :slug, presence: true
   validates :slug, uniqueness: true
   validates :slug, format: { with: /\A[a-z0-9-]*\z/ }
+
+
+  #
+  # Javascript globals.
+  #
+  # @return hash
+  #
+  def js_globals
+    {
+      base_layers: BaseLayer.all,
+      default_base_layer: base_layer.id,
+    }
+  end
+
 
 end

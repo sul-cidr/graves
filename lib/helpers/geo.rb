@@ -4,7 +4,7 @@ module Helpers::Geo
   #
   # Alias the cartesian geometry factory.
   #
-  # returns [RGeo::Geos::CAPIFactory]
+  # @return [RGeo::Geos::CAPIFactory]
   #
   def self.factory
     RGeo::Geographic.simple_mercator_factory()
@@ -15,7 +15,7 @@ module Helpers::Geo
   #
   # @param x [Float]
   # @param y [Float]
-  # @returns [RGeo::Geos::CAPIPointImpl]
+  # @return [RGeo::Geos::CAPIPointImpl]
   #
   def self.point(x, y)
     factory.point(x, y)

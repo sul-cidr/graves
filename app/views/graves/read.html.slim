@@ -1,9 +1,16 @@
 
+
 = content_for :css do
   = stylesheet_link_tag "/stylesheets/read"
 
+
 = content_for :js do
+
   = javascript_include_tag "/javascripts/read"
+
+  javascript:
+    GRAVES = #{{@narrative.js_globals.to_json}}
+
 
 #header
   .content
