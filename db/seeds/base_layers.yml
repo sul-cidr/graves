@@ -1,5 +1,4 @@
 ---
 
-- label: Pinyin
+- label: Pinyin Labels
   url: http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png
-  is_default: true
