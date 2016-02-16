@@ -10,7 +10,9 @@ describe '/read/:slug', type: :feature do
     visit("read/#{n.slug}")
 
     expect(page).to have_css('h1.title', text: n.title)
+    expect(page).to have_css('h2.subtitle', text: n.subtitle)
     expect(page).to have_css('h3.author', text: n.author.full_name)
+    expect(page).to have_css('h3.affiliation', text: n.author.affiliation)
     expect(page).to have_css('p.blurb', text: n.blurb)
 
     # Check for the raw narrative markup.
