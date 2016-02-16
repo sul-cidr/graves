@@ -77,6 +77,11 @@ RailsAdmin.config do |config|
   end
 
 
+  config.model BaseLayer do
+    object_label_method :label
+  end
+
+
   config.model Narrative do
 
     configure :pub_date do
@@ -92,6 +97,7 @@ RailsAdmin.config do |config|
       field :slug
       field :blurb
       field :markup
+      field :base_layer
 
       include_all_fields
 
