@@ -7,6 +7,7 @@ import L from 'leaflet';
 import config from './map.yml';
 import CollectionMarkers from './collection-markers';
 import MapMenu from './map-menu';
+import BaseLayer from './base-layer';
 
 
 export default class extends Component {
@@ -60,16 +61,6 @@ export default class extends Component {
 
     map.addControl(zoomControl);
 
-    // TODO: <BaseLayer />
-
-    // OSP base layer.
-    let osmLayer = L.tileLayer(
-      'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
-      { detectRetina: true }
-    );
-
-    map.addLayer(osmLayer);
-
     // Mount behaviors.
     this.setState({ map });
 
@@ -89,7 +80,9 @@ export default class extends Component {
         {this.state.map ? (
           <behaviors>
 
+            <BaseLayer map={this.state.map} />
             <CollectionMarkers map={this.state.map} />
+
             <MapMenu />
 
           </behaviors>
