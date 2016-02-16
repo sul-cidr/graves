@@ -35,7 +35,7 @@ export default {
   },
 
   read: {
-    src: '<%= src.js %>/read/index.js',
+    src: '<%= src.js %>/read/src/index.js',
     dest: '<%= dist.js %>/read.js'
   },
 
