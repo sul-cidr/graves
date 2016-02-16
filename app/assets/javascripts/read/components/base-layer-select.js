@@ -1,10 +1,20 @@
 
 
-import React, { Component } from 'react';
+import _ from 'lodash';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Select from 'react-select';
 
 
+@connect(
+  state => state.baseLayer
+)
 export default class extends Component {
+
+
+  static propTypes = {
+    layerId: PropTypes.number.isRequired,
+  };
 
 
   /**
@@ -12,15 +22,17 @@ export default class extends Component {
    */
   render() {
 
-    let options = [
-      {value: 1, label: 'Layer 1'},
-      {value: 2, label: 'Layer 2'},
-      {value: 3, label: 'Layer 3'},
-    ];
+    let options = _.map(window.GRAVES.baseLayers, function(layer) {
+      return {
+        value: layer.id,
+        label: layer.label,
+      };
+    });
 
     return (
       <Select
         options={options}
+        value={this.props.layerId}
       />
     );
 
