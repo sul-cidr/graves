@@ -21,16 +21,19 @@ describe Narrative, type: :model do
 
   describe 'indexes' do
     it { should have_db_index(:author_id) }
+    it { should have_db_index(:base_layer_id) }
     it { should have_db_index(:slug).unique(true) }
   end
 
   describe 'columns' do
     it { should have_db_column(:author_id).with_options(null: false) }
+    it { should have_db_column(:base_layer_id).with_options(null: false) }
     it { should have_db_column(:slug).with_options(null: false) }
   end
 
   describe 'relationships' do
     it { should belong_to(:author) }
+    it { should belong_to(:base_layer) }
   end
 
   describe 'validations' do
