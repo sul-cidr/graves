@@ -23,3 +23,11 @@ before_script:
   # Load the schema.
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
+
+  # Install Grunt.
+  - npm install -g grunt-cli
+
+script:
+
+  - bundle exec rake
+  - grunt jasmine
