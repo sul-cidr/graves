@@ -36,8 +36,8 @@ class Narrative < ActiveRecord::Base
   #
   def for_js
     {
-      base_layers: BaseLayer.all.index_by(&:id),
-      default_base_layer: base_layer.id,
+      baseLayers: BaseLayer.all.index_by(&:id),
+      baseLayerId: base_layer.id,
     }
   end
 

@@ -6,10 +6,10 @@
 
 = content_for :js do
 
-  = javascript_include_tag "/javascripts/read"
-
   javascript:
     GRAVES = #{{@narrative.for_js.to_json}}
+
+  = javascript_include_tag "/javascripts/read"
 
 
 #header
