@@ -30,11 +30,11 @@ class Narrative < ActiveRecord::Base
 
 
   #
-  # Javascript globals.
+  # Assemble .js globals.
   #
   # @return hash
   #
-  def js_globals
+  def for_js
     {
       base_layers: BaseLayer.all,
       default_base_layer: base_layer.id,
