@@ -14,5 +14,5 @@ default:
   - watch
 
 jasmine:browser:
-  - jasmine:graves:build
+  - jasmine:read:build
   - connect

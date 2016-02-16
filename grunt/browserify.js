@@ -39,4 +39,9 @@ export default {
     dest: '<%= dist.js %>/read.js'
   },
 
+  read_test: {
+    src: '<%= src.js %>/read/test/index.js',
+    dest: '<%= dist.js %>/read-test.js'
+  },
+
 };
