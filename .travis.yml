@@ -24,8 +24,9 @@ before_script:
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
 
-  # Install Grunt.
+  # Install NPM modules.
   - npm install -g grunt-cli
+  - npm install
 
 script:
 
