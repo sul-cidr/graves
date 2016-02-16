@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216001228) do
+ActiveRecord::Schema.define(version: 20160216002333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,16 +86,18 @@ ActiveRecord::Schema.define(version: 20160216001228) do
   create_table "narratives", force: :cascade do |t|
     t.string   "title"
     t.text     "markup"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "author_id",  null: false
-    t.string   "slug",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "author_id",     null: false
+    t.string   "slug",          null: false
     t.text     "blurb"
     t.date     "pub_date"
     t.string   "subtitle"
+    t.integer  "base_layer_id", null: false
   end
 
   add_index "narratives", ["author_id"], name: "index_narratives_on_author_id", using: :btree
+  add_index "narratives", ["base_layer_id"], name: "index_narratives_on_base_layer_id", using: :btree
   add_index "narratives", ["slug"], name: "index_narratives_on_slug", unique: true, using: :btree
 
   create_table "notices", force: :cascade do |t|
@@ -164,5 +166,6 @@ ActiveRecord::Schema.define(version: 20160216001228) do
   add_foreign_key "collections", "towns"
   add_foreign_key "counties", "provinces"
   add_foreign_key "narratives", "authors"
+  add_foreign_key "narratives", "base_layers"
   add_foreign_key "towns", "counties"
 end

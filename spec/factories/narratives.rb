@@ -2,16 +2,17 @@
 #
 # Table name: narratives
 #
-#  id         :integer          not null, primary key
-#  title      :string
-#  markup     :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  author_id  :integer          not null
-#  slug       :string           not null
-#  blurb      :text
-#  pub_date   :date
-#  subtitle   :string
+#  id            :integer          not null, primary key
+#  title         :string
+#  markup        :text
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  author_id     :integer          not null
+#  slug          :string           not null
+#  blurb         :text
+#  pub_date      :date
+#  subtitle      :string
+#  base_layer_id :integer          not null
 #
 
 FactoryGirl.define do
@@ -27,6 +28,8 @@ FactoryGirl.define do
   factory :narrative do
 
     author
+
+    base_layer
 
     slug { generate(:narrative_slug) }
 

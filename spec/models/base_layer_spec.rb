@@ -5,7 +5,6 @@
 #  id         :integer          not null, primary key
 #  label      :string           not null
 #  url        :string           not null
-#  is_default :boolean          default(FALSE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
