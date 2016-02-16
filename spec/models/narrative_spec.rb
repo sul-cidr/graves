@@ -41,6 +41,7 @@ describe Narrative, type: :model do
     subject { build(:narrative) }
 
     it { should validate_presence_of(:author) }
+    it { should validate_presence_of(:base_layer) }
     it { should validate_presence_of(:slug) }
     it { should validate_uniqueness_of(:slug) }
 

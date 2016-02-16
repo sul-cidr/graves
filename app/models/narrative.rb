@@ -21,6 +21,7 @@ class Narrative < ActiveRecord::Base
   belongs_to :base_layer
 
   validates :author, presence: true
+  validates :base_layer, presence: true
 
   validates :slug, presence: true
   validates :slug, uniqueness: true
