@@ -53,6 +53,7 @@ RailsAdmin.config do |config|
     'Author',
     'Narrative',
     'BaseLayer',
+    'WmsLayer',
     'User',
   ]
 
