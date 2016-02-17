@@ -27,7 +27,7 @@ before_script:
   # Build static payloads.
   - npm install -g grunt-cli
   - npm install
-  - npm compile:min
+  - grunt compile:min
 
 script:
 
