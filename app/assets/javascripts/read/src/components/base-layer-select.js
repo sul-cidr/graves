@@ -35,6 +35,8 @@ export default class extends Component {
     return (
       <Select
 
+        className="base-layer-select"
+
         clearable={false}
         options={options}
 

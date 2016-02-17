@@ -44,7 +44,17 @@ export function stop() {
  *
  * @param {Function} type
  */
-export function unwrapType(type) {
+export function getComponent(type) {
   let component = TestUtils.findRenderedComponentWithType(ROOT, type);
   return _.get(component, 'refs.wrappedInstance') || component;
+}
+
+
+/**
+ * Find a DOM node by class.
+ *
+ * @param {Function} cls
+ */
+export function getNode(cls) {
+  return TestUtils.findRenderedDOMComponentWithClass(ROOT, cls);
 }
