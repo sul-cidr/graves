@@ -17,11 +17,24 @@ describe 'Base Layers', type: :feature do
 
   end
 
-  it 'change-layer' do
+  it 'list-layers' do
 
     create(:base_layer, name: 'Layer 1', url: 'url1')
     create(:base_layer, name: 'Layer 2', url: 'url2')
     default = create(:base_layer, name: 'Layer 3', url: 'url3')
+
+    n = create(:narrative, base_layer: default)
+
+    visit("read/#{n.slug}")
+
+    write_page_fixture('base-layers', 'list-layers', page)
+
+  end
+
+  it 'change-layer' do
+
+    default = create(:base_layer, name: 'Layer 1', url: 'url1')
+    create(:base_layer, name: 'Layer 2', url: 'url2')
 
     n = create(:narrative, base_layer: default)
 
