@@ -15,8 +15,12 @@ import init from '../src';
  * @param {String} fixture
  */
 export function start(fixture) {
+
+  stop();
+
   loadFixtures(fixture || 'default/page.html');
   window.ROOT = init();
+
 }
 
 
@@ -24,7 +28,14 @@ export function start(fixture) {
  * Stop the app.
  */
 export function stop() {
-  ReactDOM.unmountComponentAtNode(document.getElementById('read'));
+
+  try {
+    let read = ocument.getElementById('read');
+    ReactDOM.unmountComponentAtNode(read);
+  }
+
+  catch (e) {}
+
 }
 
 
