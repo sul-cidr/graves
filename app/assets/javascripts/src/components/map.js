@@ -169,7 +169,6 @@ export default class extends Component {
 
           <CollectionGroup />
           <CollectionModal />
-          <CollectionLegend />
           <CountyGroup />
           <SectionGroup />
 
