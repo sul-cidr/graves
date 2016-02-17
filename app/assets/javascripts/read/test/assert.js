@@ -12,7 +12,7 @@ import * as utils from './utils';
  */
 export function baseLayerUrl(url) {
 
-  let baseLayer = utils.unwrap(ROOT, BaseLayer);
+  let baseLayer = utils.unwrapType(BaseLayer);
 
   expect(baseLayer.props.map.hasLayer(baseLayer.layer)).toBeTruthy();
   expect(baseLayer.layer._url).toEqual('url3');

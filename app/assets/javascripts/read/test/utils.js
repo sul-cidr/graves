@@ -27,13 +27,11 @@ export function stop() {
 
 
 /**
- * Given a tree and a component class, find the first occurrence of the class
- * and return the raw component instance.
+ * Find a component by type.
  *
- * @param {ReactComponent} tree
  * @param {Function} type
  */
-export function unwrap(tree, type) {
-  let component = TestUtils.findRenderedComponentWithType(tree, type);
+export function unwrapType(type) {
+  let component = TestUtils.findRenderedComponentWithType(ROOT, type);
   return component.refs.wrappedInstance;
 }
