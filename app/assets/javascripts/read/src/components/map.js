@@ -8,6 +8,7 @@ import config from './map.yml';
 import CollectionMarkers from './collection-markers';
 import MapMenu from './map-menu';
 import BaseLayer from './base-layer';
+import WmsLayer from './wms-layer';
 
 
 export default class extends Component {
@@ -82,6 +83,7 @@ export default class extends Component {
 
             <BaseLayer map={this.state.map} />
             <CollectionMarkers map={this.state.map} />
+            <WmsLayer map={this.state.map} />
 
             <MapMenu />
 
