@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(version: 20160217163119) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "wms_layers", force: :cascade do |t|
+    t.string   "name",       null: false
     t.string   "address",    null: false
     t.string   "layer",      null: false
     t.datetime "created_at", null: false
