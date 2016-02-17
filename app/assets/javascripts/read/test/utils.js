@@ -1,6 +1,8 @@
 
 
 import 'jasmine-jquery';
+
+import _ from 'lodash';
 import TestUtils from 'react-addons-test-utils';
 import ReactDOM from 'react-dom';
 
@@ -33,5 +35,5 @@ export function stop() {
  */
 export function unwrapType(type) {
   let component = TestUtils.findRenderedComponentWithType(ROOT, type);
-  return component.refs.wrappedInstance;
+  return _.get(component, 'refs.wrappedInstance') || component;
 }

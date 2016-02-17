@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe 'Base Layers', type: :feature do
 
-  it 'mounts the default base layer' do
+  it 'mount-default' do
 
     create(:base_layer, url: 'url1')
     create(:base_layer, url: 'url2')
