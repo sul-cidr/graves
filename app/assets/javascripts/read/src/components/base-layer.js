@@ -54,7 +54,9 @@ export default class extends Component {
       // Get layer configuration.
       let config = window.GRAVES.baseLayers[this.props.layerId];
 
-      this.layer = L.tileLayer(config.url);
+      this.layer = L.tileLayer(config.url, {
+        zIndex: 0,
+      });
 
       this.props.map.addLayer(this.layer);
 
