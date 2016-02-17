@@ -2,9 +2,8 @@
 
 import $ from 'jquery';
 
-import BaseLayer from '../../src/components/base-layer';
-
 import * as utils from '../utils';
+import * as assert from '../assert';
 
 
 describe('Base Layer', function() {
@@ -15,14 +14,11 @@ describe('Base Layer', function() {
   });
 
 
-  it('mounts the default base layer', function() {
+  it('mounts the default base layer on startup', function() {
 
     utils.start('base-layers/mount-default.html');
 
-    let baseLayer = utils.unwrap(ROOT, BaseLayer);
-
-    expect(baseLayer.layer._url).toEqual('url3');
-    expect(baseLayer.props.map.hasLayer(baseLayer.layer)).toBeTruthy();
+    assert.baseLayerUrl('url3');
 
   });
 
