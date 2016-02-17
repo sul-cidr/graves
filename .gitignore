@@ -24,5 +24,6 @@
 /public/assets
 
 /app/assets/javascripts/test/fixtures
-/.grunt
 /_SpecRunner.html
+/.grunt
+/.fixtures

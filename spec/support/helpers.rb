@@ -4,23 +4,21 @@ require 'fileutils'
 module Helpers
 
   #
-  # Write a JSON fixture.
+  # Write a #page fixture.
   #
-  # @param suite [String]
-  # @param test [String]
-  # @param data [Hash]
-  #
-  def write_fixture(suite, test, data)
+  def write_page_fixture(suite, test, page)
+
+    # Parse the HTML.
+    html = Nokogiri::HTML(page.body)
 
     # Form the fixture path.
-    path = "#{Rails.root}/app/assets/javascripts/test/fixtures/" +
-      "#{suite}/#{test}.json"
+    path = Rails.root.join(".fixtures/#{suite}/#{test}.html")
 
     # Ensure the directory exists.
     FileUtils.mkdir_p(File.dirname(path))
 
     # Write the fixture.
-    File.write(path, data.to_json)
+    File.write(path, html.css('#page'))
 
   end
 

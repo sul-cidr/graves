@@ -3,7 +3,8 @@
 import * as utils from './utils';
 
 
-jasmine.getFixtures().fixturesPath = 'app/assets/javascripts/read/test/fixtures';
+// Set the fixture path.
+jasmine.getFixtures().fixturesPath = '.fixtures';
 
 
 import './specs/base-layers';
