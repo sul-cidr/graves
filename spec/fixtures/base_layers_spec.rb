@@ -5,9 +5,9 @@ describe 'Base Layers', type: :feature do
 
   it 'mounts the default base layer' do
 
-    create(:base_layer, url: 'http://layer1.org')
-    create(:base_layer, url: 'http://layer2.org')
-    default = create(:base_layer, url: 'http://layer3.org')
+    create(:base_layer, url: 'url1')
+    create(:base_layer, url: 'url2')
+    default = create(:base_layer, url: 'url3')
 
     n = create(:narrative, base_layer: default)
 

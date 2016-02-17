@@ -21,7 +21,7 @@ describe('Base Layer', function() {
 
     let baseLayer = utils.unwrap(ROOT, BaseLayer);
 
-    expect(baseLayer.layer._url).toEqual('http://layer3.org');
+    expect(baseLayer.layer._url).toEqual('url3');
     expect(baseLayer.props.map.hasLayer(baseLayer.layer)).toBeTruthy();
 
   });
