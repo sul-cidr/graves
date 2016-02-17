@@ -28,7 +28,7 @@ export default class extends Component {
     let options = _.map(window.GRAVES.baseLayers, function(layer) {
       return {
         value: layer.id,
-        label: layer.label,
+        label: layer.name,
       };
     });
 

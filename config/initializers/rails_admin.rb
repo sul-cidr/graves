@@ -78,7 +78,7 @@ RailsAdmin.config do |config|
 
 
   config.model BaseLayer do
-    object_label_method :label
+    object_label_method :name
   end
 
 
