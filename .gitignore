@@ -23,7 +23,6 @@
 /public/stylesheets
 /public/assets
 
-/app/assets/javascripts/test/fixtures
 /_SpecRunner.html
 /.grunt
 /.fixtures
