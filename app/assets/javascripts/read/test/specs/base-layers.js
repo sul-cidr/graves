@@ -15,8 +15,7 @@ describe('Base Layer', function() {
 
   it('mounts the default base layer', function() {
 
-    loadFixtures('base-layers/mount-default.html');
-    utils.start();
+    utils.start('base-layers/mount-default.html');
 
     expect($('#page')).toExist();
 

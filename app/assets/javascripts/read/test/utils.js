@@ -8,8 +8,11 @@ import init from '../src';
 
 /**
  * Mount the app.
+ *
+ * @param {String} fixture
  */
-export function start() {
+export function start(fixture) {
+  loadFixtures(fixture || 'default/page.html');
   window.ROOT = init();
 }
 
