@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 
-import BaseLayer from '../src/components/base-layer';
+import BaseLayer from '../../src/components/base-layer';
 
 import * as utils from '../utils';
 
