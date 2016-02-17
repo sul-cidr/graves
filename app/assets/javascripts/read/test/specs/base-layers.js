@@ -5,7 +5,7 @@ import $ from 'jquery';
 import * as utils from '../utils';
 
 
-describe('Base Layers', function() {
+describe('Base Layer', function() {
 
 
   beforeEach(function() {
@@ -19,7 +19,7 @@ describe('Base Layers', function() {
   });
 
 
-  it('test', function() {
+  it('mounts the default base layer', function() {
     expect($('#page')).toExist();
   });
 
