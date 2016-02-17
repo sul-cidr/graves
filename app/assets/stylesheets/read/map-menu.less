@@ -3,11 +3,12 @@
 #map-menu {
 
   position: absolute;
+  z-index: @zindex-map + 1;
   right: 6em;
   top: @margin-content;
   width: 300px;
 
-  z-index: @zindex-map + 1;
+  font-family: @headings-font-family;
 
   .Select:not(:last-child) {
     margin-bottom: 1em;
