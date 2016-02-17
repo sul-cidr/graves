@@ -8,7 +8,7 @@ import {
 
 
 const initialState = {
-  layerId: window.GRAVES.baseLayerId,
+  layerId: null,
 };
 
 

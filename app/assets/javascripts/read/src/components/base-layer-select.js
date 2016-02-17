@@ -16,7 +16,6 @@ export default class extends Component {
 
 
   static propTypes = {
-    layerId: PropTypes.number.isRequired,
     changeBaseLayer: PropTypes.func.isRequired,
   };
 

@@ -1,16 +1,9 @@
 
 
-//import * as utils from './utils';
+import * as utils from './utils';
 
 
-//beforeEach(function() {
-  //utils.start();
-//});
+jasmine.getFixtures().fixturesPath = 'app/assets/javascripts/read/test/fixtures';
 
 
-//afterEach(function() {
-  //utils.stop();
-//});
-
-
-import './specs/test';
+import './specs/base-layers';

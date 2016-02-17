@@ -4,14 +4,19 @@ import L from 'leaflet';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import * as actions from '../actions/base-layer';
 
-@connect(state => state.baseLayer)
+
+@connect(
+  state => state.baseLayer,
+  actions,
+)
 export default class extends Component {
 
 
   static propTypes = {
     map: PropTypes.object.isRequired,
-    layerId: PropTypes.number.isRequired,
+    changeBaseLayer: PropTypes.func.isRequired,
   };
 
 
@@ -27,6 +32,14 @@ export default class extends Component {
 
 
   /**
+   * Show the default layer.
+   */
+  componentDidMount() {
+    this.props.changeBaseLayer(window.GRAVES.baseLayerId);
+  }
+
+
+  /**
    * Set the base layer.
    */
   render() {
@@ -36,14 +49,18 @@ export default class extends Component {
       this.props.map.removeLayer(this.layer);
     }
 
-    // Get bootstrapped layer configuration.
-    let config = window.GRAVES.baseLayers[this.props.layerId];
+    if (this.props.layerId) {
 
-    this.layer = L.tileLayer(config.url, {
-      detectRetina: true
-    });
+      // Get layer configuration.
+      let config = window.GRAVES.baseLayers[this.props.layerId];
 
-    this.props.map.addLayer(this.layer);
+      this.layer = L.tileLayer(config.url, {
+        detectRetina: true
+      });
+
+      this.props.map.addLayer(this.layer);
+
+    }
 
     return null;
 

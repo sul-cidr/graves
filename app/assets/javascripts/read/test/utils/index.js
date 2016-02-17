@@ -1,5 +1,8 @@
 
 
+import 'jasmine-jquery';
+import ReactDOM from 'react-dom';
+
 import init from '../../src';
 
 

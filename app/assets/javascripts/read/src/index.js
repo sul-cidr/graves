@@ -29,4 +29,4 @@ if (!window.JASMINE) {
 }
 
 
-import './page';
+//import './page';
