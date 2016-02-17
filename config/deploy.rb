@@ -9,7 +9,6 @@ set :deploy_to, ENV['CAP_DEPLOY_TO']
 set :bundle_without, nil
 
 server "#{fetch(:deploy_host)}.stanford.edu", user: fetch(:user), roles: %w{web db app}
-Capistrano::OneTimeKey.generate_one_time_key!
 
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
