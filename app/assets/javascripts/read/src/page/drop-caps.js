@@ -1,7 +1,6 @@
 
 
-import $ from 'jquery';
 import 'dropcap.js';
 
 
-Dropcap.layout($('.dropcap').get(0), 3);
+Dropcap.layout(document.querySelectorAll('.dropcap'), 3);
