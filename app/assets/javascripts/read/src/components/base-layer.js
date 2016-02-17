@@ -54,9 +54,7 @@ export default class extends Component {
       // Get layer configuration.
       let config = window.GRAVES.baseLayers[this.props.layerId];
 
-      this.layer = L.tileLayer(config.url, {
-        detectRetina: true
-      });
+      this.layer = L.tileLayer(config.url);
 
       this.props.map.addLayer(this.layer);
 

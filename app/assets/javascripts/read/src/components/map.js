@@ -46,9 +46,8 @@ export default class extends Component {
     let el = findDOMNode(this.refs.leaflet);
 
     let map = L.map(el, {
-      scrollWheelZoom: false,
       zoomControl: false,
-      fadeAnimation: false,
+      scrollWheelZoom: false,
     });
 
     // Default viewport.
