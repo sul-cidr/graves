@@ -10,4 +10,8 @@
 #
 
 class WmsLayer < ActiveRecord::Base
+
+  validates :address, presence: true
+  validates :layer, presence: true
+
 end
