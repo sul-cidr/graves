@@ -28,5 +28,10 @@ module Graves
     # Autoload modules from /lib.
     config.autoload_paths << Rails.root.join("lib")
 
+    # Generate rspec suites.
+    config.generators do |g|
+      g.test_framework :rspec
+    end
+
   end
 end
