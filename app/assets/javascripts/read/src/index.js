@@ -9,18 +9,24 @@ import createStore from './store';
 import reducers from './reducers';
 
 
-let store = createStore(reducers);
+/**
+ * Run the application.
+ */
+export default function init() {
+
+  let store = createStore(reducers);
+
+  return ReactDOM.render(
+    <Provider store={store}><App /></Provider>,
+    document.getElementById('read'),
+  );
+
+}
 
 
-ReactDOM.render(
-
-  <Provider store={store}>
-    <App />
-  </Provider>,
-
-  document.getElementById('read'),
-
-);
+if (!window.JASMINE) {
+  init();
+}
 
 
 import './page';

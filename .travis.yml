@@ -24,9 +24,10 @@ before_script:
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
 
-  # Install NPM modules.
+  # Build static payloads.
   - npm install -g grunt-cli
   - npm install
+  - npm compile:min
 
 script:
 
