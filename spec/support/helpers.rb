@@ -4,24 +4,21 @@ require 'fileutils'
 module Helpers
 
   #
-  # Write a #page fixture.
+  # Write a fixture.
   #
-  def write_page_fixture(suite, test, page)
-
-    # Parse the HTML.
-    html = Nokogiri::HTML(page.body)
+  def write_fixture(suite, type, test, fixture)
 
     # Form the fixture path.
     path = Rails.root.join(
       'app/assets/javascripts/read/test/fixtures',
-      suite, 'page', "#{test}.html"
+      suite, type, test
     )
 
     # Ensure the directory exists.
     FileUtils.mkdir_p(File.dirname(path))
 
     # Write the fixture.
-    File.write(path, html.css('#page'))
+    File.write(path, fixture)
 
   end
 
@@ -30,17 +27,30 @@ module Helpers
   #
   def write_collection_fixture(suite, test, page)
 
-    # Form the fixture path.
-    path = Rails.root.join(
-      'app/assets/javascripts/read/test/fixtures',
-      suite, 'collections', "#{test}.json"
+    fixture = page.body.to_json
+
+    write_fixture(
+      suite,
+      'collections',
+      "#{test}.json",
+      fixture,
     )
 
-    # Ensure the directory exists.
-    FileUtils.mkdir_p(File.dirname(path))
+  end
 
-    # Write the fixture.
-    File.write(path, page.body.to_json)
+  #
+  # Write a #page fixture.
+  #
+  def write_page_fixture(suite, test, page)
+
+    fixture = Nokogiri::HTML(page.body).css('#page')
+
+    write_fixture(
+      suite,
+      'page',
+      "#{test}.html",
+      fixture,
+    )
 
   end
 
