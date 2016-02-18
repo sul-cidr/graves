@@ -3,8 +3,11 @@
 import 'jasmine-jquery';
 
 import _ from 'lodash';
+import $ from 'jquery';
 import TestUtils from 'react-addons-test-utils';
 import ReactDOM from 'react-dom';
+
+import BaseLayer from '../src/components/base-layer';
 
 import init from '../src';
 
@@ -51,10 +54,25 @@ export function getComponent(type) {
 
 
 /**
- * Find a DOM node by class.
- *
- * @param {Function} cls
+ * Open the base layer dropdown select.
  */
-export function getNode(cls) {
-  return TestUtils.findRenderedDOMComponentWithClass(ROOT, cls);
+export function openBaseLayerSelect() {
+  let control = $('.base-layer-select .Select-control');
+  TestUtils.Simulate.mouseDown(control.get(0));
+}
+
+
+/**
+ * Assert the tile URL of the current base layer.
+ *
+ * @param {String} url
+ */
+export function assertBaseLayerTileUrl(url) {
+
+  // Get the <BaseLayer /> instance.
+  let baseLayer = getComponent(BaseLayer);
+
+  expect(baseLayer.props.map.hasLayer(baseLayer.layer)).toBeTruthy();
+  expect(baseLayer.layer._url).toEqual(url);
+
 }
