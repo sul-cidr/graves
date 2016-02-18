@@ -15,7 +15,7 @@ import init from '../src';
 
 
 import defaultHTML from
-'./fixtures/default/page/page.html';
+'./fixtures/default/page/default.html';
 
 
 /**

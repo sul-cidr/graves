@@ -9,7 +9,7 @@ describe 'Default', type: :feature do
 
     visit("read/#{n.slug}")
 
-    write_page_fixture('default', 'page', page)
+    write_page_fixture('default', 'default', page)
 
   end
 
