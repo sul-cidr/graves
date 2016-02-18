@@ -63,6 +63,15 @@ export function openBaseLayerSelect() {
 
 
 /**
+ * Open the WMS layer dropdown select.
+ */
+export function openWmsLayerSelect() {
+  let control = $('.wms-layer-select .Select-control');
+  TestUtils.Simulate.mouseDown(control.get(0));
+}
+
+
+/**
  * Assert the tile URL of the current base layer.
  *
  * @param {String} url

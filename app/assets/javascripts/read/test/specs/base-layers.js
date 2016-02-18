@@ -6,7 +6,7 @@ import TestUtils from 'react-addons-test-utils';
 import * as utils from '../utils';
 
 
-describe('Base Layer', function() {
+describe('Base Layers', function() {
 
 
   it('mounts the default base layer on startup', function() {

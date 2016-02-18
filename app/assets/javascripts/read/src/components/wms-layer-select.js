@@ -35,6 +35,8 @@ export default class extends Component {
     return (
       <Select
 
+        className="wms-layer-select"
+
         options={options}
 
         onChange={this.onChange.bind(this)}
