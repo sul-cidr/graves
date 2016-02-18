@@ -8,15 +8,16 @@ import * as utils from '../utils';
 describe('Collection Markers', function() {
 
 
-  let group;
+  let markers;
 
 
   beforeEach(function() {
-    group = utils.getComponent(CollectionMarkers);
+    utils.start();
+    markers = utils.getComponent(CollectionMarkers);
   });
 
 
-  it('requests collections on startup');
+  it('adds markers to the map');
 
 
 });
