@@ -34,7 +34,7 @@ module Helpers
     FileUtils.mkdir_p(File.dirname(path))
 
     # Write the fixture.
-    File.write(path, page.body)
+    File.write(path, page.body.to_json)
 
   end
 

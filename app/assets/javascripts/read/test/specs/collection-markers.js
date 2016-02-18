@@ -21,7 +21,13 @@ describe('Collection Markers', function() {
   });
 
 
-  it('adds markers to the map');
+  it('adds markers to the map', function() {
+
+    utils.respondCollections(addMarkersJSON);
+
+    expect(markers.group.getLayers().length).toEqual(3);
+
+  });
 
 
 });
