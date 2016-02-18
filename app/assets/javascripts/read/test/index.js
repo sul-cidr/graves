@@ -9,3 +9,4 @@ jasmine.getFixtures().fixturesPath = '.fixtures';
 
 import './specs/base-layers';
 import './specs/wms-layers';
+import './specs/collection-markers';

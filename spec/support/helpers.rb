@@ -22,4 +22,20 @@ module Helpers
 
   end
 
+  #
+  # Write a api/collections.json fixture.
+  #
+  def write_collection_fixture(suite, test, page)
+
+    # Form the fixture path.
+    path = Rails.root.join(".fixtures/#{suite}/#{test}.collections.json")
+
+    # Ensure the directory exists.
+    FileUtils.mkdir_p(File.dirname(path))
+
+    # Write the fixture.
+    File.write(path, page.body)
+
+  end
+
 end
