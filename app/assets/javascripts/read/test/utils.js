@@ -1,6 +1,7 @@
 
 
 import 'jasmine-jquery';
+import 'jasmine-ajax';
 
 import _ from 'lodash';
 import $ from 'jquery';
@@ -23,6 +24,8 @@ export function start(fixture) {
   stop();
 
   loadFixtures(fixture || 'default/page.html');
+  jasmine.Ajax.install();
+
   window.ROOT = init();
 
 }
@@ -34,11 +37,13 @@ export function start(fixture) {
 export function stop() {
 
   try {
-    let read = ocument.getElementById('read');
+    let read = document.getElementById('read');
     ReactDOM.unmountComponentAtNode(read);
   }
 
   catch (e) {}
+
+  jasmine.Ajax.uninstall();
 
 }
 
