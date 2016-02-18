@@ -6,7 +6,7 @@ import * as utils from '../utils';
 
 
 import addMarkersJSON from
-'../fixtures/collection-markers/add-markers.collections.json';
+'../fixtures/collection-markers/collections/add-markers.json';
 
 
 describe('Collection Markers', function() {

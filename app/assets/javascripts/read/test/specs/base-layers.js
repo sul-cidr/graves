@@ -7,13 +7,13 @@ import * as utils from '../utils';
 
 
 import mountDefaultHTML from
-'../fixtures/base-layers/mount-default.html';
+'../fixtures/base-layers/page/mount-default.html';
 
 import listLayersHTML from
-'../fixtures/base-layers/list-layers.html';
+'../fixtures/base-layers/page/list-layers.html';
 
 import changeLayerHTML from
-'../fixtures/base-layers/change-layer.html';
+'../fixtures/base-layers/page/change-layer.html';
 
 
 

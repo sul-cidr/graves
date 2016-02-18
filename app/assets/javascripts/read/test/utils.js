@@ -14,7 +14,8 @@ import WmsLayer from '../src/components/wms-layer';
 import init from '../src';
 
 
-import defaultHTML from './fixtures/default/page.html';
+import defaultHTML from
+'./fixtures/default/page/page.html';
 
 
 /**

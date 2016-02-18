@@ -7,10 +7,10 @@ import * as utils from '../utils';
 
 
 import listLayersHTML from
-'../fixtures/wms-layers/list-layers.html';
+'../fixtures/wms-layers/page/list-layers.html';
 
 import changeLayerHTML from
-'../fixtures/wms-layers/change-layer.html';
+'../fixtures/wms-layers/page/change-layer.html';
 
 
 describe('WMS Layers', function() {

@@ -14,7 +14,7 @@ module Helpers
     # Form the fixture path.
     path = Rails.root.join(
       'app/assets/javascripts/read/test/fixtures',
-      suite, "#{test}.html"
+      suite, 'page', "#{test}.html"
     )
 
     # Ensure the directory exists.
@@ -33,7 +33,7 @@ module Helpers
     # Form the fixture path.
     path = Rails.root.join(
       'app/assets/javascripts/read/test/fixtures',
-      suite, "#{test}.collections.json"
+      suite, 'collections', "#{test}.json"
     )
 
     # Ensure the directory exists.
