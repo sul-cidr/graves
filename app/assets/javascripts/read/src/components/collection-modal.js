@@ -3,12 +3,20 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap'
+import classNames from 'classnames';
+
+import * as actions from '../actions/collections';
 
 
 @connect(
+
   state => ({
-    feature: state.collections.selected
-  })
+    feature: state.collections.selected,
+    show: state.collections.showModal,
+  }),
+
+  actions
+
 )
 export default class extends Component {
 
@@ -20,11 +28,17 @@ export default class extends Component {
 
     if (this.props.feature) {
 
+      let cx = classNames(`collection-${this.props.feature.id}`);
+
       return (
 
-        <Modal show={true}>
+        <Modal
+          show={this.props.show}
+          onHide={this.onHide.bind(this)}
+          className={cx}
+        >
 
-          <Modal.Header>
+          <Modal.Header closeButton>
             <Modal.Title>Collection</Modal.Title>
           </Modal.Header>
 
@@ -39,6 +53,14 @@ export default class extends Component {
 
     else return null;
 
+  }
+
+
+  /**
+   * Close the modal.
+   */
+  onHide() {
+    this.props.unselectCollection();
   }
 
 

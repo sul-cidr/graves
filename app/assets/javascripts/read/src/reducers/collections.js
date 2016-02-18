@@ -11,9 +11,13 @@ import {
 
 
 const initialState = {
+
   loading: false,
   geojson: null,
+
+  showModal: false,
   selected: null,
+
 };
 
 
@@ -29,11 +33,12 @@ const handlers = {
   }),
 
   [SELECT_COLLECTION]: (state, action) => ({
+    showModal: true,
     selected: action.feature,
   }),
 
   [UNSELECT_COLLECTION]: () => ({
-    selected: null,
+    showModal: false,
   }),
 
 };
