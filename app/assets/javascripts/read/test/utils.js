@@ -8,6 +8,7 @@ import TestUtils from 'react-addons-test-utils';
 import ReactDOM from 'react-dom';
 
 import BaseLayer from '../src/components/base-layer';
+import WmsLayer from '../src/components/wms-layer';
 
 import init from '../src';
 
@@ -83,5 +84,23 @@ export function assertBaseLayerTileUrl(url) {
 
   expect(baseLayer.props.map.hasLayer(baseLayer.layer)).toBeTruthy();
   expect(baseLayer.layer._url).toEqual(url);
+
+}
+
+
+/**
+ * Assert the address/layer of the current WMS layer.
+ *
+ * @param {String} address
+ * @param {String} layer
+ */
+export function assertWmsLayer(address, layer) {
+
+  // Get the <WmsLayer /> instance.
+  let wmsLayer = getComponent(WmsLayer);
+
+  expect(wmsLayer.props.map.hasLayer(wmsLayer.layer)).toBeTruthy();
+  expect(wmsLayer.layer._url).toEqual(address);
+  expect(wmsLayer.layer.wmsParams.layers).toEqual(layer);
 
 }

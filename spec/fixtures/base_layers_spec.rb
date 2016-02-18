@@ -33,10 +33,16 @@ describe 'Base Layers', type: :feature do
 
   it 'change-layer' do
 
-    default = create(:base_layer, name: 'Layer 1', url: 'url1')
-    create(:base_layer, name: 'Layer 2', url: 'url2')
+    (1..3).each do |i|
 
-    n = create(:narrative, base_layer: default)
+      create(:base_layer,
+        name: "Layer #{i}",
+        url: "url#{i}",
+      )
+
+    end
+
+    n = create(:narrative)
 
     visit("read/#{n.slug}")
 

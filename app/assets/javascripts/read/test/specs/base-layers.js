@@ -36,16 +36,16 @@ describe('Base Layers', function() {
 
     utils.start('base-layers/change-layer.html');
 
-    // At start, default layer.
-    utils.assertBaseLayerTileUrl('url1');
+    for (let i of [1, 2, 3]) {
 
-    utils.openBaseLayerSelect();
+      utils.openBaseLayerSelect();
 
-    // Click on the second option.
-    let option = $('.Select-option:nth-child(2)');
-    TestUtils.Simulate.mouseDown(option.get(0));
+      let option = $(`.Select-option:nth-child(${i})`);
+      TestUtils.Simulate.mouseDown(option.get(0));
 
-    utils.assertBaseLayerTileUrl('url2');
+      utils.assertBaseLayerTileUrl(`url${i}`);
+
+    }
 
   });
 

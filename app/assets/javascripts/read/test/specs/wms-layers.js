@@ -23,7 +23,21 @@ describe('WMS Layers', function() {
   });
 
 
-  it('switches the layer when the select is changed');
+  it('switches the layer when the select is changed', function() {
+
+    utils.start('wms-layers/change-layer.html');
+
+    for (let i of [1, 2, 3]) {
+
+      utils.openWmsLayerSelect();
+
+      let option = $(`.Select-option:nth-child(${i})`);
+      TestUtils.Simulate.mouseDown(option.get(0));
+      utils.assertWmsLayer(`address${i}`, `layer${i}`);
+
+    }
+
+  });
 
 
 });
