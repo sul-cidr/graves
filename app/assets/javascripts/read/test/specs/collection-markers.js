@@ -27,6 +27,21 @@ describe('Collection Markers', function() {
 
     expect(markers.group.getLayers().length).toEqual(3);
 
+    expect(markers.idToMarker[1].getLatLng()).toEqual({
+      lng: 1,
+      lat: 2,
+    });
+
+    expect(markers.idToMarker[2].getLatLng()).toEqual({
+      lng: 3,
+      lat: 4,
+    });
+
+    expect(markers.idToMarker[3].getLatLng()).toEqual({
+      lng: 5,
+      lat: 6,
+    });
+
   });
 
 
