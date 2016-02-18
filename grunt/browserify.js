@@ -26,6 +26,16 @@ export default {
 
     ],
 
+    plugin: [
+
+      ['remapify', [{
+        cwd: './.fixtures',
+        src: '**/*.json',
+        expose: 'fixtures',
+      }]],
+
+    ],
+
     watch: true,
 
     browserifyOptions: {
