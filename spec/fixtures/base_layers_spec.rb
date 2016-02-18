@@ -5,11 +5,11 @@ describe 'Base Layers', type: :feature do
 
   it 'mount-default' do
 
-    create(:base_layer, url: 'url1')
-    create(:base_layer, url: 'url2')
-    default = create(:base_layer, url: 'url3')
+    layers = (1..3).map do |i|
+      create(:base_layer, url: "url#{i}")
+    end
 
-    n = create(:narrative, base_layer: default)
+    n = create(:narrative, base_layer: layers.last)
 
     visit("read/#{n.slug}")
 
@@ -19,11 +19,16 @@ describe 'Base Layers', type: :feature do
 
   it 'list-layers' do
 
-    create(:base_layer, name: 'Layer 1', url: 'url1')
-    create(:base_layer, name: 'Layer 2', url: 'url2')
-    default = create(:base_layer, name: 'Layer 3', url: 'url3')
+    layers = (1..3).map do |i|
 
-    n = create(:narrative, base_layer: default)
+      create(:base_layer,
+        name: "Layer #{i}",
+        url: "url#{i}",
+      )
+
+    end
+
+    n = create(:narrative, base_layer: layers.last)
 
     visit("read/#{n.slug}")
 
