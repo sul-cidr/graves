@@ -6,6 +6,7 @@ import L from 'leaflet';
 
 import config from './map.yml';
 import CollectionMarkers from './collection-markers';
+import CollectionModal from './collection-modal';
 import MapMenu from './map-menu';
 import BaseLayer from './base-layer';
 import WmsLayer from './wms-layer';
@@ -85,6 +86,7 @@ export default class extends Component {
             <WmsLayer map={this.state.map} />
 
             <MapMenu />
+            <CollectionModal />
 
           </behaviors>
         ) : null}
