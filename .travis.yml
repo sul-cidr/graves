@@ -27,9 +27,9 @@ before_script:
   # Build static payloads.
   - npm install -g grunt-cli
   - npm install
-  - grunt compile:min
 
 script:
 
   - bundle exec rake
+  - grunt compile:min
   - grunt jasmine
