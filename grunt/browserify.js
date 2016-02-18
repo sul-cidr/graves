@@ -21,25 +21,19 @@ export default {
 
       }],
 
+      ['stringify', {
+        extensions: ['.html']
+      }],
+
       'yamlify',
       'jadeify',
-
-    ],
-
-    plugin: [
-
-      ['remapify', [{
-        cwd: './.fixtures',
-        src: '**/*.json',
-        expose: 'fixtures',
-      }]],
 
     ],
 
     watch: true,
 
     browserifyOptions: {
-      debug: true
+      debug: true,
     }
 
   },

@@ -25,4 +25,4 @@
 
 /_SpecRunner.html
 /.grunt
-/.fixtures
+/app/assets/**/fixtures

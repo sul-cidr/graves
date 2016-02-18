@@ -6,12 +6,19 @@ import TestUtils from 'react-addons-test-utils';
 import * as utils from '../utils';
 
 
+import listLayersHTML from
+'../fixtures/wms-layers/list-layers.html';
+
+import changeLayerHTML from
+'../fixtures/wms-layers/change-layer.html';
+
+
 describe('WMS Layers', function() {
 
 
   it('lists layers in the dropdown select', function() {
 
-    utils.start('wms-layers/list-layers.html');
+    utils.start(listLayersHTML);
 
     utils.openWmsLayerSelect();
 
@@ -25,7 +32,7 @@ describe('WMS Layers', function() {
 
   it('switches the layer when the select is changed', function() {
 
-    utils.start('wms-layers/change-layer.html');
+    utils.start(changeLayerHTML);
 
     for (let i of [1, 2, 3]) {
 

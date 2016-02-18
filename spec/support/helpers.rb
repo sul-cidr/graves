@@ -12,7 +12,10 @@ module Helpers
     html = Nokogiri::HTML(page.body)
 
     # Form the fixture path.
-    path = Rails.root.join(".fixtures/#{suite}/#{test}.html")
+    path = Rails.root.join(
+      'app/assets/javascripts/read/test/fixtures',
+      suite, "#{test}.html"
+    )
 
     # Ensure the directory exists.
     FileUtils.mkdir_p(File.dirname(path))
@@ -28,7 +31,10 @@ module Helpers
   def write_collection_fixture(suite, test, page)
 
     # Form the fixture path.
-    path = Rails.root.join(".fixtures/#{suite}/#{test}.collections.json")
+    path = Rails.root.join(
+      'app/assets/javascripts/read/test/fixtures',
+      suite, "#{test}.collections.json"
+    )
 
     # Ensure the directory exists.
     FileUtils.mkdir_p(File.dirname(path))

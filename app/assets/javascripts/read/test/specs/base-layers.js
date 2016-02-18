@@ -6,12 +6,23 @@ import TestUtils from 'react-addons-test-utils';
 import * as utils from '../utils';
 
 
+import mountDefaultHTML from
+'../fixtures/base-layers/mount-default.html';
+
+import listLayersHTML from
+'../fixtures/base-layers/list-layers.html';
+
+import changeLayerHTML from
+'../fixtures/base-layers/change-layer.html';
+
+
+
 describe('Base Layers', function() {
 
 
   it('mounts the default base layer on startup', function() {
 
-    utils.start('base-layers/mount-default.html');
+    utils.start(mountDefaultHTML);
 
     utils.assertBaseLayerTileUrl('url3');
 
@@ -20,7 +31,7 @@ describe('Base Layers', function() {
 
   it('lists layers in the dropdown select', function() {
 
-    utils.start('base-layers/list-layers.html');
+    utils.start(listLayersHTML);
 
     utils.openBaseLayerSelect();
 
@@ -34,7 +45,7 @@ describe('Base Layers', function() {
 
   it('switches the layer when the select is changed', function() {
 
-    utils.start('base-layers/change-layer.html');
+    utils.start(changeLayerHTML);
 
     for (let i of [1, 2, 3]) {
 

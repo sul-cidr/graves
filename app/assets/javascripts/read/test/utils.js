@@ -14,6 +14,9 @@ import WmsLayer from '../src/components/wms-layer';
 import init from '../src';
 
 
+import defaultHTML from './fixtures/default/page.html';
+
+
 /**
  * Mount the app.
  *
@@ -23,7 +26,8 @@ export function start(fixture) {
 
   stop();
 
-  loadFixtures(fixture || 'default/page.html');
+  // Set the page fixture.
+  jasmine.getFixtures().set(fixture || defaultHTML);
   jasmine.Ajax.install();
 
   window.ROOT = init();
