@@ -10,9 +10,6 @@ import * as utils from '../utils';
 import addMarkersJSON from
 '../fixtures/collection-markers/collections/add-markers.json';
 
-import showModalJSON from
-'../fixtures/collection-markers/collections/show-modal.json';
-
 
 describe('Collection Markers', function() {
 
@@ -46,19 +43,6 @@ describe('Collection Markers', function() {
       lng: 5,
       lat: 6,
     });
-
-  });
-
-
-  it('shows the metadata modal on click', function() {
-
-    utils.respondCollections(showModalJSON);
-
-    markers.group.fire('click', {
-      layer: markers.idToMarker[1]
-    });
-
-    expect($('.modal.collection-1')).toBeVisible();
 
   });
 
