@@ -36,7 +36,7 @@ describe('Collection Markers', function() {
       layer: markers.idToMarker[1]
     });
 
-    expect($('.modal.collection-1')).toBeVisible();
+    expect($('#collection-1.modal')).toBeVisible();
 
   });
 

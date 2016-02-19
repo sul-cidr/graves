@@ -28,14 +28,16 @@ export default class extends Component {
 
     if (this.props.feature) {
 
-      let cx = classNames(`collection-${this.props.feature.id}`);
-
       return (
 
         <Modal
+
+          id={`collection-${this.props.feature.id}`}
+          className="collection"
+
           show={this.props.show}
           onHide={this.onHide.bind(this)}
-          className={cx}
+
         >
 
           <Modal.Header closeButton>
