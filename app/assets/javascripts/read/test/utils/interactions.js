@@ -7,9 +7,9 @@ import TestUtils from 'react-addons-test-utils';
  * Close the collection modal.
  */
 export function closeCollectionModal() {
-  TestUtils.Simulate.click(
-    document.querySelector('.modal button.close')
-  );
+  TestUtils.Simulate.click(document.querySelector(
+    '.modal button.close'
+  ));
 }
 
 
@@ -17,9 +17,9 @@ export function closeCollectionModal() {
  * Open the base layer dropdown select.
  */
 export function openBaseLayerSelect() {
-  TestUtils.Simulate.mouseDown(
-    document.querySelector('.base-layer-select .Select-control')
-  );
+  TestUtils.Simulate.mouseDown(document.querySelector(
+    '.base-layer-select .Select-control'
+  ));
 }
 
 
@@ -27,7 +27,7 @@ export function openBaseLayerSelect() {
  * Open the WMS layer dropdown select.
  */
 export function openWmsLayerSelect() {
-  TestUtils.Simulate.mouseDown(
-    document.querySelector('.wms-layer-select .Select-control')
-  );
+  TestUtils.Simulate.mouseDown(document.querySelector(
+    '.wms-layer-select .Select-control'
+  ));
 }
