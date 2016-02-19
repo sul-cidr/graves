@@ -6,6 +6,7 @@ import { Modal } from 'react-bootstrap'
 import classNames from 'classnames';
 
 import * as actions from '../actions/collections';
+import Field from './field';
 
 
 @connect(
@@ -28,6 +29,8 @@ export default class extends Component {
 
     if (this.props.feature) {
 
+      let c = this.props.feature.properties;
+
       return (
 
         <Modal
@@ -47,6 +50,12 @@ export default class extends Component {
           </Modal.Header>
 
           <Modal.Body>
+
+            <Field
+              label="Number of Graves Relocated"
+              value={c.num_graves}
+            />
+
           </Modal.Body>
 
         </Modal>
