@@ -1,6 +1,7 @@
 
 
-import * as utils from './utils';
+import 'jasmine-jquery';
+import 'jasmine-ajax';
 
 
 import './specs/base-layers';
