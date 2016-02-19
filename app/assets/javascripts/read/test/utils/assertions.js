@@ -11,7 +11,7 @@ import { getComponent } from './redux';
  *
  * @param {String} url
  */
-export function assertBaseLayerTileUrl(url) {
+export function assertBaseLayerUrl(url) {
 
   // Get the <BaseLayer /> instance.
   let baseLayer = getComponent(BaseLayer);
@@ -28,7 +28,7 @@ export function assertBaseLayerTileUrl(url) {
  * @param {String} address
  * @param {String} layer
  */
-export function assertWmsLayer(address, layer) {
+export function assertWmsLayerParams(address, layer) {
 
   // Get the <WmsLayer /> instance.
   let wmsLayer = getComponent(WmsLayer);

@@ -24,7 +24,7 @@ describe('Base Layers', function() {
 
     utils.start(mountDefaultHTML);
 
-    utils.assertBaseLayerTileUrl('url3');
+    utils.assertBaseLayerUrl('url3');
 
   });
 
@@ -51,10 +51,11 @@ describe('Base Layers', function() {
 
       utils.openBaseLayerSelect();
 
+      // Click on a layer option.
       let option = $(`.Select-option:nth-child(${i})`);
       TestUtils.Simulate.mouseDown(option.get(0));
 
-      utils.assertBaseLayerTileUrl(`url${i}`);
+      utils.assertBaseLayerUrl(`url${i}`);
 
     }
 
