@@ -39,7 +39,9 @@ export default class extends Component {
         >
 
           <Modal.Header closeButton>
-            <Modal.Title>Collection</Modal.Title>
+            <Modal.Title>
+              Collection #{this.props.feature.id}
+            </Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
