@@ -83,6 +83,15 @@ export function openWmsLayerSelect() {
 
 
 /**
+ * Close the collection modal.
+ */
+export function closeCollectionModal() {
+  let close = $('.modal button.close');
+  TestUtils.Simulate.click(close.get(0));
+}
+
+
+/**
  * Assert the tile URL of the current base layer.
  *
  * @param {String} url

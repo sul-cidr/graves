@@ -23,6 +23,11 @@ describe('Collection Markers', function() {
   });
 
 
+  afterEach(function() {
+    utils.closeCollectionModal();
+  });
+
+
   it('shows the metadata modal on click', function() {
 
     utils.respondCollections(showModalJSON);
