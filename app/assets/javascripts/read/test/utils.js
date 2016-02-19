@@ -4,7 +4,6 @@ import 'jasmine-jquery';
 import 'jasmine-ajax';
 
 import _ from 'lodash';
-import $ from 'jquery';
 import TestUtils from 'react-addons-test-utils';
 import ReactDOM from 'react-dom';
 
@@ -65,11 +64,22 @@ export function getComponent(type) {
 
 
 /**
+ * Close the collection modal.
+ */
+export function closeCollectionModal() {
+  TestUtils.Simulate.click(
+    document.querySelector('.modal button.close')
+  );
+}
+
+
+/**
  * Open the base layer dropdown select.
  */
 export function openBaseLayerSelect() {
-  let control = $('.base-layer-select .Select-control');
-  TestUtils.Simulate.mouseDown(control.get(0));
+  TestUtils.Simulate.mouseDown(
+    document.querySelector('.base-layer-select .Select-control')
+  );
 }
 
 
@@ -77,17 +87,9 @@ export function openBaseLayerSelect() {
  * Open the WMS layer dropdown select.
  */
 export function openWmsLayerSelect() {
-  let control = $('.wms-layer-select .Select-control');
-  TestUtils.Simulate.mouseDown(control.get(0));
-}
-
-
-/**
- * Close the collection modal.
- */
-export function closeCollectionModal() {
-  let close = $('.modal button.close');
-  TestUtils.Simulate.click(close.get(0));
+  TestUtils.Simulate.mouseDown(
+    document.querySelector('.wms-layer-select .Select-control')
+  );
 }
 
 
