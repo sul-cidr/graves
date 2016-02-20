@@ -63,6 +63,18 @@ export default class extends Component {
               pinyin={c.province_p}
             />
 
+            <FieldTranslated
+              field="County"
+              chinese={c.county_c}
+              pinyin={c.county_p}
+            />
+
+            <FieldTranslated
+              field="Township"
+              chinese={c.town_c}
+              pinyin={c.town_p}
+            />
+
           </Modal.Body>
 
         </Modal>
