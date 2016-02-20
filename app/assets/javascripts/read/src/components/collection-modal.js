@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import * as actions from '../actions/collections';
 import FieldNumeric from './field-numeric';
 import FieldTranslated from './field-translated';
+import FieldDate from './field-date';
 
 
 @connect(
@@ -73,6 +74,16 @@ export default class extends Component {
               field="Township"
               chinese={c.town_c}
               pinyin={c.town_p}
+            />
+
+            <FieldDate
+              field="Date of Grave Relocation Notice"
+              date={c.notice.notice_date}
+            />
+
+            <FieldDate
+              field="Deadline for Grave Relocation"
+              date={c.notice.deadline}
             />
 
           </Modal.Body>
