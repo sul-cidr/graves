@@ -9,19 +9,26 @@ export default class extends Component {
 
   static propTypes = {
     field: PropTypes.string.isRequired,
-    value: PropTypes.number,
+    chinese: PropTypes.string,
+    pinyin: PropTypes.string,
   };
 
 
   /**
-   * Render a numeric metadata field.
+   * Render an English/Pinyin field.
    */
   render() {
-    return this.props.value ? (
+    return (this.props.chinese && this.props.pinyin) ? (
 
       <div className="field">
+
         <span className="field">{this.props.field}</span>:{' '}
-        <span className="value">{this.props.value.toLocaleString()}</span>
+
+        <span className="value">
+          <span className="pinyin">{this.props.pinyin}</span>{' '}
+          <span className="chinese">{this.props.chinese}</span>
+        </span>
+
       </div>
 
     ) : null;

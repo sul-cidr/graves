@@ -7,6 +7,7 @@ import classNames from 'classnames';
 
 import * as actions from '../actions/collections';
 import FieldNumeric from './field-numeric';
+import FieldTranslated from './field-translated';
 
 
 @connect(
@@ -54,6 +55,12 @@ export default class extends Component {
             <FieldNumeric
               field="Number of Graves Relocated"
               value={c.num_graves}
+            />
+
+            <FieldTranslated
+              field="Province"
+              chinese={c.province_c}
+              pinyin={c.province_p}
             />
 
           </Modal.Body>
