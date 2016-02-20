@@ -8,22 +8,20 @@ export default class extends Component {
 
 
   static propTypes = {
-    label: PropTypes.string.isRequired,
+    field: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
   };
 
 
   /**
-   * Render a collection metadata field.
+   * Render a numeric metadata field.
    */
   render() {
 
     return (
       <div className="field">
-
-        <span className="field">{this.props.label}</span>:{' '}
-
+        <span className="field">{this.props.field}</span>:{' '}
         <span className="value">{this.props.value.toLocaleString()}</span>
-
       </div>
     );
 

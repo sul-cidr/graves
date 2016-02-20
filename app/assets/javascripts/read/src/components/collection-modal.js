@@ -6,7 +6,7 @@ import { Modal } from 'react-bootstrap'
 import classNames from 'classnames';
 
 import * as actions from '../actions/collections';
-import Field from './field';
+import FieldNumeric from './field-numeric';
 
 
 @connect(
@@ -51,8 +51,8 @@ export default class extends Component {
 
           <Modal.Body>
 
-            <Field
-              label="Number of Graves Relocated"
+            <FieldNumeric
+              field="Number of Graves Relocated"
               value={c.num_graves}
             />
 
