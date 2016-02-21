@@ -4,6 +4,7 @@ import React from 'react';
 
 import Component from './component';
 import Map from './map';
+import Narrative from './narrative';
 
 
 export default class extends Component {
@@ -14,7 +15,10 @@ export default class extends Component {
    */
   render() {
     return (
-      <Map />
+      <div className="wrapper">
+        <Map />
+        <Narrative />
+      </div>
     );
   }
 

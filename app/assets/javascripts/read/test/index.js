@@ -8,3 +8,4 @@ import './specs/base-layers';
 import './specs/wms-layers';
 import './specs/collection-markers';
 import './specs/collection-modal';
+import './specs/section-boxes';
