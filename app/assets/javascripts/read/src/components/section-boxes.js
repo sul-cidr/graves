@@ -5,6 +5,8 @@ import L from 'leaflet';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import * as utils from '../utils';
+
 import Component from './component';
 
 
@@ -41,7 +43,24 @@ export default class extends Component {
       this.boxes.clearLayers();
 
       _.each(this.props.sections, s => {
-        console.log(s);
+
+        let { id, tl, br, label } = s;
+
+        // ** Box:
+
+        let points = [
+          utils.swap(tl),
+          utils.swap([br[0], tl[1]]),
+          utils.swap(br),
+          utils.swap([tl[0], br[1]]),
+        ];
+
+        let box = L.polygon(points, {
+          pointerEvents: 'none',
+        });
+
+        this.boxes.addLayer(box);
+
       });
 
     }

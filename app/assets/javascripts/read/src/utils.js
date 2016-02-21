@@ -83,3 +83,14 @@ export function parseAttrs($el, map) {
 export function parseLonLat(lonlat='') {
   return lonlat.split(',').map(Number);
 }
+
+
+/**
+ * Swap lon/lat -> lat/lon, vice versa.
+ *
+ * @param {Array<Number>} coord
+ * @return {Array<Number>}
+ */
+export function swap(coord) {
+  return [coord[1], coord[0]];
+}
