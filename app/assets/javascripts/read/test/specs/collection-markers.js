@@ -13,6 +13,9 @@ import addMarkersJSON from
 import showTooltipsJSON from
 '../fixtures/collection-markers/collections/show-tooltips.json';
 
+import highlightJSON from
+'../fixtures/collection-markers/collections/highlight.json';
+
 
 describe('Collection Markers', function() {
 
@@ -90,6 +93,47 @@ describe('Collection Markers', function() {
       });
 
       expect($('.leaflet-popup-content')).toHaveText('province');
+
+    });
+
+
+  });
+
+
+  describe('highlights collections on hover', function() {
+
+
+    let marker;
+
+
+    beforeEach(function() {
+      utils.respondCollections(highlightJSON);
+      marker = markers.idToMarker[1];
+    });
+
+
+    it('adds .highlight on hover', function() {
+
+      markers.group.fire('mouseover', {
+        layer: marker
+      });
+
+      expect($(marker._path)).toHaveClass('highlight');
+
+    });
+
+
+    it('removes .highlight on blur', function() {
+
+      markers.group.fire('mouseover', {
+        layer: marker
+      });
+
+      markers.group.fire('mouseout', {
+        layer: marker
+      });
+
+      expect($(marker._path)).not.toHaveClass('highlight');
 
     });
 

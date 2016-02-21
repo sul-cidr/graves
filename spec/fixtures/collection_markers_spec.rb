@@ -61,4 +61,18 @@ describe 'Collection Markers', type: :feature do
 
   end
 
+  it 'highlight' do
+
+    create(
+      :collection,
+      id: 1,
+      geometry: Helpers::Geo.point(1, 1),
+    )
+
+    visit('api/collections.json')
+
+    write_collection_fixture('collection-markers', 'highlight', page)
+
+  end
+
 end
