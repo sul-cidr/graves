@@ -1,7 +1,11 @@
 
 
-import WmsLayer from '../../src/components/wms-layer';
+import $ from 'jquery';
+
 import BaseLayer from '../../src/components/base-layer';
+import WmsLayer from '../../src/components/wms-layer';
+import CollectionMarkers from '../../src/components/collection-markers';
+
 
 import { getComponent } from './redux';
 
@@ -13,7 +17,6 @@ import { getComponent } from './redux';
  */
 export function assertBaseLayerUrl(url) {
 
-  // Get the <BaseLayer /> instance.
   let baseLayer = getComponent(BaseLayer);
 
   expect(baseLayer.props.map.hasLayer(baseLayer.layer)).toBeTruthy();
@@ -30,11 +33,41 @@ export function assertBaseLayerUrl(url) {
  */
 export function assertWmsLayerParams(address, layer) {
 
-  // Get the <WmsLayer /> instance.
   let wmsLayer = getComponent(WmsLayer);
 
   expect(wmsLayer.props.map.hasLayer(wmsLayer.layer)).toBeTruthy();
   expect(wmsLayer.layer._url).toEqual(address);
   expect(wmsLayer.layer.wmsParams.layers).toEqual(layer);
+
+}
+
+
+/**
+ * Assert the label text of the collection popup.
+ *
+ * @param {String} label
+ */
+export function assertPopupLabel(label) {
+
+  let content = $('.leaflet-popup-content');
+
+  expect(content).toBeVisible();
+  expect(content).toHaveText(label);
+
+}
+
+
+/**
+ * Assert the id of the highlighted collection
+ *
+ * @param {Number} id
+ */
+export function assertHighlightedCollectionId(id) {
+
+  let markers = getComponent(CollectionMarkers);
+
+  let marker = markers.idToMarker[id];
+
+  expect($(marker._path)).toHaveClass('highlighted');
 
 }

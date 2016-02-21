@@ -10,9 +10,14 @@ describe 'Collection HTML', type: :feature do
       it 'collection' do
 
         create(
+
           :collection,
           id: 1,
           geometry: Helpers::Geo.point(1, 1),
+
+          # Popup label
+          province: 'data-id',
+
         )
 
         visit('api/collections.json')

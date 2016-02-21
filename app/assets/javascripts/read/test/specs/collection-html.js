@@ -17,20 +17,22 @@ describe('Collection HTML', function() {
 
   describe('data-id', function() {
 
+
     beforeEach(function() {
       utils.start(dataIdHTML);
       utils.respondCollections(dataIdCollectionsJSON);
     });
+
 
     describe('hover', function() {
 
       it('highlights the map marker', function() {
 
         // Hover on the span.
-        $('.collection[data-id="1"]').trigger('mouseenter');
+        $(`.collection[data-id="1"]`).trigger('mouseenter');
 
-        // highlight marker
-        // show tooltip
+        utils.assertPopupLabel('data-id');
+        utils.assertHighlightedCollectionId(1);
 
       });
 
@@ -38,14 +40,17 @@ describe('Collection HTML', function() {
 
     });
 
+
     describe('blur', function() {
       it('unhighlights the map marker');
       it('hides the highlight line');
     });
 
+
     describe('click', function() {
       it('focuses the map');
     });
+
 
   });
 
