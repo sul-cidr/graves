@@ -68,6 +68,8 @@ export default class extends Component {
       this.props.selectCollection(e.layer.options.feature);
     });
 
+    window.markers = this;
+
   }
 
 

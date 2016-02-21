@@ -54,6 +54,7 @@ export default class extends Component {
     let map = L.map(el, {
       zoomControl: false,
       scrollWheelZoom: false,
+      fadeAnimation: false,
     });
 
     // Default viewport.

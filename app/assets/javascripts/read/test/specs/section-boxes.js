@@ -34,8 +34,7 @@ describe('Section Boxes', function() {
       let br = [100, 100*i];
 
       // Get the box layer.
-      let s = $(`[data-tl="${tl.join()}"][data-br="${br.join()}"]`);
-      let box = sections.idToBox[Number(s.attr('data-id'))];
+      let box = sections.idToBox[i];
 
       let nw = box.getBounds().getNorthWest();
       let se = box.getBounds().getSouthEast();
@@ -51,6 +50,16 @@ describe('Section Boxes', function() {
   it('mounts section labels', function() {
 
     expect(sections.labels.getLayers().length).toEqual(10);
+
+    //_.times(10, function(i) {
+
+      //// Get the box layer.
+      //let s = $(`[data-tl="${tl.join()}"][data-br="${br.join()}"]`);
+      //let label = sections.idToLabel[Number(s.attr('data-id'))];
+
+      //console.log(label);
+
+    //});
 
   });
 
