@@ -28,6 +28,8 @@ export default class extends Component {
    */
   componentWillMount() {
 
+    this.idToBox = {};
+
     // Box group.
     this.boxes = L.featureGroup();
     this.boxes.addTo(this.props.map);
@@ -60,6 +62,7 @@ export default class extends Component {
         });
 
         this.boxes.addLayer(box);
+        this.idToBox[id] = box;
 
       });
 
