@@ -6,10 +6,17 @@ import classNames from 'classnames';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import * as events from '../events/collections';
 import * as actions from '../actions/collections';
 
 import Component from './component';
 import scale from './collection-scale';
+
+import {
+  COLLECTIONS,
+  HIGHLIGHT_COLLECTION,
+  UNHIGHLIGHT_COLLECTION,
+} from '../constants';
 
 
 @connect(
@@ -19,6 +26,14 @@ import scale from './collection-scale';
   actions,
 )
 export default class extends Component {
+
+
+  static events = {
+    [COLLECTIONS]: {
+      [HIGHLIGHT_COLLECTION]: 'highlight',
+      [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
+    }
+  };
 
 
   static propTypes = {
@@ -36,6 +51,16 @@ export default class extends Component {
     // Create a group for the markers.
     this.group = L.featureGroup();
     this.group.addTo(this.props.map);
+
+    // HIGHLIGHT
+    this.group.on('mouseover', e => {
+      events.highlightCollection(e.layer.options.feature.id);
+    });
+
+    // UNHIGHLIGHT
+    this.group.on('mouseout', e => {
+      events.unhighlightCollection(e.layer.options.feature.id);
+    });
 
     // SELECT
     this.group.on('click', e => {
@@ -96,6 +121,38 @@ export default class extends Component {
     }
 
     return null;
+
+  }
+
+
+  /**
+   * Apply a highlight.
+   *
+   * @param {Number} id
+   */
+  highlight(id) {
+
+    let marker = this.idToMarker[id];
+    if (!marker) return;
+
+    //layer.setStyle(styles.path.hl);
+    marker.openPopup();
+
+  }
+
+
+  /**
+   * Remove a highlight.
+   *
+   * @param {Number} id
+   */
+  unhighlight(id) {
+
+    let marker = this.idToMarker[id];
+    if (!marker) return;
+
+    //layer.setStyle(path);
+    marker.closePopup();
 
   }
 
