@@ -53,87 +53,62 @@ describe('Collection Markers', function() {
   });
 
 
-  describe('shows a tooltip on hover', function() {
+  describe('highlight', function() {
 
 
-    beforeEach(function() {
-      utils.respondCollections(showTooltipsJSON);
-    });
+    describe('shows a tooltip', function() {
 
-
-    it('uses the town as the label, when possible', function() {
-
-      // Hover on collection with town.
-      markers.group.fire('mouseover', {
-        layer: markers.idToMarker[1]
+      beforeEach(function() {
+        utils.respondCollections(showTooltipsJSON);
       });
 
-      expect($('.leaflet-popup-content')).toHaveText('town');
+      it('uses the town as the label, when possible', function() {
 
-    });
+        // Hover on collection with town.
+        markers.group.fire('mouseover', {
+          layer: markers.idToMarker[1]
+        });
 
+        expect($('.leaflet-popup-content')).toHaveText('town');
 
-    it('uses the county as the label, when possible', function() {
-
-      // Hover on collection with county.
-      markers.group.fire('mouseover', {
-        layer: markers.idToMarker[2]
       });
 
-      expect($('.leaflet-popup-content')).toHaveText('county');
+      it('uses the county as the label, when possible', function() {
 
-    });
+        // Hover on collection with county.
+        markers.group.fire('mouseover', {
+          layer: markers.idToMarker[2]
+        });
 
+        expect($('.leaflet-popup-content')).toHaveText('county');
 
-    it('falls back to the province as the label', function() {
-
-      // Hover on collection with province.
-      markers.group.fire('mouseover', {
-        layer: markers.idToMarker[3]
       });
 
-      expect($('.leaflet-popup-content')).toHaveText('province');
+      it('falls back to the province as the label', function() {
+
+        // Hover on collection with province.
+        markers.group.fire('mouseover', {
+          layer: markers.idToMarker[3]
+        });
+
+        expect($('.leaflet-popup-content')).toHaveText('province');
+
+      });
 
     });
 
 
-  });
+    it('highlights the marker', function() {
 
-
-  describe('highlights collections on hover', function() {
-
-
-    let marker;
-
-
-    beforeEach(function() {
       utils.respondCollections(highlightJSON);
-      marker = markers.idToMarker[1];
-    });
 
-
-    it('adds .highlight on hover', function() {
+      let marker = markers.idToMarker[1];
 
       markers.group.fire('mouseover', {
         layer: marker
       });
 
       expect($(marker._path)).toHaveClass('highlight');
-
-    });
-
-
-    it('removes .highlight on blur', function() {
-
-      markers.group.fire('mouseover', {
-        layer: marker
-      });
-
-      markers.group.fire('mouseout', {
-        layer: marker
-      });
-
-      expect($(marker._path)).not.toHaveClass('highlight');
 
     });
 
