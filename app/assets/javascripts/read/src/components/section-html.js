@@ -1,18 +1,23 @@
 
 
+import _ from 'lodash';
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import * as utils from '../utils';
+import * as actions from '../actions/sections';
 
 import Component from './component';
 
 
+@connect(null, actions)
 export default class extends Component {
 
 
   static propTypes = {
     container: PropTypes.object.isRequired,
+    mountSections: PropTypes.func.isRequired,
   };
 
 
@@ -44,6 +49,8 @@ export default class extends Component {
    */
   _publishData() {
 
+    let data = [];
+
     this.sections.each(function(i, s) {
 
       let attrs = utils.parseAttrs($(s), {
@@ -53,9 +60,14 @@ export default class extends Component {
         label:  'data-label',
       });
 
-      console.log(attrs);
+      // Don't publish invalid sections.
+      if (!_.contains(attrs, undefined)) {
+        data.push(attrs);
+      }
 
     });
+
+    this.props.mountSections(data);
 
   }
 

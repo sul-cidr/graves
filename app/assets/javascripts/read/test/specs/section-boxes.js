@@ -1,6 +1,6 @@
 
 
-import SectionBoxes from './section-boxes';
+import SectionBoxes from '../../src/components/section-boxes';
 
 import * as utils from '../utils';
 

@@ -2,13 +2,15 @@
 
 import { combineReducers } from 'redux';
 
-import baseLayer from './base-layer';
 import collections from './collections';
+import sections from './sections';
+import baseLayer from './base-layer';
 import wmsLayer from './wms-layer';
 
 
 export default combineReducers({
-  baseLayer,
   collections,
+  sections,
+  baseLayer,
   wmsLayer,
 });
