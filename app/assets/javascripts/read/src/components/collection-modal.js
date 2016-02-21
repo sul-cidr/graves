@@ -6,6 +6,8 @@ import { Modal } from 'react-bootstrap'
 import classNames from 'classnames';
 
 import * as actions from '../actions/collections';
+
+import Field from './field';
 import FieldNumeric from './field-numeric';
 import FieldTranslated from './field-translated';
 import FieldDate from './field-date';
@@ -84,6 +86,18 @@ export default class extends Component {
             <FieldDate
               field="Deadline for Grave Relocation"
               date={c.notice.deadline}
+            />
+
+            <FieldTranslated
+              field="Source"
+              chinese={c.notice.site_c}
+              pinyin={c.notice.site_p}
+            />
+
+            <FieldTranslated
+              field="Source Title"
+              chinese={c.notice.title_c}
+              pinyin={c.notice.title_p}
             />
 
           </Modal.Body>

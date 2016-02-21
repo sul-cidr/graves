@@ -18,16 +18,23 @@ export default class extends Component {
    * Render an English/Pinyin field.
    */
   render() {
-    return (this.props.chinese && this.props.pinyin) ? (
+    return (this.props.chinese || this.props.pinyin) ? (
 
-      <div className="field">
+      <div className="field translated">
 
         <span className="field">{this.props.field}</span>:{' '}
 
-        <span className="value">
-          <span className="pinyin">{this.props.pinyin}</span>{' '}
-          <span className="chinese">{this.props.chinese}</span>
-        </span>
+        {
+          this.props.pinyin ?
+          <span className="value">{this.props.pinyin}</span> :
+          null
+        }
+
+        {
+          this.props.chinese ?
+          <span className="value">{this.props.chinese}</span> :
+          null
+        }
 
       </div>
 

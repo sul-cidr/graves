@@ -9,19 +9,19 @@ export default class extends Component {
 
   static propTypes = {
     field: PropTypes.string.isRequired,
-    value: PropTypes.number,
+    value: PropTypes.any,
   };
 
 
   /**
-   * Render a numeric metadata field.
+   * Render a raw metadata field.
    */
   render() {
     return this.props.value ? (
 
-      <div className="field numeric">
+      <div className="field">
         <span className="field">{this.props.field}</span>:{' '}
-        <span className="value">{this.props.value.toLocaleString()}</span>
+        <span className="value">{this.props.value}</span>
       </div>
 
     ) : null;

@@ -25,7 +25,7 @@ export default class extends Component {
         .format('MMMM D, YYYY');
 
       return (
-        <div className="field">
+        <div className="field date">
           <span className="field">{this.props.field}</span>:{' '}
           <span className="value">{date}</span>
         </div>
