@@ -31,7 +31,7 @@ describe 'Sections', type: :feature do
 
     visit("read/#{n.slug}")
 
-    write_page_fixture('sections', 'mount-sections', page)
+    write_page_fixture('section-boxes', 'mount-sections', page)
 
   end
 

@@ -5,6 +5,10 @@ import SectionBoxes from '../../src/components/section-boxes';
 import * as utils from '../utils';
 
 
+import mountSectionsHTML from
+'../fixtures/section-boxes/page/mount-sections.html';
+
+
 describe('Section Boxes', function() {
 
 
@@ -12,7 +16,7 @@ describe('Section Boxes', function() {
 
 
   beforeEach(function() {
-    utils.start();
+    utils.start(mountSectionsHTML);
     sections = utils.getComponent(SectionBoxes);
   });
 
