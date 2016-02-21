@@ -51,15 +51,19 @@ describe('Section Boxes', function() {
 
     expect(sections.labels.getLayers().length).toEqual(10);
 
-    //_.times(10, function(i) {
+    _.times(10, function(i) {
 
-      //// Get the box layer.
-      //let s = $(`[data-tl="${tl.join()}"][data-br="${br.join()}"]`);
-      //let label = sections.idToLabel[Number(s.attr('data-id'))];
+      // Get the label layer.
+      let label = sections.idToLabel[i];
 
-      //console.log(label);
+      expect($(label._icon)).toHaveText(`Section ${i}`);
 
-    //});
+      // Label at bottom left.
+      expect(label.getLatLng()).toEqual({
+        lat: 100*i, lng: 0,
+      });
+
+    });
 
   });
 
