@@ -56,10 +56,14 @@ describe('Collection Markers', function() {
   describe('highlight', function() {
 
 
-    describe('shows a tooltip', function() {
+    describe('shows the label', function() {
 
       beforeEach(function() {
         utils.respondCollections(showTooltipsJSON);
+      });
+
+      afterEach(function() {
+        expect($('.leaflet-popup')).toBeVisible();
       });
 
       it('uses the town as the label, when possible', function() {
@@ -143,7 +147,7 @@ describe('Collection Markers', function() {
 
 
     it('hides the tooltip', function() {
-      expect($('.leaflet-popup')).not.toExist();
+      expect($('.leaflet-popup')).not.toBeVisible();
     });
 
 

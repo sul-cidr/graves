@@ -1,13 +1,41 @@
 
 
+import $ from 'jquery';
+
+import * as utils from '../utils';
+
+
+import dataIdHTML from
+'../fixtures/collection-html/page/data-id.html';
+
+import dataIdCollectionsJSON from
+'../fixtures/collection-html/collections/data-id.json';
+
+
 describe('Collection HTML', function() {
 
 
   describe('data-id', function() {
 
+    beforeEach(function() {
+      utils.start(dataIdHTML);
+      utils.respondCollections(dataIdCollectionsJSON);
+    });
+
     describe('hover', function() {
-      it('highlights the map marker');
+
+      it('highlights the map marker', function() {
+
+        // Hover on the span.
+        $('.collection[data-id="1"]').trigger('mouseenter');
+
+        // highlight marker
+        // show tooltip
+
+      });
+
       it('shows the highlight line');
+
     });
 
     describe('blur', function() {
