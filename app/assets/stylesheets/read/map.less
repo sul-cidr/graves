@@ -66,10 +66,32 @@
 
   }
 
+  // Section boxes
+
   path.section.box {
     stroke: black;
     stroke-width: 1;
     fill-opacity: 0;
+  }
+
+  // Section labels
+
+  .leaflet-div-icon {
+
+    padding: 1px 3px;
+    margin: 4px 0;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    white-space: nowrap;
+    font-size: 10px;
+
+    .border-radius(1px);
+
+    &.highlight {
+      background: @color-blue;
+      color: whitesmoke;
+    }
+
   }
 
 }
