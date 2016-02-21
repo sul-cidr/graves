@@ -104,12 +104,51 @@ describe('Collection Markers', function() {
 
       let marker = markers.idToMarker[1];
 
+      // Blur off the marker.
       markers.group.fire('mouseover', {
         layer: marker
       });
 
       expect($(marker._path)).toHaveClass('highlight');
 
+    });
+
+
+  });
+
+
+  describe('unhighlight', function() {
+
+
+    let marker;
+
+
+    beforeEach(function() {
+
+      utils.respondCollections(highlightJSON);
+
+      marker = markers.idToMarker[1];
+
+      // Hover on the marker.
+      markers.group.fire('mouseover', {
+        layer: marker
+      });
+
+      // Blur off the marker.
+      markers.group.fire('mouseout', {
+        layer: marker
+      });
+
+    });
+
+
+    it('hides the tooltip', function() {
+      expect($('.leaflet-popup')).not.toExist();
+    });
+
+
+    it('unhighlights the marker', function() {
+      expect($(marker._path)).not.toHaveClass('highlight');
     });
 
 
