@@ -1,7 +1,8 @@
 
 
-import L from 'leaflet';
 import _ from 'lodash';
+import $ from 'jquery';
+import L from 'leaflet';
 import classNames from 'classnames';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -135,7 +136,7 @@ export default class extends Component {
     let marker = this.idToMarker[id];
     if (!marker) return;
 
-    //layer.setStyle(styles.path.hl);
+    $(marker._path).addClass('highlight');
     marker.openPopup();
 
   }
@@ -151,7 +152,7 @@ export default class extends Component {
     let marker = this.idToMarker[id];
     if (!marker) return;
 
-    //layer.setStyle(path);
+    $(marker._path).removeClass('highlight');
     marker.closePopup();
 
   }

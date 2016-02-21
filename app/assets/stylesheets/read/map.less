@@ -48,7 +48,7 @@
 
   path.collection {
 
-    stroke: #E3BA1F;
+    stroke: @color-yellow;
     fill: darken(@color-blue, 25%);
     fill-opacity: 0.2;
     stroke-width: 1;
@@ -56,6 +56,11 @@
     &.nocount {
       fill: darken(@color-blue, 10%);
       stroke-width: 0;
+      fill-opacity: 0.7;
+    }
+
+    &.highlight {
+      fill: @color-yellow;
       fill-opacity: 0.7;
     }
 
