@@ -27,7 +27,7 @@ module Helpers
   #
   def write_collection_fixture(suite, test, page)
 
-    fixture = page.body.to_json
+    fixture = page.body
 
     write_fixture(
       suite,

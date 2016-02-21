@@ -18,9 +18,9 @@ export function respond200(req, res) {
 /**
  * Inject a collections fixture.
  *
- * @param {String} res
+ * @param {Object} res
  */
 export function respondCollections(res) {
   let req = jasmine.Ajax.requests.filter(/collections/)[0];
-  respond200(req, res);
+  respond200(req, JSON.stringify(res));
 }
