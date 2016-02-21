@@ -9,8 +9,21 @@ import * as events from '../events/collections';
 
 import Component from './component';
 
+import {
+  COLLECTIONS,
+  HIGHLIGHT_COLLECTION,
+  UNHIGHLIGHT_COLLECTION,
+} from '../constants';
+
 
 export default class extends Component {
+
+
+  static events = {
+    [COLLECTIONS]: {
+      [HIGHLIGHT_COLLECTION]: 'highlight',
+    }
+  };
 
 
   static propTypes = {
@@ -69,6 +82,27 @@ export default class extends Component {
    */
   onClick(e) {
     // TODO
+  }
+
+
+  /**
+   * Get collection spans by id.
+   *
+   * @param {Number} id
+   * @return {DOMElement}
+   */
+  getAnchorsById(id) {
+    return this.props.container.find(`.collection[data-id=${id}]`)
+  }
+
+
+  /**
+   * Apply a highlight.
+   *
+   * @param {Number} id
+   */
+  highlight(id) {
+    this.getAnchorsById(id).addClass('highlight');
   }
 
 

@@ -18,22 +18,30 @@ describe('Collection HTML', function() {
   describe('data-id', function() {
 
 
+    let span;
+
+
     beforeEach(function() {
+
       utils.start(dataIdHTML);
       utils.respondCollections(dataIdCollectionsJSON);
+
+      // Hover on the span.
+      span = $('.collection[data-id="1"]');
+      span.trigger('mouseenter');
+
     });
 
 
     describe('hover', function() {
 
+      it('highlights the text span', function() {
+        expect(span).toHaveClass('highlight');
+      });
+
       it('highlights the map marker', function() {
-
-        // Hover on the span.
-        $('.collection[data-id="1"]').trigger('mouseenter');
-
-        utils.assertPopupLabel('data-id');
         utils.assertHighlightedCollectionId(1);
-
+        utils.assertPopupLabel('data-id');
       });
 
       it('shows the highlight line');
