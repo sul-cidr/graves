@@ -2,6 +2,7 @@
 
 import _ from 'lodash';
 import L from 'leaflet';
+import classNames from 'classnames';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
@@ -59,6 +60,7 @@ export default class extends Component {
 
         let box = L.polygon(points, {
           pointerEvents: 'none',
+          className: 'section box',
         });
 
         this.boxes.addLayer(box);
