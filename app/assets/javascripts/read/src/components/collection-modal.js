@@ -1,12 +1,13 @@
 
 
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React from 'react';
 import { Modal } from 'react-bootstrap'
 import classNames from 'classnames';
 
 import * as actions from '../actions/collections';
 
+import Component from './component';
 import Field from './field';
 import FieldNumeric from './field-numeric';
 import FieldTranslated from './field-translated';

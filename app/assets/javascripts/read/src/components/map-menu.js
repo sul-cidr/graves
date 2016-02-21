@@ -1,7 +1,8 @@
 
 
-import React, { Component } from 'react';
+import React from 'react';
 
+import Component from './component';
 import BaseLayerSelect from './base-layer-select';
 import WmsLayerSelect from './wms-layer-select';
 

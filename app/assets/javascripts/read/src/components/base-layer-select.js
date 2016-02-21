@@ -1,11 +1,13 @@
 
 
 import _ from 'lodash';
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 
 import * as actions from '../actions/base-layer';
+
+import Component from './component';
 
 
 @connect(

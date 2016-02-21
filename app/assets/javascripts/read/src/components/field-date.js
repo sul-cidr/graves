@@ -1,8 +1,10 @@
 
 
 import _ from 'lodash';
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import moment from 'moment';
+
+import Component from './component';
 
 
 export default class extends Component {

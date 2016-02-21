@@ -1,10 +1,12 @@
 
 
 import { findDOMNode } from 'react-dom';
-import React, { Component } from 'react';
+import React from 'react';
 import L from 'leaflet';
 
 import config from './map.yml';
+
+import Component from './component';
 import CollectionMarkers from './collection-markers';
 import CollectionModal from './collection-modal';
 import MapMenu from './map-menu';

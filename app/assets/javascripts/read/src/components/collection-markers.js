@@ -3,10 +3,12 @@
 import L from 'leaflet';
 import _ from 'lodash';
 import classNames from 'classnames';
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../actions/collections';
+
+import Component from './component';
 import scale from './collection-scale';
 
 
