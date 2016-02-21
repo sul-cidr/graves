@@ -56,14 +56,10 @@ describe('Collection Markers', function() {
   describe('highlight', function() {
 
 
-    describe('shows the label', function() {
+    describe('shows the popup', function() {
 
       beforeEach(function() {
         utils.respondCollections(showTooltipsJSON);
-      });
-
-      afterEach(function() {
-        expect($('.leaflet-popup')).toBeVisible();
       });
 
       it('uses the town as the label, when possible', function() {
@@ -73,7 +69,7 @@ describe('Collection Markers', function() {
           layer: markers.idToMarker[1]
         });
 
-        expect($('.leaflet-popup-content')).toHaveText('town');
+        utils.assertPopupLabel('town');
 
       });
 
@@ -84,7 +80,7 @@ describe('Collection Markers', function() {
           layer: markers.idToMarker[2]
         });
 
-        expect($('.leaflet-popup-content')).toHaveText('county');
+        utils.assertPopupLabel('county');
 
       });
 
@@ -95,7 +91,7 @@ describe('Collection Markers', function() {
           layer: markers.idToMarker[3]
         });
 
-        expect($('.leaflet-popup-content')).toHaveText('province');
+        utils.assertPopupLabel('province');
 
       });
 
@@ -106,14 +102,12 @@ describe('Collection Markers', function() {
 
       utils.respondCollections(highlightJSON);
 
-      let marker = markers.idToMarker[1];
-
       // Blur off the marker.
       markers.group.fire('mouseover', {
-        layer: marker
+        layer: markers.idToMarker[1]
       });
 
-      expect($(marker._path)).toHaveClass('highlight');
+      utils.assertHighlightedCollectionId(1);
 
     });
 
