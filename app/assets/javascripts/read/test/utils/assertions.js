@@ -65,9 +65,8 @@ export function assertPopupLabel(label) {
 export function assertHighlightedCollectionId(id) {
 
   let markers = getComponent(CollectionMarkers);
-
   let marker = markers.idToMarker[id];
 
-  expect($(marker._path)).toHaveClass('highlighted');
+  expect($(marker._path)).toHaveClass('highlight');
 
 }

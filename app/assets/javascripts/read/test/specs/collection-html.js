@@ -29,7 +29,7 @@ describe('Collection HTML', function() {
       it('highlights the map marker', function() {
 
         // Hover on the span.
-        $(`.collection[data-id="1"]`).trigger('mouseenter');
+        $('.collection[data-id="1"]').trigger('mouseenter');
 
         utils.assertPopupLabel('data-id');
         utils.assertHighlightedCollectionId(1);

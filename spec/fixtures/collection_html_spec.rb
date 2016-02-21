@@ -16,7 +16,7 @@ describe 'Collection HTML', type: :feature do
           geometry: Helpers::Geo.point(1, 1),
 
           # Popup label
-          province: 'data-id',
+          province_p: 'data-id',
 
         )
 
