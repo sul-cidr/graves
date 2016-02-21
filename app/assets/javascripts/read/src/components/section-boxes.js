@@ -29,7 +29,12 @@ export default class extends Component {
    */
   componentWillMount() {
 
+    this.idToLabel = {};
     this.idToBox = {};
+
+    // Label group.
+    this.labels = L.featureGroup();
+    this.labels.addTo(this.props.map);
 
     // Box group.
     this.boxes = L.featureGroup();
@@ -49,7 +54,20 @@ export default class extends Component {
 
         let { id, tl, br, label } = s;
 
-        // ** Box:
+        // ** Label
+
+        let icon = L.divIcon({
+          html: label,
+          iconSize: null,
+        });
+
+        let marker = L.marker([br[1], tl[0]], { icon, id });
+
+        // Add the label.
+        this.labels.addLayer(marker);
+        this.idToLabel[id] = marker;
+
+        // ** Box
 
         let points = [
           utils.swap(tl),
@@ -63,6 +81,7 @@ export default class extends Component {
           className: 'section box',
         });
 
+        // Add the box.
         this.boxes.addLayer(box);
         this.idToBox[id] = box;
 

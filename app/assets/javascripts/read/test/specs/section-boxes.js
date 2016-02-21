@@ -24,7 +24,7 @@ describe('Section Boxes', function() {
   });
 
 
-  it('mounts section boxes from the markup', function() {
+  it('mounts section boxes', function() {
 
     expect(sections.boxes.getLayers().length).toEqual(10);
 
@@ -44,6 +44,13 @@ describe('Section Boxes', function() {
       expect(se).toEqual({ lng: br[0], lat: br[1] });
 
     });
+
+  });
+
+
+  it('mounts section labels', function() {
+
+    expect(sections.labels.getLayers().length).toEqual(10);
 
   });
 
