@@ -12,6 +12,12 @@ import dataIdHTML from
 import dataIdCollectionsJSON from
 '../fixtures/collection-html/collections/data-id.json';
 
+import dataZoomHTML from
+'../fixtures/collection-html/page/data-zoom.html';
+
+import dataZoomCollectionsJSON from
+'../fixtures/collection-html/collections/data-zoom.json';
+
 
 describe('Collection HTML', function() {
 
@@ -76,12 +82,8 @@ describe('Collection HTML', function() {
     describe('click', function() {
 
       beforeEach(function(done) {
-
         span.trigger('click');
-
-        // TODO: Mock requestAnimationFame?
         setTimeout(done, 2000);
-
       });
 
       it('focuses the map', function() {
@@ -100,7 +102,36 @@ describe('Collection HTML', function() {
 
 
   describe('data-zoom', function() {
-    it('zooms the map');
+
+
+    let span;
+
+
+    beforeEach(function() {
+
+      utils.start(dataZoomHTML);
+      utils.respondCollections(dataZoomCollectionsJSON);
+
+      // Get the collection span.
+      span = $('.collection[data-id="1"]');
+
+    });
+
+
+    describe('click', function() {
+
+      beforeEach(function(done) {
+        span.trigger('click');
+        setTimeout(done, 2000);
+      });
+
+      it('zooms the map', function() {
+        expect(utils.getLeaflet().getZoom()).toEqual(1);
+      });
+
+    });
+
+
   });
 
   describe('data-base-layer', function() {

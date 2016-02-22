@@ -108,12 +108,13 @@ export default class extends Component {
     let span = $(e.target);
 
     let attrs = utils.parseAttrs(span, {
-      id: ['data-id', Number]
+      id:   ['data-id', Number],
+      zoom: ['data-zoom', Number],
     });
 
     if (attrs.id) {
       let [lon, lat] = getCollectionLonLat(attrs.id);
-      focusMap(lon, lat);
+      focusMap(lon, lat, attrs.zoom);
     }
 
   }
