@@ -18,3 +18,8 @@ export const CHANGE_BASE_LAYER = 'CHANGE_BASE_LAYER';
 
 // WMS LAYERS
 export const CHANGE_WMS_LAYER = 'CHANGE_WMS_LAYER';
+
+// MAP
+export const MAP = 'MAP';
+export const SHOW_MAP_LINE = 'SHOW_MAP_LINE';
+export const HIDE_MAP_LINE = 'HIDE_MAP_LINE';

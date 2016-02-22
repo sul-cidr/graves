@@ -22,6 +22,11 @@ import {
   zoomToCollection,
 } from '../events/collections';
 
+import {
+  showMapLine,
+  hideMapLine,
+} from '../events/map';
+
 
 export default class extends Component {
 

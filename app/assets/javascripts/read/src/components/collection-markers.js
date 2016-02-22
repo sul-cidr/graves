@@ -174,7 +174,7 @@ export default class extends Component {
     if (!marker) return;
 
     this.props.map.flyTo(marker.getLatLng(), zoom, {
-      duration: 10
+      duration: 1.5
     });
 
   }
