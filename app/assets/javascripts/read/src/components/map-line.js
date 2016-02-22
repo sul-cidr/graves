@@ -2,6 +2,7 @@
 
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
+import Portal from 'react-portal';
 
 import Component from './component';
 
@@ -134,30 +135,25 @@ export default class extends Component {
     }
 
     return (
-      <svg id="map-line">
-        {line}
-      </svg>
+      <Portal isOpened>
+        <svg id="map-line">
+          {line}
+        </svg>
+      </Portal>
     );
 
   }
 
 
   /**
-   * Convert lon/lat -> screen pixels.
+   * Convert lon/lat -> container pixels.
    *
    * @param {Number} lon
    * @param {Number} lat
    */
   lonLatToXY(lon, lat) {
-
-    // Coordinate -> layer point.
-    let layerPoint = this.props.map.latLngToLayerPoint([lat, lon]);
-
-    // Layer point -> screen point.
-    let point = this.props.map.layerPointToContainerPoint(layerPoint);
-
+    let point = this.props.map.latLngToContainerPoint([lat, lon]);
     return [point.x, point.y];
-
   }
 
 
