@@ -70,3 +70,12 @@ export function assertHighlightedCollectionId(id) {
   expect($(marker._path)).toHaveClass('highlight');
 
 }
+
+
+/**
+ * Assert that no collection is currently highlighted.
+ */
+export function assertNoCollectionHighlighted() {
+  expect('.leaflet-popup').not.toExist();
+  expect('path.collection.highlight').not.toExist();
+}

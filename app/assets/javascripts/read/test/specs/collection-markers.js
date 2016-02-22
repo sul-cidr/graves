@@ -141,7 +141,7 @@ describe('Collection Markers', function() {
 
 
     it('hides the tooltip', function() {
-      expect($('.leaflet-popup')).not.toBeVisible();
+      expect('.leaflet-popup').not.toBeVisible();
     });
 
 

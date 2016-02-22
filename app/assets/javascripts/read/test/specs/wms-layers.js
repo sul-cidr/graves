@@ -22,10 +22,10 @@ describe('WMS Layers', function() {
 
     utils.openWmsLayerSelect();
 
-    expect($('.Select-option:nth-child(1)')).toHaveText('Layer 1');
-    expect($('.Select-option:nth-child(2)')).toHaveText('Layer 2');
-    expect($('.Select-option:nth-child(3)')).toHaveText('Layer 3');
-    expect($('.Select-option')).toHaveLength(3);
+    expect('.Select-option:nth-child(1)').toHaveText('Layer 1');
+    expect('.Select-option:nth-child(2)').toHaveText('Layer 2');
+    expect('.Select-option:nth-child(3)').toHaveText('Layer 3');
+    expect('.Select-option').toHaveLength(3);
 
   });
 

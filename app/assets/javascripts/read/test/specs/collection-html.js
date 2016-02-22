@@ -63,7 +63,9 @@ describe('Collection HTML', function() {
         expect(span).not.toHaveClass('highlight');
       });
 
-      it('unhighlights the map marker');
+      it('unhighlights the map marker', function() {
+        utils.assertNoCollectionHighlighted();
+      });
 
       it('hides the highlight line');
 
