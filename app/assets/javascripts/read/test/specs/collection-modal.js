@@ -11,7 +11,7 @@ import showModalJSON from
 '../fixtures/collection-modal/collections/show-modal.json';
 
 
-describe('Collection Markers', function() {
+describe('Collection Modal', function() {
 
 
   let markers;
