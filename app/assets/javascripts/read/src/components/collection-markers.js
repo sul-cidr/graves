@@ -17,7 +17,6 @@ import {
   COLLECTIONS,
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
-  ZOOM_TO_COLLECTION,
   GET_COLLECTION_LON_LAT,
 } from '../constants';
 
@@ -35,7 +34,6 @@ export default class extends Component {
     [COLLECTIONS]: {
       [HIGHLIGHT_COLLECTION]: 'highlight',
       [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
-      [ZOOM_TO_COLLECTION]: 'zoom',
     }
   };
 
@@ -166,24 +164,6 @@ export default class extends Component {
 
     $(marker._path).removeClass('highlight');
     marker.closePopup();
-
-  }
-
-
-  /**
-   * Focus on a collection.
-   *
-   * @param {Number} id
-   * @param {Number} zoom
-   */
-  zoom(id, zoom=8) {
-
-    let marker = this.idToMarker[id];
-    if (!marker) return;
-
-    this.props.map.flyTo(marker.getLatLng(), zoom, {
-      duration: 1.5
-    });
 
   }
 

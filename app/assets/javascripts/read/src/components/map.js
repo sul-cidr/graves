@@ -19,7 +19,7 @@ import WmsLayer from './wms-layer';
 
 import {
   MAP,
-  FOCUS_MAP_ON_COLLECTION,
+  FOCUS_MAP,
 } from '../constants';
 
 
@@ -28,7 +28,7 @@ export default class extends Component {
 
   static requests = {
     [MAP]: {
-      [FOCUS_MAP_ON_COLLECTION]: 'focusMapOnCollection',
+      [FOCUS_MAP]: 'focus',
     }
   };
 
@@ -113,6 +113,20 @@ export default class extends Component {
 
       </div>
     );
+  }
+
+
+  /**
+   * Focus on a point.
+   *
+   * @param {Number} lon
+   * @param {Number} lat
+   * @param {Number} zoom
+   */
+  focus(lon, lat, zoom=8) {
+    this.state.map.flyTo([lat, lon], zoom, {
+      duration: 1.5
+    });
   }
 
 

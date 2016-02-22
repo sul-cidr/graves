@@ -19,13 +19,13 @@ import {
 import {
   highlightCollection,
   unhighlightCollection,
-  zoomToCollection,
   getCollectionLonLat,
 } from '../events/collections';
 
 import {
   showMapLine,
   hideMapLine,
+  focusMap,
 } from '../events/map';
 
 
@@ -113,7 +113,7 @@ export default class extends Component {
 
     if (attrs.id) {
       let [lon, lat] = getCollectionLonLat(attrs.id);
-      zoomToCollection(attrs.id);
+      focusMap(lon, lat);
     }
 
   }

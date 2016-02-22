@@ -6,6 +6,7 @@ import {
   MAP,
   SHOW_MAP_LINE,
   HIDE_MAP_LINE,
+  FOCUS_MAP,
 } from '../constants';
 
 
@@ -29,4 +30,16 @@ export function showMapLine(span, lon, lat) {
  */
 export function hideMapLine() {
   channel.request(HIDE_MAP_LINE);
+}
+
+
+/**
+ * Focus the map on a point.
+ *
+ * @param {Number} lon
+ * @param {Number} lat
+ * @param {Number} zoom
+ */
+export function focusMap(lon, lat, zoom) {
+  channel.request(FOCUS_MAP, lon, lat, zoom);
 }
