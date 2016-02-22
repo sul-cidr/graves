@@ -4,6 +4,9 @@ language: ruby
 rvm:
   - 2.2.3
 
+node_js:
+  - 5.0
+
 notifications:
   email: false
 
