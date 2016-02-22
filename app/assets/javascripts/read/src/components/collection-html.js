@@ -70,11 +70,19 @@ export default class extends Component {
     let span = $(e.target);
 
     let attrs = utils.parseAttrs(span, {
-      id: ['data-id', Number]
+      id: ['data-id', Number],
     });
 
-    // Publish highlight.
-    highlightCollection(attrs.id);
+    if (attrs.id) {
+
+      // Show the highlight line.
+      let [lon, lat] = getCollectionLonLat(attrs.id);
+      showMapLine(span, lon, lat);
+
+      // Publish highlight.
+      highlightCollection(attrs.id);
+
+    }
 
   }
 
@@ -92,8 +100,15 @@ export default class extends Component {
       id: ['data-id', Number]
     });
 
-    // Publish unhighlight.
-    unhighlightCollection(attrs.id);
+    if (attrs.id) {
+
+      // Remove the map line.
+      hideMapLine();
+
+      // Publish unhighlight.
+      unhighlightCollection(attrs.id);
+
+    }
 
   }
 
@@ -112,6 +127,7 @@ export default class extends Component {
       zoom: ['data-zoom', Number],
     });
 
+    // Focus the map.
     if (attrs.id) {
       let [lon, lat] = getCollectionLonLat(attrs.id);
       focusMap(lon, lat, attrs.zoom);

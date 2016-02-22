@@ -13,6 +13,7 @@ import CollectionModal from './collection-modal';
 import SectionBoxes from './section-boxes';
 
 import MapMenu from './map-menu';
+import MapLine from './map-line';
 import BaseLayer from './base-layer';
 import WmsLayer from './wms-layer';
 
@@ -104,6 +105,7 @@ export default class extends Component {
             <CollectionMarkers map={this.state.map} />
             <WmsLayer map={this.state.map} />
             <SectionBoxes map={this.state.map} />
+            <MapLine map={this.state.map} />
 
             <MapMenu />
             <CollectionModal />

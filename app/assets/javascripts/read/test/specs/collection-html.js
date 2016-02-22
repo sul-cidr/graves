@@ -55,7 +55,7 @@ describe('Collection HTML', function() {
       });
 
       it('shows the highlight line', function() {
-        expect('#map-line line').toBeVisible();
+        expect('#map-line line').toBeInDOM();
         // TODO: Test position?
       });
 
