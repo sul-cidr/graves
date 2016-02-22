@@ -54,7 +54,7 @@ describe('Collection Markers', function() {
   });
 
 
-  describe('highlight', function() {
+  describe('hover', function() {
 
 
     describe('shows the popup', function() {
@@ -116,17 +116,14 @@ describe('Collection Markers', function() {
   });
 
 
-  describe('unhighlight', function() {
+  describe('blur', function() {
 
 
-    let marker;
-
-
-    beforeEach(function() {
+    it('unhighlights the collection', function() {
 
       utils.respondCollections(highlightJSON);
 
-      marker = markers.idToMarker[1];
+      let marker = markers.idToMarker[1];
 
       // Hover on the marker.
       markers.group.fire('mouseover', {
@@ -138,16 +135,8 @@ describe('Collection Markers', function() {
         layer: marker
       });
 
-    });
+      assert.noCollectionHighlighted();
 
-
-    it('hides the tooltip', function() {
-      expect('.leaflet-popup').not.toBeVisible();
-    });
-
-
-    it('unhighlights the marker', function() {
-      expect($(marker._path)).not.toHaveClass('highlight');
     });
 
 
