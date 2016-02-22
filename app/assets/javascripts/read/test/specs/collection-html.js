@@ -3,6 +3,7 @@
 import $ from 'jquery';
 
 import * as utils from '../utils';
+import * as assert from '../assert';
 
 
 import dataIdHTML from
@@ -43,8 +44,8 @@ describe('Collection HTML', function() {
       });
 
       it('highlights the map marker', function() {
-        utils.assertHighlightedCollectionId(1);
-        utils.assertPopupLabel('data-id');
+        assert.highlightedCollectionId(1);
+        assert.popupLabel('data-id');
       });
 
       it('shows the highlight line');
@@ -64,7 +65,7 @@ describe('Collection HTML', function() {
       });
 
       it('unhighlights the map marker', function() {
-        utils.assertNoCollectionHighlighted();
+        assert.noCollectionHighlighted();
       });
 
       it('hides the highlight line');

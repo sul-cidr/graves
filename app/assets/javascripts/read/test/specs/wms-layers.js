@@ -4,6 +4,7 @@ import $ from 'jquery';
 import TestUtils from 'react-addons-test-utils';
 
 import * as utils from '../utils';
+import * as assert from '../assert';
 
 
 import listLayersHTML from
@@ -42,7 +43,7 @@ describe('WMS Layers', function() {
       let option = $(`.Select-option:nth-child(${i})`);
       TestUtils.Simulate.mouseDown(option.get(0));
 
-      utils.assertWmsLayerParams(`address${i}`, `layer${i}`);
+      assert.wmsLayerParams(`address${i}`, `layer${i}`);
 
     }
 

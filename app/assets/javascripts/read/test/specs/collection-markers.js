@@ -5,6 +5,7 @@ import $ from 'jquery';
 import CollectionMarkers from '../../src/components/collection-markers';
 
 import * as utils from '../utils';
+import * as assert from '../assert';
 
 
 import addMarkersJSON from
@@ -69,7 +70,7 @@ describe('Collection Markers', function() {
           layer: markers.idToMarker[1]
         });
 
-        utils.assertPopupLabel('town');
+        assert.popupLabel('town');
 
       });
 
@@ -80,7 +81,7 @@ describe('Collection Markers', function() {
           layer: markers.idToMarker[2]
         });
 
-        utils.assertPopupLabel('county');
+        assert.popupLabel('county');
 
       });
 
@@ -91,7 +92,7 @@ describe('Collection Markers', function() {
           layer: markers.idToMarker[3]
         });
 
-        utils.assertPopupLabel('province');
+        assert.popupLabel('province');
 
       });
 
@@ -107,7 +108,7 @@ describe('Collection Markers', function() {
         layer: markers.idToMarker[1]
       });
 
-      utils.assertHighlightedCollectionId(1);
+      assert.highlightedCollectionId(1);
 
     });
 

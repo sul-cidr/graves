@@ -2,12 +2,12 @@
 
 import $ from 'jquery';
 
-import BaseLayer from '../../src/components/base-layer';
-import WmsLayer from '../../src/components/wms-layer';
-import CollectionMarkers from '../../src/components/collection-markers';
+import BaseLayer from '../src/components/base-layer';
+import WmsLayer from '../src/components/wms-layer';
+import CollectionMarkers from '../src/components/collection-markers';
 
 
-import { getComponent } from './redux';
+import { getComponent } from './utils/redux';
 
 
 /**
@@ -15,7 +15,7 @@ import { getComponent } from './redux';
  *
  * @param {String} url
  */
-export function assertBaseLayerUrl(url) {
+export function baseLayerUrl(url) {
 
   let baseLayer = getComponent(BaseLayer);
 
@@ -31,7 +31,7 @@ export function assertBaseLayerUrl(url) {
  * @param {String} address
  * @param {String} layer
  */
-export function assertWmsLayerParams(address, layer) {
+export function wmsLayerParams(address, layer) {
 
   let wmsLayer = getComponent(WmsLayer);
 
@@ -47,7 +47,7 @@ export function assertWmsLayerParams(address, layer) {
  *
  * @param {String} label
  */
-export function assertPopupLabel(label) {
+export function popupLabel(label) {
 
   let content = $('.leaflet-popup-content');
 
@@ -62,7 +62,7 @@ export function assertPopupLabel(label) {
  *
  * @param {Number} id
  */
-export function assertHighlightedCollectionId(id) {
+export function highlightedCollectionId(id) {
 
   let markers = getComponent(CollectionMarkers);
   let marker = markers.idToMarker[id];
@@ -75,7 +75,7 @@ export function assertHighlightedCollectionId(id) {
 /**
  * Assert that no collection is currently highlighted.
  */
-export function assertNoCollectionHighlighted() {
+export function noCollectionHighlighted() {
   expect('.leaflet-popup').not.toExist();
   expect('path.collection.highlight').not.toExist();
 }

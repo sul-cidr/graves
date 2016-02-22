@@ -4,6 +4,7 @@ import $ from 'jquery';
 import TestUtils from 'react-addons-test-utils';
 
 import * as utils from '../utils';
+import * as assert from '../assert';
 
 
 import mountDefaultHTML from
@@ -24,7 +25,7 @@ describe('Base Layers', function() {
 
     utils.start(mountDefaultHTML);
 
-    utils.assertBaseLayerUrl('url3');
+    assert.baseLayerUrl('url3');
 
   });
 
@@ -55,7 +56,7 @@ describe('Base Layers', function() {
       let option = $(`.Select-option:nth-child(${i})`);
       TestUtils.Simulate.mouseDown(option.get(0));
 
-      utils.assertBaseLayerUrl(`url${i}`);
+      assert.baseLayerUrl(`url${i}`);
 
     }
 
