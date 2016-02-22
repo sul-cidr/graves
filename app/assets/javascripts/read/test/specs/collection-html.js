@@ -26,14 +26,17 @@ describe('Collection HTML', function() {
       utils.start(dataIdHTML);
       utils.respondCollections(dataIdCollectionsJSON);
 
-      // Hover on the span.
+      // Get the collection span.
       span = $('.collection[data-id="1"]');
-      span.trigger('mouseenter');
 
     });
 
 
     describe('hover', function() {
+
+      beforeEach(function() {
+        span.trigger('mouseenter');
+      });
 
       it('highlights the text span', function() {
         expect(span).toHaveClass('highlight');
@@ -50,8 +53,20 @@ describe('Collection HTML', function() {
 
 
     describe('blur', function() {
+
+      beforeEach(function() {
+        span.trigger('mouseenter');
+        span.trigger('mouseleave');
+      });
+
+      it('unhighlights the text span', function() {
+        expect(span).not.toHaveClass('highlight');
+      });
+
       it('unhighlights the map marker');
+
       it('hides the highlight line');
+
     });
 
 

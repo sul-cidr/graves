@@ -22,6 +22,7 @@ export default class extends Component {
   static events = {
     [COLLECTIONS]: {
       [HIGHLIGHT_COLLECTION]: 'highlight',
+      [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
     }
   };
 
@@ -71,7 +72,16 @@ export default class extends Component {
    * @param {Object} e
    */
   onLeave(e) {
-    // TODO
+
+    let span = $(e.target);
+
+    let attrs = utils.parseAttrs(span, {
+      id: ['data-id', Number]
+    });
+
+    // Publish unhighlight.
+    events.unhighlightCollection(attrs.id);
+
   }
 
 
@@ -103,6 +113,16 @@ export default class extends Component {
    */
   highlight(id) {
     this.getAnchorsById(id).addClass('highlight');
+  }
+
+
+  /**
+   * Remove a highlight.
+   *
+   * @param {Number} id
+   */
+  unhighlight(id) {
+    this.getAnchorsById(id).removeClass('highlight');
   }
 
 
