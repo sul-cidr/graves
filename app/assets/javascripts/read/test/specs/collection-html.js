@@ -77,7 +77,7 @@ describe('Collection HTML', function() {
 
       beforeEach(function(done) {
 
-        span.trigger('click')
+        span.trigger('click');
 
         // TODO: Mock requestAnimationFame?
         setTimeout(done, 2000);

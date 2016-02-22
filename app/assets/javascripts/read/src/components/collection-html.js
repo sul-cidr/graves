@@ -20,6 +20,7 @@ import {
   highlightCollection,
   unhighlightCollection,
   zoomToCollection,
+  getCollectionLonLat,
 } from '../events/collections';
 
 import {
@@ -111,6 +112,7 @@ export default class extends Component {
     });
 
     if (attrs.id) {
+      let [lon, lat] = getCollectionLonLat(attrs.id);
       zoomToCollection(attrs.id);
     }
 

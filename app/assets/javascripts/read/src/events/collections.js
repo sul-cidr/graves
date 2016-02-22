@@ -7,6 +7,7 @@ import {
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
   ZOOM_TO_COLLECTION,
+  GET_COLLECTION_LON_LAT,
 } from '../constants';
 
 
@@ -40,4 +41,15 @@ export function unhighlightCollection(id) {
  */
 export function zoomToCollection(id) {
   channel.trigger(ZOOM_TO_COLLECTION, id);
+}
+
+
+/**
+ * Get the lon/lat of a collection.
+ *
+ * @param {Number} id
+ * @return {Array}
+ */
+export function getCollectionLonLat(id) {
+  return channel.request(GET_COLLECTION_LON_LAT, id);
 }

@@ -18,6 +18,7 @@ import {
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
   ZOOM_TO_COLLECTION,
+  GET_COLLECTION_LON_LAT,
 } from '../constants';
 
 
@@ -37,6 +38,13 @@ export default class extends Component {
       [ZOOM_TO_COLLECTION]: 'zoom',
     }
   };
+
+
+  static requests = {
+    [COLLECTIONS]: {
+      [GET_COLLECTION_LON_LAT]: 'getLonLat',
+    }
+  }
 
 
   static propTypes = {
@@ -177,6 +185,18 @@ export default class extends Component {
       duration: 1.5
     });
 
+  }
+
+
+  /**
+   * Get the lon/lat of a collection.
+   *
+   * @param {Number} id
+   * @return {Array}
+   */
+  getLonLat(id) {
+    let latLng = this.idToMarker[id].getLatLng();
+    return [latLng.lng, latLng.lat];
   }
 
 
