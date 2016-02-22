@@ -15,6 +15,11 @@ import {
   UNHIGHLIGHT_COLLECTION,
 } from '../constants';
 
+import {
+  highlightCollection,
+  unhighlightCollection,
+} from '../events/collections';
+
 
 export default class extends Component {
 
@@ -61,7 +66,7 @@ export default class extends Component {
     });
 
     // Publish highlight.
-    events.highlightCollection(attrs.id);
+    highlightCollection(attrs.id);
 
   }
 
@@ -80,7 +85,7 @@ export default class extends Component {
     });
 
     // Publish unhighlight.
-    events.unhighlightCollection(attrs.id);
+    unhighlightCollection(attrs.id);
 
   }
 
