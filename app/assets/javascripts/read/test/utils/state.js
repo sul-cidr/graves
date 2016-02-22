@@ -1,5 +1,7 @@
 
 
+import ReactDOM from 'react-dom';
+
 import init from '../../src';
 
 
@@ -14,13 +16,11 @@ import defaultHTML from
  */
 export function start(fixture) {
 
-  stop();
-
   // Set the page fixture.
   jasmine.getFixtures().set(fixture || defaultHTML);
   jasmine.Ajax.install();
 
-  window.ROOT = init();
+  window.READ = init();
 
 }
 
@@ -30,13 +30,16 @@ export function start(fixture) {
  */
 export function stop() {
 
-  try {
+  if (window.READ) {
+
+    // Unmount the application.
     let read = document.getElementById('read');
     ReactDOM.unmountComponentAtNode(read);
+
   }
 
-  catch (e) {}
-
   jasmine.Ajax.uninstall();
+
+  delete window.READ;
 
 }

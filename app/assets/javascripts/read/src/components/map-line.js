@@ -112,7 +112,7 @@ export default class extends Component {
       // Map offset.
       let [x2, y2] = this.lonLatToXY(
         this.state.lon,
-        this.state.lat
+        this.state.lat,
       );
 
       let padding = 10;
@@ -152,8 +152,17 @@ export default class extends Component {
    * @param {Number} lat
    */
   lonLatToXY(lon, lat) {
+
+    // Get the top offset.
+    let scrollTop = $(window).scrollTop();
+    let offsetTop = $(this.props.map.getContainer()).offset().top;
+    let top = offsetTop - scrollTop;
+
+    // Convert the lon/lat -> container pixels.
     let point = this.props.map.latLngToContainerPoint([lat, lon]);
-    return [point.x, point.y];
+
+    return [point.x, point.y+top];
+
   }
 
 

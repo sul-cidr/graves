@@ -10,6 +10,6 @@ import TestUtils from 'react-addons-test-utils';
  * @param {Function} type
  */
 export function getComponent(type) {
-  let component = TestUtils.findRenderedComponentWithType(ROOT, type);
+  let component = TestUtils.findRenderedComponentWithType(READ, type);
   return _.get(component, 'refs.wrappedInstance') || component;
 }

@@ -10,3 +10,9 @@ import './specs/collection-html';
 import './specs/collection-markers';
 import './specs/collection-modal';
 import './specs/section-boxes';
+
+
+import * as utils from './utils';
+
+
+afterEach(utils.stop);
