@@ -74,7 +74,25 @@ describe('Collection HTML', function() {
 
 
     describe('click', function() {
-      it('focuses the map');
+
+      beforeEach(function(done) {
+
+        span.trigger('click')
+
+        // TODO: Mock requestAnimationFame?
+        setTimeout(done, 2000);
+
+      });
+
+      it('focuses the map', function() {
+
+        let { lng, lat } = utils.getLeaflet().getCenter();
+
+        expect(Math.round(lng)).toEqual(1);
+        expect(Math.round(lat)).toEqual(2);
+
+      });
+
     });
 
 
