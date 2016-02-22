@@ -13,7 +13,7 @@ describe 'Collection HTML', type: :feature do
 
           :collection,
           id: 1,
-          geometry: Helpers::Geo.point(1, 1),
+          geometry: Helpers::Geo.point(1, 2),
 
           # Popup label
           province_p: 'data-id',

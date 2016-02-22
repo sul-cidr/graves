@@ -73,7 +73,20 @@ describe('Collection HTML', function() {
 
 
     describe('click', function() {
-      it('focuses the map');
+
+      beforeEach(function() {
+        span.trigger('click');
+      });
+
+      it('focuses the map', function() {
+
+        //let { lat, lng } = utils.getLeaflet().getCenter();
+
+        //expect(Math.roung(lng)).toEqual(1);
+        //expect(Math.roung(lat)).toEqual(2);
+
+      });
+
     });
 
 
@@ -94,6 +107,14 @@ describe('Collection HTML', function() {
 
   describe('data-choropleth', function() {
     it('sets the choropleth variable');
+  });
+
+  describe('data-start', function() {
+    it('sets the start date');
+  });
+
+  describe('data-end', function() {
+    it('sets the end date');
   });
 
 
