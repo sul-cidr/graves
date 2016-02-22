@@ -17,7 +17,20 @@ import BaseLayer from './base-layer';
 import WmsLayer from './wms-layer';
 
 
+import {
+  MAP,
+  FOCUS_MAP_ON_COLLECTION,
+} from '../constants';
+
+
 export default class extends Component {
+
+
+  static requests = {
+    [MAP]: {
+      [FOCUS_MAP_ON_COLLECTION]: 'focusMapOnCollection',
+    }
+  };
 
 
   /**

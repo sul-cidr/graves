@@ -9,6 +9,7 @@ import * as events from '../events/collections';
 
 import Component from './component';
 
+
 import {
   COLLECTIONS,
   HIGHLIGHT_COLLECTION,
@@ -18,6 +19,7 @@ import {
 import {
   highlightCollection,
   unhighlightCollection,
+  zoomToCollection,
 } from '../events/collections';
 
 
@@ -96,7 +98,17 @@ export default class extends Component {
    * @param {Object} e
    */
   onClick(e) {
-    // TODO
+
+    let span = $(e.target);
+
+    let attrs = utils.parseAttrs(span, {
+      id: ['data-id', Number]
+    });
+
+    if (attrs.id) {
+      zoomToCollection(attrs.id);
+    }
+
   }
 
 

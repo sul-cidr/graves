@@ -6,6 +6,7 @@ import {
   COLLECTIONS,
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
+  ZOOM_TO_COLLECTION,
 } from '../constants';
 
 
@@ -31,3 +32,12 @@ export function unhighlightCollection(id) {
   channel.trigger(UNHIGHLIGHT_COLLECTION, id);
 }
 
+
+/**
+ * Zoom the map on a collection.
+ *
+ * @param {Number} id
+ */
+export function zoomToCollection(id) {
+  channel.trigger(ZOOM_TO_COLLECTION, id);
+}
