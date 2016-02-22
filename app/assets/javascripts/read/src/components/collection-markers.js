@@ -166,14 +166,16 @@ export default class extends Component {
    * Focus on a collection.
    *
    * @param {Number} id
+   * @param {Number} zoom
    */
-  zoom(id) {
+  zoom(id, zoom=8) {
 
     let marker = this.idToMarker[id];
     if (!marker) return;
 
-    // TODO
-    this.props.map.setView(marker.getLatLng())
+    this.props.map.flyTo(marker.getLatLng(), zoom, {
+      duration: 10
+    });
 
   }
 

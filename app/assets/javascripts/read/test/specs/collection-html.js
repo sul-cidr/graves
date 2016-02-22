@@ -16,6 +16,19 @@ import dataIdCollectionsJSON from
 describe('Collection HTML', function() {
 
 
+  let mockRaf;
+
+
+  beforeEach(function() {
+    mockRaf = utils.mockRaf();
+  });
+
+
+  afterEach(function() {
+    utils.unmockRaf();
+  });
+
+
   describe('data-id', function() {
 
 
@@ -80,6 +93,9 @@ describe('Collection HTML', function() {
       });
 
       it('focuses the map', function() {
+
+        // TODO: Broken in browser?
+        mockRaf.step(2000);
 
         let { lng, lat } = utils.getLeaflet().getCenter();
 
