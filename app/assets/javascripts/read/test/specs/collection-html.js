@@ -54,7 +54,10 @@ describe('Collection HTML', function() {
         assert.popupLabel('data-id');
       });
 
-      it('shows the highlight line');
+      it('shows the highlight line', function() {
+        expect('#map-line line').toBeVisible();
+        // TODO: Test position?
+      });
 
     });
 
@@ -74,7 +77,9 @@ describe('Collection HTML', function() {
         assert.noCollectionHighlighted();
       });
 
-      it('hides the highlight line');
+      it('hides the highlight line', function() {
+        expect('#map-line line').not.toBeInDOM();
+      });
 
     });
 
