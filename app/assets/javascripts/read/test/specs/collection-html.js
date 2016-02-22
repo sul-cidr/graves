@@ -78,7 +78,14 @@ describe('Collection HTML', function() {
         span.trigger('click');
       });
 
-      it('focuses the map');
+      it('focuses the map', function() {
+
+        let { lng, lat } = utils.getLeaflet().getCenter();
+        console.log(lng, lat);
+
+        // TODO
+
+      });
 
     });
 
