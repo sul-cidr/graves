@@ -83,6 +83,9 @@ export function noCollectionHighlighted() {
 
 /**
  * Assert the map focus center.
+ *
+ * @param {Number} eLon
+ * @param {Number} eLat
  */
 export function mapCenter(eLon, eLat) {
 
@@ -91,4 +94,14 @@ export function mapCenter(eLon, eLat) {
   expect(Math.round(lng)).toEqual(eLon);
   expect(Math.round(lat)).toEqual(eLat);
 
+}
+
+
+/**
+ * Assert the map zoom level.
+ *
+ * @param {Number} level
+ */
+export function mapZoom(level) {
+  expect(utils.getLeaflet().getZoom()).toEqual(level);
 }

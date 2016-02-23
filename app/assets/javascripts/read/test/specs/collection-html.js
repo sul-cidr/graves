@@ -95,6 +95,10 @@ describe('Collection HTML', function() {
         assert.mapCenter(1, 2);
       });
 
+      it('zooms to level 8, by default', function() {
+        assert.mapZoom(8);
+      });
+
     });
 
 
@@ -126,7 +130,7 @@ describe('Collection HTML', function() {
       });
 
       it('zooms the map', function() {
-        expect(utils.getLeaflet().getZoom()).toEqual(1);
+        assert.mapZoom(1);
       });
 
     });

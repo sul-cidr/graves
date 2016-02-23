@@ -147,7 +147,7 @@ export default class extends Component {
 
     // If not, click to select.
     if (!focused) {
-      this.enableSelect(id);
+      this.enableSelect(div);
     }
 
   }
@@ -166,7 +166,7 @@ export default class extends Component {
       id: ['data-id', Number],
     });
 
-    this.disableSelect(id);
+    this.disableSelect(div);
 
   }
 
@@ -186,9 +186,9 @@ export default class extends Component {
 
     // Focus the map.
     let [lon, lat] = getSectionCenter(id);
-    focusMap(lon, lat);
+    focusMap(lon, lat, 7);
 
-    this.disableSelect(id);
+    this.disableSelect(div);
 
   }
 
@@ -196,11 +196,10 @@ export default class extends Component {
   /**
    * Select a section on click.
    *
-   * @param {Number} id
+   * @param {DOMElement} section
    */
-  enableSelect(id) {
+  enableSelect(section) {
 
-    let section = this.getSectionById(id);
     section.addClass('selectable');
 
     // Inject the tooltip.
@@ -220,16 +219,16 @@ export default class extends Component {
   /**
    * Remove the select listener.
    *
-   * @param {Number} id
+   * @param {DOMElement} section
    */
-  disableSelect(id) {
+  disableSelect(section) {
+
+    // Reset DOM.
+    section.removeClass('selectable');
+    this.clearTip();
 
     // Clear event listeners.
-    let section = this.getSectionById(id);
     section.off('click mousemove');
-    section.removeClass('selectable');
-
-    this.clearTip();
 
   }
 

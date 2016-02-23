@@ -77,6 +77,10 @@ describe('Collection HTML', function() {
           assert.mapCenter(0, 0);
         });
 
+        it('zooms to level 7, by default', function() {
+          assert.mapZoom(7);
+        });
+
         it('hides the tooltip', function() {
           expect('.tooltip.section').not.toBeVisible();
         });
