@@ -180,13 +180,14 @@ export default class extends Component {
 
     let div = $(e.currentTarget);
 
-    let { id } = utils.parseAttrs(div, {
-      id: ['data-id', Number],
+    let { id, zoom } = utils.parseAttrs(div, {
+      id:   ['data-id', Number],
+      zoom: ['data-zoom', Number],
     });
 
     // Focus the map.
     let [lon, lat] = getSectionCenter(id);
-    focusMap(lon, lat, 7);
+    focusMap(lon, lat, zoom || 7);
 
     this.disableSelect(div);
 
