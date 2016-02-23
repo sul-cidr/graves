@@ -9,6 +9,9 @@ import * as assert from '../assert';
 import dataTlBrHTML from
 '../fixtures/section-html/page/data-tl-br.html';
 
+import dataZoomHTML from
+'../fixtures/section-html/page/data-zoom.html';
+
 
 describe('Collection HTML', function() {
 
@@ -131,7 +134,32 @@ describe('Collection HTML', function() {
 
 
   describe('data-zoom', function() {
-    it('zooms the map');
+
+
+    let div;
+
+
+    beforeEach(function() {
+      utils.start(dataZoomHTML);
+      div = $('.section:first-child');
+    });
+
+
+    describe('click', function() {
+
+      beforeEach(function(done) {
+        div.trigger('mouseenter');
+        div.trigger('click');
+        setTimeout(done, 2000);
+      });
+
+      it('applies the custom zoom level', function() {
+        assert.mapZoom(1);
+      });
+
+    });
+
+
   });
 
   describe('data-base-layer', function() {
