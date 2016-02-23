@@ -11,6 +11,11 @@ import * as actions from '../actions/sections';
 import Component from './component';
 
 
+import {
+  isSectionFocused
+} from '../events/map';
+
+
 @connect(null, actions)
 export default class extends Component {
 
@@ -30,6 +35,7 @@ export default class extends Component {
 
     this._generateDataIds();
     this._publishData();
+    this._bindCursorEvents();
 
   }
 
@@ -68,6 +74,55 @@ export default class extends Component {
     });
 
     this.props.mountSections(data);
+
+  }
+
+
+  /**
+   * Listen for section enter/leave.
+   */
+  _bindCursorEvents() {
+
+    this.sections
+      .on('mouseenter', this.onEnter.bind(this))
+      .on('mouseleave', this.onLeave.bind(this));
+
+  }
+
+
+  /**
+   * When the cursor enters a section.
+   *
+   * @param {Object} e
+   */
+  onEnter(e) {
+
+    let div = $(e.currentTarget);
+
+    let attrs = utils.parseAttrs(div, {
+      id: ['data-id', Number],
+    });
+
+    // Is the section focused?
+    let focused = isSectionFocused(attrs.id);
+
+  }
+
+
+  /**
+   * When the cursor leaves a section.
+   *
+   * @param {Object} e
+   */
+  onLeave(e) {
+
+    let div = $(e.currentTarget);
+
+    let attrs = utils.parseAttrs(div, {
+      id: ['data-id', Number],
+    });
+
+    // TODO
 
   }
 

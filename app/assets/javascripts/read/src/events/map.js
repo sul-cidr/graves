@@ -7,6 +7,7 @@ import {
   SHOW_MAP_LINE,
   HIDE_MAP_LINE,
   FOCUS_MAP,
+  IS_SECTION_FOCUSED,
 } from '../constants';
 
 
@@ -42,4 +43,15 @@ export function hideMapLine() {
  */
 export function focusMap(lon, lat, zoom) {
   channel.request(FOCUS_MAP, lon, lat, zoom);
+}
+
+
+/**
+ * Is a map section in focus?
+ *
+ * @param {Number} id
+ * @return {Boolean}
+ */
+export function isSectionFocused(id) {
+  return channel.request(IS_SECTION_FOCUSED, id);
 }

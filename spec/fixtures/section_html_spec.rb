@@ -9,7 +9,12 @@ describe 'Section HTML', type: :feature do
     it 'narrative' do
 
       markup = <<-HTML
-        <span class="section" data-tl="-50,50" data-br="50,-50"></span>
+        <div
+          class="section"
+          data-label="Section"
+          data-tl="-50,50"
+          data-br="50,-50"
+        ></div>
       HTML
 
       n = create(:narrative, markup: markup)

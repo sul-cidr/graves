@@ -11,12 +11,26 @@ import * as utils from '../utils';
 import Component from './component';
 
 
+import {
+  SECTIONS,
+  MAP,
+  IS_SECTION_FOCUSED,
+} from '../constants';
+
+
 @connect(
   state => ({
     sections: state.sections.attrs
   })
 )
 export default class extends Component {
+
+
+  static requests = {
+    [MAP]: {
+      [IS_SECTION_FOCUSED]: 'isFocused'
+    }
+  };
 
 
   static propTypes = {
@@ -90,6 +104,25 @@ export default class extends Component {
     }
 
     return null;
+
+  }
+
+
+  /**
+   * Is the map focused on a section?
+   *
+   * @param {Number} id
+   * @return {Boolean}
+   */
+  isFocused(id) {
+
+    // Get section and map centers.
+    let sCenter = this.idToBox[id].getBounds().getCenter();
+    let mCenter = this.props.map.getCenter();
+
+    // Measure distance to center.
+    let d = mCenter.distanceTo(sCenter);
+    return d < 300000;
 
   }
 

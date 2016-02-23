@@ -4,6 +4,7 @@
 export const MAP = 'MAP';
 export const SHOW_MAP_LINE = 'SHOW_MAP_LINE';
 export const HIDE_MAP_LINE = 'HIDE_MAP_LINE';
+export const IS_SECTION_FOCUSED = 'IS_SECTION_FOCUSEd';
 export const FOCUS_MAP = 'FOCUS_MAP';
 
 // COLLECTIONS
