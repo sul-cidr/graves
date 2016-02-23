@@ -94,8 +94,8 @@ export default class extends Component {
   _bindCursorEvents() {
 
     this.sections
-      .on('mouseenter', this.onEnter.bind(this))
-      .on('mouseleave', this.onLeave.bind(this));
+      .mouseenter(this.onEnter.bind(this))
+      .mouseleave(this.onLeave.bind(this));
 
   }
 

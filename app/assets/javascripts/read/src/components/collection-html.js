@@ -53,9 +53,9 @@ export default class extends Component {
     this.collections = this.props.container.find('.collection');
 
     this.collections
-      .on('mouseenter', this.onEnter.bind(this))
-      .on('mouseleave', this.onLeave.bind(this))
-      .on('click', this.onClick.bind(this));
+      .mouseenter(this.onEnter.bind(this))
+      .mouseleave(this.onLeave.bind(this))
+      .click(this.onClick.bind(this));
 
   }
 
