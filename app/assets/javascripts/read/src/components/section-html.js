@@ -138,16 +138,16 @@ export default class extends Component {
 
     let div = $(e.currentTarget);
 
-    let attrs = utils.parseAttrs(div, {
+    let { id } = utils.parseAttrs(div, {
       id: ['data-id', Number],
     });
 
     // Is the section focused?
-    let focused = isSectionFocused(attrs.id);
+    let focused = isSectionFocused(id);
 
     // If not, click to select.
     if (!focused) {
-      this.enableSelect(attrs.id);
+      this.enableSelect(id);
     }
 
   }
@@ -162,11 +162,11 @@ export default class extends Component {
 
     let div = $(e.currentTarget);
 
-    let attrs = utils.parseAttrs(div, {
+    let { id } = utils.parseAttrs(div, {
       id: ['data-id', Number],
     });
 
-    this.disableSelect(attrs.id);
+    this.disableSelect(id);
 
   }
 

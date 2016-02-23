@@ -69,18 +69,18 @@ export default class extends Component {
 
     let span = $(e.target);
 
-    let attrs = utils.parseAttrs(span, {
+    let { id } = utils.parseAttrs(span, {
       id: ['data-id', Number],
     });
 
-    if (attrs.id) {
+    if (id) {
 
       // Show the highlight line.
-      let [lon, lat] = getCollectionLonLat(attrs.id);
+      let [lon, lat] = getCollectionLonLat(id);
       showMapLine(span, lon, lat);
 
       // Publish highlight.
-      highlightCollection(attrs.id);
+      highlightCollection(id);
 
     }
 
@@ -96,17 +96,17 @@ export default class extends Component {
 
     let span = $(e.target);
 
-    let attrs = utils.parseAttrs(span, {
+    let { id } = utils.parseAttrs(span, {
       id: ['data-id', Number]
     });
 
-    if (attrs.id) {
+    if (id) {
 
       // Remove the map line.
       hideMapLine();
 
       // Publish unhighlight.
-      unhighlightCollection(attrs.id);
+      unhighlightCollection(id);
 
     }
 
@@ -122,15 +122,15 @@ export default class extends Component {
 
     let span = $(e.target);
 
-    let attrs = utils.parseAttrs(span, {
+    let { id, zoom } = utils.parseAttrs(span, {
       id:   ['data-id', Number],
       zoom: ['data-zoom', Number],
     });
 
     // Focus the map.
-    if (attrs.id) {
-      let [lon, lat] = getCollectionLonLat(attrs.id);
-      focusMap(lon, lat, attrs.zoom);
+    if (id) {
+      let [lon, lat] = getCollectionLonLat(id);
+      focusMap(lon, lat, zoom);
     }
 
   }
