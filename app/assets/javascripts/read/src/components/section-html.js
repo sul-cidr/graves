@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import * as utils from '../utils';
 import * as actions from '../actions/sections';
+import tipTpl from './section-tip.jade';
 
 import Component from './component';
 
@@ -36,7 +37,16 @@ export default class extends Component {
     this._generateDataIds();
     this._publishData();
     this._bindCursorEvents();
+    this._bindResizeEvent();
 
+  }
+
+
+  /**
+   * Clean DOM + listeners.
+   */
+  componentWillUnmount() {
+    this.clearTip();
   }
 
 
@@ -91,6 +101,29 @@ export default class extends Component {
 
 
   /**
+   * On resize, cache container position.
+   */
+  _bindResizeEvent() {
+
+    this.cacheRight();
+
+    // Re-cache on resize.
+    let resize = _.debounce(this.cacheRight.bind(this), 500);
+    $(window).on('resize.sections', resize);
+
+  }
+
+
+  /**
+   * Cache the right-side narrative offset.
+   */
+  cacheRight() {
+    let n = $('#narrative');
+    this.right = n.offset().left + n.outerWidth();
+  }
+
+
+  /**
    * When the cursor enters a section.
    *
    * @param {Object} e
@@ -105,6 +138,11 @@ export default class extends Component {
 
     // Is the section focused?
     let focused = isSectionFocused(attrs.id);
+
+    // If not, click to select.
+    if (!focused) {
+      this.enableSelect(attrs.id);
+    }
 
   }
 
@@ -122,8 +160,66 @@ export default class extends Component {
       id: ['data-id', Number],
     });
 
-    // TODO
+    this.disableSelect(attrs.id);
 
+  }
+
+
+  /**
+   * Select a section on click.
+   *
+   * @param {Number} id
+   */
+  enableSelect(id) {
+
+    let section = this.getSectionById(id);
+    section.addClass('selectable');
+
+    // Inject the tooltip.
+    this.tip = $(tipTpl()).appendTo('body');
+
+    // Sync tooltip Y with cursor.
+    section.mousemove(e => {
+      this.tip.css({ top: e.clientY, left: this.right+10 });
+    });
+
+  }
+
+
+  /**
+   * Remove the select listener.
+   *
+   * @param {Number} id
+   */
+  disableSelect(id) {
+
+    // Clear event listeners.
+    let section = this.getSectionById(id);
+    section.off('click mousemove');
+    section.removeClass('selectable');
+
+    this.clearTip();
+
+  }
+
+
+  /**
+   * Remove the hover tip.
+   */
+  clearTip() {
+    if (this.tip) {
+      this.tip.remove();
+    }
+  }
+
+
+  /**
+   * Get a section by `data-id`.
+   *
+   * @param {Number} id
+   */
+  getSectionById(id) {
+    return this.sections.filter(`[data-id="${id}"]`);
   }
 
 
