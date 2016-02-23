@@ -42,6 +42,10 @@ describe('Collection HTML', function() {
           expect('.tooltip.section').toBeVisible();
         });
 
+        it('adds .selectable', function() {
+          expect(div).toHaveClass('selectable');
+        });
+
       });
 
       describe('blur', function() {
@@ -53,6 +57,10 @@ describe('Collection HTML', function() {
 
         it('hides the tooltip', function() {
           expect('.tooltip.section').not.toBeVisible();
+        });
+
+        it('removes .selectable', function() {
+          expect(div).not.toHaveClass('selectable');
         });
 
       });
