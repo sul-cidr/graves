@@ -29,7 +29,7 @@ describe('Collection HTML', function() {
 
       // Focus far from the section.
       beforeEach(function() {
-        utils.getLeaflet().setView([0, 1000]);
+        utils.getLeaflet().setView([100, 100]);
       });
 
       describe('hover', function() {
@@ -67,12 +67,20 @@ describe('Collection HTML', function() {
 
       describe('click', function() {
 
-        beforeEach(function() {
+        beforeEach(function(done) {
           div.trigger('mouseenter');
           div.trigger('click');
+          setTimeout(done, 2000);
         });
 
-        it('focuses the map');
+        it('focuses the map', function() {
+
+          let { lng, lat } = utils.getLeaflet().getCenter();
+
+          expect(Math.round(lng)).toEqual(0);
+          expect(Math.round(lat)).toEqual(0);
+
+        });
 
       });
 
