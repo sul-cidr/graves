@@ -13,7 +13,13 @@ import Component from './component';
 
 
 import {
-  isSectionFocused
+  isSectionFocused,
+  getSectionCenter,
+} from '../events/sections';
+
+
+import {
+  focusMap,
 } from '../events/map';
 
 
@@ -171,9 +177,17 @@ export default class extends Component {
    * @param {Object} e
    */
   onClick(e) {
-    // TODO
+
     let div = $(e.currentTarget);
-    console.log(div);
+
+    let { id } = utils.parseAttrs(div, {
+      id: ['data-id', Number],
+    });
+
+    // Focus the map.
+    let [lon, lat] = getSectionCenter(id);
+    focusMap(lon, lat);
+
   }
 
 

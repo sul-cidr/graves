@@ -13,8 +13,8 @@ import Component from './component';
 
 import {
   SECTIONS,
-  MAP,
   IS_SECTION_FOCUSED,
+  GET_SECTION_CENTER,
 } from '../constants';
 
 
@@ -27,8 +27,9 @@ export default class extends Component {
 
 
   static requests = {
-    [MAP]: {
-      [IS_SECTION_FOCUSED]: 'isFocused'
+    [SECTIONS]: {
+      [IS_SECTION_FOCUSED]: 'isFocused',
+      [GET_SECTION_CENTER]: 'getCenter',
     }
   };
 
@@ -124,6 +125,18 @@ export default class extends Component {
     let d = mCenter.distanceTo(sCenter);
     return d < 300000;
 
+  }
+
+
+  /**
+   * Get the center point of a section.
+   *
+   * @param {Number} id
+   * @return {Array}
+   */
+  getCenter(id) {
+    let latLng = this.idToBox[id].getBounds().getCenter();
+    return [latLng.lng, latLng.lat];
   }
 
 
