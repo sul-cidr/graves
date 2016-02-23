@@ -94,6 +94,35 @@
 
   }
 
+  // Make it possible to stack SVG containers.
+
+  svg {
+    pointer-events: none;
+    g {
+      pointer-events: all;
+    }
+  }
+
+  g.counties {
+
+    &.hide {
+      display: none;
+    }
+
+    path {
+
+      stroke: white;
+      fill: @color-blue;
+      stroke-width: 0.02;
+
+      &.highlight {
+        fill: @color-yellow;
+      }
+
+    }
+
+  }
+
 }
 
 

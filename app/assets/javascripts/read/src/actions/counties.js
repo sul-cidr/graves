@@ -38,11 +38,11 @@ function requestCounties() {
 /**
  * When counties are loaded.
  *
- * @param {Object} json
+ * @param {Object} geojson
  */
-function receiveCounties(json) {
+function receiveCounties(geojson) {
   return {
     type: RECEIVE_COUNTIES,
-    geojson: json,
+    geojson,
   };
 }

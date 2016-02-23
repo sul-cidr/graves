@@ -40,12 +40,12 @@ function requestCollections() {
 /**
  * When collections are loaded.
  *
- * @param {Object} json
+ * @param {Object} geojson
  */
-function receiveCollections(json) {
+function receiveCollections(geojson) {
   return {
     type: RECEIVE_COLLECTIONS,
-    geojson: json,
+    geojson,
   };
 }
 

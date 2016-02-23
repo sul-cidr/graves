@@ -1,21 +1,20 @@
 
 
-import { findDOMNode } from 'react-dom';
 import React from 'react';
+import { findDOMNode } from 'react-dom';
 import L from 'leaflet';
 
 import config from './map.yml';
-
 import Component from './component';
 
-import CollectionMarkers from './collection-markers';
-import CollectionModal from './collection-modal';
-import SectionBoxes from './section-boxes';
-
-import MapMenu from './map-menu';
-import MapLine from './map-line';
 import BaseLayer from './base-layer';
 import WmsLayer from './wms-layer';
+import CollectionModal from './collection-modal';
+import CollectionMarkers from './collection-markers';
+import CountyPaths from './county-paths';
+import SectionBoxes from './section-boxes';
+import MapLine from './map-line';
+import MapMenu from './map-menu';
 
 
 import {
@@ -101,6 +100,7 @@ export default class extends Component {
         {this.state.map ? (
           <behaviors>
 
+            <CountyPaths map={this.state.map} />
             <BaseLayer map={this.state.map} />
             <CollectionMarkers map={this.state.map} />
             <WmsLayer map={this.state.map} />
