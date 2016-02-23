@@ -1,7 +1,13 @@
 
 
+import $ from 'jquery';
+
 import * as utils from '../utils';
 import * as assert from '../assert';
+
+
+import dataTlBrHTML from
+'../fixtures/section-html/page/data-tl-br.html';
 
 
 describe('Collection HTML', function() {
@@ -10,36 +16,89 @@ describe('Collection HTML', function() {
   describe('data-tl+data-br', function() {
 
 
-    describe('hover', function() {
+    let div;
 
-      describe('when the section is not focused', function() {
-        it('shows the tooltip');
-      });
 
-      describe('when the section is focused', function() {
-        it('does not show the tooltip');
-      });
-
+    beforeEach(function() {
+      utils.start(dataTlBrHTML);
+      div = $('.section:first-child');
     });
 
 
-    describe('blur', function() {
+    describe('when the section is not focused', function() {
 
-      describe('when the section is not focused', function() {
-        it('hides the tooltip');
+      // Focus far from the section.
+      beforeEach(function() {
+        utils.getLeaflet().setView([0, 1000]);
       });
 
-    });
+      describe('hover', function() {
 
+        beforeEach(function() {
+          div.trigger('mouseenter');
+        });
 
-    describe('click', function() {
+        it('shows the tooltip', function() {
+          expect('.tooltip.section').toBeVisible();
+        });
 
-      describe('when the section is not focused', function() {
+      });
+
+      describe('blur', function() {
+
+        beforeEach(function() {
+          div.trigger('mouseenter');
+          div.trigger('mouseleave');
+        });
+
+        it('hides the tooltip', function() {
+          expect('.tooltip.section').not.toBeVisible();
+        });
+
+      });
+
+      describe('click', function() {
+
+        beforeEach(function() {
+          div.trigger('mouseenter');
+          div.trigger('click');
+        });
+
         it('focuses the map');
+
       });
 
-      describe('when the section is focused', function() {
+    });
+
+
+    describe('when the section is focused', function() {
+
+      // Focus on the center of the section.
+      beforeEach(function() {
+        utils.getLeaflet().setView([0, 0]);
+      });
+
+      describe('hover', function() {
+
+        beforeEach(function() {
+          div.trigger('mouseenter');
+        });
+
+        it('shows the tooltip', function() {
+          expect('.tooltip.section').not.toBeVisible();
+        });
+
+      });
+
+      describe('click', function() {
+
+        beforeEach(function() {
+          div.trigger('mouseenter');
+          div.trigger('click');
+        });
+
         it('does not focus the map');
+
       });
 
     });

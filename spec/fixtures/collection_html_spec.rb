@@ -6,7 +6,7 @@ describe 'Collection HTML', type: :feature do
 
   describe 'data-id' do
 
-    it 'collection' do
+    it 'collections' do
 
       create(
         :collection,
@@ -40,7 +40,7 @@ describe 'Collection HTML', type: :feature do
 
   describe 'data-zoom' do
 
-    it 'collection' do
+    it 'collections' do
 
       create(
         :collection,
