@@ -166,6 +166,18 @@ export default class extends Component {
 
 
   /**
+   * When a section is clicked.
+   *
+   * @param {Object} e
+   */
+  onClick(e) {
+    // TODO
+    let div = $(e.currentTarget);
+    console.log(div);
+  }
+
+
+  /**
    * Select a section on click.
    *
    * @param {Number} id
@@ -182,6 +194,9 @@ export default class extends Component {
     section.mousemove(e => {
       this.tip.css({ top: e.clientY, left: this.right+10 });
     });
+
+    // Click to select.
+    section.click(this.onClick.bind(this));
 
   }
 
