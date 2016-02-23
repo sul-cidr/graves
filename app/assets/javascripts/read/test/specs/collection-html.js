@@ -92,12 +92,7 @@ describe('Collection HTML', function() {
       });
 
       it('focuses the map', function() {
-
-        let { lng, lat } = utils.getLeaflet().getCenter();
-
-        expect(Math.round(lng)).toEqual(1);
-        expect(Math.round(lat)).toEqual(2);
-
+        assert.mapCenter(1, 2);
       });
 
     });

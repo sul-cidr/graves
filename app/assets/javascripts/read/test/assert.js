@@ -7,7 +7,7 @@ import WmsLayer from '../src/components/wms-layer';
 import CollectionMarkers from '../src/components/collection-markers';
 
 
-import { getComponent } from './utils/redux';
+import * as utils from './utils';
 
 
 /**
@@ -17,7 +17,7 @@ import { getComponent } from './utils/redux';
  */
 export function baseLayerUrl(url) {
 
-  let baseLayer = getComponent(BaseLayer);
+  let baseLayer = utils.getComponent(BaseLayer);
 
   expect(baseLayer.props.map.hasLayer(baseLayer.layer)).toBeTruthy();
   expect(baseLayer.layer._url).toEqual(url);
@@ -33,7 +33,7 @@ export function baseLayerUrl(url) {
  */
 export function wmsLayerParams(address, layer) {
 
-  let wmsLayer = getComponent(WmsLayer);
+  let wmsLayer = utils.getComponent(WmsLayer);
 
   expect(wmsLayer.props.map.hasLayer(wmsLayer.layer)).toBeTruthy();
   expect(wmsLayer.layer._url).toEqual(address);
@@ -64,7 +64,7 @@ export function popupLabel(label) {
  */
 export function highlightedCollectionId(id) {
 
-  let markers = getComponent(CollectionMarkers);
+  let markers = utils.getComponent(CollectionMarkers);
   let marker = markers.idToMarker[id];
 
   expect($(marker._path)).toHaveClass('highlight');
@@ -78,4 +78,17 @@ export function highlightedCollectionId(id) {
 export function noCollectionHighlighted() {
   expect('.leaflet-popup').not.toExist();
   expect('path.collection.highlight').not.toExist();
+}
+
+
+/**
+ * Assert the map focus center.
+ */
+export function mapCenter(lon, lat) {
+
+  let { lng, lat } = utils.getLeaflet().getCenter();
+
+  expect(Math.round(lng)).toEqual(lon);
+  expect(Math.round(lat)).toEqual(lat);
+
 }
