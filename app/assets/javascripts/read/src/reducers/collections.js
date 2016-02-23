@@ -2,6 +2,7 @@
 
 import { createReducer } from '../utils';
 
+
 import {
   REQUEST_COLLECTIONS,
   RECEIVE_COLLECTIONS,
