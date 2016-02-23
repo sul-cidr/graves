@@ -84,11 +84,11 @@ export function noCollectionHighlighted() {
 /**
  * Assert the map focus center.
  */
-export function mapCenter(lon, lat) {
+export function mapCenter(eLon, eLat) {
 
   let { lng, lat } = utils.getLeaflet().getCenter();
 
-  expect(Math.round(lng)).toEqual(lon);
-  expect(Math.round(lat)).toEqual(lat);
+  expect(Math.round(lng)).toEqual(eLon);
+  expect(Math.round(lat)).toEqual(eLat);
 
 }
