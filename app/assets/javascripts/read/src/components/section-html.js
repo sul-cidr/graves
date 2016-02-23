@@ -188,6 +188,8 @@ export default class extends Component {
     let [lon, lat] = getSectionCenter(id);
     focusMap(lon, lat);
 
+    this.disableSelect(id);
+
   }
 
 

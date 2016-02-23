@@ -77,6 +77,14 @@ describe('Collection HTML', function() {
           assert.mapCenter(0, 0);
         });
 
+        it('hides the tooltip', function() {
+          expect('.tooltip.section').not.toBeVisible();
+        });
+
+        it('removes .selectable', function() {
+          expect(div).not.toHaveClass('selectable');
+        });
+
       });
 
     });
