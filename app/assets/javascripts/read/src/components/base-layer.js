@@ -58,7 +58,6 @@ export default class extends Component {
 
       this.layer = L.tileLayer(config.url, {
         zIndex: 0,
-        detectRetina: true,
       });
 
       this.props.map.addLayer(this.layer);
