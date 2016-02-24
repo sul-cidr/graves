@@ -19,7 +19,7 @@ export default class extends Component {
 
 
   static propTypes = {
-    showChoropleth: PropTypes.func.isRequired,
+    changeChoropleth: PropTypes.func.isRequired,
   };
 
 
@@ -59,7 +59,7 @@ export default class extends Component {
    */
   onChange(option) {
     let id = option ? option.value : null;
-    this.props.showChoropleth(id);
+    this.props.changeChoropleth(id);
   }
 
 

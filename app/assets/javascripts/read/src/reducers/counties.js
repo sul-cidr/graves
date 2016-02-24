@@ -6,7 +6,7 @@ import { createReducer } from '../utils';
 import {
   REQUEST_COUNTIES,
   RECEIVE_COUNTIES,
-  SHOW_CHOROPLETH,
+  CHANGE_CHOROPLETH,
 } from '../constants';
 
 
@@ -32,7 +32,7 @@ const handlers = {
     loading: false,
   }),
 
-  [SHOW_CHOROPLETH]: (state, action) => ({
+  [CHANGE_CHOROPLETH]: (state, action) => ({
     choropleth: action.code,
   }),
 

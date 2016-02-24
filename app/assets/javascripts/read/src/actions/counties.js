@@ -5,7 +5,7 @@ import $ from 'jquery';
 import {
   REQUEST_COUNTIES,
   RECEIVE_COUNTIES,
-  SHOW_CHOROPLETH,
+  CHANGE_CHOROPLETH,
 } from '../constants';
 
 
@@ -54,9 +54,9 @@ function receiveCounties(geojson) {
  *
  * @param {String} code
  */
-export function showChoropleth(code) {
+export function changeChoropleth(code) {
   return {
-    type: SHOW_CHOROPLETH,
+    type: CHANGE_CHOROPLETH,
     code,
   };
 }
