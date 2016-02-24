@@ -38,7 +38,7 @@ export default class extends Component {
       <Select
 
         className="wms-layer-select"
-        placeholder="Select overlay map"
+        placeholder="Select an overlay map"
 
         options={options}
 
