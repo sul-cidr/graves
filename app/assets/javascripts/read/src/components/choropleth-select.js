@@ -5,6 +5,7 @@ import React, { PropTypes } from 'react';
 import Select from 'react-select';
 
 import Component from './component';
+import codes from '../data/cdc-codes.yml';
 
 
 export default class extends Component {
@@ -15,8 +16,12 @@ export default class extends Component {
    */
   render() {
 
-    // TODO
-    let options = [];
+    let options = _.map(codes.counties, function(label, code) {
+      return {
+        value: code,
+        label,
+      };
+    });
 
     return (
       <Select
