@@ -5,8 +5,10 @@ import d3 from 'd3';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Component from './component';
 import * as actions from '../actions/counties';
+
+import Component from './component';
+import CountyChoropleth from './county-choropleth';
 
 
 @connect(
@@ -169,6 +171,22 @@ export default class extends Component {
     this.tl = tl;
     this.br = br;
 
+  }
+
+
+  /**
+   * Apply choropleths.
+   */
+  render() {
+    return (
+      <CountyChoropleth
+        g={this.g}
+
+        // Trigger update when the GeoJSON loads.
+        geojson={this.props.geojson}
+
+      />
+    );
   }
 
 
