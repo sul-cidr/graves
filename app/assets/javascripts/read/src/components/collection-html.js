@@ -133,6 +133,9 @@ export default class extends Component {
       focusMap(lon, lat, zoom);
     }
 
+    // Prevent the click from triggering a section focus.
+    e.stopPropagation();
+
   }
 
 
