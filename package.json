@@ -63,6 +63,7 @@
     "mock-raf": "0.0.2",
     "moment": "^2.11.2",
     "mousetrap": "^1.5.3",
+    "nouislider": "^8.3.0",
     "react": "^0.14.2",
     "react-bootstrap": "^0.27.3",
     "react-dom": "^0.14.0",

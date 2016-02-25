@@ -24,6 +24,7 @@ export default class extends Component {
     return this.props.show ? (
 
       <div id="time-slider">
+        <div ref="slider"></div>
       </div>
 
     ) : null;
