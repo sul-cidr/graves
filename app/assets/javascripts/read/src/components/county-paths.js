@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/counties';
 
 import Component from './component';
-import CountyChoropleth from './county-choropleth';
+import Choropleth from './choropleth';
 
 
 @connect(
@@ -179,7 +179,7 @@ export default class extends Component {
    */
   render() {
     return (
-      <CountyChoropleth
+      <Choropleth
         g={this.g}
 
         // Trigger update when the GeoJSON loads.
