@@ -18,8 +18,8 @@ export default class extends Component {
     return (
       <div id="map-menu">
         <BaseLayerSelect />
-        <WmsLayerSelect />
         <ChoroplethSelect />
+        <WmsLayerSelect />
       </div>
     );
   }

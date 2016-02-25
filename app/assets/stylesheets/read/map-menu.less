@@ -6,12 +6,20 @@
   z-index: @zindex-map + 1;
   right: 6em;
   top: @margin-content;
-  width: 300px;
+  width: 240px;
 
   font-family: @headings-font-family;
 
-  .Select:not(:last-child) {
-    margin-bottom: 1em;
+  .Select {
+
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+
+    .Select-value {
+      max-width: 80%;
+    }
+
   }
 
 }
