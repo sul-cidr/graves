@@ -5,19 +5,22 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 
-import * as actions from '../actions/base-layer';
+import * as actions from '../actions/map';
 
 import Component from './component';
 
 
 @connect(
-  state => state.baseLayer,
+  state => ({
+    layerId: state.map.baseLayerId
+  }),
   actions,
 )
 export default class extends Component {
 
 
   static propTypes = {
+    layerId: PropTypes.any.isRequired,
     changeBaseLayer: PropTypes.func.isRequired,
   };
 
