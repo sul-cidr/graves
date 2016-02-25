@@ -18,6 +18,7 @@ export default class extends Component {
 
   static propTypes = {
     mapMenu: PropTypes.bool.isRequired,
+    toggleTimeline: PropTypes.func.isRequired,
     toggleMapMenu: PropTypes.func.isRequired,
   };
 
@@ -37,6 +38,14 @@ export default class extends Component {
           <span className="label-text">Map Options</span>
         </label>
 
+        <label>
+          <Toggle
+            onChange={this.onTimelineToggle.bind(this)}
+            defaultChecked={this.props.mapMenu}
+          />
+          <span className="label-text">Timeline</span>
+        </label>
+
       </div>
     );
   }
@@ -49,6 +58,16 @@ export default class extends Component {
    */
   onMapMenuToggle(e) {
     this.props.toggleMapMenu(e.target.checked);
+  }
+
+
+  /**
+   * When "Timeline" is toggled.
+   *
+   * @param {Object} e
+   */
+  onTimelineToggle(e) {
+    this.props.toggleTimeline(e.target.checked);
   }
 
 
