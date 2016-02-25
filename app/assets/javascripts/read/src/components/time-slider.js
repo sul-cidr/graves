@@ -4,6 +4,8 @@ import d3 from 'd3';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import scale from './collection-scale';
+
 import Component from './component';
 
 
@@ -75,12 +77,16 @@ export default class extends Component {
       .enter()
       .append('circle')
 
+      // X-axis offset.
       .attr('transform', function(d) {
         let date = new Date(d.properties.notice.deadline);
         return `translate(${xAxis(date)},${h/2})`
       })
 
-      .attr('r', 5);
+      // Radius.
+      .attr('r', function(d) {
+        return scale(d.properties.num_graves || 7) * 0.5;
+      });
 
   }
 
