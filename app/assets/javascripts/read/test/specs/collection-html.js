@@ -158,5 +158,9 @@ describe('Collection HTML', function() {
     it('sets the end date');
   });
 
+  describe('data-tags', function() {
+    it('filters collections by tag');
+  });
+
 
 });
