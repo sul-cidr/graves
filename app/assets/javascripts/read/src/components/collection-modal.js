@@ -1,7 +1,7 @@
 
 
 import { connect } from 'react-redux';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Modal } from 'react-bootstrap'
 import classNames from 'classnames';
 
@@ -25,6 +25,12 @@ import FieldDate from './field-date';
 
 )
 export default class extends Component {
+
+
+  static propTypes = {
+    feature: PropTypes.object,
+    show: PropTypes.bool.isRequired,
+  };
 
 
   /**

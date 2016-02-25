@@ -47,6 +47,7 @@ export default class extends Component {
 
   static propTypes = {
     map: PropTypes.object.isRequired,
+    geojson: PropTypes.object,
   };
 
 
