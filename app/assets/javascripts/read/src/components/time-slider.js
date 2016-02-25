@@ -6,28 +6,26 @@ import React, { PropTypes } from 'react';
 import Component from './component';
 
 
-@connect(state => ({
-  show: state.timeSlider.show
-}))
 export default class extends Component {
 
 
-  static propTypes = {
-    show: PropTypes.bool.isRequired,
-  };
+  /**
+   * Render the time slider.
+   */
+  componentDidMount() {
+    console.log(this.refs.slider);
+  }
 
 
   /**
    * Render the time slider.
    */
   render() {
-    return this.props.show ? (
-
+    return (
       <div id="time-slider">
         <div ref="slider"></div>
       </div>
-
-    ) : null;
+    );
   }
 
 

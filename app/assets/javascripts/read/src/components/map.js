@@ -14,9 +14,8 @@ import CollectionMarkers from './collection-markers';
 import CountyPaths from './county-paths';
 import SectionBoxes from './section-boxes';
 import MapLine from './map-line';
-import MapMenu from './map-menu';
-import TimeSlider from './time-slider';
 import Toggles from './toggles';
+import Widgets from './widgets';
 
 
 import {
@@ -110,10 +109,9 @@ export default class extends Component {
             <SectionBoxes map={this.state.map} />
             <MapLine map={this.state.map} />
 
-            <MapMenu />
             <CollectionModal />
             <Toggles />
-            <TimeSlider />
+            <Widgets />
 
           </behaviors>
         ) : null}
