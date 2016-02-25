@@ -18,11 +18,9 @@ import {
 } from '../constants';
 
 
-@connect(
-  state => ({
-    sections: state.sections.attrs
-  })
-)
+@connect(state => ({
+  sections: state.sections.attrs
+}))
 export default class extends Component {
 
 

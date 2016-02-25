@@ -7,11 +7,9 @@ import { connect } from 'react-redux';
 import Component from './component';
 
 
-@connect(
-  state => ({
-    layerId: state.map.wmsLayerId
-  })
-)
+@connect(state => ({
+  layerId: state.map.wmsLayerId
+}))
 export default class extends Component {
 
 
