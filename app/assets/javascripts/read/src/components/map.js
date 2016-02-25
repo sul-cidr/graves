@@ -68,6 +68,7 @@ export default class extends Component {
       zoomControl: false,
       scrollWheelZoom: false,
       fadeAnimation: false,
+      inertia: false,
     });
 
     // Default viewport.
