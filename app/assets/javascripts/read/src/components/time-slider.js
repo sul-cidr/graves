@@ -77,6 +77,14 @@ export default class extends Component {
       .enter()
       .append('circle')
 
+      // Distinguish no-count markers.
+      .classed({
+        collection: true,
+        nocount: function(d) {
+          return !d.properties.num_graves;
+        }
+      })
+
       // X-axis offset.
       .attr('transform', function(d) {
         let date = new Date(d.properties.notice.deadline);

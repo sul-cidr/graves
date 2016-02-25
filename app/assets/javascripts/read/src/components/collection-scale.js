@@ -9,7 +9,7 @@ const scale = d3.scale.log()
 
 
 /**
- * Convert a grave count -> radius.
+ * Convert grave count -> radius.
  *
  * @param {Number} numGraves
  * @param {Number} defCount

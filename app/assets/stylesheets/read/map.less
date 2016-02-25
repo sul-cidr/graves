@@ -44,36 +44,6 @@
     font-weight: bold;
   }
 
-  // Collection markers
-
-  path.collection {
-
-    stroke: @color-yellow;
-    fill: darken(@color-blue, 25%);
-    fill-opacity: 0.2;
-    stroke-width: 1;
-
-    &.nocount {
-      fill: darken(@color-blue, 10%);
-      stroke-width: 0;
-      fill-opacity: 0.7;
-    }
-
-    &.highlight {
-      fill: @color-yellow;
-      fill-opacity: 0.7;
-    }
-
-  }
-
-  // Section boxes
-
-  path.section.box {
-    stroke: black;
-    stroke-width: 1;
-    fill-opacity: 0;
-  }
-
   // Section labels
 
   .leaflet-div-icon {
@@ -90,35 +60,6 @@
     &.highlight {
       background: @color-blue;
       color: whitesmoke;
-    }
-
-  }
-
-  // Make it possible to stack SVG containers.
-
-  svg {
-    pointer-events: none;
-    g {
-      pointer-events: all;
-    }
-  }
-
-  g.counties {
-
-    &.hide {
-      display: none;
-    }
-
-    path {
-
-      stroke: white;
-      stroke-width: 0.02;
-      fill: @color-blue;
-
-      &.highlight {
-        fill: @color-yellow;
-      }
-
     }
 
   }
