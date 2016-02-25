@@ -4,6 +4,16 @@ import TestUtils from 'react-addons-test-utils';
 
 
 /**
+ * Show/hide the map menu.
+ */
+export function toggleMapMenu() {
+  TestUtils.Simulate.click(document.querySelector(
+    '.toggle.map-menu .react-toggle'
+  ));
+}
+
+
+/**
  * Close the collection modal.
  */
 export function closeCollectionModal() {

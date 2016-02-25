@@ -30,7 +30,7 @@ export default class extends Component {
     return (
       <div id="toggles">
 
-        <label>
+        <label className="toggle map-menu">
           <Toggle
             onChange={this.onMapMenuToggle.bind(this)}
             defaultChecked={this.props.mapMenu}
@@ -38,7 +38,7 @@ export default class extends Component {
           <span className="label-text">Map Options</span>
         </label>
 
-        <label>
+        <label className="toggle time-slider">
           <Toggle
             onChange={this.onTimeSliderToggle.bind(this)}
             defaultChecked={this.props.mapMenu}

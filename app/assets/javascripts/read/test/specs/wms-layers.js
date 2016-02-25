@@ -20,6 +20,7 @@ describe('WMS Layers', function() {
   it('lists layers in the dropdown select', function() {
 
     utils.start(listLayersHTML);
+    utils.toggleMapMenu();
 
     utils.openWmsLayerSelect();
 
@@ -34,6 +35,7 @@ describe('WMS Layers', function() {
   it('switches the layer when the select is changed', function() {
 
     utils.start(changeLayerHTML);
+    utils.toggleMapMenu();
 
     for (let i of [1, 2, 3]) {
 
