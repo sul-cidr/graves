@@ -5,7 +5,7 @@ import { createReducer } from '../utils';
 
 import {
   TOGGLE_MAP_MENU,
-  TOGGLE_TIMELINE,
+  TOGGLE_TIME_SLIDER,
 } from '../constants';
 
 
@@ -21,7 +21,7 @@ const handlers = {
     mapMenu: action.show,
   }),
 
-  [TOGGLE_TIMELINE]: (state, action) => ({
+  [TOGGLE_TIME_SLIDER]: (state, action) => ({
     timeline: action.show,
   }),
 

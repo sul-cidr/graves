@@ -2,7 +2,7 @@
 
 import {
   TOGGLE_MAP_MENU,
-  TOGGLE_TIMELINE,
+  TOGGLE_TIME_SLIDER,
 } from '../constants';
 
 
@@ -24,9 +24,9 @@ export function toggleMapMenu(show) {
  *
  * @param {Boolean} show
  */
-export function toggleTimeline(show) {
+export function toggleTimeSlider(show) {
   return {
-    type: TOGGLE_TIMELINE,
+    type: TOGGLE_TIME_SLIDER,
     show,
   };
 }
