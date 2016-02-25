@@ -109,7 +109,7 @@ export default class extends Component {
         });
 
         // Size by grave count.
-        let r = scale(f.properties.num_graves || 7);
+        let r = scale(f.properties.num_graves);
         marker.setRadius(r);
 
         let label = (

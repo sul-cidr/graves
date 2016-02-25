@@ -85,7 +85,7 @@ export default class extends Component {
 
       // Radius.
       .attr('r', function(d) {
-        return scale(d.properties.num_graves || 7) * 0.5;
+        return scale(d.properties.num_graves) * 0.5;
       });
 
   }
