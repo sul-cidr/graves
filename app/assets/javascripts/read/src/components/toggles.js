@@ -1,6 +1,7 @@
 
 
 import React from 'react';
+import Toggle from 'react-toggle';
 
 import Component from './component';
 
@@ -14,7 +15,12 @@ export default class extends Component {
   render() {
     return (
       <div id="toggles">
-        <h3>toggles</h3>
+
+        <label>
+          <Toggle />
+          <span className="label-text">Map Options</span>
+        </label>
+
       </div>
     );
   }
