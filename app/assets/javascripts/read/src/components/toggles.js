@@ -1,25 +1,42 @@
 
 
-import { connect } from 'react-redux';
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Toggle from 'react-toggle';
 
-import * as actions from '../actions/widgets';
+import * as mapActions from '../actions/map';
+import * as timeSliderActions from '../actions/time-slider';
 
 import Component from './component';
 
 
 @connect(
-  state => state.widgets,
-  actions,
+
+  state => ({
+    showMapMenu: state.map.showMenu,
+    showTimeSlider: state.timeSlider.show,
+  }),
+
+  dispatch => {
+    return bindActionCreators({
+      ...mapActions,
+      ...timeSliderActions,
+    }, dispatch);
+  }
+
 )
 export default class extends Component {
 
 
   static propTypes = {
-    mapMenu: PropTypes.bool.isRequired,
-    toggleTimeSlider: PropTypes.func.isRequired,
+
+    showMapMenu: PropTypes.bool.isRequired,
+    showTimeSlider: PropTypes.bool.isRequired,
+
     toggleMapMenu: PropTypes.func.isRequired,
+    toggleTimeSlider: PropTypes.func.isRequired,
+
   };
 
 
