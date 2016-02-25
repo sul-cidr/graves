@@ -5,20 +5,23 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 
-import * as actions from '../actions/counties';
+import * as actions from '../actions/map';
 
 import Component from './component';
 import codes from '../data/cdc-codes.yml';
 
 
 @connect(
-  state => state.counties,
+  state => ({
+    code: state.map.choropleth
+  }),
   actions,
 )
 export default class extends Component {
 
 
   static propTypes = {
+    choropleth: PropTypes.string,
     changeChoropleth: PropTypes.func.isRequired,
   };
 
@@ -44,7 +47,7 @@ export default class extends Component {
         options={options}
 
         onChange={this.onChange.bind(this)}
-        value={this.props.choropleth}
+        value={this.props.code}
 
       />
     );

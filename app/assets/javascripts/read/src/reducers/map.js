@@ -15,7 +15,9 @@ const initialState = {
 
   baseLayerId: null,
   wmsLayerId: null,
-  choropleth: null,
+
+  // TODO: Trigger this from <CountyChoropleth />.
+  choropleth: 'a100001_10',
 
   showMenu: false,
 

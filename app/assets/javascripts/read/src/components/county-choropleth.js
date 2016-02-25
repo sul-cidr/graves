@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 import Component from './component';
 
 
+// TODO: Rename to <Choropleth />, set default.
+
+
 @connect(state => ({
   code: state.counties.choropleth
 }))
