@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   mapMenu: false,
-  timeline: false,
+  timeSlider: false,
 };
 
 
@@ -22,7 +22,7 @@ const handlers = {
   }),
 
   [TOGGLE_TIME_SLIDER]: (state, action) => ({
-    timeline: action.show,
+    timeSlider: action.show,
   }),
 
 };
