@@ -15,6 +15,7 @@ import CountyPaths from './county-paths';
 import SectionBoxes from './section-boxes';
 import MapLine from './map-line';
 import MapMenu from './map-menu';
+import Toggles from './toggles';
 
 
 import {
@@ -110,6 +111,7 @@ export default class extends Component {
 
             <MapMenu />
             <CollectionModal />
+            <Toggles />
 
           </behaviors>
         ) : null}
