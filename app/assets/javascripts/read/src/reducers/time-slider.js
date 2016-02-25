@@ -12,8 +12,7 @@ const initialState = {
 
   show: false,
 
-  //start: null,
-  //end: null,
+  // TODO
 
 };
 

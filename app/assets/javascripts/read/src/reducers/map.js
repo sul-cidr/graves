@@ -4,20 +4,20 @@ import { createReducer } from '../utils';
 
 
 import {
-  TOGGLE_MAP_MENU,
   CHANGE_BASE_LAYER,
   CHANGE_WMS_LAYER,
   CHANGE_CHOROPLETH,
+  TOGGLE_MAP_MENU,
 } from '../constants';
 
 
 const initialState = {
 
-  showMenu: false,
-
   baseLayerId: null,
   wmsLayerId: null,
   choropleth: null,
+
+  showMenu: false,
 
 };
 
