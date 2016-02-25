@@ -1,15 +1,20 @@
 
 
-import React from 'react';
 import { connect } from 'react-redux';
+import React, { PropTypes } from 'react';
 
 import Component from './component';
 
 
 @connect(state => ({
-  show: state.widgets.timeSlider
+  show: state.timeSlider.show
 }))
 export default class extends Component {
+
+
+  static propTypes = {
+    show: PropTypes.bool.isRequired,
+  };
 
 
   /**

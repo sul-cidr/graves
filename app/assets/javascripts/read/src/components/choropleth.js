@@ -9,9 +9,6 @@ import * as actions from '../actions/map';
 import Component from './component';
 
 
-// TODO: set default.
-
-
 @connect(
   state => ({
     code: state.counties.choropleth
