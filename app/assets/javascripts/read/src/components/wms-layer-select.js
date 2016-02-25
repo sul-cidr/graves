@@ -5,19 +5,22 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 
-import * as actions from '../actions/wms-layer';
+import * as actions from '../actions/map';
 
 import Component from './component';
 
 
 @connect(
-  state => state.wmsLayer,
+  state => ({
+    layerId: state.map.wmsLayerId
+  }),
   actions,
 )
 export default class extends Component {
 
 
   static propTypes = {
+    layerId: PropTypes.number,
     changeWmsLayer: PropTypes.func.isRequired,
   };
 
