@@ -2,6 +2,7 @@
 
 import { combineReducers } from 'redux';
 
+import widgets from './widgets';
 import collections from './collections';
 import counties from './counties';
 import sections from './sections';
@@ -10,6 +11,7 @@ import wmsLayer from './wms-layer';
 
 
 export default combineReducers({
+  widgets,
   collections,
   counties,
   sections,

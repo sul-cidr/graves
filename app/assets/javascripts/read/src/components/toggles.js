@@ -1,12 +1,25 @@
 
 
-import React from 'react';
+import { connect } from 'react-redux';
+import React, { PropTypes } from 'react';
 import Toggle from 'react-toggle';
+
+import * as actions from '../actions/widgets';
 
 import Component from './component';
 
 
+@connect(
+  state => state.widgets,
+  actions,
+)
 export default class extends Component {
+
+
+  static propTypes = {
+    mapMenu: PropTypes.bool.isRequired,
+    toggleMapMenu: PropTypes.func.isRequired,
+  };
 
 
   /**
@@ -17,12 +30,25 @@ export default class extends Component {
       <div id="toggles">
 
         <label>
-          <Toggle />
+          <Toggle
+            onChange={this.onMapMenuToggle.bind(this)}
+            defaultChecked={this.props.mapMenu}
+          />
           <span className="label-text">Map Options</span>
         </label>
 
       </div>
     );
+  }
+
+
+  /**
+   * When "Map Options" is toggled.
+   *
+   * @param {Object} e
+   */
+  onMapMenuToggle(e) {
+    this.props.toggleMapMenu(e.target.checked);
   }
 
 
