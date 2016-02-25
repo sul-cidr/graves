@@ -7,11 +7,16 @@ import { connect } from 'react-redux';
 import Component from './component';
 
 
-@connect(state => state.wmsLayer)
+@connect(
+  state => ({
+    layerId: state.map.wmsLayerId
+  })
+)
 export default class extends Component {
 
 
   static propTypes = {
+    layerId: PropTypes.number,
     map: PropTypes.object.isRequired,
   };
 
