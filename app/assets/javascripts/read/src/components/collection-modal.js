@@ -56,7 +56,7 @@ export default class extends Component {
 
           <Modal.Header closeButton>
             <Modal.Title>
-              Collection #{this.props.feature.id}
+              Grave Collection #{this.props.feature.id}
             </Modal.Title>
           </Modal.Header>
 
