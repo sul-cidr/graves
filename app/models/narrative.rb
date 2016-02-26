@@ -28,6 +28,13 @@ class Narrative < ActiveRecord::Base
   validates :slug, uniqueness: true
   validates :slug, format: { with: /\A[a-z0-9-]*\z/ }
 
+  has_attached_file :hero_image
+
+  validates_attachment_content_type(
+    :hero_image,
+    content_type: /\Aimage\/.*\Z/
+  )
+
 
   #
   # Assemble .js globals.

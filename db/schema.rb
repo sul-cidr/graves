@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217170245) do
+ActiveRecord::Schema.define(version: 20160226162333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,14 +86,18 @@ ActiveRecord::Schema.define(version: 20160217170245) do
   create_table "narratives", force: :cascade do |t|
     t.string   "title"
     t.text     "markup"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "author_id",     null: false
-    t.string   "slug",          null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "author_id",               null: false
+    t.string   "slug",                    null: false
     t.text     "blurb"
     t.date     "pub_date"
     t.string   "subtitle"
-    t.integer  "base_layer_id", null: false
+    t.integer  "base_layer_id",           null: false
+    t.string   "hero_image_file_name"
+    t.string   "hero_image_content_type"
+    t.integer  "hero_image_file_size"
+    t.datetime "hero_image_updated_at"
   end
 
   add_index "narratives", ["author_id"], name: "index_narratives_on_author_id", using: :btree

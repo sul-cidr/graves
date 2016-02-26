@@ -36,6 +36,7 @@ gem 'devise'
 gem 'geocoder'
 gem 'colorize'
 gem 'high_voltage'
+gem 'paperclip'
 
 group :development do
 
