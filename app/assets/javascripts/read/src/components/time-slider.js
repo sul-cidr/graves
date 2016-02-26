@@ -78,7 +78,9 @@ export default class extends Component {
    */
   draw() {
 
+
     if (!this.props.geojson) return;
+
 
     // Clear existing <svg>.
     let container = d3.select(this.refs.slider);
@@ -103,6 +105,7 @@ export default class extends Component {
     this.brush = d3.svg.brush()
       .on('brush', this.onBrush.bind(this))
       .x(xScale);
+
 
     // Markers
     context.selectAll('circle.collection')
@@ -136,6 +139,11 @@ export default class extends Component {
       .attr('class', 'x brush')
       .selectAll('rect')
       .attr('height', rect.height);
+
+
+    // Show all markers, by default.
+    unsetDateRange();
+
 
   }
 
