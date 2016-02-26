@@ -1,12 +1,23 @@
 
 
+= content_for :css do
+  = stylesheet_link_tag "/stylesheets/home"
+
+
 = content_for :content do
 
-  ul.nav
-    li= link_to('About', 'about')
-    li= link_to('People', 'people')
+  .container
 
-  = yield
+    #header
+
+      ul.nav
+        li= link_to('About', 'about')
+        li= link_to('People', 'people')
+
+      .leader
+        = yield :header
+
+    = yield
 
 
 = render template: "layouts/application"
