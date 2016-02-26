@@ -13,7 +13,7 @@ import dataZoomHTML from
 '../fixtures/section-html/page/data-zoom.html';
 
 
-describe('Collection HTML', function() {
+describe('Section HTML', function() {
 
 
   describe('data-tl+data-br', function() {
