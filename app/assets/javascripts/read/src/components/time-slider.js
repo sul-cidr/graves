@@ -1,5 +1,7 @@
 
 
+import _ from 'lodash';
+import $ from 'jquery';
 import d3 from 'd3';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -29,7 +31,13 @@ export default class extends Component {
    * Create slider when mounted.
    */
   componentDidMount() {
+
     this.draw();
+
+    // Re-render on resize.
+    let resize = _.debounce(this.draw.bind(this), 500);
+    $(window).on('resize.time', resize);
+
   }
 
 
@@ -37,7 +45,12 @@ export default class extends Component {
    * Clear the date range when unmounted.
    */
   componentWillUnmount() {
+
     unsetDateRange();
+
+    // Unbing the resize listener.
+    $(window).off('resize.time');
+
   }
 
 
@@ -58,11 +71,13 @@ export default class extends Component {
    */
   draw() {
 
-    // TODO
-
     let container = d3.select(this.refs.slider);
 
-    let w = container.node().offsetWidth;
+    // Clear existing <svg>.
+    container.select('svg').remove();
+
+    // Measure the container.
+    let w = container.node().getBoundingClientRect().width;
     let h = 50;
 
     let timeExtent = [
