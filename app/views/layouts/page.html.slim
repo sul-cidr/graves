@@ -8,7 +8,7 @@
 
   .container
 
-    #header
+    #header.block
 
       ul.nav
         li= link_to('About', 'about')
@@ -17,7 +17,8 @@
       .leader
         = yield :header
 
-    = yield
+    #content.block
+      = yield
 
 
 = render template: "layouts/application"
