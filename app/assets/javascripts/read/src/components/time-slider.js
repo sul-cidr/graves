@@ -42,6 +42,14 @@ export default class extends Component {
 
 
   /**
+   * Re-render when the collections change.
+   */
+  componentDidUpdate() {
+    this.draw();
+  }
+
+
+  /**
    * Clear the date range when unmounted.
    */
   componentWillUnmount() {
@@ -71,9 +79,10 @@ export default class extends Component {
    */
   draw() {
 
-    let container = d3.select(this.refs.slider);
+    if (!this.props.geojson) return;
 
     // Clear existing <svg>.
+    let container = d3.select(this.refs.slider);
     container.select('svg').remove();
 
     // Measure the container.
