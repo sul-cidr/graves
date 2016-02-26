@@ -10,6 +10,8 @@ import App from './components/app';
 import createStore from './store';
 import reducers from './reducers';
 
+import './page';
+
 
 /**
  * Run the application.
@@ -29,6 +31,3 @@ export default function init() {
 if (!window.JASMINE) {
   init();
 }
-
-
-import './page';

@@ -1,12 +1,17 @@
 
+
 = content_for :css do
   = stylesheet_link_tag "/stylesheets/home"
+
+= content_for :js do
+  = javascript_include_tag "/javascripts/home"
+
 
 #header.container
 
   .leader
     h1 Grave Reform in Modern China
-    p <em>Grave Reform in Modern China</em> is a digital humanities initiative based at Stanford that is building an interactive spatial and textual analysis platform to examine the phenomenon of grave relocation in modern China, a campaign that has led to the exhumation and reburial of 10 million corpses in the past decade alone, and has transformed China’s graveyards into sites of acute personal, social, political, and economic contestation.
+    p <span class="dropcap">G</span><em>rave Reform in Modern China</em> is a digital humanities initiative based at Stanford that is building an interactive spatial and textual analysis platform to examine the phenomenon of grave relocation in modern China, a campaign that has led to the exhumation and reburial of 10 million corpses in the past decade alone, and has transformed China’s graveyards into sites of acute personal, social, political, and economic contestation.
 
 #toc.container
 
