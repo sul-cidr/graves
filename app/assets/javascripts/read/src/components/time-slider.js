@@ -10,6 +10,7 @@ import scale from './collection-scale';
 
 import {
   setDateRange,
+  unsetDateRange,
 } from '../events/time-slider';
 
 
@@ -29,6 +30,14 @@ export default class extends Component {
    */
   componentDidMount() {
     this.draw();
+  }
+
+
+  /**
+   * Clear the date range when unmounted.
+   */
+  componentWillUnmount() {
+    unsetDateRange();
   }
 
 

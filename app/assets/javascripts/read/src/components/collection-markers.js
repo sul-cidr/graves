@@ -22,6 +22,7 @@ import {
 
   TIME_SLIDER,
   SET_DATE_RANGE,
+  UNSET_DATE_RANGE,
 
 } from '../constants';
 
@@ -44,6 +45,7 @@ export default class extends Component {
 
     [TIME_SLIDER]: {
       [SET_DATE_RANGE]: 'setDateRange',
+      [UNSET_DATE_RANGE]: 'unsetDateRange',
     }
 
   };
@@ -206,6 +208,19 @@ export default class extends Component {
 
     });
 
+  }
+
+
+  /**
+   * Show all layers.
+   *
+   * @param {Date} start
+   * @param {Date} end
+   */
+  unsetDateRange(start, end) {
+    _.each(_.values(this.idToMarker), m => {
+      this.group.addLayer(m);
+    });
   }
 
 
