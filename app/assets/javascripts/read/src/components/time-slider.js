@@ -24,7 +24,7 @@ export default class extends Component {
    * Create slider when mounted.
    */
   componentDidMount() {
-    this.makeBrush();
+    this.draw();
   }
 
 
@@ -41,9 +41,9 @@ export default class extends Component {
 
 
   /**
-   * Create the brush slider.
+   * Build the time slider.
    */
-  makeBrush() {
+  draw() {
 
     // TODO
 
@@ -68,7 +68,8 @@ export default class extends Component {
       .range([0, w])
       .domain(timeExtent);
 
-    let brush = d3.svg.brush()
+    this.brush = d3.svg.brush()
+      .on('brush', this.onBrush.bind(this))
       .x(xAxis);
 
     // Render the collections.
@@ -100,10 +101,18 @@ export default class extends Component {
     // Render the brush.
     context.append('g')
       .attr('class', 'x brush')
-      .call(brush)
+      .call(this.brush)
       .selectAll('rect')
       .attr('height', h);
 
+  }
+
+
+  /**
+   * When the brush is changed.
+   */
+  onBrush() {
+    console.log(this.brush.extent());
   }
 
 
