@@ -113,6 +113,8 @@ export default class extends Component {
 
       _.each(this.props.geojson.features, f => {
 
+        let date = new Date(f.properties.notice.deadline);
+
         let cx = classNames('collection', {
           nocount: !f.properties.num_graves,
         });
@@ -120,6 +122,7 @@ export default class extends Component {
         let marker = L.circleMarker(f.geometry.coordinates, {
           feature: f,
           className: cx,
+          date,
         });
 
         // Size by grave count.
@@ -191,7 +194,7 @@ export default class extends Component {
 
     _.each(_.values(this.idToMarker), m => {
 
-      let date = new Date(m.options.feature.properties.notice.deadline);
+      let date = m.options.date;
 
       if (date < start || date > end) {
         this.group.removeLayer(m);
