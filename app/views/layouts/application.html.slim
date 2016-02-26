@@ -12,6 +12,6 @@ html
   body
 
     #page
-      = yield
+      = content_for(:content) ? yield(:content) : yield
 
     = yield :js
