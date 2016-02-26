@@ -4,6 +4,7 @@ import Radio from 'backbone.radio';
 
 import {
   TIME_SLIDER,
+  SET_DATE_RANGE,
 } from '../constants';
 
 

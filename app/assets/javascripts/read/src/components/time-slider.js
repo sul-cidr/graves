@@ -4,9 +4,13 @@ import d3 from 'd3';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import Component from './component';
 import scale from './collection-scale';
 
-import Component from './component';
+
+import {
+  setDateRange,
+} from '../events/time-slider';
 
 
 @connect(state => ({
@@ -112,7 +116,7 @@ export default class extends Component {
    * When the brush is changed.
    */
   onBrush() {
-    console.log(this.brush.extent());
+    setDateRange.apply(this.brush.extent());
   }
 
 

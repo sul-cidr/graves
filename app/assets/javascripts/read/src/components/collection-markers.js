@@ -90,7 +90,10 @@ export default class extends Component {
   }
 
 
-  render() {
+  /**
+   * Render collection markers.
+   */
+  componentDidUpdate() {
 
     if (this.props.geojson) {
 
@@ -131,8 +134,6 @@ export default class extends Component {
       });
 
     }
-
-    return null;
 
   }
 
