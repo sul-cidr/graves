@@ -104,6 +104,7 @@ export default class extends Component {
 
     let xAxis = d3.svg.axis()
       .scale(xScale)
+      .ticks(d3.time.years, 1)
       .orient('bottom');
 
     this.brush = d3.svg.brush()
