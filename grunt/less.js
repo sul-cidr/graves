@@ -11,9 +11,9 @@ export default {
     dest: '<%= dist.css %>/read.css',
   },
 
-  home: {
-    src: '<%= src.css %>/home/index.less',
-    dest: '<%= dist.css %>/home.css',
+  site: {
+    src: '<%= src.css %>/site/index.less',
+    dest: '<%= dist.css %>/site.css',
   },
 
 };
