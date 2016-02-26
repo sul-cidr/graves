@@ -14,10 +14,15 @@ import Component from './component';
 import scale from './collection-scale';
 
 import {
+
   COLLECTIONS,
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
   GET_COLLECTION_LON_LAT,
+
+  TIME_SLIDER,
+  SET_DATE_RANGE,
+
 } from '../constants';
 
 
@@ -31,10 +36,16 @@ export default class extends Component {
 
 
   static events = {
+
     [COLLECTIONS]: {
       [HIGHLIGHT_COLLECTION]: 'highlight',
       [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
+    },
+
+    [TIME_SLIDER]: {
+      [SET_DATE_RANGE]: 'setDateRange',
     }
+
   };
 
 
@@ -167,6 +178,18 @@ export default class extends Component {
     $(marker._path).removeClass('highlight');
     marker.closePopup();
 
+  }
+
+
+  /**
+   * Filter by date.
+   *
+   * @param {Date} start
+   * @param {Date} end
+   */
+  setDateRange(start, end) {
+    // TODO
+    console.log(start, end);
   }
 
 

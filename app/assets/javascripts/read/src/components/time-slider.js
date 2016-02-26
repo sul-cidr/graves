@@ -116,7 +116,8 @@ export default class extends Component {
    * When the brush is changed.
    */
   onBrush() {
-    setDateRange.apply(this.brush.extent());
+    let [start, end] = this.brush.extent();
+    setDateRange(start, end);
   }
 
 
