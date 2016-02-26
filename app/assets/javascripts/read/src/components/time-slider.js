@@ -94,13 +94,13 @@ export default class extends Component {
     let context = svg.append('g');
 
     let timeExtent = [
-      new Date(2000, 1, 1),
-      new Date(2016, 1, 1),
+      new Date(2000, 0, 1),
+      new Date(2015, 0, 1),
     ];
 
     let xScale = d3.time.scale()
       .domain(timeExtent)
-      .range([0, rect.width]);
+      .range([20, rect.width-20]);
 
     let xAxis = d3.svg.axis()
       .scale(xScale)
@@ -148,7 +148,7 @@ export default class extends Component {
     // X-axis
     context.append('g')
       .attr('class', 'x axis')
-      .attr('transform', `translate(0,${rect.height})`)
+      .attr('transform', `translate(0,${rect.height+10})`)
       .call(xAxis);
 
 
