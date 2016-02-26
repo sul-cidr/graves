@@ -188,8 +188,21 @@ export default class extends Component {
    * @param {Date} end
    */
   setDateRange(start, end) {
-    // TODO
-    console.log(start, end);
+
+    _.each(_.values(this.idToMarker), m => {
+
+      let date = new Date(m.options.feature.properties.notice.deadline);
+
+      if (date < start || date > end) {
+        this.group.removeLayer(m);
+      }
+
+      else {
+        this.group.addLayer(m);
+      }
+
+    });
+
   }
 
 
