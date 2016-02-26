@@ -89,17 +89,16 @@ export default class extends Component {
     let w = container.node().getBoundingClientRect().width;
     let h = 50;
 
-    let timeExtent = [
-      new Date(2000, 1, 1),
-      new Date(2016, 1, 1),
-    ];
-
     let svg = container.append('svg')
-      .attr('width', w)
       .attr('height', h);
 
     let context = svg.append('g')
       .classed('context', true);
+
+    let timeExtent = [
+      new Date(2000, 1, 1),
+      new Date(2016, 1, 1),
+    ];
 
     let xScale = d3.time.scale()
       .range([0, w])
