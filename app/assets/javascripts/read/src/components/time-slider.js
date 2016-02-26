@@ -29,16 +29,6 @@ export default class extends Component {
    * Create slider when mounted.
    */
   componentDidMount() {
-    if (this.props.geojson) {
-      this.draw();
-    }
-  }
-
-
-  /**
-   * Re-draw when the collections update.
-   */
-  componentDidUpdate() {
     this.draw();
   }
 
