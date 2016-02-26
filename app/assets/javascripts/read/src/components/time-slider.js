@@ -102,6 +102,10 @@ export default class extends Component {
       .domain(timeExtent)
       .range([0, rect.width]);
 
+    let xAxis = d3.svg.axis()
+      .scale(xScale)
+      .orient('bottom');
+
     this.brush = d3.svg.brush()
       .on('brush', this.onBrush.bind(this))
       .x(xScale);
@@ -139,6 +143,12 @@ export default class extends Component {
       .attr('class', 'x brush')
       .selectAll('rect')
       .attr('height', rect.height);
+
+    // X-axis
+    context.append('g')
+      .attr('class', 'x axis')
+      .attr('transform', `translate(0,${rect.height})`)
+      .call(xAxis);
 
 
     // Show all markers, by default.
