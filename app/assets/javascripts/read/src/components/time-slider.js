@@ -71,6 +71,7 @@ export default class extends Component {
     let brush = d3.svg.brush()
       .x(xAxis);
 
+    // Render the collections.
     context.selectAll('circle.collection')
 
       .data(this.props.geojson.features)
@@ -95,6 +96,13 @@ export default class extends Component {
       .attr('r', function(d) {
         return scale(d.properties.num_graves) * 0.5;
       });
+
+    // Render the brush.
+    context.append('g')
+      .attr('class', 'x brush')
+      .call(brush)
+      .selectAll('rect')
+      .attr('height', h);
 
   }
 
