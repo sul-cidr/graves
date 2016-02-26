@@ -67,8 +67,7 @@ export default class extends Component {
    */
   render() {
     return (
-      <div id="time-slider">
-        <div ref="slider"></div>
+      <div id="time-slider" ref="slider">
       </div>
     );
   }
@@ -86,14 +85,11 @@ export default class extends Component {
     container.select('svg').remove();
 
     // Measure the container.
-    let w = container.node().getBoundingClientRect().width;
-    let h = 50;
+    let rect = container.node().getBoundingClientRect();
 
-    let svg = container.append('svg')
-      .attr('height', h);
-
-    let context = svg.append('g')
-      .classed('context', true);
+    // Inject wrappers.
+    let svg = container.append('svg');
+    let context = svg.append('g');
 
     let timeExtent = [
       new Date(2000, 1, 1),
@@ -101,14 +97,14 @@ export default class extends Component {
     ];
 
     let xScale = d3.time.scale()
-      .range([0, w])
-      .domain(timeExtent);
+      .domain(timeExtent)
+      .range([0, rect.width]);
 
     this.brush = d3.svg.brush()
       .on('brush', this.onBrush.bind(this))
       .x(xScale);
 
-    // Render the collections.
+    // Markers
     context.selectAll('circle.collection')
 
       .data(this.props.geojson.features)
@@ -126,7 +122,7 @@ export default class extends Component {
       // X-axis offset.
       .attr('transform', function(d) {
         let date = new Date(d.properties.notice.deadline);
-        return `translate(${xScale(date)},${h/2})`
+        return `translate(${xScale(date)},${rect.height/2})`
       })
 
       // Radius.
@@ -134,12 +130,12 @@ export default class extends Component {
         return scale(d.properties.num_graves) * 0.5;
       });
 
-    // Render the brush.
+    // Brush
     context.append('g')
-      .attr('class', 'x brush')
       .call(this.brush)
+      .attr('class', 'x brush')
       .selectAll('rect')
-      .attr('height', h);
+      .attr('height', rect.height);
 
   }
 
