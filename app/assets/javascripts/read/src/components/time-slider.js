@@ -101,13 +101,13 @@ export default class extends Component {
     let context = svg.append('g')
       .classed('context', true);
 
-    let xAxis = d3.time.scale()
+    let xScale = d3.time.scale()
       .range([0, w])
       .domain(timeExtent);
 
     this.brush = d3.svg.brush()
       .on('brush', this.onBrush.bind(this))
-      .x(xAxis);
+      .x(xScale);
 
     // Render the collections.
     context.selectAll('circle.collection')
@@ -127,7 +127,7 @@ export default class extends Component {
       // X-axis offset.
       .attr('transform', function(d) {
         let date = new Date(d.properties.notice.deadline);
-        return `translate(${xAxis(date)},${h/2})`
+        return `translate(${xScale(date)},${h/2})`
       })
 
       // Radius.
