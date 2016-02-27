@@ -53,4 +53,34 @@ describe 'Section HTML', type: :feature do
   end
 
 
+  describe 'data-base-layer' do
+
+    it 'page' do
+
+      layers = (1..2).map do |i|
+        create(:base_layer, id: i, url: "url#{i}")
+      end
+
+      markup = <<-HTML
+        <div
+          class="section"
+          data-base-layer="2"
+        ></div>
+      HTML
+
+      n = create(
+        :narrative,
+        base_layer: layers.first,
+        markup: markup,
+      )
+
+      visit("read/#{n.slug}")
+
+      write_page_fixture('section-html', 'data-base-layer', page)
+
+    end
+
+  end
+
+
 end

@@ -12,6 +12,9 @@ import dataTlBrHTML from
 import dataZoomHTML from
 '../fixtures/section-html/page/data-zoom.html';
 
+import dataBaseLayerHTML from
+'../fixtures/section-html/page/data-base-layer.html';
+
 
 describe('Section HTML', function() {
 
@@ -162,9 +165,34 @@ describe('Section HTML', function() {
 
   });
 
+
   describe('data-base-layer', function() {
-    it('sets the base layer');
+
+
+    let div;
+
+
+    beforeEach(function() {
+      utils.start(dataBaseLayerHTML);
+      div = $('.section[data-base-layer="2"]');
+    });
+
+
+    describe('click', function() {
+
+      beforeEach(function() {
+        div.trigger('click');
+      });
+
+      it('changes the base layer', function() {
+        assert.baseLayerUrl('url2');
+      });
+
+    });
+
+
   });
+
 
   describe('data-wms-layer', function() {
     it('sets the WMS layer');

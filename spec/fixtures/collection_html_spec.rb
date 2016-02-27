@@ -24,7 +24,10 @@ describe 'Collection HTML', type: :feature do
     it 'page' do
 
       markup = <<-HTML
-        <span class="collection" data-id="1">collection</span>
+        <span
+          class="collection"
+          data-id="1"
+        ></span>
       HTML
 
       n = create(:narrative, markup: markup)
@@ -58,7 +61,11 @@ describe 'Collection HTML', type: :feature do
     it 'page' do
 
       markup = <<-HTML
-        <span class="collection" data-id="1" data-zoom="1">collection</span>
+        <span
+          class="collection"
+          data-id="1"
+          data-zoom="1"
+        ></span>
       HTML
 
       n = create(:narrative, markup: markup)
@@ -81,7 +88,10 @@ describe 'Collection HTML', type: :feature do
       end
 
       markup = <<-HTML
-        <span class="collection" data-base-layer="2">collection</span>
+        <span
+          class="collection"
+          data-base-layer="2"
+        ></span>
       HTML
 
       n = create(

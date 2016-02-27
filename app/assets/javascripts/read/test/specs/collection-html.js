@@ -141,6 +141,7 @@ describe('Collection HTML', function() {
 
   });
 
+
   describe('data-base-layer', function() {
 
 
@@ -171,6 +172,7 @@ describe('Collection HTML', function() {
 
 
   });
+
 
   describe('data-wms-layer', function() {
     it('sets the WMS layer');
