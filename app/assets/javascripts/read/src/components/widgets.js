@@ -39,7 +39,10 @@ export default class extends Component {
         <TimeSlider /> : null
       }
 
-      <Legend />
+      {
+        !this.props.timeSlider ?
+        <Legend /> : null
+      }
 
       </div>
     );
