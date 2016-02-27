@@ -43,6 +43,10 @@ export default class extends Component {
       nocount: function(d, i) { return i == 0 },
     });
 
+    g.append('text')
+      .attr('transform', 'translate(35, 70)')
+      .text('Number of Graves');
+
   }
 
 
