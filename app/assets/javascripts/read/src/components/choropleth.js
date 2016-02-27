@@ -43,6 +43,9 @@ export default class extends Component {
       // Show/hide the container.
       .classed('hidden', _.isNull(this.props.code))
 
+      // Set the code (for testing).
+      .attr('data-code', this.props.code)
+
       // Apply the CDC variable.
       .selectAll('path').attr('fill-opacity', f => {
         return f.properties.choropleths[this.props.code] || 0;

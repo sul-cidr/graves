@@ -41,3 +41,13 @@ export function openWmsLayerSelect() {
     '.wms-layer-select .Select-control'
   ));
 }
+
+
+/**
+ * Open the choropleth dropdown select.
+ */
+export function openChoroplethSelect() {
+  TestUtils.Simulate.mouseDown(document.querySelector(
+    '.choropleth-select .Select-control'
+  ));
+}
