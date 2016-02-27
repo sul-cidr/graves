@@ -1,20 +1,26 @@
 
 
-import $ from 'jquery';
 import _ from 'lodash';
+import $ from 'jquery';
+import TestUtils from 'react-addons-test-utils';
 
 import codes from '../../src/data/cdc-codes.yml';
 
 import * as utils from '../utils';
+import * as assert from '../assert';
 
 
 
 describe('Choropleth', function() {
 
-  it('lists variables in the dropdown select', function() {
 
+  beforeEach(function() {
     utils.start();
     utils.toggleMapMenu();
+  });
+
+
+  it('lists variables in the dropdown select', function() {
 
     utils.openChoroplethSelect();
 
@@ -25,6 +31,21 @@ describe('Choropleth', function() {
   });
 
 
-  it('switches the variable when the select is changed');
+  it('switches the variable when the select is changed', function() {
+
+    _.each(_.keys(codes.counties), function(code, i) {
+
+      utils.openChoroplethSelect();
+
+      // Click on a variable.
+      let option = $(`.Select-option:nth-child(${i+1})`);
+      TestUtils.Simulate.mouseDown(option.get(0));
+
+      assert.choroplethCode(code);
+
+    });
+
+  });
+
 
 });

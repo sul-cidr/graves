@@ -105,3 +105,13 @@ export function mapCenter(eLon, eLat) {
 export function mapZoom(level) {
   expect(utils.getLeaflet().getZoom()).toEqual(level);
 }
+
+
+/**
+ * Assert current choropleth code.
+ *
+ * @param {String} code
+ */
+export function choroplethCode(code) {
+  expect('g.counties').toHaveAttr('data-code', code)
+}
