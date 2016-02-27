@@ -136,6 +136,7 @@ export default class extends Component {
     let attrs = utils.parseAttrs(span, {
       id:           ['data-id', Number],
       baseLayerId:  ['data-base-layer', Number],
+      wmsLayerId:   ['data-wms-layer', Number],
       zoom:         ['data-zoom', Number],
     });
 
@@ -148,6 +149,11 @@ export default class extends Component {
     // Set the base layer.
     if (attrs.baseLayerId) {
       this.props.changeBaseLayer(attrs.baseLayerId);
+    }
+
+    // Set the WMS layer.
+    if (attrs.wmsLayerId) {
+      this.props.changeWmsLayer(attrs.wmsLayerId);
     }
 
     // Prevent the click from triggering a section focus.
