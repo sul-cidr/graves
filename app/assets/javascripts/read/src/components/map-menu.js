@@ -17,9 +17,16 @@ export default class extends Component {
   render() {
     return (
       <div id="map-menu">
+
+        <h4>Base Layer</h4>
         <BaseLayerSelect />
+
+        <h4>Demographic Overlay</h4>
         <ChoroplethSelect />
+
+        <h4>Historical Overlay</h4>
         <WmsLayerSelect />
+
       </div>
     );
   }
