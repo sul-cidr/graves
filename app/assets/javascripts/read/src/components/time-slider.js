@@ -7,7 +7,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Component from './component';
-import scale from './collection-scale';
+import { countToRadius } from './collection-scale';
 
 
 import {
@@ -135,7 +135,7 @@ export default class extends Component {
 
       // Radius.
       .attr('r', function(d) {
-        return scale(d.properties.num_graves) * 0.5;
+        return countToRadius(d.properties.num_graves) * 0.5;
       });
 
     // Brush

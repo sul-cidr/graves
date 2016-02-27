@@ -49,6 +49,7 @@
     "bootswatch": "^3.3.5",
     "classnames": "^2.1.3",
     "d3": "^3.5.14",
+    "d3-svg-legend": "^1.8.0",
     "director": "^1.2.8",
     "dropcap.js": "^1.0.1",
     "font-awesome": "^4.4.0",

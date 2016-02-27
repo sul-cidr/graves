@@ -1,6 +1,10 @@
 
 
+import d3 from 'd3';
 import React from 'react';
+
+window.d3 = d3;
+import 'd3-svg-legend';
 
 import Component from './component';
 
@@ -9,13 +13,20 @@ export default class extends Component {
 
 
   /**
-   * Render a raw metadata field.
+   * Render the legend.
+   */
+  componentDidMount() {
+    // TODO
+  }
+
+
+  /**
+   * Render the legend container.
    */
   render() {
     return (
-      <div id="legend">
-        <small>legend</small>
-      </div>
+      <svg id="legend" ref="svg">
+      </svg>
     );
   }
 

@@ -7,11 +7,11 @@ import classNames from 'classnames';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import * as events from '../events/collections';
 import * as actions from '../actions/collections';
+import * as events from '../events/collections';
 
 import Component from './component';
-import scale from './collection-scale';
+import { countToRadius } from './collection-scale';
 
 import {
 
@@ -128,7 +128,7 @@ export default class extends Component {
         });
 
         // Size by grave count.
-        let r = scale(f.properties.num_graves);
+        let r = countToRadius(f.properties.num_graves);
         marker.setRadius(r);
 
         let label = (

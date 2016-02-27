@@ -3,7 +3,7 @@
 import d3 from 'd3';
 
 
-const scale = d3.scale.log()
+export const scale = d3.scale.log()
   .domain([1, 400000])
   .range([1, 30]);
 
@@ -11,9 +11,10 @@ const scale = d3.scale.log()
 /**
  * Convert grave count -> radius.
  *
- * @param {Number} numGraves
+ * @param {Number} count
  * @param {Number} defCount
+ * @return {Number}
  */
-export default function(numGraves, defCount=7) {
-  return scale(numGraves || defCount);
+export function countToRadius(count, defCount=7) {
+  return scale(count || defCount);
 }
