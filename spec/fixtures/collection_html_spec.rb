@@ -138,4 +138,26 @@ describe 'Collection HTML', type: :feature do
   end
 
 
+  describe 'data-choropleth' do
+
+    it 'page' do
+
+      markup = <<-HTML
+        <span
+          class="collection"
+          data-choropleth="a100002_10"
+        ></span>
+      HTML
+
+      n = create(:narrative, markup: markup)
+
+      visit("read/#{n.slug}")
+
+      write_page_fixture('collection-html', 'data-choropleth', page)
+
+    end
+
+  end
+
+
 end

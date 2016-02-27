@@ -24,6 +24,9 @@ import dataBaseLayerHTML from
 import dataWmsLayerHTML from
 '../fixtures/collection-html/page/data-wms-layer.html';
 
+import dataChoroplethHTML from
+'../fixtures/collection-html/page/data-choropleth.html';
+
 
 describe('Collection HTML', function() {
 
@@ -202,8 +205,32 @@ describe('Collection HTML', function() {
 
 
   describe('data-choropleth', function() {
-    it('sets the choropleth variable');
+
+
+    let span;
+
+
+    beforeEach(function() {
+      utils.start(dataChoroplethHTML);
+      span = $('.collection[data-choropleth="a100002_10"]');
+    });
+
+
+    describe('click', function() {
+
+      beforeEach(function() {
+        span.trigger('click');
+      });
+
+      it('sets the choropleth', function() {
+        assert.choroplethCode('a100002_10');
+      });
+
+    });
+
+
   });
+
 
   describe('data-start', function() {
     it('sets the start date');
