@@ -4,7 +4,7 @@ require 'rails_helper'
 describe 'Section HTML', type: :feature do
 
 
-  describe 'data-tl+data-br' do
+  describe 'data-tl + data-br + data-label' do
 
     it 'page' do
 
@@ -21,7 +21,7 @@ describe 'Section HTML', type: :feature do
 
       visit("read/#{n.slug}")
 
-      write_page_fixture('section-html', 'data-tl-br', page)
+      write_page_fixture('section-html', 'data-tl-br-label', page)
 
     end
 

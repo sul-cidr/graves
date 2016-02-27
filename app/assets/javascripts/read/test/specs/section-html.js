@@ -6,8 +6,8 @@ import * as utils from '../utils';
 import * as assert from '../assert';
 
 
-import dataTlBrHTML from
-'../fixtures/section-html/page/data-tl-br.html';
+import dataTlBrLabelHTML from
+'../fixtures/section-html/page/data-tl-br-label.html';
 
 import dataZoomHTML from
 '../fixtures/section-html/page/data-zoom.html';
@@ -19,14 +19,14 @@ import dataBaseLayerHTML from
 describe('Section HTML', function() {
 
 
-  describe('data-tl+data-br', function() {
+  describe('data-tl + data-br + data-label', function() {
 
 
     let div;
 
 
     beforeEach(function() {
-      utils.start(dataTlBrHTML);
+      utils.start(dataTlBrLabelHTML);
       div = $('.section:first-child');
     });
 
@@ -144,7 +144,7 @@ describe('Section HTML', function() {
 
     beforeEach(function() {
       utils.start(dataZoomHTML);
-      div = $('.section:first-child');
+      div = $('.section[data-zoom="1"]');
     });
 
 
