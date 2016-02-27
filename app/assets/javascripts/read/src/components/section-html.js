@@ -4,12 +4,14 @@ import _ from 'lodash';
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import * as mapActions from '../actions/map';
+import * as sectionActions from '../actions/sections';
 import * as utils from '../utils';
-import * as actions from '../actions/sections';
-import tipTpl from './section-tip.jade';
 
 import Component from './component';
+import tipTpl from './section-tip.jade';
 
 
 import {
@@ -23,12 +25,20 @@ import {
 } from '../events/map';
 
 
-@connect(null, actions)
+@connect(null, dispatch => {
+
+  return bindActionCreators({
+    ...mapActions,
+    ...sectionActions,
+  }, dispatch);
+
+})
 export default class extends Component {
 
 
   static propTypes = {
     container: PropTypes.object.isRequired,
+    changeBaseLayer: PropTypes.func.isRequired,
     mountSections: PropTypes.func.isRequired,
   };
 
@@ -180,14 +190,22 @@ export default class extends Component {
 
     let div = $(e.currentTarget);
 
-    let { id, zoom } = utils.parseAttrs(div, {
-      id:   ['data-id', Number],
-      zoom: ['data-zoom', Number],
+    let attrs = utils.parseAttrs(div, {
+      id:           ['data-id', Number],
+      baseLayerId:  ['data-base-layer', Number],
+      zoom:         ['data-zoom', Number],
     });
 
     // Focus the map.
-    let [lon, lat] = getSectionCenter(id);
-    focusMap(lon, lat, zoom || 7);
+    if (_.isNumber(attrs.id)) {
+      let [lon, lat] = getSectionCenter(attrs.id);
+      focusMap(lon, lat, attrs.zoom || 7);
+    }
+
+    // Set the base layer.
+    if (attrs.baseLayerId) {
+      this.props.changeBaseLayer(attrs.baseLayerId);
+    }
 
     this.disableSelect(div);
 

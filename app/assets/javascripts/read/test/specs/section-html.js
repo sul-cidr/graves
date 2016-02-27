@@ -181,6 +181,7 @@ describe('Section HTML', function() {
     describe('click', function() {
 
       beforeEach(function() {
+        div.trigger('mouseenter');
         div.trigger('click');
       });
 
