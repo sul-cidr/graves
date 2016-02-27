@@ -3,9 +3,12 @@
 import _ from 'lodash';
 import $ from 'jquery';
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import * as utils from '../utils';
+import * as mapActions from '../actions/map';
 import * as events from '../events/collections';
+import * as utils from '../utils';
 
 import Component from './component';
 
@@ -29,6 +32,13 @@ import {
 } from '../events/map';
 
 
+@connect(null, dispatch => {
+
+  return bindActionCreators({
+    ...mapActions,
+  }, dispatch);
+
+})
 export default class extends Component {
 
 
@@ -42,6 +52,7 @@ export default class extends Component {
 
   static propTypes = {
     container: PropTypes.object.isRequired,
+    changeBaseLayer: PropTypes.func.isRequired,
   };
 
 
@@ -122,15 +133,21 @@ export default class extends Component {
 
     let span = $(e.target);
 
-    let { id, zoom } = utils.parseAttrs(span, {
-      id:   ['data-id', Number],
-      zoom: ['data-zoom', Number],
+    let attrs = utils.parseAttrs(span, {
+      id:           ['data-id', Number],
+      baseLayerId:  ['data-base-layer', Number],
+      zoom:         ['data-zoom', Number],
     });
 
     // Focus the map.
-    if (id) {
-      let [lon, lat] = getCollectionLonLat(id);
-      focusMap(lon, lat, zoom);
+    if (attrs.id) {
+      let [lon, lat] = getCollectionLonLat(attrs.id);
+      focusMap(lon, lat, attrs.zoom);
+    }
+
+    // Set the base layer.
+    if (attrs.baseLayerId) {
+      this.props.changeBaseLayer(attrs.baseLayerId);
     }
 
     // Prevent the click from triggering a section focus.
