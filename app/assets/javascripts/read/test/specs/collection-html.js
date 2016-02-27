@@ -192,7 +192,7 @@ describe('Collection HTML', function() {
       });
 
       it('sets the WMS layer', function() {
-        assert.wmsLayerParams(`address1`, `layer1`);
+        assert.wmsLayerParams('address1', 'layer1');
       });
 
     });

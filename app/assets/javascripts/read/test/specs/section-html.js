@@ -15,6 +15,9 @@ import dataZoomHTML from
 import dataBaseLayerHTML from
 '../fixtures/section-html/page/data-base-layer.html';
 
+import dataWmsLayerHTML from
+'../fixtures/section-html/page/data-wms-layer.html';
+
 
 describe('Section HTML', function() {
 
@@ -74,7 +77,6 @@ describe('Section HTML', function() {
       describe('click', function() {
 
         beforeEach(function(done) {
-          div.trigger('mouseenter');
           div.trigger('click');
           setTimeout(done, 2000);
         });
@@ -122,7 +124,6 @@ describe('Section HTML', function() {
       describe('click', function() {
 
         beforeEach(function() {
-          div.trigger('mouseenter');
           div.trigger('click');
         });
 
@@ -151,7 +152,6 @@ describe('Section HTML', function() {
     describe('click', function() {
 
       beforeEach(function(done) {
-        div.trigger('mouseenter');
         div.trigger('click');
         setTimeout(done, 2000);
       });
@@ -181,7 +181,6 @@ describe('Section HTML', function() {
     describe('click', function() {
 
       beforeEach(function() {
-        div.trigger('mouseenter');
         div.trigger('click');
       });
 
@@ -196,8 +195,32 @@ describe('Section HTML', function() {
 
 
   describe('data-wms-layer', function() {
-    it('sets the WMS layer');
+
+
+    let div;
+
+
+    beforeEach(function() {
+      utils.start(dataWmsLayerHTML);
+      div = $('.section[data-wms-layer="1"]');
+    });
+
+
+    describe('click', function() {
+
+      beforeEach(function() {
+        div.trigger('click');
+      });
+
+      it('sets the wms layer', function() {
+        assert.wmsLayerParams('address1', 'layer1');
+      });
+
+    });
+
+
   });
+
 
   describe('data-choropleth', function() {
     it('sets the choropleth variable');

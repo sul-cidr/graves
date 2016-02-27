@@ -180,6 +180,7 @@ export default class extends Component {
     let attrs = utils.parseAttrs(div, {
       mapId:        ['data-map-id', Number],
       baseLayerId:  ['data-base-layer', Number],
+      wmsLayerId:   ['data-wms-layer', Number],
       zoom:         ['data-zoom', Number],
     });
 
@@ -192,6 +193,11 @@ export default class extends Component {
     // Set the base layer.
     if (attrs.baseLayerId) {
       this.props.changeBaseLayer(attrs.baseLayerId);
+    }
+
+    // Set the WMS layer.
+    if (attrs.wmsLayerId) {
+      this.props.changeWmsLayer(attrs.wmsLayerId);
     }
 
     this.disableSelect(div);
