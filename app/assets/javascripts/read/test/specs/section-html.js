@@ -253,12 +253,8 @@ describe('Section HTML', function() {
   });
 
 
-  describe('data-start', function() {
+  describe('data-start + data-end', function() {
     it('sets the start date');
-  });
-
-  describe('data-end', function() {
-    it('sets the end date');
   });
 
   describe('data-tags', function() {

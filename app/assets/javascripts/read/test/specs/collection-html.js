@@ -232,13 +232,38 @@ describe('Collection HTML', function() {
   });
 
 
-  describe('data-start', function() {
-    it('sets the start date');
+  describe('data-start + data-end', function() {
+
+
+    let span;
+
+
+    beforeEach(function() {
+
+      utils.start(dataChoroplethHTML);
+
+      let d1 = '2005-01-01';
+      let d2 = '2006-01-01';
+
+      span = $(`.collection[data-start="${d1}"][data-end=${d2}"]`);
+
+    });
+
+
+    describe('click', function() {
+
+      beforeEach(function() {
+        span.trigger('click');
+      });
+
+      it('sets the time slider brush');
+      it('sets filters collection markers');
+
+    });
+
+
   });
 
-  describe('data-end', function() {
-    it('sets the end date');
-  });
 
   describe('data-tags', function() {
     it('filters collections by tag');
