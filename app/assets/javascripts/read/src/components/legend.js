@@ -38,10 +38,10 @@ export default class extends Component {
     g.call(legend);
 
     // Apply the collection / nocount classes.
-    g.selectAll('circle')
-      .attr('class', function(d, i) {
-        return i == 0 ? 'collection nocount' : 'collection';
-      });
+    g.selectAll('circle').classed({
+      collection: true,
+      nocount: function(d, i) { return i == 0 },
+    });
 
   }
 
