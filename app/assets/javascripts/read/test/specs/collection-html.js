@@ -2,6 +2,8 @@
 
 import $ from 'jquery';
 
+import CollectionMarkers from '../../src/components/collection-markers';
+
 import * as utils from '../utils';
 import * as assert from '../assert';
 
@@ -26,6 +28,12 @@ import dataWmsLayerHTML from
 
 import dataChoroplethHTML from
 '../fixtures/collection-html/page/data-choropleth.html';
+
+import dataStartEndHTML from
+'../fixtures/collection-html/page/data-start-end.html';
+
+import dataStartEndCollectionsJSON from
+'../fixtures/collection-html/collections/data-start-end.json';
 
 
 describe('Collection HTML', function() {
@@ -240,12 +248,13 @@ describe('Collection HTML', function() {
 
     beforeEach(function() {
 
-      utils.start(dataChoroplethHTML);
+      utils.start(dataStartEndHTML);
+      utils.respondCollections(dataStartEndCollectionsJSON);
 
       let d1 = '2005-01-01';
       let d2 = '2006-01-01';
 
-      span = $(`.collection[data-start="${d1}"][data-end=${d2}"]`);
+      span = $(`.collection[data-start="${d1}"][data-end="${d2}"]`);
 
     });
 
@@ -257,7 +266,19 @@ describe('Collection HTML', function() {
       });
 
       it('sets the time slider brush');
-      it('sets filters collection markers');
+
+      it('sets filters collection markers', function() {
+
+        let map = utils.getLeaflet();
+        let markers = utils.getComponent(CollectionMarkers);
+
+        let c1 = markers.idToMarker[1];
+        let c2 = markers.idToMarker[2];
+
+        expect(map.hasLayer(c1)).toBeTruthy();
+        expect(map.hasLayer(c2)).toBeFalsey();
+
+      });
 
     });
 

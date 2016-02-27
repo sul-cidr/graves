@@ -160,4 +160,41 @@ describe 'Collection HTML', type: :feature do
   end
 
 
+  describe 'data-start + data-end' do
+
+    it 'collections' do
+
+      n1 = create(:notice, deadline: '2004-06-01')
+      n2 = create(:notice, deadline: '2005-06-01')
+
+      create(:collection, id: 1, notice: n1)
+      create(:collection, id: 2, notice: n2)
+
+      visit('api/collections.json')
+
+      write_collection_fixture('collection-html', 'data-start-end', page)
+
+    end
+
+    it 'page' do
+
+      markup = <<-HTML
+        <span
+          class="collection"
+          data-start="2005-01-01"
+          data-end="2006-01-01"
+        ></span>
+      HTML
+
+      n = create(:narrative, markup: markup)
+
+      visit("read/#{n.slug}")
+
+      write_page_fixture('collection-html', 'data-start-end', page)
+
+    end
+
+  end
+
+
 end
