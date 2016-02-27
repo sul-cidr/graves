@@ -115,7 +115,7 @@ describe('Section HTML', function() {
           div.trigger('mouseenter');
         });
 
-        it('shows the tooltip', function() {
+        it('does not the tooltip', function() {
           expect('.tooltip.section').not.toBeVisible();
         });
 
