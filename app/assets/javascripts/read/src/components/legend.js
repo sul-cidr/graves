@@ -23,7 +23,7 @@ export default class extends Component {
 
     let g = svg.append('g')
       .classed('legendSize', true)
-      .attr('transform', 'translate(0, 40)');
+      .attr('transform', 'translate(15, 40)');
 
     let legend = d3.legend.size()
       .shape('circle')
@@ -36,6 +36,12 @@ export default class extends Component {
       .scale(scale);
 
     g.call(legend);
+
+    // Apply the collection / nocount classes.
+    g.selectAll('circle')
+      .attr('class', function(d, i) {
+        return i == 0 ? 'collection nocount' : 'collection';
+      });
 
   }
 
