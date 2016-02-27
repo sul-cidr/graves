@@ -6,6 +6,7 @@ import React, { PropTypes } from 'react';
 import Component from './component';
 import MapMenu from './map-menu';
 import TimeSlider from './time-slider';
+import Legend from './legend';
 
 
 @connect(state => ({
@@ -37,6 +38,8 @@ export default class extends Component {
         this.props.timeSlider ?
         <TimeSlider /> : null
       }
+
+      <Legend />
 
       </div>
     );
