@@ -1,5 +1,11 @@
 
 ul.nav
-  li= link_to('Home', root_path)
+
+  li.home
+    a(href="#{root_path}")
+      i.fa.fa-home
+      span Grave Reform in Modern China
+
   li= link_to('About', 'about')
+
   li= link_to('People', 'people')
