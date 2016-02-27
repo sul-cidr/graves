@@ -164,8 +164,8 @@ describe 'Collection HTML', type: :feature do
 
     it 'collections' do
 
-      n1 = create(:notice, deadline: '2004-06-01')
-      n2 = create(:notice, deadline: '2005-06-01')
+      n1 = create(:notice, deadline: '2009-01-01') # in range
+      n2 = create(:notice, deadline: '2011-01-01') # not in range
 
       create(:collection, id: 1, notice: n1)
       create(:collection, id: 2, notice: n2)
@@ -181,8 +181,8 @@ describe 'Collection HTML', type: :feature do
       markup = <<-HTML
         <span
           class="collection"
-          data-start="2005-01-01"
-          data-end="2006-01-01"
+          data-start="2008-01-01"
+          data-end="2010-01-01"
         ></span>
       HTML
 

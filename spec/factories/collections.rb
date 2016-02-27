@@ -31,6 +31,8 @@ FactoryGirl.define do
 
     notice
 
+    geometry Helpers::Geo.point(0, 0)
+
     trait :has_province do
       province_p 'province'
       province_c 'province'

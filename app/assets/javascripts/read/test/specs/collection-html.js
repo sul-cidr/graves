@@ -251,10 +251,7 @@ describe('Collection HTML', function() {
       utils.start(dataStartEndHTML);
       utils.respondCollections(dataStartEndCollectionsJSON);
 
-      let d1 = '2005-01-01';
-      let d2 = '2006-01-01';
-
-      span = $(`.collection[data-start="${d1}"][data-end="${d2}"]`);
+      span = $('.collection:first-child');
 
     });
 
@@ -276,7 +273,7 @@ describe('Collection HTML', function() {
         let c2 = markers.idToMarker[2];
 
         expect(map.hasLayer(c1)).toBeTruthy();
-        expect(map.hasLayer(c2)).toBeFalsey();
+        expect(map.hasLayer(c2)).toBeFalsy();
 
       });
 

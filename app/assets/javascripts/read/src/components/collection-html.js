@@ -5,6 +5,7 @@ import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import moment from 'moment';
 
 import * as mapActions from '../actions/map';
 import * as events from '../events/collections';
@@ -30,6 +31,10 @@ import {
   hideMapLine,
   focusMap,
 } from '../events/map';
+
+import {
+  setDateRange,
+} from '../events/time-slider';
 
 
 @connect(null, dispatch => {
@@ -138,6 +143,8 @@ export default class extends Component {
       baseLayerId:  ['data-base-layer', Number],
       wmsLayerId:   ['data-wms-layer', Number],
       zoom:         ['data-zoom', Number],
+      start:        ['data-start', moment],
+      end:          ['data-end', moment],
       choropleth:   'data-choropleth',
     });
 
@@ -160,6 +167,11 @@ export default class extends Component {
     // Set the choropleth.
     if (attrs.choropleth) {
       this.props.changeChoropleth(attrs.choropleth);
+    }
+
+    // Set the date range.
+    if (attrs.start && attrs.end) {
+      setDateRange(attrs.start, attrs.end);
     }
 
     // Prevent the click from triggering a section focus.

@@ -6,6 +6,7 @@ import L from 'leaflet';
 import classNames from 'classnames';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import * as actions from '../actions/collections';
 import * as events from '../events/collections';
@@ -115,7 +116,7 @@ export default class extends Component {
 
       _.each(this.props.geojson.features, f => {
 
-        let date = new Date(f.properties.notice.deadline);
+        let date = moment(f.properties.notice.deadline);
 
         let cx = classNames('collection', {
           nocount: !f.properties.num_graves,
@@ -198,7 +199,7 @@ export default class extends Component {
 
       let date = m.options.date;
 
-      if (date < start || date > end) {
+      if (date.isBefore(start) || date.isAfter(end)) {
         this.group.removeLayer(m);
       }
 
