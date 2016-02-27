@@ -50,7 +50,6 @@ export default class extends Component {
 
     this.sections = this.props.container.find('.section');
 
-    this._generateDataIds();
     this._publishData();
     this._bindCursorEvents();
     this._bindResizeEvent();
@@ -67,16 +66,6 @@ export default class extends Component {
 
 
   /**
-   * Write `data-id` attributes.
-   */
-  _generateDataIds() {
-    this.sections.each((i, s) => {
-      $(s).attr('data-id', i);
-    });
-  }
-
-
-  /**
    * Mount data attributes to the store.
    */
   _publishData() {
@@ -86,15 +75,15 @@ export default class extends Component {
     this.sections.each(function(i, s) {
 
       let attrs = utils.parseAttrs($(s), {
-        id:     ['data-id', Number],
         tl:     ['data-tl', utils.parseLonLat],
         br:     ['data-br', utils.parseLonLat],
         label:  'data-label',
       });
 
-      // Don't publish invalid sections.
+      // If all map attrs are defined.
       if (!_.contains(attrs, undefined)) {
-        data.push(attrs);
+        $(s).attr('data-map-id', i);
+        data.push(_.assign(attrs, { id: i }));
       }
 
     });
@@ -111,7 +100,8 @@ export default class extends Component {
 
     this.sections
       .mouseenter(this.onEnter.bind(this))
-      .mouseleave(this.onLeave.bind(this));
+      .mouseleave(this.onLeave.bind(this))
+      .click(this.onClick.bind(this));
 
   }
 
@@ -148,16 +138,20 @@ export default class extends Component {
 
     let div = $(e.currentTarget);
 
-    let { id } = utils.parseAttrs(div, {
-      id: ['data-id', Number],
+    let { mapId } = utils.parseAttrs(div, {
+      mapId: ['data-map-id', Number],
     });
 
-    // Is the section focused?
-    let focused = isSectionFocused(id);
+    if (_.isNumber(mapId)) {
 
-    // If not, click to select.
-    if (!focused) {
-      this.enableSelect(div);
+      // Is the section focused?
+      let focused = isSectionFocused(mapId);
+
+      // If not, click to select.
+      if (!focused) {
+        this.enableSelect(div);
+      }
+
     }
 
   }
@@ -169,15 +163,8 @@ export default class extends Component {
    * @param {Object} e
    */
   onLeave(e) {
-
     let div = $(e.currentTarget);
-
-    let { id } = utils.parseAttrs(div, {
-      id: ['data-id', Number],
-    });
-
     this.disableSelect(div);
-
   }
 
 
@@ -191,14 +178,14 @@ export default class extends Component {
     let div = $(e.currentTarget);
 
     let attrs = utils.parseAttrs(div, {
-      id:           ['data-id', Number],
+      mapId:        ['data-map-id', Number],
       baseLayerId:  ['data-base-layer', Number],
       zoom:         ['data-zoom', Number],
     });
 
     // Focus the map.
-    if (_.isNumber(attrs.id)) {
-      let [lon, lat] = getSectionCenter(attrs.id);
+    if (_.isNumber(attrs.mapId)) {
+      let [lon, lat] = getSectionCenter(attrs.mapId);
       focusMap(lon, lat, attrs.zoom || 7);
     }
 
@@ -229,9 +216,6 @@ export default class extends Component {
       this.tip.css({ top: e.clientY, left: this.right+10 });
     });
 
-    // Click to select.
-    section.click(this.onClick.bind(this));
-
   }
 
 
@@ -246,8 +230,8 @@ export default class extends Component {
     section.removeClass('selectable');
     this.clearTip();
 
-    // Clear event listeners.
-    section.off('click mousemove');
+    // Clear move listener.
+    section.off('mousemove');
 
   }
 
