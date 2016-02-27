@@ -6,7 +6,7 @@ describe 'Section HTML', type: :feature do
 
   describe 'data-tl+data-br' do
 
-    it 'narrative' do
+    it 'page' do
 
       markup = <<-HTML
         <div
@@ -30,7 +30,7 @@ describe 'Section HTML', type: :feature do
 
   describe 'data-zoom' do
 
-    it 'narrative' do
+    it 'page' do
 
       markup = <<-HTML
         <div

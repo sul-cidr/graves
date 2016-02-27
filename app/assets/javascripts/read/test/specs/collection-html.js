@@ -18,6 +18,9 @@ import dataZoomHTML from
 import dataZoomCollectionsJSON from
 '../fixtures/collection-html/collections/data-zoom.json';
 
+import dataBaseLayerHTML from
+'../fixtures/collection-html/page/data-base-layer.html';
+
 
 describe('Collection HTML', function() {
 
@@ -139,7 +142,34 @@ describe('Collection HTML', function() {
   });
 
   describe('data-base-layer', function() {
-    it('sets the base layer');
+
+
+    let span;
+
+
+    beforeEach(function() {
+
+      utils.start(dataBaseLayerHTML);
+
+      // Get the collection span.
+      span = $('.collection[data-base-layer="2"]');
+
+    });
+
+
+    describe('click', function() {
+
+      beforeEach(function() {
+        span.trigger('click');
+      });
+
+      it('changes the base layer', function() {
+        assert.baseLayerUrl('url2');
+      });
+
+    });
+
+
   });
 
   describe('data-wms-layer', function() {

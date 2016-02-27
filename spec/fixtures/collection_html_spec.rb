@@ -21,7 +21,7 @@ describe 'Collection HTML', type: :feature do
 
     end
 
-    it 'narrative' do
+    it 'page' do
 
       markup = <<-HTML
         <span class="collection" data-id="1">collection</span>
@@ -55,7 +55,7 @@ describe 'Collection HTML', type: :feature do
 
     end
 
-    it 'narrative' do
+    it 'page' do
 
       markup = <<-HTML
         <span class="collection" data-id="1" data-zoom="1">collection</span>
@@ -66,6 +66,33 @@ describe 'Collection HTML', type: :feature do
       visit("read/#{n.slug}")
 
       write_page_fixture('collection-html', 'data-zoom', page)
+
+    end
+
+  end
+
+
+  describe 'data-base-layer' do
+
+    it 'page' do
+
+      layers = (1..2).map do |i|
+        create(:base_layer, id: i, url: "url#{i}")
+      end
+
+      markup = <<-HTML
+        <span class="collection" data-base-layer="2">collection</span>
+      HTML
+
+      n = create(
+        :narrative,
+        base_layer: layers.first,
+        markup: markup,
+      )
+
+      visit("read/#{n.slug}")
+
+      write_page_fixture('collection-html', 'data-base-layer', page)
 
     end
 
