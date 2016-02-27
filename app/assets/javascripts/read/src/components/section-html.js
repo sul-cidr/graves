@@ -182,6 +182,7 @@ export default class extends Component {
       baseLayerId:  ['data-base-layer', Number],
       wmsLayerId:   ['data-wms-layer', Number],
       zoom:         ['data-zoom', Number],
+      choropleth:   'data-choropleth',
     });
 
     // Focus the map.
@@ -198,6 +199,11 @@ export default class extends Component {
     // Set the WMS layer.
     if (attrs.wmsLayerId) {
       this.props.changeWmsLayer(attrs.wmsLayerId);
+    }
+
+    // Set the choropleth.
+    if (attrs.choropleth) {
+      this.props.changeChoropleth(attrs.choropleth);
     }
 
     this.disableSelect(div);
