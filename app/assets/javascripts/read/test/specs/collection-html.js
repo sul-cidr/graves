@@ -3,7 +3,6 @@
 import $ from 'jquery';
 
 import CollectionMarkers from '../../src/components/collection-markers';
-import TimeSlider from '../../src/components/time-slider';
 
 import * as utils from '../utils';
 import * as assert from '../assert';
@@ -104,8 +103,9 @@ describe('Collection HTML', function() {
 
     describe('click', function() {
 
-      beforeEach(function() {
+      beforeEach(function(done) {
         span.trigger('click');
+        setTimeout(done, 2000);
       });
 
       it('focuses the map', function() {
@@ -141,8 +141,9 @@ describe('Collection HTML', function() {
 
     describe('click', function() {
 
-      beforeEach(function() {
+      beforeEach(function(done) {
         span.trigger('click');
+        setTimeout(done, 2000);
       });
 
       it('zooms the map', function() {
@@ -261,11 +262,7 @@ describe('Collection HTML', function() {
         span.trigger('click');
       });
 
-      it('sets the time slider brush', function() {
-
-        let slider = utils.getComponent(TimeSlider);
-
-      });
+      it('sets the time slider brush');
 
       it('sets filters collection markers', function() {
 

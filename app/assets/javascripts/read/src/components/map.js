@@ -130,18 +130,9 @@ export default class extends Component {
    * @param {Number} zoom
    */
   focus(lon, lat, zoom=8) {
-
-    // TODO: Mock requestAnimationFrame.
-    if (window.JASMINE) {
-      this.state.map.setView([lat, lon], zoom);
-    }
-
-    else {
-      this.state.map.flyTo([lat, lon], zoom, {
-        duration: 1.5
-      });
-    }
-
+    this.state.map.flyTo([lat, lon], zoom, {
+      duration: 1.5
+    });
   }
 
 
