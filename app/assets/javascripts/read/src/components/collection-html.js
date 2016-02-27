@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import moment from 'moment';
 
 import * as mapActions from '../actions/map';
+import * as timeSliderActions from '../actions/time-slider';
 import * as events from '../events/collections';
 import * as utils from '../utils';
 
@@ -41,6 +42,7 @@ import {
 
   return bindActionCreators({
     ...mapActions,
+    ...timeSliderActions,
   }, dispatch);
 
 })
@@ -57,6 +59,7 @@ export default class extends Component {
 
   static propTypes = {
     container: PropTypes.object.isRequired,
+    toggleTimeSlider: PropTypes.func.isRequired,
     changeBaseLayer: PropTypes.func.isRequired,
   };
 
@@ -171,6 +174,7 @@ export default class extends Component {
 
     // Set the date range.
     if (attrs.start && attrs.end) {
+      this.props.toggleTimeSlider(true);
       setDateRange(attrs.start, attrs.end);
     }
 

@@ -79,9 +79,8 @@ describe('Section HTML', function() {
 
       describe('click', function() {
 
-        beforeEach(function(done) {
+        beforeEach(function() {
           div.trigger('click');
-          setTimeout(done, 2000);
         });
 
         it('focuses the map', function() {
@@ -154,9 +153,8 @@ describe('Section HTML', function() {
 
     describe('click', function() {
 
-      beforeEach(function(done) {
+      beforeEach(function() {
         div.trigger('click');
-        setTimeout(done, 2000);
       });
 
       it('applies the custom zoom level', function() {
