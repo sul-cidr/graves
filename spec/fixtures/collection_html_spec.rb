@@ -109,4 +109,33 @@ describe 'Collection HTML', type: :feature do
   end
 
 
+  describe 'data-wms-layer' do
+
+    it 'page' do
+
+      create(
+        :wms_layer,
+        id: 1,
+        address: "address1",
+        layer: "layer1",
+      )
+
+      markup = <<-HTML
+        <span
+          class="collection"
+          data-wms-layer="1"
+        ></span>
+      HTML
+
+      n = create(:narrative, markup: markup)
+
+      visit("read/#{n.slug}")
+
+      write_page_fixture('collection-html', 'data-wms-layer', page)
+
+    end
+
+  end
+
+
 end
