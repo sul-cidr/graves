@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import $ from 'jquery';
 import moment from 'moment';
 
@@ -132,5 +133,22 @@ export function timeSliderExtent(start, end) {
     moment('2008-01-01').toDate(),
     moment('2010-01-01').toDate(),
   ]);
+
+}
+
+
+/**
+ * Assert the set of visible collection markers.
+ *
+ * @param {Array} ids
+ */
+export function visibleCollections(...ids) {
+
+  let map = utils.getLeaflet();
+  let markers = utils.getComponent(CollectionMarkers);
+
+  _.each(markers.idToMarker, function(m, id) {
+    expect(map.hasLayer(m)).toEqual(_.includes(ids, Number(id)));
+  });
 
 }

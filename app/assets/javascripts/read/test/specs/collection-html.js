@@ -275,16 +275,7 @@ describe('Collection HTML', function() {
       });
 
       it('filters collection markers', function() {
-
-        let map = utils.getLeaflet();
-        let markers = utils.getComponent(CollectionMarkers);
-
-        let c1 = markers.idToMarker[1];
-        let c2 = markers.idToMarker[2];
-
-        expect(map.hasLayer(c1)).toBeTruthy();
-        expect(map.hasLayer(c2)).toBeFalsy();
-
+        assert.visibleCollections(1);
       });
 
     });
