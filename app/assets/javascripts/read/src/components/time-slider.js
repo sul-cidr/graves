@@ -26,7 +26,7 @@ import {
 export default class extends Component {
 
 
-  static events = {
+  static requests = {
     [TIME_SLIDER]: {
       [SET_TIME_SLIDER_RANGE]: 'setRange'
     }
@@ -149,11 +149,13 @@ export default class extends Component {
         return countToRadius(d.properties.num_graves) * 0.5;
       });
 
-    // Brush
-    context.append('g')
+    // Brush <g>.
+    this.handle = context.append('g')
       .call(this.brush)
-      .attr('class', 'x brush')
-      .selectAll('rect')
+      .attr('class', 'x brush');
+
+    // Brush <rect>.
+    this.handle.selectAll('rect')
       .attr('height', rect.height);
 
     // X-axis
@@ -186,7 +188,12 @@ export default class extends Component {
    * @param {moment} end
    */
   setRange(start, end) {
-    console.log('range');
+
+    this.brush.extent([start.toDate(), end.toDate()]);
+
+    this.brush(this.handle);
+    this.brush.event(this.handle);
+
   }
 
 

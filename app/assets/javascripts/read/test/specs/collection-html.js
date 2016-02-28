@@ -1,6 +1,7 @@
 
 
 import $ from 'jquery';
+import moment from 'moment';
 
 import CollectionMarkers from '../../src/components/collection-markers';
 import TimeSlider from '../../src/components/time-slider';
@@ -266,7 +267,11 @@ describe('Collection HTML', function() {
       it('sets the time slider brush', function() {
 
         let slider = utils.getComponent(TimeSlider);
-        expect(true).toBeTruthy();
+
+        expect(slider.brush.extent()).toEqual([
+          moment('2008-01-01').toDate(),
+          moment('2010-01-01').toDate(),
+        ]);
 
       });
 
