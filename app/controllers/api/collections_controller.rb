@@ -5,8 +5,9 @@ module API
     def index
 
       @collections = Collection
+        .with_tag_list
+        .includes(:notice)
         .web_geometry
-        .includes(:notice, :tags)
         .as_geojson(
           :num_graves,
           :location,
@@ -17,6 +18,7 @@ module API
           :county_c,
           :town_p,
           :town_c,
+          :tag_list,
           :notice,
         )
 

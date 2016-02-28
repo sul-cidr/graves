@@ -9,10 +9,10 @@ module Geometry
     # Round down point decimals, swap to lat/lon order.
     #
     scope :web_geometry, -> {
-      select {
-        my{column_names} +
-        [ST_SnapToGrid(ST_FlipCoordinates(geometry), 0.001).as(geometry)]
-      }
+      select {[
+        "#{my{table_name}}.*",
+        ST_SnapToGrid(ST_FlipCoordinates(geometry), 0.001).as(geometry),
+      ]}
     }
 
     #

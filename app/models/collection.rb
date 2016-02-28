@@ -41,6 +41,15 @@ class Collection < ActiveRecord::Base
   validates :notice, presence: true
 
   #
+  # Aggregate on the tag list.
+  #
+  scope :with_tag_list, -> {
+    joins{tags.outer}.group{id}.select {
+      array_agg(tags.tag).as(tag_list)
+    }
+  }
+
+  #
   # Map geocoding results into the PostGIS point column.
   #
   geocoded_by :address do |event, results|
@@ -122,15 +131,6 @@ class Collection < ActiveRecord::Base
   #
   def has_town?
     !!province_c and !!county_c and !!town_c
-  end
-
-  #
-  # Get a list of tag strings.
-  #
-  # @return [Array]
-  #
-  def tag_list
-    tags.pluck(:tag)
   end
 
 end
