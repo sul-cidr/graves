@@ -31,6 +31,12 @@ import dataStartEndHTML from
 import dataStartEndCollectionsJSON from
 '../fixtures/section-html/collections/data-start-end.json';
 
+import dataTagsHTML from
+'../fixtures/section-html/page/data-tags.html';
+
+import dataTagsCollectionsJSON from
+'../fixtures/section-html/collections/data-tags.json';
+
 
 describe('Section HTML', function() {
 
@@ -266,7 +272,7 @@ describe('Section HTML', function() {
   describe('data-start + data-end', function() {
 
 
-    let span;
+    let div;
 
 
     beforeEach(function() {
@@ -274,7 +280,7 @@ describe('Section HTML', function() {
       utils.start(dataStartEndHTML);
       utils.respondCollections(dataStartEndCollectionsJSON);
 
-      span = $('.section:first-child');
+      div = $('.section:first-child');
 
     });
 
@@ -282,7 +288,7 @@ describe('Section HTML', function() {
     describe('click', function() {
 
       beforeEach(function() {
-        span.trigger('click');
+        div.trigger('click');
       });
 
       it('sets the time slider brush', function() {
@@ -300,7 +306,34 @@ describe('Section HTML', function() {
 
 
   describe('data-tags', function() {
-    it('filters collections by tag');
+
+
+    let div;
+
+
+    beforeEach(function() {
+
+      utils.start(dataTagsHTML);
+      utils.respondCollections(dataTagsCollectionsJSON);
+
+      div = $('.section:first-child');
+
+    });
+
+
+    describe('click', function() {
+
+      beforeEach(function() {
+        div.trigger('click');
+      });
+
+      it('filters collection markers', function() {
+        assert.visibleCollections(1, 2);
+      });
+
+    });
+
+
   });
 
 

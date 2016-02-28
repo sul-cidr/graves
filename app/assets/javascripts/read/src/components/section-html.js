@@ -10,6 +10,7 @@ import moment from 'moment';
 import * as mapActions from '../actions/map';
 import * as sectionActions from '../actions/sections';
 import * as timeSliderActions from '../actions/time-slider';
+import * as filterActions from '../actions/filters';
 import * as utils from '../utils';
 
 import Component from './component';
@@ -36,6 +37,7 @@ import {
     ...mapActions,
     ...sectionActions,
     ...timeSliderActions,
+    ...filterActions,
   }, dispatch);
 
 })
@@ -47,6 +49,7 @@ export default class extends Component {
     changeBaseLayer: PropTypes.func.isRequired,
     mountSections: PropTypes.func.isRequired,
     toggleTimeSlider: PropTypes.func.isRequired,
+    setTagFilter: PropTypes.func.isRequired,
   };
 
 
@@ -190,6 +193,7 @@ export default class extends Component {
       baseLayerId:  ['data-base-layer', Number],
       wmsLayerId:   ['data-wms-layer', Number],
       zoom:         ['data-zoom', Number],
+      tags:         ['data-tags', utils.parseTags],
 
       start:        'data-start',
       end:          'data-end',
@@ -222,6 +226,11 @@ export default class extends Component {
     if (attrs.start && attrs.end) {
       this.props.toggleTimeSlider(true);
       setTimeSliderRange(attrs.start, attrs.end);
+    }
+
+    // Set the tag filter.
+    if (attrs.tags) {
+      this.props.setTagFilter(attrs.tags);
     }
 
     this.disableSelect(div);
