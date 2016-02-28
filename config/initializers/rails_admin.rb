@@ -108,4 +108,9 @@ RailsAdmin.config do |config|
   end
 
 
+  config.model Tag do
+    object_label_method :label
+  end
+
+
 end
