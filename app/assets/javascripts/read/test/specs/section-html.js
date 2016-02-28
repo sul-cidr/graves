@@ -1,6 +1,10 @@
 
 
 import $ from 'jquery';
+import moment from 'moment';
+
+import CollectionMarkers from '../../src/components/collection-markers';
+import TimeSlider from '../../src/components/time-slider';
 
 import * as utils from '../utils';
 import * as assert from '../assert';
@@ -20,6 +24,12 @@ import dataWmsLayerHTML from
 
 import dataChoroplethHTML from
 '../fixtures/section-html/page/data-choropleth.html';
+
+import dataStartEndHTML from
+'../fixtures/section-html/page/data-start-end.html';
+
+import dataStartEndCollectionsJSON from
+'../fixtures/section-html/collections/data-start-end.json';
 
 
 describe('Section HTML', function() {
@@ -254,8 +264,56 @@ describe('Section HTML', function() {
 
 
   describe('data-start + data-end', function() {
-    it('sets the start date');
+
+
+    let span;
+
+
+    beforeEach(function() {
+
+      utils.start(dataStartEndHTML);
+      utils.respondCollections(dataStartEndCollectionsJSON);
+
+      span = $('.section:first-child');
+
+    });
+
+
+    describe('click', function() {
+
+      beforeEach(function() {
+        span.trigger('click');
+      });
+
+      it('sets the time slider brush', function() {
+
+        let slider = utils.getComponent(TimeSlider);
+
+        expect(slider.brush.extent()).toEqual([
+          moment('2008-01-01').toDate(),
+          moment('2010-01-01').toDate(),
+        ]);
+
+      });
+
+      it('sets filters collection markers', function() {
+
+        let map = utils.getLeaflet();
+        let markers = utils.getComponent(CollectionMarkers);
+
+        let c1 = markers.idToMarker[1];
+        let c2 = markers.idToMarker[2];
+
+        expect(map.hasLayer(c1)).toBeTruthy();
+        expect(map.hasLayer(c2)).toBeFalsy();
+
+      });
+
+    });
+
+
   });
+
 
   describe('data-tags', function() {
     it('filters collections by tag');

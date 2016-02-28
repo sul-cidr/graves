@@ -134,4 +134,41 @@ describe 'Section HTML', type: :feature do
   end
 
 
+  describe 'data-start + data-end' do
+
+    it 'collections' do
+
+      n1 = create(:notice, deadline: '2009-01-01') # in range
+      n2 = create(:notice, deadline: '2011-01-01') # not in range
+
+      create(:collection, id: 1, notice: n1)
+      create(:collection, id: 2, notice: n2)
+
+      visit('api/collections.json')
+
+      write_collection_fixture('section-html', 'data-start-end', page)
+
+    end
+
+    it 'page' do
+
+      markup = <<-HTML
+        <div
+          class="section"
+          data-start="2008-01-01"
+          data-end="2010-01-01"
+        ></div>
+      HTML
+
+      n = create(:narrative, markup: markup)
+
+      visit("read/#{n.slug}")
+
+      write_page_fixture('section-html', 'data-start-end', page)
+
+    end
+
+  end
+
+
 end

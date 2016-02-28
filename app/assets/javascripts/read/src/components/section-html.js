@@ -5,9 +5,11 @@ import $ from 'jquery';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import moment from 'moment';
 
 import * as mapActions from '../actions/map';
 import * as sectionActions from '../actions/sections';
+import * as timeSliderActions from '../actions/time-slider';
 import * as utils from '../utils';
 
 import Component from './component';
@@ -19,10 +21,13 @@ import {
   getSectionCenter,
 } from '../events/sections';
 
-
 import {
   focusMap,
 } from '../events/map';
+
+import {
+  setTimeSliderRange,
+} from '../events/time-slider';
 
 
 @connect(null, dispatch => {
@@ -30,6 +35,7 @@ import {
   return bindActionCreators({
     ...mapActions,
     ...sectionActions,
+    ...timeSliderActions,
   }, dispatch);
 
 })
@@ -40,6 +46,7 @@ export default class extends Component {
     container: PropTypes.object.isRequired,
     changeBaseLayer: PropTypes.func.isRequired,
     mountSections: PropTypes.func.isRequired,
+    toggleTimeSlider: PropTypes.func.isRequired,
   };
 
 
@@ -182,6 +189,8 @@ export default class extends Component {
       baseLayerId:  ['data-base-layer', Number],
       wmsLayerId:   ['data-wms-layer', Number],
       zoom:         ['data-zoom', Number],
+      start:        ['data-start', moment],
+      end:          ['data-end', moment],
       choropleth:   'data-choropleth',
     });
 
@@ -204,6 +213,12 @@ export default class extends Component {
     // Set the choropleth.
     if (attrs.choropleth) {
       this.props.changeChoropleth(attrs.choropleth);
+    }
+
+    // Set the date range.
+    if (attrs.start && attrs.end) {
+      this.props.toggleTimeSlider(true);
+      setTimeSliderRange(attrs.start, attrs.end);
     }
 
     this.disableSelect(div);
