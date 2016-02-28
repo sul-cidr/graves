@@ -6,9 +6,9 @@ module Geometry
   included do
 
     #
-    # Select geometry as (simplified) GeoJSON.
+    # Round down point decimals, swap to lat/lon order.
     #
-    scope :snap, -> {
+    scope :web_geometry, -> {
       select {
         my{column_names} +
         [ST_SnapToGrid(ST_FlipCoordinates(geometry), 0.001).as(geometry)]

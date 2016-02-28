@@ -3,7 +3,7 @@ module API
   class CountiesController < ApplicationController
 
     def index
-      @counties = County.snap.to_geojson(
+      @counties = County.web_geometry.to_geojson(
         :name_p,
         :choropleths,
       )
