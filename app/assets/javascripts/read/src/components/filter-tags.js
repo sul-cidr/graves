@@ -7,9 +7,9 @@ import Component from './component';
 
 
 import {
-  TIME_SLIDER,
-  SET_DATE_RANGE,
-  UNSET_DATE_RANGE,
+  TAGS,
+  SET_TAGS,
+  UNSET_TAGS,
 } from '../constants';
 
 
@@ -18,9 +18,9 @@ export default class extends Component {
 
   static events = {
 
-    [TIME_SLIDER]: {
-      [SET_DATE_RANGE]: 'setDateRange',
-      [UNSET_DATE_RANGE]: 'unsetDateRange',
+    [TAGS]: {
+      [SET_TAGS]: 'setTags',
+      [UNSET_TAGS]: 'unsetTags',
     }
 
   };
@@ -33,23 +33,22 @@ export default class extends Component {
 
 
   /**
-   * Filter by date.
+   * Filter by tags.
    *
-   * @param {Date} start
-   * @param {Date} end
+   * @param {Array} tags
    */
-  setDateRange(start, end) {
+  setTags(tags) {
 
     _.each(_.values(this.props.idToMarker), m => {
 
-      let date = m.options.date;
+      let list = m.options.feature.properties.tag_list;
 
-      if (date.isBefore(start) || date.isAfter(end)) {
-        this.props.group.removeLayer(m);
+      if (_.intersection(tags, list).length) {
+        this.props.group.addLayer(m);
       }
 
       else {
-        this.props.group.addLayer(m);
+        this.props.group.removeLayer(m);
       }
 
     });
@@ -60,7 +59,7 @@ export default class extends Component {
   /**
    * Show all layers.
    */
-  unsetDateRange() {
+  unsetTags() {
     _.each(_.values(this.props.idToMarker), m => {
       this.props.group.addLayer(m);
     });

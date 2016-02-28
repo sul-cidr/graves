@@ -37,6 +37,10 @@ import {
   setTimeSliderRange,
 } from '../events/time-slider';
 
+import {
+  setTags,
+} from '../events/tags';
+
 
 @connect(null, dispatch => {
 
@@ -148,6 +152,7 @@ export default class extends Component {
       zoom:         ['data-zoom', Number],
       start:        ['data-start', moment],
       end:          ['data-end', moment],
+      tags:         ['data-tags', utils.parseTags],
       choropleth:   'data-choropleth',
     });
 
@@ -176,6 +181,11 @@ export default class extends Component {
     if (attrs.start && attrs.end) {
       this.props.toggleTimeSlider(true);
       setTimeSliderRange(attrs.start, attrs.end);
+    }
+
+    // Set the tag filter.
+    if (attrs.tags) {
+      setTags(attrs.tags);
     }
 
     // Prevent the click from triggering a section focus.

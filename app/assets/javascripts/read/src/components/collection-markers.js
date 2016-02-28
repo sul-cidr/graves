@@ -14,6 +14,7 @@ import * as events from '../events/collections';
 import { countToRadius } from './collection-scale';
 import Component from './component';
 import FilterDates from './filter-dates';
+import FilterTags from './filter-tags';
 
 
 import {
@@ -196,6 +197,11 @@ export default class extends Component {
       <behaviors>
 
         <FilterDates
+          idToMarker={this.idToMarker}
+          group={this.group}
+        />
+
+        <FilterTags
           idToMarker={this.idToMarker}
           group={this.group}
         />

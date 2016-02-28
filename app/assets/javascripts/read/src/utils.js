@@ -94,3 +94,14 @@ export function parseLonLat(lonlat='') {
 export function swap(coord) {
   return [coord[1], coord[0]];
 }
+
+
+/**
+ * Parse a tags string.
+ *
+ * @param {String} value
+ * @return {Array<String>}
+ */
+export function parseTags(value) {
+  return value.replace(/\s/g, '').split(',');
+}
