@@ -37,7 +37,5 @@ export const SET_TIME_SLIDER_RANGE = 'SET_TIME_SLIDER_RANGE';
 export const SET_DATE_RANGE = 'SET_DATE_RANGE';
 export const UNSET_DATE_RANGE = 'UNSET_DATE_RANGE';
 
-// TAGS
-export const TAGS = 'TAGS';
-export const SET_TAGS = 'SET_TAGS';
-export const UNSET_TAGS = 'UNSET_TAGS';
+// FILTERS
+export const SET_TAG_FILTER = 'SET_TAG_FILTER';

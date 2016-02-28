@@ -2,67 +2,50 @@
 
 import _ from 'lodash';
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import Component from './component';
 
 
-import {
-  TAGS,
-  SET_TAGS,
-  UNSET_TAGS,
-} from '../constants';
-
-
+@connect(state => ({
+  tags: state.filters.tags
+}))
 export default class extends Component {
 
 
-  static events = {
-
-    [TAGS]: {
-      [SET_TAGS]: 'setTags',
-      [UNSET_TAGS]: 'unsetTags',
-    }
-
-  };
-
-
   static propTypes = {
-    idToMarker: PropTypes.object.isRequired,
     group: PropTypes.object.isRequired,
+    idToMarker: PropTypes.object.isRequired,
+    tags: PropTypes.array,
   };
 
 
   /**
    * Filter by tags.
-   *
-   * @param {Array} tags
    */
-  setTags(tags) {
+  componentDidUpdate() {
 
-    _.each(_.values(this.props.idToMarker), m => {
+    // If a tag filter is set, just show collections that are tagged with at
+    // least one of the requested tags.
 
-      let list = m.options.feature.properties.tag_list;
+    if (this.props.tags) {
 
-      if (_.intersection(tags, list).length) {
-        this.props.group.addLayer(m);
-      }
+      _.each(this.props.idToMarker, (m, id) => {
 
-      else {
-        this.props.group.removeLayer(m);
-      }
+        let list = m.options.feature.properties.tag_list;
 
-    });
+        if (_.intersection(this.props.tags, list).length) {
+          this.props.group.addLayer(m);
+        }
 
-  }
+        else {
+          this.props.group.removeLayer(m);
+        }
 
+      });
 
-  /**
-   * Show all layers.
-   */
-  unsetTags() {
-    _.each(_.values(this.props.idToMarker), m => {
-      this.props.group.addLayer(m);
-    });
+    }
+
   }
 
 

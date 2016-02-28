@@ -9,8 +9,9 @@ import moment from 'moment';
 
 import * as mapActions from '../actions/map';
 import * as timeSliderActions from '../actions/time-slider';
-import * as events from '../events/collections';
+import * as filterActions from '../actions/filters';
 import * as utils from '../utils';
+import * as events from '../events/collections';
 
 import Component from './component';
 
@@ -37,16 +38,13 @@ import {
   setTimeSliderRange,
 } from '../events/time-slider';
 
-import {
-  setTags,
-} from '../events/tags';
-
 
 @connect(null, dispatch => {
 
   return bindActionCreators({
     ...mapActions,
     ...timeSliderActions,
+    ...filterActions,
   }, dispatch);
 
 })
@@ -63,8 +61,9 @@ export default class extends Component {
 
   static propTypes = {
     container: PropTypes.object.isRequired,
-    toggleTimeSlider: PropTypes.func.isRequired,
     changeBaseLayer: PropTypes.func.isRequired,
+    toggleTimeSlider: PropTypes.func.isRequired,
+    setTagFilter: PropTypes.func.isRequired,
   };
 
 
@@ -185,7 +184,7 @@ export default class extends Component {
 
     // Set the tag filter.
     if (attrs.tags) {
-      setTags(attrs.tags);
+      this.props.setTagFilter(attrs.tags);
     }
 
     // Prevent the click from triggering a section focus.
