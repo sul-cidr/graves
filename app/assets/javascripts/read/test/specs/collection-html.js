@@ -37,6 +37,12 @@ import dataStartEndHTML from
 import dataStartEndCollectionsJSON from
 '../fixtures/collection-html/collections/data-start-end.json';
 
+import dataTagsHTML from
+'../fixtures/collection-html/page/data-tags.html';
+
+import dataTagsCollectionsJSON from
+'../fixtures/collection-html/collections/data-tags.json';
+
 
 describe('Collection HTML', function() {
 
@@ -275,7 +281,7 @@ describe('Collection HTML', function() {
 
       });
 
-      it('sets filters collection markers', function() {
+      it('filters collection markers', function() {
 
         let map = utils.getLeaflet();
         let markers = utils.getComponent(CollectionMarkers);
@@ -295,7 +301,32 @@ describe('Collection HTML', function() {
 
 
   describe('data-tags', function() {
-    it('filters collections by tag');
+
+
+    let span;
+
+
+    beforeEach(function() {
+
+      utils.start(dataTagsHTML);
+      utils.respondCollections(dataTagsCollectionJSON);
+
+      span = $('.collection:first-child');
+
+    });
+
+
+    describe('click', function() {
+
+      beforeEach(function() {
+        span.trigger('click');
+      });
+
+      it('filters collection markers');
+
+    });
+
+
   });
 
 
