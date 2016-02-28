@@ -124,4 +124,13 @@ class Collection < ActiveRecord::Base
     !!province_c and !!county_c and !!town_c
   end
 
+  #
+  # Get a list of tag strings.
+  #
+  # @return [Array]
+  #
+  def tag_list
+    tags.pluck(:tag)
+  end
+
 end

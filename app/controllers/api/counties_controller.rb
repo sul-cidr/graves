@@ -3,10 +3,14 @@ module API
   class CountiesController < ApplicationController
 
     def index
-      @counties = County.web_geometry.to_geojson(
-        :name_p,
-        :choropleths,
-      )
+
+      @counties = County
+        .web_geometry
+        .as_geojson(
+          :name_p,
+          :choropleths,
+        )
+
     end
 
   end

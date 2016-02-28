@@ -6,8 +6,8 @@ module API
 
       @collections = Collection
         .web_geometry
-        .includes(:notice)
-        .to_geojson(
+        .includes(:notice, :tags)
+        .as_geojson(
           :num_graves,
           :location,
           :destination,

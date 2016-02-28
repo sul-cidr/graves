@@ -18,7 +18,7 @@ describe Geometry do
 
   end
 
-  describe '.to_geojson()' do
+  describe '.as_geojson' do
 
     it 'returns the query as GeoJSON' do
 
@@ -26,7 +26,7 @@ describe Geometry do
       m2 = GeoModel.create!(geometry: Helpers::Geo.point(3, 4))
       m3 = GeoModel.create!(geometry: Helpers::Geo.point(5, 6))
 
-      json = GeoModel.to_geojson.deep_symbolize_keys
+      json = GeoModel.as_geojson.deep_symbolize_keys
 
       expect(json).to include(type: 'FeatureCollection')
 
@@ -59,7 +59,7 @@ describe Geometry do
 
     end
 
-    it 'populates `properties` with passed columns' do
+    it 'populates "properties" with passed columns' do
 
       GeoModel.create!(
         field1: 'f11',
@@ -83,7 +83,7 @@ describe Geometry do
       )
 
       # Request `field1` and `field2`.
-      json = GeoModel.to_geojson(:field1, :field2).deep_symbolize_keys
+      json = GeoModel.as_geojson(:field1, :field2).deep_symbolize_keys
 
       expect(json[:features][0][:properties]).to include(
         field1: 'f11',

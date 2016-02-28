@@ -15,17 +15,10 @@ module Geometry
       }
     }
 
-  end
-
-  module ClassMethods
-
     #
-    # Render the collection as GeoJSON.
+    # Encode as GeoJSON.
     #
-    # @param keys [Array<Symbol>]
-    # @return [Hash]
-    #
-    def to_geojson(*keys)
+    scope :as_geojson, -> (*keys) {
 
       factory = RGeo::GeoJSON::EntityFactory.instance
 
@@ -36,9 +29,10 @@ module Geometry
       end
 
       collection = factory.feature_collection(features.compact)
+
       RGeo::GeoJSON.encode(collection)
 
-    end
+    }
 
   end
 
