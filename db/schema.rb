@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228004554) do
+ActiveRecord::Schema.define(version: 20160228011322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20160228004554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "collection_tag_rels", force: :cascade do |t|
+    t.integer "collection_id", null: false
+    t.integer "tag_id",        null: false
+  end
+
+  add_index "collection_tag_rels", ["collection_id", "tag_id"], name: "index_collection_tag_rels_on_collection_id_and_tag_id", unique: true, using: :btree
+  add_index "collection_tag_rels", ["collection_id"], name: "index_collection_tag_rels_on_collection_id", using: :btree
+  add_index "collection_tag_rels", ["tag_id"], name: "index_collection_tag_rels_on_tag_id", using: :btree
 
   create_table "collections", force: :cascade do |t|
     t.integer  "num_graves"
@@ -182,6 +191,8 @@ ActiveRecord::Schema.define(version: 20160228004554) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "collection_tag_rels", "collections"
+  add_foreign_key "collection_tag_rels", "tags"
   add_foreign_key "collections", "counties"
   add_foreign_key "collections", "notices"
   add_foreign_key "collections", "provinces"
