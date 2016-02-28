@@ -16,11 +16,6 @@ import {
   SET_TIME_SLIDER_RANGE,
 } from '../constants';
 
-import {
-  setDateRange,
-  unsetDateRange,
-} from '../events/time-slider';
-
 
 @connect(
   state => ({
@@ -71,7 +66,7 @@ export default class extends Component {
    */
   componentWillUnmount() {
 
-    unsetDateRange();
+    // TODO: unset filter.
 
     // Unbing the resize listener.
     $(window).off('resize.time');
@@ -171,8 +166,7 @@ export default class extends Component {
       .call(xAxis);
 
 
-    // Show all markers, by default.
-    unsetDateRange();
+    // TODO: unset filter.
 
 
   }
