@@ -169,7 +169,7 @@ describe('Section HTML', function() {
         setTimeout(done, 2000);
       });
 
-      it('applies the custom zoom level', function() {
+      it('zooms the map', function() {
         assert.mapZoom(1);
       });
 
