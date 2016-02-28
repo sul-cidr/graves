@@ -54,6 +54,7 @@ RailsAdmin.config do |config|
     'Narrative',
     'BaseLayer',
     'WmsLayer',
+    'Tag',
     'User',
   ]
 
