@@ -185,13 +185,16 @@ export default class extends Component {
     let div = $(e.currentTarget);
 
     let attrs = utils.parseAttrs(div, {
+
       mapId:        ['data-map-id', Number],
       baseLayerId:  ['data-base-layer', Number],
       wmsLayerId:   ['data-wms-layer', Number],
       zoom:         ['data-zoom', Number],
-      start:        ['data-start', moment],
-      end:          ['data-end', moment],
+
+      start:        'data-start',
+      end:          'data-end',
       choropleth:   'data-choropleth',
+
     });
 
     // Focus the map.

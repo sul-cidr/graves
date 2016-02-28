@@ -5,6 +5,7 @@ import $ from 'jquery';
 import d3 from 'd3';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import * as actions from '../actions/filters';
 
@@ -184,12 +185,15 @@ export default class extends Component {
   /**
    * Manifest a new range.
    *
-   * @param {moment} start
-   * @param {moment} end
+   * @param {String} start
+   * @param {String} end
    */
   setRange(start, end) {
 
-    this.brush.extent([start.toDate(), end.toDate()]);
+    this.brush.extent([
+      moment(start).toDate(),
+      moment(end).toDate(),
+    ]);
 
     this.brush(this.handle);
     this.brush.event(this.handle);

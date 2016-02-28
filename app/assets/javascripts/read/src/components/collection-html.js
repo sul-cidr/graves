@@ -145,14 +145,17 @@ export default class extends Component {
     let span = $(e.target);
 
     let attrs = utils.parseAttrs(span, {
+
       id:           ['data-id', Number],
       baseLayerId:  ['data-base-layer', Number],
       wmsLayerId:   ['data-wms-layer', Number],
       zoom:         ['data-zoom', Number],
-      start:        ['data-start', moment],
-      end:          ['data-end', moment],
       tags:         ['data-tags', utils.parseTags],
+
+      start:        'data-start',
+      end:          'data-end',
       choropleth:   'data-choropleth',
+
     });
 
     // Focus the map.
