@@ -41,11 +41,11 @@ export default class extends Component {
 
 
   /**
-   * Render the widget toggles.
+   * Render the controls block.
    */
   render() {
     return (
-      <div id="toggles">
+      <div id="controls">
 
         <label className="toggle map-menu">
           <Toggle

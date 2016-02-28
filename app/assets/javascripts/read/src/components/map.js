@@ -14,7 +14,7 @@ import CollectionMarkers from './collection-markers';
 import CountyPaths from './county-paths';
 import SectionBoxes from './section-boxes';
 import MapLine from './map-line';
-import Toggles from './toggles';
+import Controls from './controls';
 import Widgets from './widgets';
 
 
@@ -111,8 +111,8 @@ export default class extends Component {
             <MapLine map={this.state.map} />
 
             <CollectionModal />
-            <Toggles />
             <Widgets />
+            <Controls />
 
           </behaviors>
         ) : null}
