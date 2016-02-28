@@ -22,7 +22,7 @@ module Geometry
 
       factory = RGeo::GeoJSON::EntityFactory.instance
 
-      features = all.map do |r|
+      features = web_geometry.map do |r|
         if r.geometry
           factory.feature(r.geometry, r.id, r.slice(*keys))
         end

@@ -35,7 +35,7 @@ describe Geometry do
         id: m1.id,
         geometry: {
           type: 'Point',
-          coordinates: [1, 2]
+          coordinates: [2, 1]
         }
       )
 
@@ -44,7 +44,7 @@ describe Geometry do
         id: m2.id,
         geometry: {
           type: 'Point',
-          coordinates: [3, 4]
+          coordinates: [4, 3]
         }
       )
 
@@ -53,7 +53,7 @@ describe Geometry do
         id: m3.id,
         geometry: {
           type: 'Point',
-          coordinates: [5, 6]
+          coordinates: [6, 5]
         }
       )
 
