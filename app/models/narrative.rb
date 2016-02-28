@@ -2,17 +2,21 @@
 #
 # Table name: narratives
 #
-#  id            :integer          not null, primary key
-#  title         :string
-#  markup        :text
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  author_id     :integer          not null
-#  slug          :string           not null
-#  blurb         :text
-#  pub_date      :date
-#  subtitle      :string
-#  base_layer_id :integer          not null
+#  id                      :integer          not null, primary key
+#  title                   :string
+#  markup                  :text
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  author_id               :integer          not null
+#  slug                    :string           not null
+#  blurb                   :text
+#  pub_date                :date
+#  subtitle                :string
+#  base_layer_id           :integer          not null
+#  hero_image_file_name    :string
+#  hero_image_content_type :string
+#  hero_image_file_size    :integer
+#  hero_image_updated_at   :datetime
 #
 
 class Narrative < ActiveRecord::Base
