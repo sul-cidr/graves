@@ -286,14 +286,7 @@ describe('Section HTML', function() {
       });
 
       it('sets the time slider brush', function() {
-
-        let slider = utils.getComponent(TimeSlider);
-
-        expect(slider.brush.extent()).toEqual([
-          moment('2008-01-01').toDate(),
-          moment('2010-01-01').toDate(),
-        ]);
-
+        assert.timeSliderExtent('2008-01-01', '2010-01-01');
       });
 
       it('sets filters collection markers', function() {

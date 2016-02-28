@@ -1,10 +1,12 @@
 
 
 import $ from 'jquery';
+import moment from 'moment';
 
 import BaseLayer from '../src/components/base-layer';
 import WmsLayer from '../src/components/wms-layer';
 import CollectionMarkers from '../src/components/collection-markers';
+import TimeSlider from '../src/components/time-slider';
 
 
 import * as utils from './utils';
@@ -114,4 +116,21 @@ export function mapZoom(level) {
  */
 export function choroplethCode(code) {
   expect('g.counties').toHaveAttr('data-code', code)
+}
+
+
+/**
+ * Assert the time slider start / end dates.
+ *
+ * @param {String} start
+ */
+export function timeSliderExtent(start, end) {
+
+  let slider = utils.getComponent(TimeSlider);
+
+  expect(slider.brush.extent()).toEqual([
+    moment('2008-01-01').toDate(),
+    moment('2010-01-01').toDate(),
+  ]);
+
 }
