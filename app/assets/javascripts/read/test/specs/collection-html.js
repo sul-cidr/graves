@@ -3,6 +3,7 @@
 import $ from 'jquery';
 
 import CollectionMarkers from '../../src/components/collection-markers';
+import TimeSlider from '../../src/components/time-slider';
 
 import * as utils from '../utils';
 import * as assert from '../assert';
@@ -262,7 +263,12 @@ describe('Collection HTML', function() {
         span.trigger('click');
       });
 
-      it('sets the time slider brush');
+      it('sets the time slider brush', function() {
+
+        let slider = utils.getComponent(TimeSlider);
+        expect(true).toBeTruthy();
+
+      });
 
       it('sets filters collection markers', function() {
 

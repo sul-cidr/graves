@@ -9,6 +9,10 @@ import { connect } from 'react-redux';
 import Component from './component';
 import { countToRadius } from './collection-scale';
 
+import {
+  TIME_SLIDER,
+  SET_TIME_SLIDER_RANGE,
+} from '../constants';
 
 import {
   setDateRange,
@@ -20,6 +24,13 @@ import {
   geojson: state.collections.geojson
 }))
 export default class extends Component {
+
+
+  static events = {
+    [TIME_SLIDER]: {
+      [SET_TIME_SLIDER_RANGE]: 'setRange'
+    }
+  };
 
 
   static propTypes = {
@@ -165,6 +176,17 @@ export default class extends Component {
   onBrush() {
     let [start, end] = this.brush.extent();
     setDateRange(start, end);
+  }
+
+
+  /**
+   * Manifest a new range.
+   *
+   * @param {moment} start
+   * @param {moment} end
+   */
+  setRange(start, end) {
+    console.log('range');
   }
 
 
