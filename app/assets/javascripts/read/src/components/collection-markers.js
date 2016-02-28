@@ -15,6 +15,7 @@ import { countToRadius } from './collection-scale';
 import Component from './component';
 import FilterDates from './filter-dates';
 import FilterTags from './filter-tags';
+import ClearFilters from './clear-filters';
 
 
 import {
@@ -202,6 +203,11 @@ export default class extends Component {
         />
 
         <FilterTags
+          idToMarker={this.idToMarker}
+          group={this.group}
+        />
+
+        <ClearFilters
           idToMarker={this.idToMarker}
           group={this.group}
         />

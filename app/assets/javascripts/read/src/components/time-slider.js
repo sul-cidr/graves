@@ -37,6 +37,7 @@ export default class extends Component {
   static propTypes = {
     geojson: PropTypes.object,
     setDateFilter: PropTypes.func.isRequired,
+    clearFilters: PropTypes.func.isRequired,
   };
 
 
@@ -67,7 +68,7 @@ export default class extends Component {
    */
   componentWillUnmount() {
 
-    // TODO: unset filter.
+    this.props.clearFilters();
 
     // Unbing the resize listener.
     $(window).off('resize.time');
@@ -167,7 +168,7 @@ export default class extends Component {
       .call(xAxis);
 
 
-    // TODO: unset filter.
+    this.props.clearFilters();
 
 
   }

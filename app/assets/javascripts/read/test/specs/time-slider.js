@@ -11,9 +11,13 @@ import filterCollectionsJSON from
 describe('Time Slider', function() {
 
 
+  beforeEach(function() {
+    utils.start();
+  });
+
+
   it('opens the time slider when the toggle is flipped', function() {
 
-    utils.start();
     utils.toggleTimeSlider();
 
     expect('#time-slider').toBeVisible();
@@ -23,7 +27,6 @@ describe('Time Slider', function() {
 
   it('filters collections when the brush is changed', function() {
 
-    utils.start();
     utils.respondCollections(filterCollectionsJSON);
     utils.toggleTimeSlider();
 
@@ -35,7 +38,21 @@ describe('Time Slider', function() {
   });
 
 
-  it('unfilters collections when the slider is closed');
+  it('unfilters collections when the slider is closed', function() {
+
+    utils.respondCollections(filterCollectionsJSON);
+    utils.toggleTimeSlider();
+
+    // Brush excludes collection 2.
+    utils.setTimeSliderBrush('2008-01-01', '2011-01-01');
+
+    // Close the slider.
+    utils.toggleTimeSlider();
+
+    // Should re-show collection 2.
+    assert.visibleCollections(1, 2);
+
+  });
 
 
 });

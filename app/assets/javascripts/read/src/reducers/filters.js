@@ -6,6 +6,7 @@ import { createReducer } from '../utils';
 import {
   SET_TAG_FILTER,
   SET_DATE_FILTER,
+  CLEAR_FILTERS,
 } from '../constants';
 
 
@@ -29,6 +30,8 @@ const handlers = {
     startDate: action.start,
     endDate: action.end,
   }),
+
+  [CLEAR_FILTERS]: () => initialState,
 
 };
 
