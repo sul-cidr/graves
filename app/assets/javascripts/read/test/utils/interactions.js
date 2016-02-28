@@ -14,6 +14,16 @@ export function toggleMapMenu() {
 
 
 /**
+ * Show/hide the timeslider.
+ */
+export function toggleTimeSlider() {
+  TestUtils.Simulate.click(document.querySelector(
+    '.toggle.time-slider .react-toggle'
+  ));
+}
+
+
+/**
  * Close the collection modal.
  */
 export function closeCollectionModal() {
