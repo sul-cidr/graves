@@ -11,20 +11,16 @@ import moment from 'moment';
 import * as actions from '../actions/collections';
 import * as events from '../events/collections';
 
-import Component from './component';
 import { countToRadius } from './collection-scale';
+import Component from './component';
+import FilterDates from './filter-dates';
+
 
 import {
-
   COLLECTIONS,
   HIGHLIGHT_COLLECTION,
   UNHIGHLIGHT_COLLECTION,
   GET_COLLECTION_LON_LAT,
-
-  TIME_SLIDER,
-  SET_DATE_RANGE,
-  UNSET_DATE_RANGE,
-
 } from '../constants';
 
 
@@ -38,17 +34,10 @@ export default class extends Component {
 
 
   static events = {
-
     [COLLECTIONS]: {
       [HIGHLIGHT_COLLECTION]: 'highlight',
       [UNHIGHLIGHT_COLLECTION]: 'unhighlight',
     },
-
-    [TIME_SLIDER]: {
-      [SET_DATE_RANGE]: 'setDateRange',
-      [UNSET_DATE_RANGE]: 'unsetDateRange',
-    }
-
   };
 
 
@@ -188,44 +177,6 @@ export default class extends Component {
 
 
   /**
-   * Filter by date.
-   *
-   * @param {Date} start
-   * @param {Date} end
-   */
-  setDateRange(start, end) {
-
-    _.each(_.values(this.idToMarker), m => {
-
-      let date = m.options.date;
-
-      if (date.isBefore(start) || date.isAfter(end)) {
-        this.group.removeLayer(m);
-      }
-
-      else {
-        this.group.addLayer(m);
-      }
-
-    });
-
-  }
-
-
-  /**
-   * Show all layers.
-   *
-   * @param {Date} start
-   * @param {Date} end
-   */
-  unsetDateRange(start, end) {
-    _.each(_.values(this.idToMarker), m => {
-      this.group.addLayer(m);
-    });
-  }
-
-
-  /**
    * Get the lon/lat of a collection.
    *
    * @param {Number} id
@@ -234,6 +185,23 @@ export default class extends Component {
   getLonLat(id) {
     let latLng = this.idToMarker[id].getLatLng();
     return [latLng.lng, latLng.lat];
+  }
+
+
+  /**
+   * Render the filters.
+   */
+  render() {
+    return (
+      <behaviors>
+
+        <FilterDates
+          idToMarker={this.idToMarker}
+          group={this.group}
+        />
+
+      </behaviors>
+    );
   }
 
 

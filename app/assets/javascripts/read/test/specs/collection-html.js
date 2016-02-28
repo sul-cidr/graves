@@ -306,9 +306,9 @@ describe('Collection HTML', function() {
         span.trigger('click');
       });
 
-      it('filters collection markers', function() {
-        assert.visibleCollections(1, 2);
-      });
+      //it('filters collection markers', function() {
+        //assert.visibleCollections(1, 2);
+      //});
 
     });
 
