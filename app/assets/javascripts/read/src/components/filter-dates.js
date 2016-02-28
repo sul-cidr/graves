@@ -2,68 +2,52 @@
 
 import _ from 'lodash';
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import Component from './component';
 
 
-import {
-  TIME_SLIDER,
-  SET_DATE_RANGE,
-  UNSET_DATE_RANGE,
-} from '../constants';
-
-
+@connect(state => ({
+  start: state.filters.startDate,
+  end: state.filters.endDate,
+}))
 export default class extends Component {
 
 
-  static events = {
-
-    [TIME_SLIDER]: {
-      [SET_DATE_RANGE]: 'setDateRange',
-      [UNSET_DATE_RANGE]: 'unsetDateRange',
-    }
-
-  };
-
-
   static propTypes = {
-    idToMarker: PropTypes.object.isRequired,
     group: PropTypes.object.isRequired,
+    idToMarker: PropTypes.object.isRequired,
+    start: PropTypes.object,
+    end: PropTypes.object,
   };
 
 
   /**
    * Filter by date.
-   *
-   * @param {Date} start
-   * @param {Date} end
    */
-  setDateRange(start, end) {
+  componentDidUpdate() {
 
-    _.each(_.values(this.props.idToMarker), m => {
+    if (this.props.start && this.props.end) {
 
-      let date = m.options.date;
+      _.each(this.props.idToMarker, (m, id) => {
 
-      if (date.isBefore(start) || date.isAfter(end)) {
-        this.props.group.removeLayer(m);
-      }
+        let date = m.options.date;
 
-      else {
-        this.props.group.addLayer(m);
-      }
+        if (date.isBefore(this.props.start) ||
+            date.isAfter(this.props.end)) {
 
-    });
+          this.props.group.removeLayer(m);
 
-  }
+        }
 
+        else {
+          this.props.group.addLayer(m);
+        }
 
-  /**
-   * Show all layers.
-   */
-  unsetDateRange() {
-    _.each(_.values(this.props.idToMarker), m => {
-      this.props.group.addLayer(m);
-    });
+      });
+
+    }
+
   }
 
 

@@ -6,8 +6,10 @@ import d3 from 'd3';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Component from './component';
+import * as actions from '../actions/filters';
+
 import { countToRadius } from './collection-scale';
+import Component from './component';
 
 import {
   TIME_SLIDER,
@@ -20,9 +22,12 @@ import {
 } from '../events/time-slider';
 
 
-@connect(state => ({
-  geojson: state.collections.geojson
-}))
+@connect(
+  state => ({
+    geojson: state.collections.geojson
+  }),
+  actions
+)
 export default class extends Component {
 
 
@@ -35,6 +40,7 @@ export default class extends Component {
 
   static propTypes = {
     geojson: PropTypes.object,
+    setDateFilter: PropTypes.func.isRequired,
   };
 
 
@@ -177,7 +183,7 @@ export default class extends Component {
    */
   onBrush() {
     let [start, end] = this.brush.extent();
-    setDateRange(start, end);
+    this.props.setDateFilter(start, end);
   }
 
 

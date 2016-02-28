@@ -39,3 +39,4 @@ export const UNSET_DATE_RANGE = 'UNSET_DATE_RANGE';
 
 // FILTERS
 export const SET_TAG_FILTER = 'SET_TAG_FILTER';
+export const SET_DATE_FILTER = 'SET_DATE_FILTER';
