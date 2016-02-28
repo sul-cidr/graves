@@ -9,11 +9,7 @@ import {
 
 
 const initialState = {
-
   show: false,
-
-  // TODO
-
 };
 
 
