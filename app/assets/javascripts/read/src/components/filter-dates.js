@@ -33,15 +33,17 @@ export default class extends Component {
 
         let date = m.options.date;
 
-        if (date.isBefore(this.props.start) ||
-            date.isAfter(this.props.end)) {
+        // Show if inside date range.
+        if (date.isAfter(this.props.start) &&
+            date.isBefore(this.props.end)) {
 
-          this.props.group.removeLayer(m);
+          this.props.group.addLayer(m);
 
         }
 
+        // Otherwise, hide.
         else {
-          this.props.group.addLayer(m);
+          this.props.group.removeLayer(m);
         }
 
       });

@@ -25,19 +25,18 @@ export default class extends Component {
    */
   componentDidUpdate() {
 
-    // If a tag filter is set, just show collections that are tagged with at
-    // least one of the requested tags.
-
     if (this.props.tags) {
 
       _.each(this.props.idToMarker, (m, id) => {
 
         let list = m.options.feature.properties.tag_list;
 
+        // If the collection has at least one of the filter tags, show it.
         if (_.intersection(this.props.tags, list).length) {
           this.props.group.addLayer(m);
         }
 
+        // Otherwise, hide.
         else {
           this.props.group.removeLayer(m);
         }
