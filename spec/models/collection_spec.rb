@@ -48,10 +48,14 @@ describe Collection, type: :model do
   end
 
   describe 'relationships' do
+
     it { should belong_to(:notice) }
     it { should belong_to(:province) }
     it { should belong_to(:county) }
     it { should belong_to(:town) }
+
+    it { should have_many(:tags).through(:collection_tag_rels) }
+
   end
 
   describe '#has_province?()' do

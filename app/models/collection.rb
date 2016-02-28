@@ -35,6 +35,9 @@ class Collection < ActiveRecord::Base
   belongs_to :county
   belongs_to :town
 
+  has_many :collection_tag_rels
+  has_many :tags, through: :collection_tag_rels
+
   validates :notice, presence: true
 
   #
