@@ -293,7 +293,7 @@ describe('Collection HTML', function() {
     beforeEach(function() {
 
       utils.start(dataTagsHTML);
-      utils.respondCollections(dataTagsCollectionJSON);
+      utils.respondCollections(dataTagsCollectionsJSON);
 
       span = $('.collection:first-child');
 
@@ -306,7 +306,9 @@ describe('Collection HTML', function() {
         span.trigger('click');
       });
 
-      it('filters collection markers');
+      it('filters collection markers', function() {
+        assert.visibleCollections(1, 2);
+      });
 
     });
 
