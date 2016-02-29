@@ -9,6 +9,7 @@ import * as mapActions from '../actions/map';
 import * as timeSliderActions from '../actions/time-slider';
 
 import Component from './component';
+import ClearFiltersButton from './clear-filters-button';
 
 
 @connect(
@@ -16,6 +17,7 @@ import Component from './component';
   state => ({
     showMapMenu: state.map.showMenu,
     showTimeSlider: state.timeSlider.show,
+    tags: state.filters.tags,
   }),
 
   dispatch => {
@@ -37,6 +39,8 @@ export default class extends Component {
     toggleMapMenu: PropTypes.func.isRequired,
     toggleTimeSlider: PropTypes.func.isRequired,
 
+    tags: PropTypes.array,
+
   };
 
 
@@ -47,6 +51,7 @@ export default class extends Component {
     return (
       <div id="controls">
 
+
         <label className="toggle map-menu">
           <Toggle
             onChange={this.onMapMenuToggle.bind(this)}
@@ -55,6 +60,7 @@ export default class extends Component {
           <span className="label-text">Map Options</span>
         </label>
 
+
         <label className="toggle time-slider">
           <Toggle
             onChange={this.onTimeSliderToggle.bind(this)}
@@ -62,6 +68,13 @@ export default class extends Component {
           />
           <span className="label-text">Time Slider</span>
         </label>
+
+
+        {
+          this.props.tags ?
+          <ClearFiltersButton /> : null
+        }
+
 
       </div>
     );
