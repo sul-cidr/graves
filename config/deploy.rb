@@ -32,6 +32,7 @@ ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :linked_files, fetch(:linked_files, []).push(
   'config/secrets.yml',
   'config/database.yml',
+  '.env',
 )
 
 # Default value for linked_dirs is []
