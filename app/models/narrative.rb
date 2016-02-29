@@ -22,15 +22,13 @@
 class Narrative < ActiveRecord::Base
 
 
+  include Slug
+
   belongs_to :author
   belongs_to :base_layer
 
   validates :author, presence: true
   validates :base_layer, presence: true
-
-  validates :slug, presence: true
-  validates :slug, uniqueness: true
-  validates :slug, format: { with: /\A[a-z0-9-]*\z/ }
 
   has_attached_file :hero_image
 
