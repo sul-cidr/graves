@@ -11,13 +11,21 @@
 #
 
 FactoryGirl.define do
+
+  sequence :wms_layer_slug do |n|
+    "slug-#{n}"
+  end
+
   factory :wms_layer do
 
     name 'Layer'
+
+    slug { generate(:base_layer_slug) }
 
     address 'http://stanford.edu/wms'
 
     layer 'layer'
 
   end
+
 end

@@ -1,31 +1,41 @@
 ---
 
 - name: OSM Default (Pinyin)
+  slug: osp-default
   url: http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
 
 - name: OSM Grayscale (Pinyin)
+  slug: osp-grayscale
   url: http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png
 
 - name: ESRI World Street Map
+  slug: esri-world-street
   url: http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}
 
 - name: ESRI DeLorme
+  slug: esri-delorme
   url: http://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}
 
 - name: ESRI World Topo Map
+  slug: esri-world-topo
   url: http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}
 
 - name: ESRI National Geographic World Map
+  slug: esri-natgeo-world
   url: http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}
 
 - name: ESRI World Imagery
+  slug: esri-world-imagery
   url: http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
 
 - name: ESRI World Terrain
+  slug: esri-world-terrain
   url: http://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}
 
 - name: ESRI World Shaded Relief
+  slug: esri-world-shaded-relief
   url: http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}
 
 - name: ESRI World Physical
+  slug: esri-world-physical
   url: http://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}

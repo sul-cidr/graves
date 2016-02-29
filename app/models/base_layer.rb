@@ -11,6 +11,8 @@
 
 class BaseLayer < ActiveRecord::Base
 
+  include Slug
+
   validates :name, presence: true
   validates :url, presence: true
 

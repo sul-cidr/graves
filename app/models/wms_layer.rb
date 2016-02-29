@@ -12,6 +12,8 @@
 
 class WmsLayer < ActiveRecord::Base
 
+  include Slug
+
   validates :name, presence: true
   validates :address, presence: true
   validates :layer, presence: true

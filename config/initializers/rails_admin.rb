@@ -80,7 +80,31 @@ RailsAdmin.config do |config|
 
 
   config.model BaseLayer do
+
+    label 'Base Layer'
     object_label_method :name
+
+    edit do
+      field :name
+      field :slug
+      field :url
+    end
+
+  end
+
+
+  config.model WmsLayer do
+
+    label 'WMS Layer'
+    object_label_method :name
+
+    edit do
+      field :name
+      field :slug
+      field :address
+      field :layer
+    end
+
   end
 
 

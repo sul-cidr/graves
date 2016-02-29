@@ -22,7 +22,7 @@
 FactoryGirl.define do
 
   sequence :narrative_slug do |n|
-    "narrative-#{n}"
+    "slug-#{n}"
   end
 
   sequence :narrative_title do |n|

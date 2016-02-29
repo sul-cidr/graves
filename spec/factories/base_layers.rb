@@ -10,11 +10,19 @@
 #
 
 FactoryGirl.define do
+
+  sequence :base_layer_slug do |n|
+    "slug-#{n}"
+  end
+
   factory :base_layer do
 
     name 'Layer'
 
+    slug { generate(:base_layer_slug) }
+
     url 'http://{s}.osm.org/{z}/{x}/{y}.png'
 
   end
+
 end

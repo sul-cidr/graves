@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228011322) do
+ActiveRecord::Schema.define(version: 20160229003926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,10 @@ ActiveRecord::Schema.define(version: 20160228011322) do
     t.string   "url",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug",       null: false
   end
+
+  add_index "base_layers", ["slug"], name: "index_base_layers_on_slug", unique: true, using: :btree
 
   create_table "collection_tag_rels", force: :cascade do |t|
     t.integer "collection_id", null: false
@@ -189,7 +192,10 @@ ActiveRecord::Schema.define(version: 20160228011322) do
     t.string   "layer",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug",       null: false
   end
+
+  add_index "wms_layers", ["slug"], name: "index_wms_layers_on_slug", unique: true, using: :btree
 
   add_foreign_key "collection_tag_rels", "collections"
   add_foreign_key "collection_tag_rels", "tags"
