@@ -58,13 +58,19 @@ describe 'Section HTML', type: :feature do
     it 'page' do
 
       layers = (1..2).map do |i|
-        create(:base_layer, id: i, url: "url#{i}")
+
+        create(
+          :base_layer,
+          slug: "slug-#{i}",
+          url: "url#{i}",
+        )
+
       end
 
       markup = <<-HTML
         <div
           class="section"
-          data-base-layer="2"
+          data-base-layer="slug-2"
         ></div>
       HTML
 
@@ -89,15 +95,15 @@ describe 'Section HTML', type: :feature do
 
       create(
         :wms_layer,
-        id: 1,
-        address: "address1",
-        layer: "layer1",
+        slug: 'slug-1',
+        address: 'address1',
+        layer: 'layer1',
       )
 
       markup = <<-HTML
         <div
           class="section"
-          data-wms-layer="1"
+          data-wms-layer="slug-1"
         ></div>
       HTML
 

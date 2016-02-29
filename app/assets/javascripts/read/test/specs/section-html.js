@@ -193,7 +193,7 @@ describe('Section HTML', function() {
 
     beforeEach(function() {
       utils.start(dataBaseLayerHTML);
-      div = $('.section[data-base-layer="2"]');
+      div = $('.section[data-base-layer="slug-2"]');
     });
 
 
@@ -221,7 +221,7 @@ describe('Section HTML', function() {
 
     beforeEach(function() {
       utils.start(dataWmsLayerHTML);
-      div = $('.section[data-wms-layer="1"]');
+      div = $('.section[data-wms-layer="slug-1"]');
     });
 
 

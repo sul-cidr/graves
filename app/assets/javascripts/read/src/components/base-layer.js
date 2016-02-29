@@ -11,7 +11,7 @@ import Component from './component';
 
 @connect(
   state => ({
-    layerId: state.map.baseLayerId
+    slug: state.map.baseLayerSlug
   }),
   actions,
 )
@@ -20,7 +20,7 @@ export default class extends Component {
 
   static propTypes = {
     map: PropTypes.object.isRequired,
-    layerId: PropTypes.number,
+    slug: PropTypes.string,
     changeBaseLayer: PropTypes.func.isRequired,
   };
 
@@ -40,7 +40,7 @@ export default class extends Component {
    * Show the default layer.
    */
   componentDidMount() {
-    this.props.changeBaseLayer(window.GRAVES.baseLayerId);
+    this.props.changeBaseLayer(window.GRAVES.baseLayerSlug);
   }
 
 
@@ -54,10 +54,10 @@ export default class extends Component {
       this.props.map.removeLayer(this.layer);
     }
 
-    if (this.props.layerId) {
+    if (this.props.slug) {
 
       // Get layer configuration.
-      let config = window.GRAVES.baseLayers[this.props.layerId];
+      let config = window.GRAVES.baseLayers[this.props.slug];
 
       this.layer = L.tileLayer(config.url, {
         zIndex: 0,

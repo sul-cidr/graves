@@ -12,7 +12,7 @@ import Component from './component';
 
 @connect(
   state => ({
-    layerId: state.map.baseLayerId
+    slug: state.map.baseLayerSlug
   }),
   actions,
 )
@@ -20,7 +20,7 @@ export default class extends Component {
 
 
   static propTypes = {
-    layerId: PropTypes.number,
+    slug: PropTypes.string,
     changeBaseLayer: PropTypes.func.isRequired,
   };
 
@@ -32,7 +32,7 @@ export default class extends Component {
 
     let options = _.map(window.GRAVES.baseLayers, function(layer) {
       return {
-        value: layer.id,
+        value: layer.slug,
         label: layer.name,
       };
     });
@@ -46,7 +46,7 @@ export default class extends Component {
         options={options}
 
         onChange={this.onChange.bind(this)}
-        value={this.props.layerId}
+        value={this.props.slug}
 
       />
     );

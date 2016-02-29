@@ -46,10 +46,10 @@ class Narrative < ActiveRecord::Base
   def for_js
     {
 
-      baseLayers: BaseLayer.all.index_by(&:id),
-      baseLayerId: base_layer.id,
+      baseLayers: BaseLayer.all.index_by(&:slug),
+      baseLayerSlug: base_layer.slug,
 
-      wmsLayers: WmsLayer.all.index_by(&:id),
+      wmsLayers: WmsLayer.all.index_by(&:slug),
 
     }
   end

@@ -8,13 +8,13 @@ import Component from './component';
 
 
 @connect(state => ({
-  layerId: state.map.wmsLayerId
+  slug: state.map.wmsLayerSlug
 }))
 export default class extends Component {
 
 
   static propTypes = {
-    layerId: PropTypes.number,
+    slug: PropTypes.string,
     map: PropTypes.object.isRequired,
   };
 
@@ -40,10 +40,10 @@ export default class extends Component {
       this.props.map.removeLayer(this.layer);
     }
 
-    if (this.props.layerId) {
+    if (this.props.slug) {
 
       // Get layer configuration.
-      let config = window.GRAVES.wmsLayers[this.props.layerId];
+      let config = window.GRAVES.wmsLayers[this.props.slug];
 
       this.layer = L.tileLayer.wms(config.address, {
         layers: config.layer,

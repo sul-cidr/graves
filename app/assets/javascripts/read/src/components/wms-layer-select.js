@@ -12,7 +12,7 @@ import Component from './component';
 
 @connect(
   state => ({
-    layerId: state.map.wmsLayerId
+    slug: state.map.wmsLayerSlug
   }),
   actions,
 )
@@ -20,7 +20,7 @@ export default class extends Component {
 
 
   static propTypes = {
-    layerId: PropTypes.number,
+    slug: PropTypes.string,
     changeWmsLayer: PropTypes.func.isRequired,
   };
 
@@ -32,7 +32,7 @@ export default class extends Component {
 
     let options = _.map(window.GRAVES.wmsLayers, function(layer) {
       return {
-        value: layer.id,
+        value: layer.slug,
         label: layer.name,
       };
     });
@@ -46,7 +46,7 @@ export default class extends Component {
         options={options}
 
         onChange={this.onChange.bind(this)}
-        value={this.props.layerId}
+        value={this.props.slug}
 
       />
     );

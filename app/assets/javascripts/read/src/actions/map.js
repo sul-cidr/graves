@@ -11,12 +11,12 @@ import {
 /**
  * Change the base layer.
  *
- * @param {Number} layerId
+ * @param {Number} slug
  */
-export function changeBaseLayer(layerId) {
+export function changeBaseLayer(slug) {
   return {
     type: CHANGE_BASE_LAYER,
-    layerId,
+    slug,
   };
 }
 
@@ -24,12 +24,12 @@ export function changeBaseLayer(layerId) {
 /**
  * Change the WMS layer.
  *
- * @param {Number} layerId
+ * @param {Number} slug
  */
-export function changeWmsLayer(layerId) {
+export function changeWmsLayer(slug) {
   return {
     type: CHANGE_WMS_LAYER,
-    layerId,
+    slug,
   };
 }
 

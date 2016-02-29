@@ -172,7 +172,7 @@ describe('Collection HTML', function() {
 
     beforeEach(function() {
       utils.start(dataBaseLayerHTML);
-      span = $('.collection[data-base-layer="2"]');
+      span = $('.collection[data-base-layer="slug-2"]');
     });
 
 
@@ -200,7 +200,7 @@ describe('Collection HTML', function() {
 
     beforeEach(function() {
       utils.start(dataWmsLayerHTML);
-      span = $('.collection[data-wms-layer="1"]');
+      span = $('.collection[data-wms-layer="slug-1"]');
     });
 
 

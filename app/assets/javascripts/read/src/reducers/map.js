@@ -13,8 +13,8 @@ import {
 
 const initialState = {
 
-  baseLayerId: null,
-  wmsLayerId: null,
+  baseLayerSlug: null,
+  wmsLayerSlug: null,
   choropleth: null,
 
   showMenu: false,
@@ -29,11 +29,11 @@ const handlers = {
   }),
 
   [CHANGE_BASE_LAYER]: (state, action) => ({
-    baseLayerId: action.layerId,
+    baseLayerSlug: action.slug,
   }),
 
   [CHANGE_WMS_LAYER]: (state, action) => ({
-    wmsLayerId: action.layerId,
+    wmsLayerSlug: action.slug,
   }),
 
   [CHANGE_CHOROPLETH]: (state, action) => ({

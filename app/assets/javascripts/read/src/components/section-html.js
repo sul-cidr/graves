@@ -189,15 +189,15 @@ export default class extends Component {
 
     let attrs = utils.parseAttrs(div, {
 
-      mapId:        ['data-map-id', Number],
-      baseLayerId:  ['data-base-layer', Number],
-      wmsLayerId:   ['data-wms-layer', Number],
-      zoom:         ['data-zoom', Number],
-      tags:         ['data-tags', utils.parseTags],
+      mapId:          ['data-map-id', Number],
+      zoom:           ['data-zoom', Number],
+      tags:           ['data-tags', utils.parseTags],
 
-      start:        'data-start',
-      end:          'data-end',
-      choropleth:   'data-choropleth',
+      wmsLayerSlug:   'data-wms-layer',
+      baseLayerSlug:  'data-base-layer',
+      start:          'data-start',
+      end:            'data-end',
+      choropleth:     'data-choropleth',
 
     });
 
@@ -208,13 +208,13 @@ export default class extends Component {
     }
 
     // Set the base layer.
-    if (attrs.baseLayerId) {
-      this.props.changeBaseLayer(attrs.baseLayerId);
+    if (attrs.baseLayerSlug) {
+      this.props.changeBaseLayer(attrs.baseLayerSlug);
     }
 
     // Set the WMS layer.
-    if (attrs.wmsLayerId) {
-      this.props.changeWmsLayer(attrs.wmsLayerId);
+    if (attrs.wmsLayerSlug) {
+      this.props.changeWmsLayer(attrs.wmsLayerSlug);
     }
 
     // Set the choropleth.
