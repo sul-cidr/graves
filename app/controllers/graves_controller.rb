@@ -2,7 +2,7 @@
 class GravesController < ApplicationController
 
   def index
-    @narratives = Narrative.all
+    @narratives = Narrative.all.order{ pub_date.asc }
   end
 
   def read
