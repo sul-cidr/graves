@@ -42,41 +42,23 @@ namespace :csv do
 
     args.with_defaults(path: 'geocoding-qa.csv')
 
+    # Omit PostGIS + timestamps.
+    fields = Collection.column_names - [
+      'geometry',
+      'created_at',
+      'updated_at',
+    ]
+
+    geojson = Collection.as_geojson(*fields)
+
     CSV.open(args.path, 'w',
       :write_headers => true,
-      :headers => [
-        'province',
-        'province_cdc',
-        'county',
-        'county_cdc',
-        'town',
-        'town_cdc',
-      ]
+      :headers => fields + ['latlon']
     ) do |fh|
 
-      Collection.all.each do |c|
-
-        row = {}
-
-        if c.town
-          row[:town] = c.town_c
-          row[:town_cdc] = c.town.name_c
-          row[:county] = c.county_c
-          row[:county_cdc] = c.town.county.name_c
-          row[:province] = c.province_c
-          row[:province_cdc] = c.town.county.province.name_c
-        elsif c.county
-          row[:county] = c.county_c
-          row[:county_cdc] = c.county.name_c
-          row[:province] = c.province_c
-          row[:province_cdc] = c.county.province.name_c
-        elsif c.province
-          row[:province] = c.province_c
-          row[:province_cdc] = c.province.name_c
-        end
-
-        fh << row.values
-
+      geojson['features'].each do |f|
+        lonlat = f['geometry']['coordinates'].join(',')
+        fh << f['properties'].merge('latlon' => lonlat)
       end
 
     end
