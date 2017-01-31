@@ -79,9 +79,6 @@
     "waypoints": "4.0.0",
     "wellknown": "0.3.4"
   },
-  "scripts": {
-    "postinstall": "./node_modules/grunt-cli/bin/grunt compile:min"
-  },
   "browser": {
     "waypoints": "./node_modules/waypoints/lib/noframework.waypoints.js"
   },
