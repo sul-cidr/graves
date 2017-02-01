@@ -1,4 +1,15 @@
 
 #footer.block
 
+  p.credit
+    |Download the data for counties (
+    a = link_to "GeoJSON", api_counties_path(format: "json")
+    | ,
+    a< = link_to "CSV", api_counties_path(format: "csv")
+    | ) and collections (
+    a = link_to "GeoJSON", api_collections_path(format: "json")
+    | ,
+    a< = link_to "CSV", api_collections_path(format: "csv")
+    | ).
+
   p.credit Built by the <a href="http://library.stanford.edu/department/cidr">Center for Interdisciplinary Digital Research</a> in the <a href="http://library.stanford.edu/">Stanford University Libraries</a>.
