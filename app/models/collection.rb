@@ -133,4 +133,17 @@ class Collection < ActiveRecord::Base
     !!province_c and !!county_c and !!town_c
   end
 
+  #
+  # Serialize to CSV
+  #
+  # @param options [Hash]. CSV options
+  #
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |row|
+        csv << row.attributes.values_at(*column_names)
+      end
+    end
+  end
 end
