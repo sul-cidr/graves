@@ -43,6 +43,7 @@ export default class extends Component {
   constructor(props) {
 
     super(props);
+    window.props = props;
 
     this.state = {
       map: null,
@@ -84,7 +85,9 @@ export default class extends Component {
     });
 
     let resetButton = new L.Control.resetButton({
-      onClick: 'theBehaviour'
+      onClick: function() {
+        map.setView([lat, lng], zoom);
+      },
     });
 
     map.addControl(zoomControl);
@@ -101,13 +104,13 @@ export default class extends Component {
    */
   render() {
     return (
-      <div id="map">
+        <div id="map">
 
         <div id="leaflet" ref="leaflet">
         </div>
 
         {this.state.map ? (
-          <behaviors>
+            <behaviors>
 
             <CountyPaths map={this.state.map} />
             <BaseLayer map={this.state.map} />
@@ -120,7 +123,7 @@ export default class extends Component {
             <Widgets />
             <Controls />
 
-          </behaviors>
+            </behaviors>
         ) : null}
 
       </div>

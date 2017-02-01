@@ -9,7 +9,7 @@ L.Control.resetButton = L.Control.extend({
     const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-reset');
     L.DomEvent.disableClickPropagation(container);
 
-    container.onclick = this.options.onclick;
+    container.onclick = this.options.onClick;
     return container;
   }
 });

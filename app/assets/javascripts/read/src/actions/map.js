@@ -5,6 +5,7 @@ import {
   CHANGE_WMS_LAYER,
   CHANGE_CHOROPLETH,
   TOGGLE_MAP_MENU,
+  RESET_MAP_SETTINGS,
 } from '../constants';
 
 
@@ -56,5 +57,11 @@ export function toggleMapMenu(show) {
   return {
     type: TOGGLE_MAP_MENU,
     show,
+  };
+}
+
+export function resetMapSettings() {
+  return {
+    type: RESET_MAP_SETTINGS,
   };
 }
