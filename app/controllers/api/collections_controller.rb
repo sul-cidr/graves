@@ -21,6 +21,10 @@ module API
           :notice,
         )
 
+      respond_to do |format|
+        format.json
+        format.csv { render text: Collection.to_csv }
+      end
     end
 
   end
