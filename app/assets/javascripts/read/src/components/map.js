@@ -15,6 +15,7 @@ import CountyPaths from './county-paths';
 import SectionBoxes from './section-boxes';
 import MapLine from './map-line';
 import Controls from './controls';
+import './map-reset-button';
 import Widgets from './widgets';
 
 
@@ -82,7 +83,12 @@ export default class extends Component {
       position: 'topright'
     });
 
+    let resetButton = new L.Control.resetButton({
+      onClick: 'theBehaviour'
+    });
+
     map.addControl(zoomControl);
+    map.addControl(resetButton);
 
     // Mount behaviors.
     this.setState({ map });
