@@ -13,6 +13,7 @@ import './specs/section-html';
 import './specs/section-boxes';
 import './specs/choropleth';
 import './specs/time-slider';
+import './specs/reset-button';
 
 
 import * as utils from './utils';
