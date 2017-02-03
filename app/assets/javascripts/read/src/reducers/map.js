@@ -41,12 +41,7 @@ const handlers = {
     choropleth: action.code,
   }),
 
-  [RESET_MAP_SETTINGS]: (state) => ({
-    baseLayerSlug: null,
-    wmsLayerSlug: null,
-    choropleth: null,
-    showMenu: false,
-  }),
+  [RESET_MAP_SETTINGS]: (state) => (initialState),
 
 };
 
