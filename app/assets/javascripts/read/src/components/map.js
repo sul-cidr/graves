@@ -18,6 +18,7 @@ import Controls from './controls';
 import './map-reset-button';
 import Widgets from './widgets';
 
+import './navigation-hash';
 
 import {
   MAP,
@@ -92,6 +93,9 @@ export default class extends Component {
 
     map.addControl(zoomControl);
     map.addControl(resetButton);
+
+    // Add navigation hash for bookmarks
+    let navHash = new L.Hash(map);
 
     // Mount behaviors.
     this.setState({ map });
