@@ -17,6 +17,7 @@ import MapLine from './map-line';
 import Controls from './controls';
 import Widgets from './widgets';
 
+import './navigation-hash';
 
 import {
   MAP,
@@ -83,6 +84,9 @@ export default class extends Component {
     });
 
     map.addControl(zoomControl);
+
+    // Add navigation hash for bookmarks
+    let navHash = new L.Hash(map);
 
     // Mount behaviors.
     this.setState({ map });

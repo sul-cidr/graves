@@ -7,6 +7,7 @@ import Component from './component';
 import MapMenu from './map-menu';
 import TimeSlider from './time-slider';
 import Legend from './legend';
+import NavigationHash from './navigation-hash';
 
 
 @connect(state => ({
@@ -43,6 +44,7 @@ export default class extends Component {
         !this.props.timeSlider ?
         <Legend /> : null
       }
+      <NavigationHash />
 
       </div>
     );
