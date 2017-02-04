@@ -15,7 +15,7 @@ L.Control.Bookmark = L.Control.extend({
     onAdd: function(map) {
         var el = L.DomUtil.create('span'),
             $el = $(el);
-        $el.addClass('leaflet-control-zoom leaflet-bar leaflet-control');
+        $el.addClass('leaflet-bar leaflet-control');
         $el.attr('id', 'bookmark-control');
         return el;
     },
@@ -36,7 +36,7 @@ L.Hash = function(map, options={}) {
     if (map) {
         this.init(map);
         L.control.bookmark($.extend({}, options, {
-            position: 'bottomright'
+            position: 'topright'
         })).addTo(map);
     }
 };
@@ -119,19 +119,19 @@ L.Hash.prototype = {
         var hash = this.formatHash(this.map);
         if (this.lastHash != hash) {
             // location.replace(hash);
-            $('#bookmark-text').val(location.origin + location.pathname + hash);
-            $('#bookmark-text').select();
+            $('#bookmark-link').attr('href', location.origin + location.pathname + hash);
             this.lastHash = hash;
         }
     },
 
     movingMap: false,
     update: function() {
-      // var hash = location.hash;
-      var bookmark = $('#bookmark-text').val();
+      var bookmark;
       if (location.hash) {
         bookmark = location.href;
-        location.hash = "";
+        // location.hash = "";
+      } else {
+        bookmark = $('#bookmark-link').attr('href');
       }
       if (bookmark) {
         var hash = '#/' + (bookmark.split('#/')[1] || "");
@@ -204,88 +204,22 @@ export default class extends Component {
 
     componentDidMount() {
       $('#bookmark-control').append(this.refs.bookmark);
-      $(this.refs.bookmarkText).select();
+    }
+
+    setBookmarkLink(event) {
+      $('#bookmark-link').attr('href', $('#bookmark-link').attr('href', ));
     }
 
     render() {
       return (
         <span ref="bookmark">
-          <input type="text" readOnly="true" id="bookmark-text" ref="bookmarkText" value="Bookmark"/>
-          <a href="#" title="Bookmark">
+          <a href="#"
+             id="bookmark-link"
+             title="Bookmark"
+             onMouseEnter={this.setBookmarkLink} >
             <i className="fa fa-bookmark" aria-hidden="true"></i>
           </a>
         </span>
       );
     }
 }
-
-
-// import Component from './component';
-
-// export default class extends Component {
-//   render() {
-//     return (
-//       <span style={{
-//         position: "absolute",
-//         zIndex: 401,
-//         bottom: 15,
-//         height: 24,
-//         width: 70,
-//         paddingLeft: 15,
-//         paddingRight: 15,
-//         backgroundColor: "white",
-//         fontFamily: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
-//         fontSize: 12,
-//         right: 25
-//     }}>
-//       <i class="fa fa-bookmark-o" aria-hidden="true"></i>
-//     </span>
-//     );
-//   }
-// }
-
-// export default class extends Component {
-
-
-//   /**
-//    * Render the legend.
-//    */
-//   componentDidMount() {
-
-//     let svg = d3.select(this.refs.svg);
-
-//     let g = svg.append('g');
-//     g.append('text')
-//       .attr('id', "bookmark")
-//       .attr('transform', 'translate(0, 16)')
-//       .text('🔖')
-//       .append('i')
-//       .classed('fa fa-bookmark-o', true)
-//       .attr('aria-hidden', "true");
-
-//   }
-
-
-//   *
-//    * Render the legend container.
-
-//   render() {
-//     return (
-//       <svg ref="svg" style={{
-//         position: "absolute",
-//         zIndex: 401,
-//         bottom: 15,
-//         height: 24,
-//         width: 70,
-//         paddingLeft: 15,
-//         paddingRight: 15,
-//         backgroundColor: "white",
-//         fontFamily: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
-//         fontSize: 20,
-//         right: 25
-//     }}></svg>
-//     );
-//   }
-
-
-// }
