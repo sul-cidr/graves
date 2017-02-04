@@ -35,9 +35,6 @@ L.Hash = function(map, options={}) {
 
     if (map) {
         this.init(map);
-        L.control.bookmark($.extend({}, options, {
-            position: 'topright'
-        })).addTo(map);
     }
 };
 

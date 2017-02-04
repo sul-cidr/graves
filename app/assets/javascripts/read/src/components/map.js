@@ -91,8 +91,13 @@ export default class extends Component {
       },
     });
 
+    let bookmarkControl = L.control.bookmark({
+      position: 'topright'
+    });
+
     map.addControl(zoomControl);
     map.addControl(resetButton);
+    map.addControl(bookmarkControl);
 
     // Add navigation hash for bookmarks
     let navHash = new L.Hash(map);
