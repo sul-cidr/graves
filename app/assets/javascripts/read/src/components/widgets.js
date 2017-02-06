@@ -7,7 +7,7 @@ import Component from './component';
 import MapMenu from './map-menu';
 import TimeSlider from './time-slider';
 import Legend from './legend';
-import NavigationHash from './navigation-hash';
+import Bookmark from './bookmark';
 
 
 @connect(state => ({
@@ -46,7 +46,10 @@ export default class extends Component {
         <Legend /> : null
       }
 
-      <NavigationHash map={ this.props.map } />
+      {
+        this.props.map ?
+        <Bookmark map={ this.props.map } /> : null
+      }
       </div>
     );
   }
