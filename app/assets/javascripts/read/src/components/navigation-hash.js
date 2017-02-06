@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import L from 'leaflet';
-
+import * as actions from '../actions/map';
 import React from 'react';
 import Component from './component'
 
@@ -12,29 +12,27 @@ var HAS_HASHCHANGE = (function() {
 })();
 
 L.Control.Bookmark = L.Control.extend({
-    onAdd: function(map) {
-        var el = L.DomUtil.create('span'),
-            $el = $(el);
-        $el.addClass('leaflet-bar leaflet-control');
-        $el.attr('id', 'bookmark-control');
-        return el;
+    initialize: function(options) {
+      L.Util.setOptions(this, options);
+      this.container = options.container;
     },
-
-    onRemove: function(map) {
-        // Nothing to do here
+    onAdd: function(map, container) {
+        var el = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-bookmark');
+        el.appendChild(this.container);
+        return el;
     }
 });
 
-L.control.bookmark = function(opts) {
-    return new L.Control.Bookmark(opts);
+L.control.bookmark = function(options) {
+    return new L.Control.Bookmark(options);
 }
 
 
-L.Hash = function(map, options={}) {
+L.Hash = function(map, bookmark) {
     this.onHashChange = L.Util.bind(this.onHashChange, this);
 
     if (map) {
-        this.init(map);
+        this.init(map, bookmark);
     }
 };
 
@@ -66,7 +64,6 @@ L.Hash.formatHash = function(map) {
     var center = map.getCenter(),
         zoom = map.getZoom(),
         precision = Math.max(0, Math.ceil(Math.log(zoom) / Math.LN2));
-
     return "#/" + [zoom,
         center.lat.toFixed(precision),
         center.lng.toFixed(precision),
@@ -80,11 +77,11 @@ L.Hash.prototype = {
 
     parseHash: L.Hash.parseHash,
     formatHash: L.Hash.formatHash,
+    bookmark: null,
 
-    init: function(map) {
+    init: function(map, bookmark) {
         this.map = map;
-
-        // reset the hash
+        this.bookmark = bookmark;
         this.lastHash = null;
         this.onHashChange();
 
@@ -112,26 +109,25 @@ L.Hash.prototype = {
         if (this.movingMap || !this.map._loaded) {
             return false;
         }
-
-        var hash = this.formatHash(this.map);
+        var hash = this.formatHash(this.map, this.options);
         if (this.lastHash != hash) {
             // location.replace(hash);
-            $('#bookmark-link').attr('href', location.origin + location.pathname + hash);
+            this.bookmark.setAttribute('href', location.origin + location.pathname + hash);
             this.lastHash = hash;
         }
     },
 
     movingMap: false,
     update: function() {
-      var bookmark;
+      var bookmarkHref;
       if (location.hash) {
-        bookmark = location.href;
+        bookmarkHref = location.href;
         // location.hash = "";
       } else {
-        bookmark = $('#bookmark-link').attr('href');
+        bookmarkHref = this.bookmark.getAttribute('href');
       }
-      if (bookmark) {
-        var hash = '#/' + (bookmark.split('#/')[1] || "");
+      if (bookmarkHref) {
+        var hash = '#/' + (bookmarkHref.split('#/')[1] || "");
         if (hash === this.lastHash) {
             return;
         }
@@ -200,23 +196,24 @@ L.Map.prototype.removeHash = function() {
 export default class extends Component {
 
     componentDidMount() {
-      $('#bookmark-control').append(this.refs.bookmark);
-    }
-
-    setBookmarkLink(event) {
-      $('#bookmark-link').attr('href', $('#bookmark-link').attr('href', ));
+      // Add navigation hash for bookmarks
+      let bookmarkControl = L.control.bookmark({
+        position: 'topright',
+        container: this.refs.container
+      });
+      this.props.map.addControl(bookmarkControl);
+      let navHash = new L.Hash(this.props.map, this.refs.bookmark);
     }
 
     render() {
       return (
-        <span ref="bookmark">
+        <div ref="container">
           <a href="#"
-             id="bookmark-link"
-             title="Bookmark"
-             onMouseEnter={this.setBookmarkLink} >
+             ref="bookmark"
+             title="Bookmark">
             <i className="fa fa-bookmark" aria-hidden="true"></i>
           </a>
-        </span>
+        </div>
       );
     }
 }

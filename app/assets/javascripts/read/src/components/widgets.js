@@ -18,6 +18,7 @@ export default class extends Component {
 
 
   static propTypes = {
+    map: PropTypes.object.isRequired,
     mapMenu: PropTypes.bool.isRequired,
     timeSlider: PropTypes.bool.isRequired,
   };
@@ -44,8 +45,8 @@ export default class extends Component {
         !this.props.timeSlider ?
         <Legend /> : null
       }
-      <NavigationHash />
 
+      <NavigationHash map={ this.props.map } />
       </div>
     );
   }

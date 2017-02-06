@@ -18,8 +18,6 @@ import Controls from './controls';
 import './map-reset-button';
 import Widgets from './widgets';
 
-import './navigation-hash';
-
 import {
   MAP,
   FOCUS_MAP,
@@ -91,16 +89,8 @@ export default class extends Component {
       },
     });
 
-    let bookmarkControl = L.control.bookmark({
-      position: 'topright'
-    });
-
     map.addControl(zoomControl);
     map.addControl(resetButton);
-    map.addControl(bookmarkControl);
-
-    // Add navigation hash for bookmarks
-    let navHash = new L.Hash(map);
 
     // Mount behaviors.
     this.setState({ map });
@@ -129,7 +119,7 @@ export default class extends Component {
             <MapLine map={this.state.map} />
 
             <CollectionModal />
-            <Widgets />
+            <Widgets map={this.state.map}/>
             <Controls />
 
             </behaviors>
