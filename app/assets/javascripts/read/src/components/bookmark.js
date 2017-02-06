@@ -36,15 +36,15 @@ L.Hash = function(map, bookmark) {
 };
 
 L.Hash.parseHash = function(hash) {
-    if(hash.indexOf('#/') === 0) {
+    if(hash.indexOf('#') === 0) {
         hash = hash.substr(1);
     }
     var args = hash.split("/");
-    if (args.length >= 3) {
-        var zoom = parseInt(args[1], 10),
-        lat = parseFloat(args[2]),
-        lon = parseFloat(args[3]),
-        scroll = parseInt(args[4], 10);
+    if (args.length == 4) {
+        var zoom = parseInt(args[0], 10),
+        lat = parseFloat(args[1]),
+        lon = parseFloat(args[2]),
+        scroll = parseInt(args[3], 10);
         if (isNaN(zoom) || isNaN(lat) || isNaN(lon) || isNaN(scroll)) {
             return false;
         } else {
@@ -63,7 +63,7 @@ L.Hash.formatHash = function(map) {
     var center = map.getCenter(),
         zoom = map.getZoom(),
         precision = Math.max(0, Math.ceil(Math.log(zoom) / Math.LN2));
-    return "#/" + [zoom,
+    return "#" + [zoom,
         center.lat.toFixed(precision),
         center.lng.toFixed(precision),
         $('body').scrollTop()
@@ -126,7 +126,7 @@ L.Hash.prototype = {
         bookmarkHref = this.bookmark.getAttribute('href');
       }
       if (bookmarkHref) {
-        var hash = '#/' + (bookmarkHref.split('#/')[1] || "");
+        var hash = '#' + (bookmarkHref.split('#')[1] || "");
         if (hash === this.lastHash) {
             return;
         }
