@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import L from 'leaflet';
-import * as actions from '../actions/map';
 import React from 'react';
 import Component from './component'
 
