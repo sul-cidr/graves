@@ -9,6 +9,7 @@ import {
   CHANGE_CHOROPLETH,
   TOGGLE_MAP_MENU,
   RESET_MAP_SETTINGS,
+  CLOSE_TUTORIAL_MODAL,
 } from '../constants';
 
 
@@ -19,6 +20,7 @@ const initialState = {
   choropleth: null,
 
   showMenu: false,
+  showTutorialModal: true,
 
 };
 
@@ -42,6 +44,10 @@ const handlers = {
   }),
 
   [RESET_MAP_SETTINGS]: (state) => (initialState),
+
+  [CLOSE_TUTORIAL_MODAL]: () => ({
+    showTutorialModal: false,
+  }),
 
 };
 
