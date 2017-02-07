@@ -3,6 +3,7 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import L from 'leaflet';
+import { Modal } from 'react-bootstrap'
 
 import config from './map.yml';
 import Component from './component';
@@ -16,6 +17,7 @@ import SectionBoxes from './section-boxes';
 import MapLine from './map-line';
 import Controls from './controls';
 import './map-reset-button';
+import TutorialModal from './tutorial-modal';
 import Widgets from './widgets';
 
 import {
@@ -103,7 +105,8 @@ export default class extends Component {
    */
   render() {
     return (
-        <div id="map">
+      <div id="map">
+        <TutorialModal />
 
         <div id="leaflet" ref="leaflet">
         </div>
