@@ -1,7 +1,13 @@
 import $ from 'jquery';
 import L from 'leaflet';
-import React from 'react';
-import Component from './component'
+import React, { PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import Component from './component';
+import * as mapActions from '../actions/map';
+import * as timeSliderActions from '../actions/time-slider';
+import * as filterActions from '../actions/filters';
+
 
 // Adapted from http://mlevans.com/leaflet-hash/
 var HAS_HASHCHANGE = (function() {
@@ -40,18 +46,29 @@ L.Hash.parseHash = function(hash) {
         hash = hash.substr(1);
     }
     var args = hash.split("/");
-    if (args.length == 4) {
+    if (args.length == 11) {
         var zoom = parseInt(args[0], 10),
         lat = parseFloat(args[1]),
         lon = parseFloat(args[2]),
-        scroll = parseInt(args[3], 10);
+        scroll = parseInt(args[3], 10),
+        mapMenu = (args[7] || "").toLowerCase() === "true",
+        timeMenu = (args[8] || "").toLowerCase() === "true",
+        start = new Date(args[9]),
+        end = new Date(args[10]);
         if (isNaN(zoom) || isNaN(lat) || isNaN(lon) || isNaN(scroll)) {
             return false;
         } else {
             return {
                 center: new L.LatLng(lat, lon),
                 zoom: zoom,
-                scroll: scroll
+                scroll: scroll,
+                baseLayerSlug: args[4] || "",
+                wmsLayerSlug: args[5] || "",
+                choropleth: args[6] || "",
+                showMenu: mapMenu,
+                timeSlider: timeMenu,
+                start: start,
+                end: end
             };
         }
     } else {
@@ -59,14 +76,22 @@ L.Hash.parseHash = function(hash) {
     }
 };
 
-L.Hash.formatHash = function(map) {
+L.Hash.formatHash = function(map, options) {
     var center = map.getCenter(),
         zoom = map.getZoom(),
         precision = Math.max(0, Math.ceil(Math.log(zoom) / Math.LN2));
+    options = options || {};
     return "#" + [zoom,
         center.lat.toFixed(precision),
         center.lng.toFixed(precision),
-        $('body').scrollTop()
+        $('body').scrollTop(),
+        options.baseLayerSlug || "",
+        options.wmsLayerSlug || "",
+        options.choropleth || "",
+        options.showMenu || "",
+        options.timeSlider || "",
+        (options.start && options.start.toISOString()) || "",
+        (options.end && options.end.toISOString()) || ""
     ].join("/");
 },
 
@@ -77,13 +102,15 @@ L.Hash.prototype = {
     parseHash: L.Hash.parseHash,
     formatHash: L.Hash.formatHash,
     bookmark: null,
+    options: {},
 
-    init: function(map, bookmark) {
+    init: function(map, bookmark, options) {
         this.map = map;
         this.bookmark = bookmark;
+        this.options = options;
+
         this.lastHash = null;
         this.onHashChange();
-
         if (!this.isListening) {
             this.startListening();
         }
@@ -104,20 +131,22 @@ L.Hash.prototype = {
     onMapMove: function() {
         // bail if we're moving the map (updating from a hash),
         // or if the map is not yet loaded
-
         if (this.movingMap || !this.map._loaded) {
             return false;
         }
-        var hash = this.formatHash(this.map, this.options);
+        this.updateHash();
+    },
+
+    updateHash: function(options={}) {
+        var hash = this.formatHash(this.map, {...this.options, ...options});
         if (this.lastHash != hash) {
             // location.replace(hash);
             this.bookmark.setAttribute('href', location.origin + location.pathname + hash);
             this.lastHash = hash;
         }
     },
-
     movingMap: false,
-    update: function() {
+    update: function(options) {
       var bookmarkHref;
       if (location.hash) {
         bookmarkHref = location.href;
@@ -139,6 +168,7 @@ L.Hash.prototype = {
         } else {
             this.onMapMove(this.map);
         }
+        return parsed;
       }
     },
 
@@ -192,7 +222,31 @@ L.Map.prototype.removeHash = function() {
     this._hash.removeFrom();
 };
 
+@connect(
+  state => ({
+    mapMenu: state.map.showMenu,
+    mapOptions: state.map,
+    timeSlider: state.timeSlider.show,
+    start: state.filters.startDate,
+    end: state.filters.endDate
+  }),
+  dispatch => {
+    return bindActionCreators({
+      ...mapActions,
+      ...timeSliderActions,
+      ...filterActions,
+    }, dispatch);
+  }
+)
 export default class extends Component {
+
+    static propTypes = {
+      changeBaseLayer: PropTypes.func.isRequired,
+      changeWmsLayer: PropTypes.func.isRequired,
+      changeChoropleth: PropTypes.func.isRequired,
+      toggleTimeSlider: PropTypes.func.isRequired,
+      setDateFilter: PropTypes.func.isRequired,
+    };
 
     componentDidMount() {
       // Add navigation hash for bookmarks
@@ -201,7 +255,30 @@ export default class extends Component {
         container: this.refs.container
       });
       this.props.map.addControl(bookmarkControl);
-      let navHash = new L.Hash(this.props.map, this.refs.bookmark);
+      // Init the navigation hash and sets controls as needed
+      this.navHash = new L.Hash(this.props.map, this.refs.bookmark);
+      let options = this.navHash.update();
+      if (options) {
+        // Anti-pattern right here? ¯\_(ツ)_/¯
+        this.props.changeBaseLayer(options.baseLayerSlug);
+        this.props.changeWmsLayer(options.wmsLayerSlug);
+        this.props.changeChoropleth(options.choropleth);
+        this.props.toggleMapMenu(options.showMenu);
+        this.props.toggleTimeSlider(options.timeSlider);
+        this.props.setDateFilter(options.start, options.end);  // doesn't work
+      }
+    }
+
+    componentDidUpdate() {
+      // Prepare the new options to be saved as a bookmark
+      let options = {...this.props.mapOptions, ...{
+        timeSlider: this.props.timeSlider,
+        start: this.props.start,
+        end: this.props.end
+      }};
+      if (options) {
+        this.navHash.updateHash(options);
+      }
     }
 
     render() {
