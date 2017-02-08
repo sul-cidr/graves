@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import rbush from 'rbush';
 
 import * as actions from '../actions/collections';
 import * as events from '../events/collections';
@@ -99,6 +100,7 @@ export default class extends Component {
    * Render collection markers.
    */
   componentDidUpdate() {
+    this.tree = rbush();
 
     if (this.props.geojson) {
 
@@ -122,6 +124,10 @@ export default class extends Component {
         // Size by grave count.
         let r = countToRadius(f.properties.num_graves);
         marker.setRadius(r);
+
+        // Insert the item representation to the rtree
+        let item = this.toRbushTreeItem(marker);
+        this.tree.insert(item);
 
         let label = (
           f.properties.town_p ||
@@ -187,6 +193,31 @@ export default class extends Component {
   getLonLat(id) {
     let latLng = this.idToMarker[id].getLatLng();
     return [latLng.lng, latLng.lat];
+  }
+
+  /**
+   * Calculate in projected space a bounding envelope of the circle using radius
+   *
+   * @param {L.marker} marker
+   * @return {Object}
+   */
+  toRbushTreeItem(marker) {
+    let r = marker.getRadius();
+    let projected = this.props.map.project(marker.getLatLng());
+    let unprojectedBounds = L.bounds(
+      L.point(projected.x - r, projected.y - r), L.point(projected.x + r, projected.y + r)
+    );
+    let bounds = L.latLngBounds(
+      this.props.map.unproject(unprojectedBounds.min), this.props.map.unproject(unprojectedBounds.max)
+    );
+
+    return {
+      minX: bounds.getWest(),
+      minY: bounds.getSouth(),
+      maxX: bounds.getEast(),
+      maxY: bounds.getNorth(),
+      id: marker.options.feature.id
+    };
   }
 
 
