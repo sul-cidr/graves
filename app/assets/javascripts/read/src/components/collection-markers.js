@@ -80,7 +80,9 @@ export default class extends Component {
 
     // SELECT
     this.group.on('click', e => {
-      this.props.selectCollection(e.layer.options.feature);
+      let localItems = this.tree.search(this.toRbushTreeItem(e.layer));
+      let localMarkers = localItems.map((item) => this.idToMarker[item.id]);
+      this.props.selectCollection(e.layer.options.feature, localMarkers);
     });
 
     window.markers = this;

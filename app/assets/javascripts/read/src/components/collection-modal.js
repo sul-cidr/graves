@@ -19,6 +19,7 @@ import FieldDate from './field-date';
   state => ({
     feature: state.collections.selected,
     show: state.collections.showModal,
+    nearby: state.collections.nearby,
   }),
 
   actions
@@ -31,6 +32,19 @@ export default class extends Component {
     feature: PropTypes.object,
     show: PropTypes.bool.isRequired,
   };
+  
+  closeAndOpen(near) {
+    this.onHide();
+    this.props.selectCollection(near.options.feature, this.props.nearby);
+  }
+
+  markerClasses(num_graves) {
+    let classes = 'collection'
+    if (!num_graves) {
+      classes += ' no-count'
+    }
+    return classes;
+  }
 
 
   /**
@@ -107,6 +121,46 @@ export default class extends Component {
               pinyin={c.notice.title_p}
             />
 
+          </Modal.Body>
+
+          { this.props.nearby.length > 1 &&
+            <Modal.Header>
+              <Modal.Title componentClass='h5'>
+                Graves nearby
+              </Modal.Title>
+            </Modal.Header>
+          }
+
+          <Modal.Body>
+            {this.props.nearby.map((near) => {
+              if (near.options.feature.id !== this.props.feature.id) {
+                return (
+                  <div
+                    className='collection-container'
+                    key={near.options.feature.id}
+                    onClick={this.closeAndOpen.bind(this, near)}
+                  >
+                    <div
+                      className='collection-marker'
+                    >
+                      <div
+                        className={this.markerClasses(near.options.feature.properties.num_graves)}
+                        style={{ width: near.options.radius * 2, height: near.options.radius * 2 }}
+                      />
+                    </div>
+                    <div className='collection-text collection-title'>
+                      Grave Collection #{near.options.feature.id}
+                    </div>
+                    <div className='collection-text'>
+                        <FieldNumeric
+                          field="Number of Graves Relocated"
+                          value={near.options.feature.properties.num_graves}
+                        />
+                    </div>
+                  </div>
+                );
+              }
+            })}
           </Modal.Body>
 
         </Modal>

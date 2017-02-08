@@ -1,0 +1,44 @@
+
+  // Collection markers
+.modal-dialog {
+  .collection-title {
+    font-weight: bold;
+  }
+
+  .collection-container {
+    height: 60px;
+    position: relative;
+    cursor: pointer;
+    &:hover, &:active {
+      background-color: darken(white, 10%);
+      border-radius: 3px;
+    }
+  }
+
+  .collection-text {
+    display: block;
+    margin-left: 70px;
+  }
+
+  .collection-marker {
+    display: inline-block;
+    position: absolute;
+    height: 60px;
+    width: 60px;
+  }
+
+  .collection {
+    border: 2px solid @color-yellow;
+    border-radius: 99999px;
+    background-color: fade(darken(@color-blue, 25%), 20%);
+    margin: 0 auto;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+
+    &.no-count {
+      background-color: fade(darken(@color-blue, 10%), 70%);
+      border: none;
+    }
+  }
+}
