@@ -377,8 +377,5 @@ DEPENDENCIES
   web-console (~> 2.0)
   with_model
 
-RUBY VERSION
-   ruby 2.2.2p95
-
 BUNDLED WITH
    1.14.3
