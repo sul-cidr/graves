@@ -7,6 +7,7 @@ import Component from './component';
 import * as mapActions from '../actions/map';
 import * as timeSliderActions from '../actions/time-slider';
 import * as filterActions from '../actions/filters';
+import moment from 'moment';
 
 
 // Adapted from http://mlevans.com/leaflet-hash/
@@ -90,8 +91,8 @@ L.Hash.formatHash = function(map, options) {
         options.choropleth || "",
         options.showMenu || "",
         options.timeSlider || "",
-        (options.start && options.start.toISOString()) || "",
-        (options.end && options.end.toISOString()) || ""
+        (options.start && moment(options.start).isValid()) ? options.start.toISOString() : "",
+        (options.end && moment(options.end).isValid()) ? options.end.toISOString() : ""
     ].join("/");
 },
 
@@ -260,12 +261,20 @@ export default class extends Component {
       let options = this.navHash.update();
       if (options) {
         // Anti-pattern right here? ¯\_(ツ)_/¯
-        this.props.changeBaseLayer(options.baseLayerSlug);
-        this.props.changeWmsLayer(options.wmsLayerSlug);
-        this.props.changeChoropleth(options.choropleth);
         this.props.toggleMapMenu(options.showMenu);
         this.props.toggleTimeSlider(options.timeSlider);
-        this.props.setDateFilter(options.start, options.end);  // doesn't work
+        if (options.baseLayerSlug) {
+          this.props.changeBaseLayer(options.baseLayerSlug);
+        }
+        if (options.wmsLayerSlug) {
+          this.props.changeWmsLayer(options.wmsLayerSlug);
+        }
+        if (options.choropleth) {
+          this.props.changeChoropleth(options.choropleth);
+        }
+        if (options.start && options.end) {
+          this.props.setDateFilter(options.start, options.end);  // doesn't work
+        }
       }
     }
 
