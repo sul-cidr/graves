@@ -18,7 +18,6 @@ import Controls from './controls';
 import './map-reset-button';
 import Widgets from './widgets';
 
-
 import {
   MAP,
   FOCUS_MAP,
@@ -120,7 +119,7 @@ export default class extends Component {
             <MapLine map={this.state.map} />
 
             <CollectionModal />
-            <Widgets />
+            <Widgets map={this.state.map}/>
             <Controls />
 
             </behaviors>
