@@ -10,6 +10,9 @@ set :home_directory, "/opt/app/#{fetch(:user)}"
 set :deploy_to, "#{fetch(:home_directory)}/#{{fetch(:application)}}"
 set :bundle_without, nil
 
+set :npm_target_path, -> { release_path }
+set :npm_flags, '--production --silent --no-progress'
+
 server "#{fetch(:deploy_host)}.stanford.edu", user: fetch(:user), roles: %w{web db app}
 
 # Default branch is :master
