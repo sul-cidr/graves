@@ -3,9 +3,11 @@ lock '3.4.0'
 
 set :application, 'graves'
 set :repo_url, 'https://github.com/sul-cidr/graves.git'
+set :user, 'cidr'
+
 set :deploy_host, ENV['CAP_DEPLOY_HOST']
-set :user, ENV['CAP_USER']
-set :deploy_to, ENV['CAP_DEPLOY_TO']
+set :home_directory, "/opt/app/#{fetch(:user)}"
+set :deploy_to, "#{fetch(:home_directory)}/#{{fetch(:application)}}"
 set :bundle_without, nil
 
 server "#{fetch(:deploy_host)}.stanford.edu", user: fetch(:user), roles: %w{web db app}

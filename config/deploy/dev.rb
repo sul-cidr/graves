@@ -6,6 +6,11 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
+# server uses standardized suffix
+server 'cidr-graves-dev.stanford.edu', user: fetch(:user), roles: %w{web db app}
+set :bundle_without, %w(test deployment development).join(' ')
+
+Capistrano::OneTimeKey.generate_one_time_key!
 
 set :rails_env, "development"
 
