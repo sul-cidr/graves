@@ -1,7 +1,7 @@
 
 source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.7.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -64,7 +64,7 @@ group :test do
 end
 
 group :deployment do
-  gem 'capistrano', '~> 3.0'
+  gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
