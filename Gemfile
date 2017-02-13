@@ -27,7 +27,6 @@ gem 'method_hooks'
 gem 'unicode'
 gem 'rgeo-shapefile'
 gem 'slim-rails'
-gem 'dotenv-rails'
 gem 'oj'
 gem 'rails_admin'
 gem 'devise'
@@ -35,6 +34,7 @@ gem 'geocoder'
 gem 'colorize'
 gem 'high_voltage'
 gem 'paperclip'
+gem 'config'
 
 group :development do
 
