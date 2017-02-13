@@ -23,3 +23,6 @@ set :rails_env, 'production'
 
 set :npm_target_path, -> { release_path }
 set :npm_flags, '--production --silent --no-progress'
+
+before 'deploy:publishing', :compile_assets
+before 'deploy:publishing', :upload_assets

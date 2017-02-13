@@ -60,3 +60,13 @@ Finally, manually restore the backup data into the postgres database by running:
 Once this completes, `rails s` and `grunt` to start the development server with compiled CSS and JS bundles and run the backend application.
 
 You can now see graves running at `http://localhost:3000`.
+
+## Deployment
+Deployment for graves is done using capistrano. 
+
+```sh
+# An example
+$ bundle exec cap prod deploy
+```
+
+The deployment task does call a local `grunt compile:min` and uses capistrano to upload these to the deployed machine. To run this, make sure that you have installed the JavaScript dependencies.
