@@ -28,7 +28,7 @@ Config.setup do |config|
   #   * nil  - no change
   #   * :downcase - convert to lower case
   #
-  config.env_converter = :nil
+  config.env_converter = nil
 
   # Parse numeric values as integers instead of strings.
   #
