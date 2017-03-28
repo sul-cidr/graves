@@ -174,7 +174,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.0.1)
-    nokogiri (1.7.0.1)
+    nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
     oj (2.18.1)
     options (2.3.2)
@@ -384,4 +384,4 @@ DEPENDENCIES
   with_model
 
 BUNDLED WITH
-   1.14.4
+   1.14.5
