@@ -3,10 +3,17 @@
 .modal-dialog {
   .collection-title {
     font-weight: bold;
+    font-size: 1em;
+  }
+
+  .collection-content {
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
   }
 
   .collection-container {
-    height: 60px;
+    height: 70px;
     position: relative;
     cursor: pointer;
     &:hover, &:active {
@@ -23,8 +30,8 @@
   .collection-marker {
     display: inline-block;
     position: absolute;
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
   }
 
   .collection {

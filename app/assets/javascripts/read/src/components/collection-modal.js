@@ -32,7 +32,7 @@ export default class extends Component {
     feature: PropTypes.object,
     show: PropTypes.bool.isRequired,
   };
-  
+
   closeAndOpen(near) {
     this.onHide();
     this.props.selectCollection(near.options.feature, this.props.nearby);
@@ -148,14 +148,27 @@ export default class extends Component {
                         style={{ width: near.options.radius * 2, height: near.options.radius * 2 }}
                       />
                     </div>
-                    <div className='collection-text collection-title'>
-                      Grave Collection #{near.options.feature.id}
-                    </div>
-                    <div className='collection-text'>
-                        <FieldNumeric
-                          field="Number of Graves Relocated"
-                          value={near.options.feature.properties.num_graves}
-                        />
+                    <div className='collection-content'>
+                      <div className='collection-text collection-title'>
+                       {near.options.feature.properties.province_p}{' '} {near.options.feature.properties.province_c}
+                       {near.options.feature.properties.county_p &&
+                         ', '
+                       }
+                       {near.options.feature.properties.county_p}{' '}
+                       {near.options.feature.properties.county_c}
+                       {near.options.feature.properties.town_p &&
+                         ', '
+                       }
+                       {near.options.feature.properties.town_p}{' '}
+                       {near.options.feature.properties.town_c}
+
+                      </div>
+                      <div className='collection-text'>
+                          <FieldNumeric
+                            field="Number of Graves Relocated"
+                            value={near.options.feature.properties.num_graves}
+                          />
+                      </div>
                     </div>
                   </div>
                 );
