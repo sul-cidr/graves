@@ -17,7 +17,7 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/sys
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-set :bundle_without, %w(test deployment development).join(' ')
+set :bundle_without, %w(test deployment).join(' ')
 
 set :rails_env, 'production'
 
