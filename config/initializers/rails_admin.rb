@@ -56,6 +56,9 @@ RailsAdmin.config do |config|
     'WmsLayer',
     'Tag',
     'User',
+    'Province',
+    'Town',
+    'County',
   ]
 
 
