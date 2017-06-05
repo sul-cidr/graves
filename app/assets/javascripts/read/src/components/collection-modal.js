@@ -32,7 +32,7 @@ export default class extends Component {
     feature: PropTypes.object,
     show: PropTypes.bool.isRequired,
   };
-  
+
   closeAndOpen(near) {
     this.onHide();
     this.props.selectCollection(near.options.feature, this.props.nearby);
@@ -70,7 +70,19 @@ export default class extends Component {
 
           <Modal.Header closeButton>
             <Modal.Title>
-              Grave Collection #{this.props.feature.id}
+              <span id="title-location">
+                {c.province_p}{' '} {c.province_c}
+                {c.county_p &&
+                 ', '
+                }
+                {c.county_p}{' '}
+                {c.county_c}
+                {c.town_p &&
+                 ', '
+                }
+                {c.town_p}{' '}
+                {c.town_c}
+              </span>
             </Modal.Title>
           </Modal.Header>
 
@@ -79,24 +91,6 @@ export default class extends Component {
             <FieldNumeric
               field="Number of Graves Relocated"
               value={c.num_graves}
-            />
-
-            <FieldTranslated
-              field="Province"
-              chinese={c.province_c}
-              pinyin={c.province_p}
-            />
-
-            <FieldTranslated
-              field="County"
-              chinese={c.county_c}
-              pinyin={c.county_p}
-            />
-
-            <FieldTranslated
-              field="Township"
-              chinese={c.town_c}
-              pinyin={c.town_p}
             />
 
             <FieldDate
@@ -121,6 +115,7 @@ export default class extends Component {
               pinyin={c.notice.title_p}
             />
 
+            Grave Collection #{this.props.feature.id}
           </Modal.Body>
 
           { this.props.nearby.length > 1 &&
