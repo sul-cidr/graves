@@ -149,7 +149,16 @@ export default class extends Component {
                       />
                     </div>
                     <div className='collection-content'>
+
+                      <div className='collection-text collection-date'>
+                        <FieldDate
+                        field="Relocation Deadline"
+                        date={near.options.feature.properties.notice.deadline}
+                        />
+                      </div>
+
                       <div className='collection-text collection-title'>
+
                        {near.options.feature.properties.province_p}{' '} {near.options.feature.properties.province_c}
                        {near.options.feature.properties.county_p &&
                          ', '
