@@ -136,12 +136,12 @@ export default class extends Component {
               if (near.options.feature.id !== this.props.feature.id) {
                 return (
                   <div
-                    className='collection-container'
+                    className={"collection-container " + ( near.options.feature.properties.notice.deadline ? 'has-date' : 'no-date') + " " + ( near.options.feature.properties.num_graves ? 'has-num-graves' : 'no-num-graves' )}
                     key={near.options.feature.id}
                     onClick={this.closeAndOpen.bind(this, near)}
                   >
                     <div
-                      className='collection-marker'
+                      className={"collection-marker " + ( near.options.feature.properties.notice.deadline ? 'has-date' : 'no-date') + " " + ( near.options.feature.properties.num_graves ? 'has-num-graves' : 'no-num-graves' )}
                     >
                       <div
                         className={this.markerClasses(near.options.feature.properties.num_graves)}

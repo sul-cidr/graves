@@ -13,7 +13,7 @@
   }
 
   .collection-container {
-    height: 100px;
+    height: 60;
     position: relative;
     cursor: pointer;
     &:hover, &:active {
@@ -22,9 +22,19 @@
     }
   }
 
+  .collection-container.has-date,
+  .collection-container.has-num-graves {
+    height: 80px;
+  }
+
+  .collection-container.has-date.has-num-graves {
+    height: 100px;
+    margin-top: 5px;
+  }
+
   .collection-text {
     display: block;
-    margin-left: 100px;
+    margin-left: 80px;
   }
 
   .collection-date {
@@ -35,8 +45,17 @@
   .collection-marker {
     display: inline-block;
     position: absolute;
+    height: 60px;
+    width: 60px;
+  }
+
+  .collection-marker.has-date,
+  .collection-marker.has-num-graves {
+    height: 80px;
+  }
+
+  .collection-marker.has-date.has-num-graves {
     height: 100px;
-    width: 100px;
   }
 
   .collection {
