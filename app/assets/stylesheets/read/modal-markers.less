@@ -3,10 +3,17 @@
 .modal-dialog {
   .collection-title {
     font-weight: bold;
+    font-size: 1em;
+  }
+
+  .collection-content {
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
   }
 
   .collection-container {
-    height: 60px;
+    height: 60;
     position: relative;
     cursor: pointer;
     &:hover, &:active {
@@ -15,9 +22,24 @@
     }
   }
 
+  .collection-container.has-date,
+  .collection-container.has-num-graves {
+    height: 80px;
+  }
+
+  .collection-container.has-date.has-num-graves {
+    height: 100px;
+    margin-top: 5px;
+  }
+
   .collection-text {
     display: block;
-    margin-left: 70px;
+    margin-left: 80px;
+  }
+
+  .collection-date {
+    font-size: 0.8em;
+    color: lighten(black, 40%);
   }
 
   .collection-marker {
@@ -25,6 +47,15 @@
     position: absolute;
     height: 60px;
     width: 60px;
+  }
+
+  .collection-marker.has-date,
+  .collection-marker.has-num-graves {
+    height: 80px;
+  }
+
+  .collection-marker.has-date.has-num-graves {
+    height: 100px;
   }
 
   .collection {
