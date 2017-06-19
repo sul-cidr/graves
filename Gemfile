@@ -35,6 +35,7 @@ gem 'colorize'
 gem 'high_voltage'
 gem 'paperclip'
 gem 'config'
+gem 'honeybadger', '~> 3.1'
 
 group :development do
 

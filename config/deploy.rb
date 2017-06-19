@@ -1,12 +1,10 @@
 set :application, 'graves'
 set :repo_url, 'https://github.com/sul-cidr/graves.git'
-set :user, 'cidr'
 
 # Default branch is :master
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
-set :home_directory, "/opt/app/#{fetch(:user)}"
-set :deploy_to, "#{fetch(:home_directory)}/#{fetch(:application)}"
+set :deploy_to, '/opt/app/cidr/graves'
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml config/secrets.yml}
