@@ -70,7 +70,7 @@ export default class extends Component {
 
     this.props.clearFilters();
 
-    // Unbing the resize listener.
+    // Unbind the resize listener.
     $(window).off('resize.time');
 
   }
@@ -114,7 +114,7 @@ export default class extends Component {
 
     let xScale = d3.time.scale()
       .domain(timeExtent)
-      .range([20, rect.width-20]);
+      .range([25, rect.width-25]);
 
     let xAxis = d3.svg.axis()
       .scale(xScale)
@@ -125,6 +125,10 @@ export default class extends Component {
       .on('brush', this.onBrush.bind(this))
       .x(xScale);
 
+    this.arc = d3.svg.arc()
+      .outerRadius(25)
+      .startAngle(0)
+      .endAngle(function(d, i) { return i ? -Math.PI : Math.PI; });
 
     // Markers
     context.selectAll('circle.collection')
@@ -156,6 +160,11 @@ export default class extends Component {
     this.handle = context.append('g')
       .call(this.brush)
       .attr('class', 'x brush');
+
+    // Handle "knobs"
+    this.handle.selectAll(".resize").append("path")
+      .attr("transform", "translate(0," + 25 + ")")
+      .attr("d", this.arc);
 
     // Brush <rect>.
     this.handle.selectAll('rect')

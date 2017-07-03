@@ -1,9 +1,7 @@
 
 source 'https://rubygems.org'
-ruby '2.2.2'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.7.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -29,7 +27,6 @@ gem 'method_hooks'
 gem 'unicode'
 gem 'rgeo-shapefile'
 gem 'slim-rails'
-gem 'dotenv-rails'
 gem 'oj'
 gem 'rails_admin'
 gem 'devise'
@@ -37,6 +34,8 @@ gem 'geocoder'
 gem 'colorize'
 gem 'high_voltage'
 gem 'paperclip'
+gem 'config'
+gem 'honeybadger', '~> 3.1'
 
 group :development do
 
@@ -67,7 +66,7 @@ group :test do
 end
 
 group :deployment do
-  gem 'capistrano', '~> 3.0'
+  gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'

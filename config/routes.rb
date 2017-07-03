@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :counties, only: [:index]
     resources :collections, only: [:index]
     resources :narratives, only: [:show]
+    resources :notices, only: [:index]
   end
 
   # Home page

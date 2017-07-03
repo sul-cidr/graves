@@ -7,6 +7,7 @@ import Component from './component';
 import MapMenu from './map-menu';
 import TimeSlider from './time-slider';
 import Legend from './legend';
+import Bookmark from './bookmark';
 
 
 @connect(state => ({
@@ -17,6 +18,7 @@ export default class extends Component {
 
 
   static propTypes = {
+    map: PropTypes.object.isRequired,
     mapMenu: PropTypes.bool.isRequired,
     timeSlider: PropTypes.bool.isRequired,
   };
@@ -44,6 +46,10 @@ export default class extends Component {
         <Legend /> : null
       }
 
+      {
+        this.props.map ?
+        <Bookmark map={ this.props.map } /> : null
+      }
       </div>
     );
   }

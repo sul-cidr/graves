@@ -31,7 +31,7 @@ export default class extends Component {
       .labelOffset(20)
       .orient('horizontal')
       .labelFormat(d3.format('0,000'))
-      .cells([7, 100, 1000, 10000])
+      .cells([7, 10000, 1000, 100])
       .labels(['Unknown'])
       .scale(scale);
 

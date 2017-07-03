@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def authenticate
     if Rails.env.production?
       authenticate_or_request_with_http_basic do |u, p|
-        u == ENV['GRAVES_USER'] && p == ENV['GRAVES_PASS']
+        u == Settings.GRAVES_USER && p == Settings.GRAVES_PASS
       end
     end
   end

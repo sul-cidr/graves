@@ -53,6 +53,16 @@ describe('Collection Markers', function() {
 
   });
 
+  it('adds markers to rtree that is searchable', function() {
+    utils.respondCollections(addMarkersJSON);
+    expect(markers.tree.collides({
+      minX: 2,
+      maxX: 4,
+      minY: 3,
+      maxY: 5,
+    })).toBe(true)
+  });
+
 
   describe('hover', function() {
 

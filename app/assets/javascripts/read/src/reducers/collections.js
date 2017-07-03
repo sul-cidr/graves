@@ -36,6 +36,7 @@ const handlers = {
   [SELECT_COLLECTION]: (state, action) => ({
     showModal: true,
     selected: action.feature,
+    nearby: action.nearby,
   }),
 
   [UNSELECT_COLLECTION]: () => ({

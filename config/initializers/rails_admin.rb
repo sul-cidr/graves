@@ -56,6 +56,9 @@ RailsAdmin.config do |config|
     'WmsLayer',
     'Tag',
     'User',
+    'Province',
+    'Town',
+    'County',
   ]
 
 
@@ -92,6 +95,57 @@ RailsAdmin.config do |config|
 
   end
 
+  config.model Collection do
+
+    configure :geometry do
+      show
+      help 'Optional - WKT format: POINT(-71.064544 42.28787)'
+    end
+
+    edit do
+      include_all_fields
+      field :geometry
+    end
+  end
+
+  config.model County do
+
+    configure :geometry do
+      show
+      help 'Optional - WKT format: POINT(-71.064544 42.28787)'
+    end
+
+    edit do
+      include_all_fields
+      field :geometry
+    end
+  end
+
+  config.model Province do
+
+    configure :geometry do
+      show
+      help 'Optional - WKT format: POINT(-71.064544 42.28787)'
+    end
+
+    edit do
+      include_all_fields
+      field :geometry
+    end
+  end
+
+  config.model Town do
+
+    configure :geometry do
+      show
+      help 'Optional - WKT format: POINT(-71.064544 42.28787)'
+    end
+
+    edit do
+      include_all_fields
+      field :geometry
+    end
+  end
 
   config.model WmsLayer do
 

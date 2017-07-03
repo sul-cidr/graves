@@ -15,8 +15,8 @@ import CountyPaths from './county-paths';
 import SectionBoxes from './section-boxes';
 import MapLine from './map-line';
 import Controls from './controls';
+import './map-reset-button';
 import Widgets from './widgets';
-
 
 import {
   MAP,
@@ -42,6 +42,7 @@ export default class extends Component {
   constructor(props) {
 
     super(props);
+    window.props = props;
 
     this.state = {
       map: null,
@@ -82,7 +83,14 @@ export default class extends Component {
       position: 'topright'
     });
 
+    let resetButton = new L.Control.resetButton({
+      onClick: function() {
+        map.setView([lat, lng], zoom);
+      },
+    });
+
     map.addControl(zoomControl);
+    map.addControl(resetButton);
 
     // Mount behaviors.
     this.setState({ map });
@@ -95,13 +103,13 @@ export default class extends Component {
    */
   render() {
     return (
-      <div id="map">
+        <div id="map">
 
         <div id="leaflet" ref="leaflet">
         </div>
 
         {this.state.map ? (
-          <behaviors>
+            <behaviors>
 
             <CountyPaths map={this.state.map} />
             <BaseLayer map={this.state.map} />
@@ -111,10 +119,10 @@ export default class extends Component {
             <MapLine map={this.state.map} />
 
             <CollectionModal />
-            <Widgets />
+            <Widgets map={this.state.map}/>
             <Controls />
 
-          </behaviors>
+            </behaviors>
         ) : null}
 
       </div>

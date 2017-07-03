@@ -8,6 +8,7 @@ import {
   CHANGE_WMS_LAYER,
   CHANGE_CHOROPLETH,
   TOGGLE_MAP_MENU,
+  RESET_MAP_SETTINGS,
 } from '../constants';
 
 
@@ -39,6 +40,8 @@ const handlers = {
   [CHANGE_CHOROPLETH]: (state, action) => ({
     choropleth: action.code,
   }),
+
+  [RESET_MAP_SETTINGS]: (state) => (initialState),
 
 };
 

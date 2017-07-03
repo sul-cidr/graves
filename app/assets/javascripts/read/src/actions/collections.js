@@ -55,10 +55,11 @@ function receiveCollections(geojson) {
  *
  * @param {Object} feature
  */
-export function selectCollection(feature) {
+export function selectCollection(feature, nearby) {
   return {
     type: SELECT_COLLECTION,
     feature: feature,
+    nearby: nearby,
   };
 }
 
