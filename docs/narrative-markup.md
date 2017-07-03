@@ -88,6 +88,18 @@ Set the start and end dates on the time slider, which has the effect of filterin
 <span class="collection" data-start="2008-01-01" data-end="2012-01-01">... text ...</span>
 ```
 
+## `data-tl` + `data-br` + `data-label`
+
+These attributes can be used to create a "section box" on the map, which is displayed as a black box around a region of the map, annotated with a text label. This makes it possible to split an essay up into a set of high-level parts, each corresponding to a general region on the map, and to dynamically connect the sections with those regions.
+
+`data-tl` is a latitude-longitude coordinate, separated by a comma, that defines the **top left** of the box on the map. `data-br` is a second coordinate that marks the **bottom right** corner. `data-label` is the plain text label that gets displayed along the top of the box.
+
+These should be applied to a `<div>` element, which wraps around one or more `<p>` elements that contain the actualy text content:
+
+```html
+<div class="section" data-tl="43.765575,81.825472" data-br="25.1882035,112.6664964" data-label="Section Label">
+```
+
 ---
 
 And, of course, all of these attributes can be mixed together. For example, if a span needs to focus on a collection marker, change the base layer, and change the demographic overlay:
