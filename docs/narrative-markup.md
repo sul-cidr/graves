@@ -98,6 +98,10 @@ These should be applied to a `<div>` element, which wraps around one or more `<p
 
 ```html
 <div class="section" data-tl="43.765575,81.825472" data-br="25.1882035,112.6664964" data-label="Section Label">
+  <p>First graf...</p>
+  <p>Second graf...</p>
+  ...
+</div>
 ```
 
 ---
