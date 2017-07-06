@@ -167,7 +167,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mimemagic (0.3.0)
-    mini_portile2 (2.1.0)
+    mini_portile2 (2.2.0)
     minitest (5.10.1)
     multi_json (1.11.2)
     multipart-post (2.0.0)
@@ -175,8 +175,8 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.0.1)
-    nokogiri (1.7.1)
-      mini_portile2 (~> 2.1.0)
+    nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
     oj (2.18.1)
     options (2.3.2)
     orm_adapter (0.5.0)
@@ -361,6 +361,7 @@ DEPENDENCIES
   honeybadger (~> 3.1)
   jbuilder (~> 2.0)
   method_hooks
+  nokogiri (>= 1.7.2)
   oj
   paperclip
   pg
@@ -386,4 +387,4 @@ DEPENDENCIES
   with_model
 
 BUNDLED WITH
-   1.14.5
+   1.14.6
