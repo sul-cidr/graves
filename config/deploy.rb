@@ -7,7 +7,7 @@ ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 set :deploy_to, '/opt/app/cidr/graves'
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_files, %w[config/database.yml config/secrets.yml config/honeybadger.yml]
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system data}
