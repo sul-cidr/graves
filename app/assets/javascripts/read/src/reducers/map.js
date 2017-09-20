@@ -20,8 +20,16 @@ const initialState = {
   choropleth: null,
 
   showMenu: false,
-  showTutorialModal: true,
+  showTutorialModal: tutorialState(),
 
+};
+
+function tutorialState() {
+  if (sessionStorage.getItem('tutorialModal') == 'false') {
+    return false;
+  } else {
+    return true;
+  }
 };
 
 
