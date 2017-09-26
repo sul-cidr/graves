@@ -18,8 +18,10 @@ export function loadCollections() {
 
     // Notify start.
     dispatch(requestCollections());
+    let slug = location.pathname.indexOf('/read/') == 0 && location.pathname.split('/read/')[1],
+        data = slug ? {tag: slug} : {};
 
-    $.getJSON('/api/collections.json', json => {
+    $.getJSON('/api/collections.json', data, json => {
       dispatch(receiveCollections(json));
     })
 
