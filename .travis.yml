@@ -4,6 +4,9 @@ language: ruby
 rvm:
   - 2.3.4
 
+env:
+  - TRAVIS_NODE_VERSION="8.0.0"
+
 notifications:
   email: false
 
@@ -28,7 +31,10 @@ before_script:
   - bundle exec rake db:test:prepare
 
   # Build static payloads.
-  - npm install -g npm@3.7.5
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - node --version
+  - npm install -g npm@5.0.1
+  - npm --version
   - npm install -g grunt-cli
   - npm install
 
