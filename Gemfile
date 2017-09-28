@@ -48,7 +48,6 @@ group :development do
 
   gem 'annotate'
   gem 'rack-livereload'
-  gem 'rb-readline'
 
 end
 
