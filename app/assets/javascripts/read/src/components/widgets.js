@@ -8,6 +8,7 @@ import MapMenu from './map-menu';
 import TimeSlider from './time-slider';
 import Legend from './legend';
 import Bookmark from './bookmark';
+import MiniMap from './mini-map';
 
 
 @connect(state => ({
@@ -50,6 +51,12 @@ export default class extends Component {
         this.props.map ?
         <Bookmark map={ this.props.map } /> : null
       }
+
+      {
+        (this.props.map && !this.props.timeSlider) ?
+        <MiniMap map={ this.props.map } /> : null
+      }
+
       </div>
     );
   }
