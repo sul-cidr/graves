@@ -52,11 +52,12 @@ export default class extends Component {
         <Bookmark map={ this.props.map } /> : null
       }
 
-      {
-        (this.props.map && !this.props.timeSlider) ?
-        <MiniMap map={ this.props.map } /> : null
-      }
-
+      <div>
+        {
+          (this.props.map && !this.props.timeSlider) ?
+          <MiniMap map={ this.props.map } /> : null
+        }
+      </div>
       </div>
     );
   }
