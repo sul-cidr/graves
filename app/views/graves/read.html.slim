@@ -2,9 +2,13 @@
 
 = content_for :css do
   = stylesheet_link_tag "/stylesheets/read"
+  = stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+
 
 = content_for :js do
+  = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
   = javascript_include_tag "/javascripts/read"
+  = javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 
 
 #header(style="background-image: url('#{@narrative.hero_image.url}')")
@@ -31,5 +35,52 @@
 
 #read
 
+#tutorial-modal
+
 javascript:
   window.GRAVES = #{{@narrative.for_js.to_json}}
+
+<div class="tutorial-modal modal fade in" tabindex="-1" role="dialog" style="display: block">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Exploring Chinese Grave Relocation</h4>
+      </div>
+      <div class="modal-body">
+      <p>1. The Chinese Deathscape features an augmented narrative platform. Anytime you see an underlined passage of text, you can click on it to reposition the map to the location relevant to the narrative.</p>
+        <img className="tutorial-image centered" src="/images/tutorial/underlined_text.png" />
+
+        <p>2. At any time you can turn on or off map options by toggling the button on the top left of the map. This opens a dropdown menu featuring a variety of demographic and historic map layers. You can choose different combinations of base layers, demographic overlays, or historic overlay, and then cancel them out by clicking the gray X. Please note that, depending upon your location and zoom level in the map, not every historic map or demographic overlay will show up clearly.</p>
+        <div className="flex-container-images">
+          <img className="tutorial-image" src="/images/tutorial/map_options_slider.png" />
+          <img className="tutorial-image" src="/images/tutorial/map_options_menus.png" />
+        </div>
+
+        <p>3. At any time you can return to the overview map by clicking on the reset sign on the top right.</p>
+        <img className="tutorial-image centered" src="/images/tutorial/reset_button.png" />
+
+        <p>4. Each grave relocation event is assigned a circle of a different diameter. The map key on the bottom left explains what these diameters mean. In certain cases, the number of relocated graves is unknown. In those cases, the relocation is assigned a smaller, dark-blue circle.</p>
+        <img className="tutorial-image centered" src="/images/tutorial/grave_size_legend.png" />
+
+        <p>5.  In addition to clicking on the text, you can interact with the map directly by clicking on the grave relocation circles. When you click on a circle, a window is opened containing further information about this relocation.</p>
+        <img className="tutorial-image centered" src="/images/tutorial/single_circle.png" />
+
+        <p>6. Because many grave relocations have taken place in close geographic proximity to one another, you will often find overlapping circles. When you click on a collection of overlapping circles, the pop-up menu will include a list of “Graves Nearby,” listing other relocations in that geographic area.</p>
+        <img className="tutorial-image centered" src="/images/tutorial/overlapping_circles.png" />
+
+        <p>7. You can also navigate the dataset using the time slider, which can be turned on using the toggle in the top left of the map. There are two ways to interact with the time slider. To filter the data according to a specific time span, simply click and drag your mouse on the time slider to indicate whatever date range you wish. Once you have created a time range, you can also animate the map by clicking and dragging the time range left or right. At any time, you can adjust the start and end dates of your filter by adjusting the time slider handles.</p>
+        <div className="flex-container-images">
+          <img className="tutorial-image" src="/images/tutorial/time_slider.png" />
+          <img className="tutorial-image" src="/images/tutorial/timeline.png" />
+        </div>
+
+        <p>8. If you would like to cite or share a specific map stage (i.e., a geographic location, along with specific demographic layers, historic maps, or other features), click on the bookmark icon on the top right. When you click on this icon, the URL in your browser will update to include all relevant information of that map state. Simply highlight and copy this URL, which you can then send or cite. Anyone who navigates to that URL will find the same map state as when you clicked the citation icon</p>
+        <img className="tutorial-image centered" src="/images/tutorial/bookmark_button.png" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default close-modal" data-dismiss="modal" aria-label="close">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
