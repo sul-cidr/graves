@@ -106,7 +106,6 @@ export default class extends Component {
   render() {
     return (
       <div id="map">
-        <TutorialModal />
 
         <div id="leaflet" ref="leaflet">
         </div>

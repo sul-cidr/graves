@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import classNames from 'classnames';
 
-import * as actions from '../actions/map';
+import * as actions from '../actions/tutorial';
 
 import Component from './component';
 
@@ -11,7 +11,7 @@ import Component from './component';
 @connect(
 
   state => ({
-    show: state.map.showTutorialModal,
+    show: state.tutorial.showTutorialModal,
   }),
 
   actions
