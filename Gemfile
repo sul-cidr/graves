@@ -36,7 +36,7 @@ gem 'high_voltage'
 gem 'paperclip'
 gem 'config'
 gem 'honeybadger', '~> 3.1'
-gem 'nokogiri', '>= 1.7.2'
+gem 'nokogiri', '>= 1.8.1'
 
 group :development do
 
