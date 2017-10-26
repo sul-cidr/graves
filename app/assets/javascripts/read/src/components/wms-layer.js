@@ -1,5 +1,5 @@
 
-
+import _ from 'lodash';
 import L from 'leaflet';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -26,7 +26,7 @@ export default class extends Component {
    */
   constructor(props) {
     super(props);
-    this.layer = null;
+    this.layers = {};
   }
 
 
@@ -35,23 +35,32 @@ export default class extends Component {
    */
   render() {
 
-    // Remove the previous layer.
-    if (this.layer) {
-      this.props.map.removeLayer(this.layer);
-    }
-
     if (this.props.slug) {
+      let slugs = this.props.slug.toString().split(",");
 
-      // Get layer configuration.
-      let config = window.GRAVES.wmsLayers[this.props.slug];
+      // Remove unselected but active layers.
+      for (let slug of Object.keys(this.layers)) {
+        if (!(slug in slugs)) {
+          let layer = this.layers[slug];
+          this.props.map.removeLayer(layer);
+          // this.layers.delete(slug);
+          delete this.layers[slug];
+        }
+      }
 
-      this.layer = L.tileLayer.wms(config.address, {
-        layers: config.layer,
-        transparent: true,
-        format: 'image/png',
-      });
-
-      this.props.map.addLayer(this.layer);
+      // Add selected layers.
+      for (let slug of slugs) {
+        let config = window.GRAVES.wmsLayers[slug];
+        let layer = L.tileLayer.wms(config.address, {
+          layers: config.layer,
+          transparent: true,
+          format: 'image/png',
+        });
+        if (!(slug in this.layers)) {
+          this.layers[slug] = layer;
+          this.props.map.addLayer(layer);
+        }
+      }
 
     }
 

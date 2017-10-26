@@ -42,7 +42,7 @@ describe('WMS Layers', function() {
       utils.openWmsLayerSelect();
 
       // Click on a layer option.
-      let option = $(`.Select-option:nth-child(${i})`);
+      let option = $(`.Select-option:nth-child(1)`);
       TestUtils.Simulate.mouseDown(option.get(0));
 
       assert.wmsLayerParams(`address${i}`, `layer${i}`);

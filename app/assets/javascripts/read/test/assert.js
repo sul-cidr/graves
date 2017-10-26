@@ -37,10 +37,11 @@ export function baseLayerUrl(url) {
 export function wmsLayerParams(address, layer) {
 
   let wmsLayer = utils.getComponent(WmsLayer);
+  let pairs = _.map(Object.values(wmsLayer.layers), v => `${v._url}-${v.wmsParams.layers}`);
+  let index = pairs.indexOf(`${address}-${layer}`);
 
-  expect(wmsLayer.props.map.hasLayer(wmsLayer.layer)).toBeTruthy();
-  expect(wmsLayer.layer._url).toEqual(address);
-  expect(wmsLayer.layer.wmsParams.layers).toEqual(layer);
+  expect(index).not.toEqual(-1);
+  expect(wmsLayer.props.map.hasLayer(Object.values(wmsLayer.layers)[index])).toBeTruthy();
 
 }
 
