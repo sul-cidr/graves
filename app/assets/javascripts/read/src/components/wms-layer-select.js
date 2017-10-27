@@ -43,6 +43,11 @@ export default class extends Component {
         className="wms-layer-select"
         placeholder="Select an overlay map"
 
+        multi
+        joinValues
+        simpleValue
+        separator=","
+
         options={options}
 
         onChange={this.onChange.bind(this)}
@@ -60,7 +65,7 @@ export default class extends Component {
    * @param {Object} option
    */
   onChange(option) {
-    let id = option ? option.value : null;
+    let id = option ? option : null;
     this.props.changeWmsLayer(id);
   }
 
