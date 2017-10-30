@@ -5,6 +5,7 @@ import React, { PropTypes } from 'react';
 import Component from './component';
 
 import chinaJSON from '../data/CHN.geo.json';
+import taiwanJSON from '../data/TWN.geo.json';
 
 
 export default class extends Component {
@@ -53,6 +54,12 @@ export default class extends Component {
     this.svg
       .append('path')
       .datum(chinaJSON)
+      .attr('d', path);
+
+    this.svg
+      .append('path')
+      .datum(taiwanJSON)
+      .style('opacity', 0.5)
       .attr('d', path);
 
   }
