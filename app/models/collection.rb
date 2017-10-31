@@ -24,6 +24,7 @@
 #  county_id   :integer
 #  town_id     :integer
 #  legacy_id   :integer
+#  no_marker   :boolean          default: false
 #
 
 class Collection < ActiveRecord::Base

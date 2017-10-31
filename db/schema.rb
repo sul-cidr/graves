@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229003926) do
+ActiveRecord::Schema.define(version: 20171030182504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160229003926) do
     t.integer  "county_id"
     t.integer  "town_id"
     t.integer  "legacy_id"
+    t.boolean  "no_marker",                                            default: false
   end
 
   add_index "collections", ["county_id"], name: "index_collections_on_county_id", using: :btree

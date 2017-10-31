@@ -102,6 +102,12 @@ RailsAdmin.config do |config|
       help 'Optional - WKT format: POINT(-71.064544 42.28787)'
     end
 
+    configure :no_marker do
+      show
+      help 'Optional - When checked, no marker, popup, or modal ' \
+           'will be rendered on the map'
+    end
+
     edit do
       include_all_fields
       field :geometry

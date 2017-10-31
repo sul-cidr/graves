@@ -22,7 +22,8 @@ module API
         :town_p,
         :town_c,
         :tag_list,
-        :notice
+        :notice,
+        :no_marker
       )
 
       respond_to do |format|
