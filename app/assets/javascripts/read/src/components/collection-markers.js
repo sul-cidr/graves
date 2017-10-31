@@ -111,25 +111,38 @@ export default class extends Component {
 
       _.each(this.props.geojson.features, f => {
 
-        let date = moment(f.properties.notice.deadline);
+        let marker;
+        if (!f.properties.no_marker) {
 
-        let cx = classNames('collection', {
-          nocount: !f.properties.num_graves,
-        });
+          let date = moment(f.properties.notice.deadline);
 
-        let marker = L.circleMarker(f.geometry.coordinates, {
-          feature: f,
-          className: cx,
-          date,
-        });
+          let cx = classNames('collection', {
+            nocount: !f.properties.num_graves,
+          });
 
-        // Size by grave count.
-        let r = countToRadius(f.properties.num_graves);
-        marker.setRadius(r);
+          marker = L.circleMarker(f.geometry.coordinates, {
+            feature: f,
+            className: cx,
+            date,
+          });
 
-        // Insert the item representation to the rtree
-        let item = this.toRbushTreeItem(marker);
-        this.tree.insert(item);
+          // Size by grave count.
+          let r = countToRadius(f.properties.num_graves);
+          marker.setRadius(r);
+
+          // Insert the item representation to the rtree
+          let item = this.toRbushTreeItem(marker);
+          this.tree.insert(item);
+
+        } else {
+          marker = L.circleMarker(f.geometry.coordinates, {
+            feature: f,
+            className: classNames('collection', 'nomarker')
+          });
+          marker.off('click');
+          marker.off('onmouseover');
+          marker.setRadius(0);
+        }
 
         let label = (
           f.properties.town_p ||
@@ -137,12 +150,14 @@ export default class extends Component {
           f.properties.province_p
         );
 
-        // Attach popup.
-        marker.bindPopup(label, {
-          minWidth: 0,
-          closeButton: false,
-          autoPan: false,
-        });
+        if (label) {
+          // Attach popup.
+          marker.bindPopup(label, {
+            minWidth: 0,
+            closeButton: false,
+            autoPan: false,
+          });
+        }
 
         this.idToMarker[f.id] = marker;
         this.group.addLayer(marker);

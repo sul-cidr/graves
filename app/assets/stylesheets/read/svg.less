@@ -25,6 +25,15 @@ svg {
       fill-opacity: 0.7;
     }
 
+    &.nomarker {
+      stroke-width: 0;
+      fill-opacity: 0;
+
+      &.highlight {
+        fill-opacity: 0;
+      }
+    }
+
     &.highlight {
       fill: @color-yellow;
       fill-opacity: 0.7;

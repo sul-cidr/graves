@@ -34,7 +34,7 @@ describe('Collection Markers', function() {
 
     utils.respondCollections(addMarkersJSON);
 
-    expect(markers.group.getLayers().length).toEqual(3);
+    expect(markers.group.getLayers().length).toEqual(4);
 
     expect(markers.idToMarker[1].getLatLng()).toEqual({
       lng: 1,
@@ -49,6 +49,11 @@ describe('Collection Markers', function() {
     expect(markers.idToMarker[3].getLatLng()).toEqual({
       lng: 5,
       lat: 6,
+    });
+
+    expect(markers.idToMarker[4].getLatLng()).toEqual({
+      lng: 7,
+      lat: 8,
     });
 
   });
@@ -152,5 +157,52 @@ describe('Collection Markers', function() {
 
   });
 
+  describe('when no_marker is true', function() {
+
+    let marker;
+
+    beforeEach(function() {
+
+      utils.respondCollections(highlightJSON);
+
+      marker = markers.idToMarker[2];
+
+    });
+
+    it('does not show marker', function() {
+      expect('path.collection.nomarker').toExist();
+    });
+
+    it('does not show popup', function() {
+
+      markers.group.fire('mouseover', {
+        layer: marker
+      });
+
+      // leaflet popup would be visible if a label was assigned to the marker
+      expect('.leaflet-popup').not.toExist();
+      // collection is highlighted but not visible by applying CSS classes
+      expect('path.collection.nomarker.highlight').toExist();
+
+      markers.group.fire('mouseout', {
+        layer: marker
+      });
+
+      assert.noCollectionHighlighted();
+
+    });
+
+    it('does not show modal', function() {
+
+      markers.group.fire('click', {
+        layer: marker
+      });
+
+      expect('#collection-2.modal').not.toBeVisible();
+
+    });
+
+
+  });
 
 });

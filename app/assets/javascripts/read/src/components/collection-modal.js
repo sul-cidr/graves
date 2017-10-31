@@ -52,7 +52,7 @@ export default class extends Component {
    */
   render() {
 
-    if (this.props.feature) {
+    if (this.props.feature && !this.props.feature.properties.no_marker) {
 
       let c = this.props.feature.properties;
 
