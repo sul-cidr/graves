@@ -65,3 +65,13 @@ export function resetMapSettings() {
     type: RESET_MAP_SETTINGS,
   };
 }
+
+
+/**
+ * Close the tutorial modal
+ */
+export function closeTutorialModal() {
+  return {
+    type: 'CLOSE_TUTORIAL_MODAL',
+  };
+}
