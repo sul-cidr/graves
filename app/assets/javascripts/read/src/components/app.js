@@ -5,6 +5,7 @@ import React from 'react';
 import Component from './component';
 import Map from './map';
 import Narrative from './narrative';
+import TutorialModal from './tutorial-modal';
 
 
 export default class extends Component {
@@ -18,6 +19,7 @@ export default class extends Component {
       <div className="wrapper">
         <Map />
         <Narrative />
+        <TutorialModal />
       </div>
     );
   }

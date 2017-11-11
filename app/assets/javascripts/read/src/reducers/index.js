@@ -9,6 +9,7 @@ import sections from './sections';
 import timeSlider from './time-slider';
 import map from './map';
 import filters from './filters';
+import tutorial from './tutorial';
 
 
 export default combineReducers({
@@ -20,5 +21,6 @@ export default combineReducers({
   timeSlider,
   map,
   filters,
+  tutorial,
 
 });

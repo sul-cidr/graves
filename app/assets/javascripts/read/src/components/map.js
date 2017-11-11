@@ -1,38 +1,34 @@
+import React from "react";
+import { findDOMNode } from "react-dom";
+import L from "leaflet";
+import { Modal } from "react-bootstrap";
+import { connect } from "react-redux";
 
+import config from "./map.yml";
+import Component from "./component";
 
-import React from 'react';
-import { findDOMNode } from 'react-dom';
-import L from 'leaflet';
+import BaseLayer from "./base-layer";
+import WmsLayer from "./wms-layer";
+import CollectionModal from "./collection-modal";
+import CollectionMarkers from "./collection-markers";
+import CountyPaths from "./county-paths";
+import SectionBoxes from "./section-boxes";
+import MapLine from "./map-line";
+import Controls from "./controls";
+import "./map-reset-button";
+import "./tutorial-toggle-button";
+import TutorialModal from "./tutorial-modal";
+import Widgets from "./widgets";
 
-import config from './map.yml';
-import Component from './component';
+import { MAP, FOCUS_MAP } from "../constants";
+import { openTutorialModal } from "../actions/tutorial";
 
-import BaseLayer from './base-layer';
-import WmsLayer from './wms-layer';
-import CollectionModal from './collection-modal';
-import CollectionMarkers from './collection-markers';
-import CountyPaths from './county-paths';
-import SectionBoxes from './section-boxes';
-import MapLine from './map-line';
-import Controls from './controls';
-import './map-reset-button';
-import Widgets from './widgets';
-
-import {
-  MAP,
-  FOCUS_MAP,
-} from '../constants';
-
-
-export default class extends Component {
-
-
+class Map extends Component {
   static requests = {
     [MAP]: {
-      [FOCUS_MAP]: 'focus',
+      [FOCUS_MAP]: "focus"
     }
   };
-
 
   /**
    * Set initial state.
@@ -40,16 +36,13 @@ export default class extends Component {
    * @param {Object} props
    */
   constructor(props) {
-
     super(props);
     window.props = props;
 
     this.state = {
-      map: null,
+      map: null
     };
-
   }
-
 
   /**
    * Start the map.
@@ -58,12 +51,10 @@ export default class extends Component {
     this.createMap();
   }
 
-
   /**
    * Spin up the Leaflet instance.
    */
   createMap() {
-
     let el = findDOMNode(this.refs.leaflet);
 
     let map = L.map(el, {
@@ -71,7 +62,7 @@ export default class extends Component {
       zoomControl: false,
       scrollWheelZoom: false,
       fadeAnimation: false,
-      inertia: false,
+      inertia: false
     });
 
     // Default viewport.
@@ -80,37 +71,41 @@ export default class extends Component {
 
     // Zoom buttons on top right.
     let zoomControl = L.control.zoom({
-      position: 'topright'
+      position: "topright"
     });
 
     let resetButton = new L.Control.resetButton({
       onClick: function() {
         map.setView([lat, lng], zoom);
-      },
+      }
+    });
+
+    const tutorialButton = new L.Control.tutorialButton({
+      onClick: function() {
+        console.log(sessionStorage.getItem("tutorialModal"));
+        props.openTutorialModal();
+        console.log(sessionStorage.getItem("tutorialModal"));
+      }
     });
 
     map.addControl(zoomControl);
     map.addControl(resetButton);
+    map.addControl(tutorialButton);
 
     // Mount behaviors.
     this.setState({ map });
-
   }
-
 
   /**
    * Render the map container.
    */
   render() {
     return (
-        <div id="map">
-
-        <div id="leaflet" ref="leaflet">
-        </div>
+      <div id="map">
+        <div id="leaflet" ref="leaflet" />
 
         {this.state.map ? (
-            <behaviors>
-
+          <behaviors>
             <CountyPaths map={this.state.map} />
             <BaseLayer map={this.state.map} />
             <CollectionMarkers map={this.state.map} />
@@ -119,16 +114,13 @@ export default class extends Component {
             <MapLine map={this.state.map} />
 
             <CollectionModal />
-            <Widgets map={this.state.map}/>
+            <Widgets map={this.state.map} />
             <Controls />
-
-            </behaviors>
+          </behaviors>
         ) : null}
-
       </div>
     );
   }
-
 
   /**
    * Focus on a point.
@@ -137,11 +129,15 @@ export default class extends Component {
    * @param {Number} lat
    * @param {Number} zoom
    */
-  focus(lon, lat, zoom=8) {
+  focus(lon, lat, zoom = 8) {
     this.state.map.flyTo([lat, lon], zoom, {
       duration: 1.5
     });
   }
-
-
 }
+
+const mapDispatchToProps = {
+  openTutorialModal
+};
+
+export default connect(null, mapDispatchToProps)(Map);
