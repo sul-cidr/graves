@@ -82,9 +82,7 @@ class Map extends Component {
 
     const tutorialButton = new L.Control.tutorialButton({
       onClick: function() {
-        console.log(sessionStorage.getItem("tutorialModal"));
         props.openTutorialModal();
-        console.log(sessionStorage.getItem("tutorialModal"));
       }
     });
 
