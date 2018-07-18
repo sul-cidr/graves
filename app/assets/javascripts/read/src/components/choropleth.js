@@ -26,12 +26,11 @@ export default class extends Component {
 
 
   /**
-   * Show the variable.
+   * Show the initial CDC choropleth.
    */
   componentDidMount() {
-    this.props.changeChoropleth('a100001_10');
+    this.props.changeChoropleth(window.GRAVES.choroplethCode);
   }
-
 
   /**
    * Render the county choropleth.
