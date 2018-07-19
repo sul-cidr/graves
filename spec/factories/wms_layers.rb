@@ -20,7 +20,7 @@ FactoryGirl.define do
 
     name 'Layer'
 
-    slug { generate(:base_layer_slug) }
+    slug { generate(:wms_layer_slug) }
 
     address 'http://stanford.edu/wms'
 

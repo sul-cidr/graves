@@ -5,10 +5,19 @@ import * as utils from "../utils";
 import * as assert from "../assert";
 
 import listLayersHTML from "../fixtures/wms-layers/page/list-layers.html";
-
+import mountDefaultHTML from "../fixtures/base-layers/page/mount-default.html";
 import changeLayerHTML from "../fixtures/wms-layers/page/change-layer.html";
 
 describe("WMS Layers", function() {
+
+  it("mounts the default WMS layers on startup", function() {
+    utils.start(mountDefaultHTML);
+
+    for (let i of [1, 2, 3]) {
+      assert.wmsLayerParams(`address${i}`, `layer${i}`);
+    }
+  });
+
   it("lists layers in the dropdown select", function() {
     utils.startWithoutModal(listLayersHTML);
     utils.toggleMapMenu();
