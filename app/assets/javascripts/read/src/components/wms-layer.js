@@ -38,17 +38,16 @@ export default class extends Component {
     if (this.props.slug) {
       let slugs = this.props.slug.toString().split(",");
 
-      // Remove unselected but active layers.
+      // Remove unselected but active layers
       for (let slug of Object.keys(this.layers)) {
         if (!(slug in slugs)) {
           let layer = this.layers[slug];
           this.props.map.removeLayer(layer);
-          // this.layers.delete(slug);
           delete this.layers[slug];
         }
       }
 
-      // Add selected layers.
+      // Add selected layers
       for (let slug of slugs) {
         let config = window.GRAVES.wmsLayers[slug];
         let layer = L.tileLayer.wms(config.address, {
@@ -62,6 +61,13 @@ export default class extends Component {
         }
       }
 
+    } else if (this.props.slug === "") {
+      // Remove all layers
+      for (let slug of Object.keys(this.layers)) {
+        let layer = this.layers[slug];
+        this.props.map.removeLayer(layer);
+        delete this.layers[slug];
+      }
     }
 
     return null;

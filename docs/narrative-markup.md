@@ -64,6 +64,12 @@ a100016_10:	Three-Generation Family Households
 a100017_10:	Four-Generation and Over Family Households
 ```
 
+Unset a previously set choropleth.
+
+```html
+<span class="collection" data-choropleth="">... text ...</span>
+```
+
 ## `data-base-layer`
 
 Set the map base layer, identified by the "Slug" field set in the admin.
@@ -78,6 +84,12 @@ Set the WMS "overlay" map layer, identified by the "Slug" field set in the admin
 
 ```html
 <span class="collection" data-wms-layer="an-lu">... text ...</span>
+```
+
+Unset a previously set WMS "overlay" map layer.
+
+```html
+<span class="collection" data-wms-layer="">... text ...</span>
 ```
 
 ## `data-start` + `data-end`

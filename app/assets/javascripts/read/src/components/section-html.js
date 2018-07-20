@@ -213,12 +213,12 @@ export default class extends Component {
     }
 
     // Set the WMS layer.
-    if (attrs.wmsLayerSlug) {
+    if (attrs.wmsLayerSlug || attrs.wmsLayerSlug === "") {
       this.props.changeWmsLayer(attrs.wmsLayerSlug);
     }
 
     // Set the choropleth.
-    if (attrs.choropleth) {
+    if (attrs.choropleth || attrs.choropleth === "") {
       this.props.changeChoropleth(attrs.choropleth);
     }
 

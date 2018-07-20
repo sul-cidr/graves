@@ -131,6 +131,10 @@ describe 'Collection HTML', type: :feature do
           class="collection"
           data-wms-layer="slug-1"
         ></span>
+        <span
+          class="collection empty"
+          data-wms-layer=""
+        ></span>
       HTML
 
       n = create(:narrative, markup: markup)
@@ -152,6 +156,10 @@ describe 'Collection HTML', type: :feature do
         <span
           class="collection"
           data-choropleth="a100002_10"
+        ></span>
+        <span
+          class="collection empty"
+          data-choropleth=""
         ></span>
       HTML
 
