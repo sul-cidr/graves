@@ -14,6 +14,8 @@ class WmsLayer < ActiveRecord::Base
 
   include Slug
 
+  has_and_belongs_to_many :narratives
+
   validates :name, presence: true
   validates :address, presence: true
   validates :layer, presence: true

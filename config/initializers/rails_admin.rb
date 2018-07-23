@@ -167,7 +167,7 @@ RailsAdmin.config do |config|
 
   end
 
-
+  CDC_CODES_PATH = '../../../app/assets/javascripts/read/src/data/cdc-codes.yml'
   config.model Narrative do
 
     configure :pub_date do
@@ -183,7 +183,26 @@ RailsAdmin.config do |config|
       field :slug
       field :blurb
       field :markup
-      field :base_layer
+      field :base_layer do
+        show
+        label 'Base layer (initial)'
+      end
+      field :wms_layers do
+        show
+        label 'WMS layer (initial)'
+      end
+      field :choropleth, :enum do
+        label 'Choropleth layer (initial)'
+        enum do
+        HashWithIndifferentAccess.new(
+          YAML.load(
+            File.read(
+              File.expand_path(CDC_CODES_PATH, __FILE__)
+            )
+          )
+        )["counties"].invert
+        end
+      end
 
       include_all_fields
 

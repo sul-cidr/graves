@@ -4,18 +4,24 @@ import L from 'leaflet';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import * as actions from '../actions/map';
+
 import Component from './component';
 
 
-@connect(state => ({
-  slug: state.map.wmsLayerSlug
-}))
+@connect(
+  state => ({
+    slug: state.map.wmsLayerSlug
+  }),
+  actions
+)
 export default class extends Component {
 
 
   static propTypes = {
     slug: PropTypes.string,
     map: PropTypes.object.isRequired,
+    changeWmsLayer: PropTypes.func.isRequired,
   };
 
 
@@ -29,6 +35,12 @@ export default class extends Component {
     this.layers = {};
   }
 
+  /**
+   * Show the initial WMS layer.
+   */
+  componentDidMount() {
+    this.props.changeWmsLayer(window.GRAVES.wmsLayerSlug);
+  }
 
   /**
    * Set the base layer.

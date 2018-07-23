@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030182504) do
+ActiveRecord::Schema.define(version: 20180718160705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20171030182504) do
     t.integer  "num_graves"
     t.string   "location"
     t.string   "destination"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.datetime "created_at",                                                           null: false
+    t.datetime "updated_at",                                                           null: false
     t.string   "province_p"
     t.string   "province_c"
     t.string   "prefect_p"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20171030182504) do
     t.string   "town_c"
     t.string   "village_p"
     t.string   "village_c"
-    t.integer  "notice_id",                                         null: false
+    t.integer  "notice_id",                                                            null: false
     t.geometry "geometry",    limit: {:srid=>4326, :type=>"point"}
     t.integer  "province_id"
     t.integer  "county_id"
@@ -111,11 +111,20 @@ ActiveRecord::Schema.define(version: 20171030182504) do
     t.string   "hero_image_content_type"
     t.integer  "hero_image_file_size"
     t.datetime "hero_image_updated_at"
+    t.string   "choropleth"
   end
 
   add_index "narratives", ["author_id"], name: "index_narratives_on_author_id", using: :btree
   add_index "narratives", ["base_layer_id"], name: "index_narratives_on_base_layer_id", using: :btree
   add_index "narratives", ["slug"], name: "index_narratives_on_slug", unique: true, using: :btree
+
+  create_table "narratives_wms_layers", id: false, force: :cascade do |t|
+    t.integer "narrative_id", null: false
+    t.integer "wms_layer_id", null: false
+  end
+
+  add_index "narratives_wms_layers", ["narrative_id", "wms_layer_id"], name: "index_narratives_wms_layers_on_narrative_id_and_wms_layer_id", using: :btree
+  add_index "narratives_wms_layers", ["wms_layer_id", "narrative_id"], name: "index_narratives_wms_layers_on_wms_layer_id_and_narrative_id", using: :btree
 
   create_table "notices", force: :cascade do |t|
     t.date     "pub_date"

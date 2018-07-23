@@ -7,6 +7,17 @@ import codes from "../../src/data/cdc-codes.yml";
 import * as utils from "../utils";
 import * as assert from "../assert";
 
+import mountDefaultHTML from "../fixtures/base-layers/page/mount-default.html";
+
+
+describe("Choropleth", function() {
+  it("mounts the default choropleth layer on startup", function() {
+    utils.start(mountDefaultHTML);
+
+    assert.choroplethCode("choropleth");
+  });
+});
+
 describe("Choropleth", function() {
   beforeEach(function() {
     utils.startWithoutModal();

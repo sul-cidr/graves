@@ -9,7 +9,11 @@ describe 'Base Layers', type: :feature do
       create(:base_layer, url: "url#{i}")
     end
 
-    n = create(:narrative, base_layer: layers.last)
+    wms_layers = (1..3).map do |i|
+      create(:wms_layer, layer: "layer#{i}", address: "address#{i}")
+    end
+
+    n = create(:narrative, base_layer: layers.last, choropleth: 'choropleth', wms_layers: wms_layers)
 
     visit("read/#{n.slug}")
 
