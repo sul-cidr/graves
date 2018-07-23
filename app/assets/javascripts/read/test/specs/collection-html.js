@@ -5,6 +5,7 @@ import moment from 'moment';
 
 import CollectionMarkers from '../../src/components/collection-markers';
 import TimeSlider from '../../src/components/time-slider';
+import WmsLayer from '../../src/components/wms-layer';
 
 import * as utils from '../utils';
 import * as assert from '../assert';
@@ -216,6 +217,20 @@ describe('Collection HTML', function() {
 
     });
 
+    describe('click on empty', function() {
+
+      beforeEach(function() {
+        span.trigger('click');
+        span = $('.empty');
+        span.trigger('click');
+      });
+
+      it('unsets the WMS layer if empty', function() {
+        const wmsLayer = utils.getComponent(WmsLayer);
+        expect(Object.keys(wmsLayer.layers).length).toEqual(0);  // empty object
+      });
+
+    });
 
   });
 
@@ -244,6 +259,19 @@ describe('Collection HTML', function() {
 
     });
 
+    describe('click on empty', function() {
+
+      beforeEach(function() {
+        span.trigger('click');
+        span = $('.empty');
+        span.trigger('click');
+      });
+
+      it('unsets the choropleth if empty', function() {
+        assert.choroplethCode('');
+      });
+
+    });
 
   });
 
