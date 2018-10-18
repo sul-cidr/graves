@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   # Read narrative
   get 'read/:slug', to: 'graves#read'
 
+  # Page narratives
+  get ':slug', to: 'graves#pages'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

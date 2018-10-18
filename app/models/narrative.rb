@@ -15,6 +15,7 @@
 #  base_layer_id           :integer          not null
 #  wms_layer_id            :integer          not null
 #  choropleth              :string           null
+#  hidden                  :boolean          null
 #  hero_image_file_name    :string
 #  hero_image_content_type :string
 #  hero_image_file_size    :integer
