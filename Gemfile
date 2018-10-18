@@ -36,7 +36,9 @@ gem 'high_voltage'
 gem 'paperclip'
 gem 'config'
 gem 'honeybadger', '~> 3.1'
-gem 'nokogiri', '>= 1.8.2'
+gem 'nokogiri', '>= 1.8.3'
+gem "loofah", ">= 2.2.1"
+gem "rails-html-sanitizer", ">= 1.0.4"
 
 group :development do
 
