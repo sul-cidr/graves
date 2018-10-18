@@ -15,6 +15,7 @@
 #  base_layer_id           :integer          not null
 #  wms_layer_id            :integer          not null
 #  choropleth              :string           null
+#  order                   :integer          null
 #  hero_image_file_name    :string
 #  hero_image_content_type :string
 #  hero_image_file_size    :integer
@@ -22,7 +23,7 @@
 #
 
 class Narrative < ActiveRecord::Base
-
+  default_scope { order(order: :asc) }
 
   include Slug
 

@@ -175,12 +175,17 @@ RailsAdmin.config do |config|
       label 'Publication Date'
     end
 
+    list do
+      sort_by :order
+    end
+
     edit do
 
       field :title
       field :subtitle
       field :author
       field :slug
+      field :order
       field :blurb
       field :markup
       field :base_layer do
