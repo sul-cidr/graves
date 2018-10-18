@@ -107,18 +107,25 @@ export default class extends Component {
     let svg = container.append('svg');
     let context = svg.append('g');
 
-    let timeExtent = [
-      new Date(2000, 0, 1),
-      new Date(2015, 0, 1),
+    this.timeRange = [
+      window.GRAVES.timeSliderStartYear || 2000,
+      window.GRAVES.timeSliderEndYear || 2015
     ];
+    let timeExtent = [
+      new Date(this.timeRange[0], 0, 1),
+      new Date(this.timeRange[1], 0, 1),
+    ];
+    let timeDiff = this.timeRange[1] - this.timeRange[0];
 
     let xScale = d3.time.scale()
       .domain(timeExtent)
-      .range([25, rect.width-25]);
+      .range([25, rect.width - 25]);
 
     let xAxis = d3.svg.axis()
       .scale(xScale)
-      .ticks(d3.time.years, 1)
+      .ticks(d3.time.years,
+             // print 10 or 15 ticks (for backwards compatibility)
+             parseInt(timeDiff / (timeDiff % 15 === 0 ? 15 : 10)))
       .orient('bottom');
 
     this.brush = d3.svg.brush()

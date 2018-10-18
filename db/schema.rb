@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180718160705) do
+ActiveRecord::Schema.define(version: 20181018013947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20180718160705) do
     t.string   "village_p"
     t.string   "village_c"
     t.integer  "notice_id",                                                            null: false
-    t.geometry "geometry",    limit: {:srid=>4326, :type=>"point"}
+    t.geometry "geometry",    limit: {:srid=>4326, :type=>"st_point"}
     t.integer  "province_id"
     t.integer  "county_id"
     t.integer  "town_id"
@@ -112,6 +112,8 @@ ActiveRecord::Schema.define(version: 20180718160705) do
     t.integer  "hero_image_file_size"
     t.datetime "hero_image_updated_at"
     t.string   "choropleth"
+    t.integer  "year_start"
+    t.integer  "year_end"
   end
 
   add_index "narratives", ["author_id"], name: "index_narratives_on_author_id", using: :btree
