@@ -12,8 +12,8 @@
   #header.block
 
     ul.nav
-      li= link_to('About', 'about')
-      li= link_to('People', 'people')
+      - @pages.each do |p|
+        li= link_to(p.title, url_for("/#{p.slug}"))
 
     .leader
       h1 The Chinese Deathscape:<br/><em>Grave Reform in Modern China</em>

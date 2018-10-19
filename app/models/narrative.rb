@@ -15,6 +15,7 @@
 #  base_layer_id           :integer          not null
 #  wms_layer_id            :integer          not null
 #  choropleth              :string           null
+#  hidden                  :boolean          null
 #  year_start              :integer          null
 #  year_end                :integer          null
 #  hero_image_file_name    :string

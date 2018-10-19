@@ -6,6 +6,5 @@ ul.nav
       i.fa.fa-home
       span Home
 
-  li= link_to('About', page_path('about'))
-
-  li= link_to('People', page_path('people'))
+  - @pages.where(:hidden => true).each do |p|
+    li= link_to(p.title, url_for("/#{p.slug}"))
