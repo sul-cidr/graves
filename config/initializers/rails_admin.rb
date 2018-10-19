@@ -187,6 +187,15 @@ RailsAdmin.config do |config|
         show
         label 'Hide in table of contents'
         help '"About" and "People" narratives should have this attribute set to true'
+      field :year_start do
+        show
+        label 'Time slider year start'
+        help 'Optional (defaults to 2000)'
+      end
+      field :year_end do
+        show
+        label 'Time slider year end'
+        help 'Optional (defaults to 2015)'
       end
       field :base_layer do
         show

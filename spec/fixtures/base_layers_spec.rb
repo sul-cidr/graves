@@ -13,7 +13,8 @@ describe 'Base Layers', type: :feature do
       create(:wms_layer, layer: "layer#{i}", address: "address#{i}")
     end
 
-    n = create(:narrative, base_layer: layers.last, choropleth: 'choropleth', wms_layers: wms_layers)
+    n = create(:narrative, base_layer: layers.last, choropleth: 'choropleth',
+               wms_layers: wms_layers, year_start: 2000, year_end: 2015)
 
     visit("read/#{n.slug}")
 

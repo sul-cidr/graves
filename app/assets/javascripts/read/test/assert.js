@@ -137,6 +137,22 @@ export function timeSliderExtent(start, end) {
 
 }
 
+/**
+ * Assert the time slider range.
+ *
+ * @param {String} start
+ * @param {String} end
+ */
+export function timeSliderRange(start, end) {
+
+  let slider = utils.getComponent(TimeSlider);
+
+  expect(slider.timeRange).toEqual([
+    start || 2000,
+    end || 2015,
+  ]);
+
+}
 
 /**
  * Assert the set of visible collection markers.
