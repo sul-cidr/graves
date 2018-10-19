@@ -16,6 +16,9 @@
 #  wms_layer_id            :integer          not null
 #  choropleth              :string           null
 #  order                   :integer          null
+#  hidden                  :boolean          null
+#  year_start              :integer          null
+#  year_end                :integer          null
 #  hero_image_file_name    :string
 #  hero_image_content_type :string
 #  hero_image_file_size    :integer
@@ -57,6 +60,8 @@ class Narrative < ActiveRecord::Base
       wmsLayerSlug: wms_layers && wms_layers.map(&:slug).join(","),
 
       choroplethCode: choropleth,
+      timeSliderStartYear: year_start,
+      timeSliderEndYear: year_end,
     }
   end
 

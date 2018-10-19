@@ -46,7 +46,7 @@ export default class extends Component {
             <p>1. The Chinese Deathscape features an augmented narrative platform. Anytime you see an underlined passage of text, you can click on it to reposition the map to the location relevant to the narrative.</p>
             <img className="tutorial-image centered" src="/images/tutorial/underlined_text.png" />
 
-            <p>2. At any time you can turn on or off map options by toggling the button on the top left of the map. This opens a dropdown menu featuring a variety of demographic and historic map layers. You can choose different combinations of base layers, demographic overlays, or historic overlay, and then cancel them out by clicking the gray X. Please note that, depending upon your location and zoom level in the map, not every historic map or demographic overlay will show up clearly.</p>
+            <p>2. At any time you can turn on or off map options by toggling the button on the top left of the map. This opens a dropdown menu featuring a variety of demographic and historic map layers. You can choose different combinations of base layers, demographic overlays, or historic overlays, and then cancel them out by clicking the gray X. Please note that, depending upon your location and zoom level in the map, not every historic map or demographic overlay will show up clearly.</p>
             <div className="flex-container-images">
               <img className="tutorial-image" src="/images/tutorial/map_options_slider.png" />
               <img className="tutorial-image" src="/images/tutorial/map_options_menus.png" />
@@ -70,7 +70,7 @@ export default class extends Component {
               <img className="tutorial-image" src="/images/tutorial/timeline.png" />
             </div>
 
-            <p>8. If you would like to cite or share a specific map stage (i.e., a geographic location, along with specific demographic layers, historic maps, or other features), click on the bookmark icon on the top right. When you click on this icon, the URL in your browser will update to include all relevant information of that map state. Simply highlight and copy this URL, which you can then send or cite. Anyone who navigates to that URL will find the same map state as when you clicked the citation icon</p>
+            <p>8. If you would like to cite or share a specific map state (i.e., a geographic location, along with specific demographic layers, historic maps, or other features), click on the bookmark icon on the top right. When you click on this icon, the URL in your browser will update to include all relevant information of that map state. Simply highlight and copy this URL, which you can then send or cite. Anyone who navigates to that URL will find the same map state as when you clicked the citation icon</p>
             <img className="tutorial-image centered" src="/images/tutorial/bookmark_button.png" />
           </Modal.Body>
           <Modal.Footer>

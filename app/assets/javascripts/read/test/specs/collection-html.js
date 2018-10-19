@@ -299,6 +299,7 @@ describe('Collection HTML', function() {
       });
 
       it('sets the time slider brush', function() {
+        assert.timeSliderRange(2000, 2015);
         assert.timeSliderExtent('2008-01-01', '2010-01-01');
       });
 
