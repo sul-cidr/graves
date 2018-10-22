@@ -15,6 +15,7 @@
 #  base_layer_id           :integer          not null
 #  wms_layer_id            :integer          not null
 #  choropleth              :string           null
+#  order                   :integer          null
 #  hidden                  :boolean          null
 #  year_start              :integer          null
 #  year_end                :integer          null
@@ -25,7 +26,7 @@
 #
 
 class Narrative < ActiveRecord::Base
-
+  default_scope { order(order: :asc) }
 
   include Slug
 
