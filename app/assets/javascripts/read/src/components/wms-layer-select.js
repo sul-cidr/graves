@@ -64,9 +64,8 @@ export default class extends Component {
    *
    * @param {Object} option
    */
-  onChange(option) {
-    let id = option ? option : null;
-    this.props.changeWmsLayer(id);
+  onChange(slug) {
+    this.props.changeWmsLayer(slug);
   }
 
 

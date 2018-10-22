@@ -73,7 +73,7 @@ export default class extends Component {
         }
       }
 
-    } else if (this.props.slug === "") {
+    } else {
       // Remove all layers
       for (let slug of Object.keys(this.layers)) {
         let layer = this.layers[slug];
