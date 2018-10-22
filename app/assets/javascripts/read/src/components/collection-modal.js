@@ -6,6 +6,7 @@ import { Modal } from 'react-bootstrap'
 import classNames from 'classnames';
 
 import * as actions from '../actions/collections';
+import { getLabel } from '../utils';
 
 import Component from './component';
 import Field from './field';
@@ -46,7 +47,6 @@ export default class extends Component {
     return classes;
   }
 
-
   /**
    * Render a collection modal.
    */
@@ -71,17 +71,7 @@ export default class extends Component {
           <Modal.Header closeButton>
             <Modal.Title>
               <span id="title-location">
-                {c.province_p}{' '} {c.province_c}
-                {c.county_p &&
-                 ', '
-                }
-                {c.county_p}{' '}
-                {c.county_c}
-                {c.town_p &&
-                 ', '
-                }
-                {c.town_p}{' '}
-                {c.town_c}
+                {getLabel(c)}
               </span>
             </Modal.Title>
           </Modal.Header>
@@ -153,19 +143,7 @@ export default class extends Component {
                       </div>
 
                       <div className='collection-text collection-title'>
-
-                       {near.options.feature.properties.province_p}{' '} {near.options.feature.properties.province_c}
-                       {near.options.feature.properties.county_p &&
-                         ', '
-                       }
-                       {near.options.feature.properties.county_p}{' '}
-                       {near.options.feature.properties.county_c}
-                       {near.options.feature.properties.town_p &&
-                         ', '
-                       }
-                       {near.options.feature.properties.town_p}{' '}
-                       {near.options.feature.properties.town_c}
-
+                       {getLabel(near.options.feature.properties)}
                       </div>
                       <div className='collection-text'>
                           <FieldNumeric

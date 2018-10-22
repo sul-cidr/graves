@@ -105,3 +105,16 @@ export function swap(coord) {
 export function parseTags(value) {
   return value.replace(/\s/g, '').split(',');
 }
+
+/**
+ * Format a collection object
+ * @param {Object} collection
+ * @return {String}
+ */
+export function getLabel(collection) {
+  return [
+    [collection.province_p, collection.province_c].filter(Boolean).join(" "),
+    [collection.county_p, collection.county_c].filter(Boolean).join(" "),
+    [collection.town_p, collection.town_c].filter(Boolean).join(" ")
+  ].filter(Boolean).join(", ");
+}
