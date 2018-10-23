@@ -1,6 +1,7 @@
 import $ from "jquery";
 
 import CollectionMarkers from "../../src/components/collection-markers";
+import { getLabel } from "../../src/utils";
 
 import * as utils from "../utils";
 
@@ -27,4 +28,13 @@ describe("Collection Modal", function() {
 
     expect("#collection-1.modal").toBeVisible();
   });
+
+  it("formats collections properly", function() {
+    const label = getLabel({
+      county_c: "County",
+      county_p: "P",
+      province_c: "Province"
+    });
+    expect(label).toBe("Province, P County");
+  })
 });
