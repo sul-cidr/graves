@@ -123,7 +123,7 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
-    ffi (1.9.18)
+    ffi (1.9.25)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
     geocoder (1.4.4)
@@ -310,7 +310,7 @@ GEM
       slim (~> 3.0)
     spring (2.0.2)
       activesupport (>= 4.2)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -399,4 +399,4 @@ DEPENDENCIES
   with_model
 
 BUNDLED WITH
-   1.16.0.pre.1
+   1.16.0.pre.3
