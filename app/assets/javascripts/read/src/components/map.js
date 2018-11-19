@@ -17,6 +17,7 @@ import MapLine from "./map-line";
 import Controls from "./controls";
 import "./map-reset-button";
 import "./tutorial-toggle-button";
+import "./map-home-button";
 import TutorialModal from "./tutorial-modal";
 import Widgets from "./widgets";
 
@@ -74,6 +75,12 @@ class Map extends Component {
       position: "topright"
     });
 
+    const homeButton = new L.Control.homeButton({
+      onClick: function() {
+        window.location = "/";
+      }
+    });
+
     let resetButton = new L.Control.resetButton({
       onClick: function() {
         map.setView([lat, lng], zoom);
@@ -87,6 +94,7 @@ class Map extends Component {
     });
 
     map.addControl(zoomControl);
+    map.addControl(homeButton);
     map.addControl(resetButton);
     map.addControl(tutorialButton);
 

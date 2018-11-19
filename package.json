@@ -66,7 +66,7 @@
     "mousetrap": "1.5.3",
     "nouislider": "8.3.0",
     "rbush": "^2.0.1",
-    "react": "0.14.7",
+    "react": "0.14.9",
     "react-bootstrap": "0.27.3",
     "react-dom": "0.14.7",
     "react-portal": "2.0.0",

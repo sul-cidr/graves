@@ -23,3 +23,51 @@ ul.nav {
   }
 
 }
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background-color: @color-blue;
+  color: whitesmoke;
+  z-index: 9999;
+
+  a {
+    color: whitesmoke;
+    text-decoration: none;
+    border-bottom: none;
+
+    &:hover {
+      color: whitesmoke;
+      text-decoration: none;
+      border-bottom: 1px solid whitesmoke;
+    }
+  }
+
+  img {
+    padding-left: 15px;
+    vertical-align: middle;
+    height: 30px;
+  }
+
+  .col {
+    width: 33.33%;
+    float: left;
+    line-height: @footer-height;
+    padding: 0px 14px;
+
+    &.center {
+      text-align: center;
+    }
+
+    &.right {
+      text-align: right;
+    }
+
+    &.left {
+      text-align: left;
+    }
+  }
+}

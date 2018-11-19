@@ -65,5 +65,8 @@ class Narrative < ActiveRecord::Base
     }
   end
 
+  def self.pages
+    Narrative.where(:hidden => true).where{((order == nil) | (order >= 0))}
+  end
 
 end

@@ -11,9 +11,7 @@
 
   #header.block
 
-    ul.nav
-      - @pages.each do |p|
-        li= link_to(p.title, url_for("/#{p.slug}"))
+    = render "shared/nav"
 
     .leader
       h1 The Chinese Deathscape<br/><em>Grave Reform in Modern China</em>

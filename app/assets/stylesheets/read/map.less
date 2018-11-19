@@ -5,7 +5,7 @@
   position: absolute;
   top: 100vh;
 
-  height: 100vh;
+  height: calc(~"100vh - "@footer-height);
   width: 100vw;
 
   overflow-x: hidden;
@@ -16,7 +16,7 @@
 #leaflet {
 
   width: calc(~"100vw + "@width-text);
-  height: 100vh;
+  height: calc(~"100vh - "@footer-height);
 
   // Zoom buttons
 

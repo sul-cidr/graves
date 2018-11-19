@@ -185,7 +185,11 @@ RailsAdmin.config do |config|
       field :subtitle
       field :author
       field :slug
-      field :order
+      field :order do
+        show
+        label 'Order'
+        help 'Optional. Use negative values to hide them from TOC and navigation links'
+      end
       field :blurb
       field :markup
       field :hidden do

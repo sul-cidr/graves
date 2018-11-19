@@ -159,7 +159,7 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.6)
@@ -196,7 +196,7 @@ GEM
       highline (~> 1.6)
       options (~> 2.3.0)
     public_suffix (3.0.0)
-    rack (1.6.8)
+    rack (1.6.11)
     rack-livereload (0.3.16)
       rack
     rack-pjax (1.0.0)
@@ -399,4 +399,4 @@ DEPENDENCIES
   with_model
 
 BUNDLED WITH
-   1.16.0.pre.3
+   1.17.1
