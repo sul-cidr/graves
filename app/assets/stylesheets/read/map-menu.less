@@ -36,11 +36,26 @@
 
     }
 
-    &.wms-layer-select .Select-value {
-      max-width: 100%;
-      margin: 3px;
-    }
+    &.wms-layer-select {
+      .Select-value {
+        max-width: 80%;
+        position: relative;
+        display: table;
+      }
 
+      .Select-value {
+        max-width: 100%;
+        margin: 3px;
+      }
+
+      .Select-value-icon {
+        display: table-cell;
+      }
+
+      .Select-value-label {
+        display: table-cell;
+      }
+    }
   }
 
 }

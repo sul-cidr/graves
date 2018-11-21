@@ -15,6 +15,7 @@ import './specs/choropleth';
 import './specs/time-slider';
 import './specs/reset-button';
 import './specs/bookmark';
+import './specs/home-button';
 import './specs/tutorial-modal';
 
 import * as utils from './utils';
