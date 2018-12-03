@@ -2,7 +2,7 @@
 desc 'Upload shared configs for non DLSS setups'
 task :upload_shared_configs do
   tmp_repo = "#{Dir.mktmpdir}/shared_configs"
-  ask :shared_configs_repo, 'sul-dlss/shared_configs'
+  ask :shared_configs_repo, 'sul-cidr/graves_shared_configs'
   ask :shared_configs_branch, fetch(:shared_configs_default_branch)
   ask :ssh_key, '~/.ssh/id_rsa'
   run_locally do
