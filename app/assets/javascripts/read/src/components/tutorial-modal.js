@@ -61,7 +61,7 @@ export default class extends Component {
             <p>5.  In addition to clicking on the text, you can interact with the map directly by clicking on the grave relocation circles. When you click on a circle, a window is opened containing further information about this relocation.</p>
             <img className="tutorial-image centered" src="/images/tutorial/single_circle.png" />
 
-            <p>6. Because many grave relocations have taken place in close geographic proximity to one another, you will often find overlapping circles. When you click on a collection of overlapping circles, the pop-up menu will include a list of “Graves Nearby,” listing other relocations in that geographic area.</p>
+            <p>6. Because many grave relocations have taken place in geographic proximity to one another, you will often find overlapping circles. When you click on a collection of overlapping circles, the pop-up menu will include a list of “Graves Nearby,” listing other relocations in that geographic area.</p>
             <img className="tutorial-image centered" src="/images/tutorial/overlapping_circles.png" />
 
             <p>7. You can also navigate the dataset using the time slider, which can be turned on using the toggle in the top left of the map. There are two ways to interact with the time slider. To filter the data according to a specific time span, simply click and drag your mouse on the time slider to indicate whatever date range you wish. Once you have created a time range, you can also animate the map by clicking and dragging the time range left or right. At any time, you can adjust the start and end dates of your filter by adjusting the time slider handles.</p>
@@ -70,7 +70,7 @@ export default class extends Component {
               <img className="tutorial-image" src="/images/tutorial/timeline.png" />
             </div>
 
-            <p>8. If you would like to cite or share a specific map state (i.e., a geographic location, along with specific demographic layers, historic maps, or other features), click on the bookmark icon on the top right. When you click on this icon, the URL in your browser will update to include all relevant information of that map state. Simply highlight and copy this URL, which you can then send or cite. Anyone who navigates to that URL will find the same map state as when you clicked the citation icon</p>
+            <p>8. If you would like to cite or share a specific map state (i.e., a geographic location, along with specific demographic layers, historic maps, or other features), click on the bookmark icon on the top right. When you click on this icon, the URL in your browser will update to include all relevant information of that map state. Simply highlight and copy this URL, which you can then send or cite. Anyone who navigates to that URL will find the same map state as when you clicked the citation icon.</p>
             <img className="tutorial-image centered" src="/images/tutorial/bookmark_button.png" />
           </Modal.Body>
           <Modal.Footer>
