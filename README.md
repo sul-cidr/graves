@@ -7,7 +7,7 @@
 &mdash; Tom Mullaney, "[Introducing the Chinese Graves Project: A New Digital Humanities Initiative at Stanford University](http://tsmullaney.com/?p=412)"
 
 ## Install for Development
-Clone the repository and run `bundle`.
+Clone the repository.
 
 Install postgreSQL and postGIS:
 
@@ -17,7 +17,9 @@ Install postgreSQL and postGIS:
 
 Run postgreSQL at port 5432:
 
-`brew service postresql`
+`brew services start postgresql`
+
+Run `bundle`.
 
 Initialise the graves databases with correct environment: 
 
@@ -55,7 +57,7 @@ Now, run `npm install` to retrieve javascript dependencies.
 
 Finally, manually restore the backup data into the postgres database by running:
 
-`psql -d graves_development < graves-2-28-16.sql` inside `graves-data/backups` (in the graves-data repository). This will fully populate the database.
+`psql -d graves_development < graves-2-28-18.sql` inside `graves-data/backups` (in the graves-data repository). This will fully populate the database.
 
 Once this completes, `rails s` and `grunt` to start the development server with compiled CSS and JS bundles and run the backend application.
 
@@ -65,7 +67,7 @@ You can now see graves running at `http://localhost:3000`.
 Deployment for graves is done using capistrano. 
 
 ```sh
-# An example
+# An example (replace `prod` with a different deploy configuration if necessary)
 $ bundle exec cap prod deploy
 ```
 
