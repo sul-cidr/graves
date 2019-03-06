@@ -1,14 +1,14 @@
 
 ul.nav
 
-  li.home
+  li
     a(href="#{root_path}")
       i.fa.fa-home
-      span Home
+      span Contents
 
   - @pages.where(:hidden => true).each do |p|
     li= link_to(p.title, url_for("/#{p.slug}"))
 
-  li.home
+  li
     a(href="http://chinesedeathscape.org")
       span Cover
