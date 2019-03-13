@@ -48,7 +48,8 @@ export default class extends Component {
   render() {
 
     if (this.props.slug) {
-      let slugs = this.props.slug.toString().split(",");
+      console.log("this.props.slug is " + this.props.slug);
+      let slugs = this.props.slug.toString().replace(/\s+/g,'').split(",");
 
       // Remove unselected but active layers
       for (let slug of Object.keys(this.layers)) {
